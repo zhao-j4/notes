@@ -1,0 +1,390 @@
+\documentclass[reqno]{amsart}
+
+\usepackage{amsfonts,latexsym,amsthm,amssymb,amsmath,amscd,euscript,bm}
+\usepackage[sc]{mathpazo}
+\usepackage[margin = 2cm]{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+% sets numbering of enumerate to a, b, c, ...
+\renewcommand{\theenumi}{\alph{enumi}}
+
+% Theorems, propositions, etc.
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem*{claim}{Claim}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{notation}{Notation}
+\newtheorem*{example}{Example}
+
+
+% Math blackboard font
+\newcommand{\nc}{\newcommand}
+\nc{\on}[1]{\operatorname{#1}}
+
+\nc{\R}{\mathbb R}
+\nc{\C}{\mathbb C}
+\nc{\Q}{\mathbb Q}
+\nc{\Z}{\mathbb Z}
+\nc{\N}{\mathbb N}
+\nc{\HH}{\mathbb H}
+\nc{\DD}{\mathbb D}
+\nc{\TT}{\mathbb T}
+\nc{\EE}{\mathbb E}
+\nc{\PP}{\mathbb P}
+
+\nc{\cT}{\mathcal T}
+\nc{\cA}{\mathcal A}
+\nc{\cM}{\mathcal M}
+\nc{\cR}{\mathcal R}
+\nc{\cB}{\mathcal B}
+\nc{\cG}{\mathcal G}
+\nc{\cD}{\mathcal D}
+\nc{\cS}{\mathcal S}
+\nc{\cF}{\mathcal F}
+\nc{\cL}{\mathcal L}
+\nc{\cE}{\mathcal E}
+
+\nc{\diam}{\operatorname{diam}}
+\nc{\del}{\partial}
+\nc{\osc}{\operatorname{osc}}
+\nc{\inter}{\mathrm{o}}
+\nc{\close}[1]{\overline{#1}}
+\nc{\supp}{\operatorname{supp}}
+\nc{\BV}{\operatorname{BV}}
+\nc{\Per}{\operatorname{Per}}
+\nc{\loc}{\text{loc}}
+\nc{\Lip}{\operatorname{Lip}}
+\nc{\ACL}{\operatorname{ACL}}
+
+% Why the f*** would you ever use \epsilon
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\emph}{\textsc}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+
+\let\vec\mathbf
+
+% Title: change problem set number as needed
+\title
+{
+	\emph{Calculus of variations}
+} 
+
+\author{Jason Zhao}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+	We are interested in studying energy functionals of the form
+		\[ E [u] := \int_\Omega L(x, u(x), \nabla u(x)) \, dx, \]
+	where $L: \Omega \times \R \times \R^d \to \R$ is known as the \textit{Lagrangian}. The \textit{principle of least action} states that minimisers of the energy satisfy a non-linear partial differential equation known as the \textit{Euler-Lagrange equation}. Thus we can reduce the problem of solving a certain class of equations to a minimisation problem. These notes more or less rehash \cite[Chapter 8]{Evans2010}.
+\end{abstract}
+
+\tableofcontents
+
+\section{Euler-Lagrange equation}
+
+Let $\Omega \subseteq \R^d$ be a bounded $C^1$-domain, a \emph{Lagrangian} is a smooth functional $L : \overline\Omega \times \R_z \times \R^d_p \to \R$ representing the energy density of the corresponding functional $E : W^{1, q} (\Omega) \to \overline\R$ defined by 
+	\[ E[u] := \int_\Omega L(x, u(x), \nabla u (x)) \, dx. \]
+Suppose that $u \in C^\infty (\overline \Omega)$ is a smooth minimiser to the energy subject to the boundary constraint $u_{|\partial \Omega} = g$, then $u$ is a classical solution to a non-linear partial differential equation. Fix a test function $\phi \in C^\infty_c (\Omega)$, then the map $t \mapsto E[u + t \phi]$ is minimised at $t = 0$. We know from the first derivative test that the derivative at $t = 0$, known as the \emph{first variation}, vanishes. Differentiating under the integral sign and integrating by parts, we obtain
+	\begin{align*}
+		 0 = \frac{d}{dt} \Big|_{t = 0} E[u + t \phi] 
+		 	&=  \int_\Omega \left(\nabla_p L (x, u, \nabla u) \cdot \nabla_x \phi + \partial_z L (x, u, \nabla u) \ \phi\right) dx \\
+			&= \int_\Omega \left( - \nabla_x \cdot (\nabla_p L  (x, u, \nabla u)) + \partial_z L (x, u, \nabla u)  \right)  \phi \, dx.
+	\end{align*}	 
+As $\phi$ was arbitrary, it follows that $u$ solves the \emph{Euler-Lagrange equation} associated with the energy functional $E$, a quasi-linear second order partial differential equation in divergence form, 
+	\[ - \nabla_x \cdot (\nabla_p L  (x, u, \nabla u)) + \partial_z L (x, u, \nabla u) = 0. \]
+Thus to solve the Euler-Lagrange equation it suffices to minimise the corresponding energy. This method is known as the \textit{principle of least action}. 
+
+\subsection{Examples}
+\label{subsec:example}
+\begin{itemize}
+	\item Consider the Lagrangian $L : \R^d_p \to \R$ and the energy $E : H^1 (\Omega) \to \R$ given by 
+				\begin{align*}
+					 L(p) 
+					 	&:= \frac12 |p|^2, \\
+					 E[u] 
+					 	&:= \frac12 \int_\Omega |\nabla u|^2 \, dx. 
+				\end{align*}	 	
+			The energy $E$ is known as the \textit{Dirichlet energy}. We compute $\nabla_p L = p$ and $\partial_z L = 0$, so the corresponding Euler-Lagrange equation is the \textit{Laplace equation}
+				\[ \Delta u = 0. \]
+				
+	\item Let $a \in C^\infty (\Omega ; \R^{n \times n})$ be bounded, symmetric, and uniformly positive definite, and let $f : \overline \Omega \to \R$ be continuous. Consider the Lagrangian $L : \overline \Omega \times \R_z \times \R^d_p \to \R$ and the energy $E : H^1 (\Omega) \to \R$ given by
+					\begin{align*}
+						 L(p, z, x)
+						 	&:= \frac12 \sum_{i, j = 1}^n a^{ij} (x) p_i p_j - z f(x), \\
+						 E[u] 
+						 	&:= \frac12 \int_\Omega \sum_{i, j = 1}^d \left( a^{ij}  \partial_{x_i} u \partial_{x_j} u - u f \right) dx .
+					\end{align*}	 	
+				We compute $\nabla_p L = \sum_i a^{ij} p_i$ and $\partial_z L = f$, so the corresponding Euler-Lagrange equation is the divergence-form uniformly elliptic equation
+					\[ - \sum_{i, j = 1}^n \partial_{x_i} \left( a^{ij} \partial_{x_j} u\right) = f.  \]		
+					
+	\item Consider the Lagrangian $L: \R^d_p \to \R$ and the energy $E: W^{1, 1} (\Omega) \to \R$ given by 
+			\begin{align*}
+				L(p) 
+					&:= \sqrt{1 + |p|^2}, \\
+				E[u] 
+					&:= \int_\Omega \sqrt{1 + |\nabla u|^2}\,  dx .
+			\end{align*}		
+		The energy $E$ corresponds to the area of the graph of $u : \Omega \to \R$. We compute $\nabla_p L = p/\sqrt{1 + |p|^2}$, so the corresponding Euler-Lagrange equation is the \textit{minimal surface equation}
+			\[ \nabla \cdot \left( \frac{\nabla u}{\sqrt{1 + |\nabla u|^2}} \right) = 0. \]
+	
+	\item Let $\Omega \subseteq \R^{1 + d}_{t, x}$ be a bounded domain and $q > 1$. Consider the Lagrangian $L : \C_z \times \C^{1 + d}_{p_0, p} \to \R$ and the energy $E: H^1 (\Omega) \to \R$ given by
+			\begin{align*}
+				 L(z, p) 
+				 	&:= -\frac12 |p_0|^2 + \frac12 |p|^2 - \frac{1}{q + 1} |z|^{q + 1}, \\
+				 E[u] 
+				 	&:= \int_\Omega \left( -\frac12 |\partial_t u|^2 + \frac12 |\nabla u|^2 - \frac{1}{q + 1} |u|^{q + 1} \right) dt dx. 
+			\end{align*}	 
+		The corresponding Euler-Lagrange equation is the \textit{non-linear wave equation},
+			\[ \Box u = - |u|^{p - 1} u. \]
+			
+\end{itemize}
+
+\subsection{Existence of minimisers}
+
+The central tools used in solving minimisation problems are compactness of the underlying solution space, boundedness of the minimising sequence, and continuity of the functional. 
+\begin{enumerate}
+	\item Compactness fails dramatically in the space of smooth functions extending continuously to the boundary in that closed and bounded sets are generically non-compact. We therefore weaken the topology to recover compactness, working instead in the Sobolev space $W^{1, q} (\Omega)$ for $1 < q < \infty$. This space is reflexive and thus weakly compact by Banach-Alauglu. 
+	\item If the minimising sequence is bounded, then weak compactness allows us to pass to a sub-sequence converging weakly to $u \in W^{1, p} (\Omega)$. A sufficient condition is \emph{coercivity}, 
+			\[ E[u] \to \infty \qquad \text{whenever } ||u||_{W^{1, q}} \to \infty. \]
+	
+	\item Since we are working in the weak topology, continuity of the functional $E$ should be taken in the weak sense. That is, we say $E$ is \emph{weakly lower-semicontinuous} if
+	\[ E[u] \leq \liminf_{k \to \infty} E[u_k] \qquad \text{whenever $u_k \rightharpoonup u$ in $W^{1, p} (\Omega)$}. \]	
+\end{enumerate}
+
+
+\begin{theorem}[Existence of minimisers]
+	Let $\Omega \subseteq \R^d$ be a $C^1$-domain and $g \in W^{1 - 1/q, q} (\partial \Omega)$ for $1 < q < \infty$. If $E : W^{1, q} (\Omega) \to \overline \R$ is a coercive and lower semi-continuous functional, then there exists a minimiser $u \in W^{1, q} (\Omega)$ subject to the constraint $u_{|\partial \Omega} = g$,  
+		\[ E[u] = \inf_{v_{|\partial \Omega} = g} E[v]. \]
+\end{theorem}
+
+\begin{proof}
+	Denote $M \subseteq W^{1, q} (\Omega)$ the closed and weakly compact set of functions satisfying the boundary constraint $v_{|\partial \Omega} = g$. Choose a minimising sequence $\{u_k\}_k \subseteq M$, that is, 
+		\[ \lim_k E[u_k] = \inf E[M]. \]
+	We know this sequence is bounded by coercivity, so we can pass via weak compactness to a sub-sequence converging weakly to $u \in M$. We conclude from weak lower semi-continuity
+		\[ E[u] \leq \inf E[M],  \]
+	i.e. $u$ is a minimiser. 	 
+\end{proof}
+
+We record some sufficient conditions for compactness, coercivity, and lower semi-continuity. All but one of our examples of Euler-Lagrange equations in Section \ref{subsec:example} corresponded to energy functionals defined on the Hilbert space $H^1 (\Omega)$, and so weak compactness holds in these cases. However, the one exception, the area functional corresponding to the minimal surface equation, is defined on the endpoint Sobolev space $W^{1, 1} (\Omega)$, which fails to be reflexive. Instead, the natural setting for \textit{minimal surface theory} is the \textit{bounded variation space} $\operatorname{BV} (\Omega)$.
+
+Typically coercivity is easy to verify. A simple sufficient condition is the following, 
+
+\begin{proposition}[Coercivity]
+	Let $\Omega \subseteq \R^d$ be a bounded $C^1$-domain, and suppose $L : \overline\Omega \times \R_z \times \R^d_p \to \R$ is a Lagrangian satisfying the estimate
+		\[ L(x, z, p) \geq \alpha |p|^q - \beta \]
+	for some constants $\alpha, \beta > 0$. Then the energy $E : W^{1, q} (\Omega) \to \overline \R$ is coercive. 
+\end{proposition}
+
+\begin{proof}
+	We have
+		\[ E[u] \geq \alpha ||\nabla u||^q_{L^q (\Omega)} - \beta |\Omega|. \]
+	Thus $E[u] \to \infty$ as $||u||_{W^{1, q}} \to \infty$, as desired. 	
+\end{proof}
+
+
+
+
+\begin{proposition}[Weak lower semi-continuity]
+	Let $\Omega \subseteq \R^d$ be a bounded $C^1$-domain, and suppose $L : \overline\Omega \times \R_z \times \R^d_p \to \R$ is a Lagrangian bounded below and convex in $p$. Then the energy $E: W^{1, q} (\Omega) \to \overline \R$ is weakly lower semi-continuous. 
+\end{proposition}
+
+\begin{proof}
+	Let $\{u_k \}_k \subseteq W^{1, q} (\Omega)$ be a sequence converging weakly to $u \in W^{1, q} (\Omega)$. We begin with a few preliminary remarks and reductions.
+	From the uniform boundedness principle we know that $\{u_k\}_k$ is bounded, while Rellich-Kondrachov compact embedding allows us to pass to a sub-sequence such that $u_k \to u$ strongly in $L^q (\Omega)$. Furthermore, adding a constant, we can assume without loss of generality $L \geq 0$.
+	
+	We pass to a further sub-sequence such that $u_k \to u$ pointwise a.e. Fix $\epsilon > 0$, by Egoroff's theorem there exists a measurable set $E_\epsilon \subseteq \Omega$ such that $|\Omega \setminus E_\epsilon| <\epsilon$ and $u_k \to u$ uniformly on $E_\epsilon$. Define
+		\[ F_\epsilon := \{ x \in \Omega : |u(x)| + |\nabla u(x)| \leq 1/\epsilon \}. \]
+	By monotone convergence, $|\Omega \setminus F_\epsilon| \to 0$, so the sets $G_\epsilon := E_\epsilon \cap F_\epsilon$ satisfy
+		\[ |\Omega \setminus G_\epsilon| \leq |\Omega \setminus F_\epsilon| + |\Omega \setminus E_\epsilon| \overset{\epsilon \to 0}{\longrightarrow} 0. \]
+	We write
+		\begin{align*}
+			E[u_k]
+				&\geq \int_{G_\epsilon} L(x, u_k, \nabla u_k) \, dx \geq \int_{G_\epsilon} L(x, u_k, \nabla u) \, dx + \int_{G_\epsilon} \nabla_p L (x, u_k, \nabla u) \cdot \nabla (u_k - u) \, dx,
+		\end{align*}	
+	where the first inequality follows from non-negativity of $L$ and the second follows from convexity of $L$ in $p$. For the first term on the right, observe $L(x, u_k, \nabla u) \to L(x, u, \nabla u)$ uniformly on $G_\epsilon$. Thus
+		\[ \lim_{\epsilon \to 0}\lim_{k \to \infty} \int_{G_\epsilon} L(x, u_k, \nabla u) \, dx = \lim_{\epsilon \to 0} \int_{G_\epsilon} L(x, u, \nabla u) \, dx = E[u]. \]
+	Similarly, for the second term on the right, observe $\nabla_p L(x, u_k, \nabla u) \to \nabla_p L(x, u, \nabla u)$ uniformly on $G_\epsilon$, and note weak convergence $u_k \rightharpoonup u$ in $W^{1, q} (\Omega)$ implies weak convergence of the derivatives $\nabla u_k \rightharpoonup \nabla u$ in $L^{q} (\Omega)$. Thus
+		\[ \lim_{k \to \infty}  \int_{G_\epsilon} \nabla_p L (x, u_k, \nabla u) \cdot \nabla (u_k - u) \, dx = 0. \]
+	We conclude
+		\[ E[u] \leq \liminf_{k \to \infty} E[u_k] \]	
+	completing the proof. 
+\end{proof}
+
+\subsection{Weak solutions}
+
+We now need to understand in what sense does the minimiser $u \in W^{1 ,p} (\Omega)$ of the energy functional $E$ satisfy the Euler-Lagrange equation. As \textit{a priori} the minimiser only exhibits one derivative in the weak sense, the derivation of the Euler-Lagrange equation from the first variation no longer holds. Furthermore, we need to interpret the equation in the sense of distributions, that is, $u$ is a \emph{distributional solution} if
+	\begin{equation}
+		 \int_\Omega \left(\nabla_p L (x, u, \nabla u) \cdot \nabla_x \phi + \partial_z L (x, u, \nabla u) \ \phi\right) dx = 0, \tag{*} \label{eq:distributionEL}
+	\end{equation}	 
+for all $\phi \in C^\infty_c (\Omega)$. Assuming growth conditions on the Lagrangian, 
+	\begin{align}
+		|L(x, z, p)| 
+			&\lesssim 1 + |p|^q + |z|^q, \tag{$A$} \label{ineq:A} \\
+		|\nabla_p L(x, z, p)|
+			&\lesssim 1 + |p|^{q - 1} + |z|^{q - 1}, \tag{$B$} \label{ineq:B}\\
+		|\partial_z L(x, z, p)|
+			&\lesssim 1 + |p|^{q - 1} + |z|^{q - 1} \tag{$C$} \label{ineq:C} ,	
+	\end{align}
+it follows that $\nabla_p L(x, u, \nabla u), \partial_z L(x, u, \nabla u) \in L^{q'} (\Omega)$. We say that $u$ is a \emph{weak solution} if it satisfies (\ref{eq:distributionEL}) for all $\phi \in W^{1, q}_0 (\Omega)$. It is clear from integrating by parts and density arguments that any classical solution to the Euler-Lagrange equation is a weak solution. We claim that any minimiser solves the equation in the weak sense. 
+
+\begin{theorem}
+	Let $\Omega \subseteq \R^d$ be a $C^1$-domain and $g \in W^{1 - 1/q, q} (\partial \Omega)$ for $1 < q < \infty$. If $L : \overline \Omega \times \R_z \times \R_p^d \to \R$ is a Lagrangian satisfying the growth conditions (\ref{ineq:A}), (\ref{ineq:B}), (\ref{ineq:C}) and $u \in W^{1, q} (\Omega)$ is a minimiser of the energy functional $E: W^{1, q} (\Omega) \to \overline \R$ subject to the constraint $u_{|\partial \Omega} = g$,
+		\[ E[u] = \inf_{v_{|\partial \Omega}} E[v], \]
+	then $u$ is a weak solution to the Euler-Lagrange equation.	
+\end{theorem}
+
+\begin{proof}
+	Fix $\phi \in W^{1, q}_0 (\Omega)$, consider the difference quotient of the map $t \mapsto E[u + t \phi]$,
+		\[ \frac{E[u + t \phi] - E[u]}{t} = \int_\Omega \frac{L(x, u + t \phi, \nabla u + t \nabla \phi) - L(x, u, \nabla u)}{t} \, dx =: \int_\Omega L^t (x) \, dx. \]
+	Since the Lagrangian is $C^2$, it follows from the chain rule that
+		\[ L^t(x) \overset{t \to 0}{\longrightarrow} \nabla _p L(x, u(x), \nabla u(x)) \cdot \nabla \phi(x) + \partial_z L(x, u(x), \nabla u(x)) \phi(x) \]
+	for a.e. $x \in \Omega$. We claim that $L^t$ is dominated uniformly by an $L^1$-function, which would allow us to invoke dominated convergence to conclude $t \mapsto E[u + t \phi]$ is differentiable at $t = 0$ with derivative
+		\[ \frac{d}{dt} \Big|_{t = 0} E[u + t \phi] = \int_\Omega \left(\nabla_p L (x, u, \nabla u) \cdot \nabla_x \phi + \partial_z L (x, u, \nabla u) \ \phi\right) dx . \]
+	Since $u$ is a minimiser, we know the expression above is zero, i.e. $u$ is a weak solution. To prove the claim, we use the fundamental theorem of calculus and the chain rule to write
+		\begin{align*}
+			 L^t (x) 
+			 	&= \frac1t \int_0^t \frac{d}{ds} L(x, u(x) + t \phi(x), \nabla u(x) + t \nabla \phi(x)) \, ds \\
+			 	&= \frac1t \int_0^t \nabla_p L (x, u + s \phi(x), \nabla u(x) + s \nabla \phi (x)) \cdot \nabla \phi(x) + \partial_z L(x, u(x) + s \phi, \nabla u(x) + s \nabla \phi(x)) \phi (x) \, ds
+		\end{align*} 	
+	for a.e. $x \in \Omega$. Applying the growth conditions (\ref{ineq:A}), (\ref{ineq:B}), (\ref{ineq:C}) and Young's inequality gives
+		\[ |L^t| \lesssim 1 + |\nabla u|^q + |u|^q + |\nabla \phi|^q + |u|^q. \]
+	The right-hand side is in $L^1 (\Omega)$, proving the claim. 	
+\end{proof}
+
+In general the converse does not hold in that there may exist weak solutions which do not minimise the energy functional. Nevertheless, every weak solution minimises the energy functional provided we assume convexity of the Lagrangian. 
+
+\begin{theorem}
+	Let $\Omega \subseteq \R^d$ be a $C^1$-domain and $g \in W^{1 - 1/q, q} (\partial \Omega)$ for $1 < q < \infty$. If $L : \overline \Omega \times \R_z \times \R_p^d \to \R$ is a Lagrangian such that $(z, p) \mapsto L(x, z, p)$ is convex, and $u \in W^{1, q} (\Omega)$ is a weak solution to the Euler-Lagrange equation subject to the constraint $u_{|\partial \Omega} = g$, then
+		\[ E[u] = \inf_{v_{|\partial \Omega}} E[v]. \]
+\end{theorem}
+
+\begin{proof}
+	Let $v \in W^{1, q} (\Omega)$ with $v_{|\partial\Omega} = g$, then by convexity we can write
+		\[ L(x, u, \nabla u) + \nabla_p L(x, u, \nabla u) \cdot (\nabla v - \nabla u) + \partial_z L(x, u, \nabla u) (v - u) \leq L(x, v, \nabla v). \]
+	Integrating over $\Omega$, 
+		\[ E[u] +  \int_\Omega \left(\nabla_p L(x, u, \nabla u) \cdot \nabla (v - u) + \partial_z L(x, u, \nabla u) \cdot (v - u) \right) \, dx \leq E[v].\]
+	Since $v - u \in W^{1, q}_0 (\Omega)$ and $u$ is a weak solution, the second term on the left vanishes, proving the result. 		
+\end{proof}
+
+\section{Constraints}
+
+In finite dimensional optimisation, the method of Lagrange multipliers reduced the problem of minimising an objective functional $f :\R^d \to \R$ under the a constraint $g \equiv 0$ to solving a non-linear system of equations 
+	\[ \nabla f(x) = \lambda \nabla g(x), \qquad g(x) = 0, \]
+for $x \in \R^d$ and $\lambda \in \R$. A similar situation arises when optimising energy densities over constrained solution spaces, and the resulting Euler-Lagrange equations take the form of a non-linear eigenvalue problem. For simplicity, we will study the constrained minimisation problem for the Dirichlet energy,
+	\[ E[u] := \frac12 \int_\Omega |\nabla u|^2 \, dx. \]
+
+\subsection{Dirichlet eigenvalue problem}
+
+The first constraint we will consider are \textit{integral constraints}. Let $G: \R \to \R$ be a smooth function, we are interested in minimizing the Dirichlet energy over the admissible class
+	\[ M = \left\{ w \in H^1_0(\Omega) : \int_\Omega G (w) dx = 0 \right\}.  \]
+Our claim is that minimisers are weak solutions to the non-linear Dirichlet eigenvalue problem. The classical statement of the problem takes the form 	
+	\begin{alignat*}{2}
+				-\Delta u &= \lambda G'(u), 	& \qquad &\text{on } \Omega, \\
+				u &= 0, 	&	&\text{on } \partial \Omega.
+	\end{alignat*}
+	We say $u \in H^1_0 (\Omega)$ is a \emph{weak solution} if for all $v \in H_0^1 (\Omega)$ we have
+		\[ \int_\Omega \nabla u \cdot \nabla v \, dx = \lambda \int_\Omega G'(u) v \, dx .\]
+\begin{remark}
+	The classical Dirichlet eigenvalue problem corresponds to the case $G(x) = \tfrac12 x^2 - 1/|\Omega|$, and the constrained minimisation problem corresponds to computing the Rayleigh quotient. The physical motivation in this case is that minimisers are wave states of a vibrating drum and the corresponding eigenvalue $\lambda \in \R$ is the frequency at which the wave oscillates. 
+\end{remark}
+
+\begin{theorem}
+	Let $\Omega \subseteq \R^d$ be a $C^1$-domain, $G : \R \to \R$ be smooth, and suppose $u \in M$ is a minimiser of the Dirichlet energy subject to the integral constraint, i.e.
+		\[ E[u] = \inf_{v \in M} E[v]. \] 
+	Then there exists $\lambda \in \R$ such that $u$ is a weak solution of the non-linear Dirichlet eigenvalue problem. 
+\end{theorem}	
+
+\begin{proof}
+	As in the proof of the classical Lagrange multipliers method, we argue by the implicit function theorem, defining appropriate $C^1$-perturbations of the minimiser that remain in the admissible class $M$. Assume first $G' (u)$ does not vanish a.e. on $\Omega$, then we can choose $w \in H_0^1 (\Omega)$ such that 
+		\[ \int_\Omega G'(u) w \, dx \neq 0. \]
+	We perturb $u$ and consider the influence on the integral constraint, 
+		\[ J(t, s) := \int_\Omega G(u + t v + s w) dx. \]
+	Observe that $J(0,0) = 0$ and, differentiating under the integral sign, 
+		\begin{align*}
+			\partial_t J(t, s) 
+				&= \int_\Omega G'(u + t v + sw) v \, dx, \\
+			\partial_s J(t, s)
+				&= \int_\Omega G'(u + t v + s w) w \, dx.
+		\end{align*}	
+	By choice of $w$ we have $\partial_s J (0, 0) \neq 0$, so it follows from the implicit function theorem that there exists $\phi \in C^1 (\R)$ such that $\phi(0) = 0$ and $J(t, \phi(t)) = 0$ for $|t| \ll 1$, with derivative
+		\[ \phi'(0) = -\frac{\partial_t J(0, 0)}{\partial_s J(0, 0)} = - \frac{\int_\Omega G'(u) v \, dx}{\int_\Omega G' (u) w\,  dx}. \]
+	Consider the following Dirichlet energies under perturbations of $u$, 
+		\[ i(t) := E(u + t v + \phi(t) w). \]	
+	Note that the perturbations of $u$ remain in the admissible class, that is, $u + tv + \phi(t)w \in M$, since $J(t, \phi(t)) = 0$. As $u$ is a minimizer over $M$, it follows that $i'(0) = 0$. Expanding, we obtain 
+		\begin{align*}
+			0 = i'(0) 
+				&= \int_\Omega \nabla u \cdot (\nabla v + \phi'(0) \nabla w) dx.
+		\end{align*}		
+	Rearranging and substituting our computation for $\phi' (0)$, we can write
+		\[ \int_\Omega \nabla u \cdot \nabla v = - \int_\Omega \phi'(0) \nabla u \cdot \nabla w\, dx = \lambda \int_\Omega G'(u) v \, dx  \]
+	where
+		\[ \lambda = - \frac{\int_\Omega \nabla u \cdot \nabla w\, dx}{\int_\Omega G' (u) w\ dx}. \]						This proves the case for $G'(u) \not\equiv 0$ a.e. If instead $G'(u) \equiv 0$, then by the chain rule
+		\[ \nabla G(u) = G'(u) \cdot \nabla u = 0. \]
+	It follows that $G(u)$ is constant a.e. To satisfy the integral constraint, we need $G(u) \equiv 0$ a.e. Since $u_{|\partial \Omega} = 0$, this implies that $G(0) = 0$. We conclude the constant zero function is the minimiser in the admissible class $M$. 
+\end{proof}
+
+\begin{theorem}
+	Let $G : \R \to \R$ be smooth and satisfy $|G'(z)|\lesssim 1 + |z|$. Then there exists a minimiser $u \in M$ to the Dirichlet energy subject to the integral constraint, i.e.
+		\[ E[u] = \inf_{v \in M} E[v]. \] 
+\end{theorem}
+
+\begin{proof}
+	Following the usual existence arguments, there exists a bounded minimising sequence $\{u_k\}_k \subseteq M$ converging weakly to $u \in H^1_0 (\Omega)$ satisfying 
+		\[ E[u] = \inf_{v \in M} E[v]. \]
+	It remains to show that $u \in M$. By Rellich-Kondrachov compactness, we can pass to a subsequence such that $u_k \to u$ strongly in $L^2 (\Omega)$. We conclude from the triangle inequality and Cauchy-Schwartz that
+		\[ \left|\int_\Omega G(u) dx - \int_\Omega G(u_k) dx \right| \leq \int_\Omega |G(u) - G(u_k)| dx\lesssim \int_\Omega |u - u_k| (1 + |u| + |u_k|)dx \overset{k \to \infty}{\longrightarrow} 0, \]
+	which proves $u \in M$. 	 		
+\end{proof}
+
+\begin{remark}
+	The growth constraint on $G'$ is necessary for existence of a minimizer. Consider $G (z) = |z|^3 - 1/|\Omega|$, which corresponds to the constraint
+		\[ \int_\Omega w^3 \, dx = 1. \]
+	Let $w \in C_c^\infty (\Omega)$ satisfy the constraint, then the rescaled functions 
+		\[ w_r (x) = r^{-n/3} w(x/r) \]
+	continue to satisfy the constraint for $0 < r < 1$. Then 
+	\[ \int_\Omega |\nabla w_r |^2 dx = r^{-2n/3 - 2 + n} \int_\Omega |\nabla w|^2 dx \sim r^{n/3 - 2} \overset{r \to 0}{\longrightarrow} 0 \]
+if $n \geq 7$. It follows that $\{\omega_r\}_r$ is a minimizing sequence. If there is a minimizer $u$, then $E(u) = 0$ and therefore $u$ is constant. However, $u \in H_0^1 (\Omega)$ so $u \equiv 0$, which does not satisfy the constraint.
+\end{remark}
+
+\subsection{Harmonic maps}
+
+The second constraint we will consider are \textit{pointwise constraints}. In this scenario, we want to minimise the Dirichlet energy over functions mapping into the sphere, 
+	\[ M := \{ \vec w \in H^1 (\Omega) : \vec w_{|\partial \Omega} =\vec  g \text{ and } |\vec w| \equiv 1 \}. \]
+We claim that minimisers are weak solutions to the harmonic maps equation
+	\begin{alignat*}{2}
+				-\Delta \vec u &= |\nabla \vec u|^2 \vec u, 	& \qquad &\text{on } \Omega, \\
+				\vec u &= \vec g, 	&	&\text{on } \partial \Omega.
+	\end{alignat*}
+	We say $\vec u \in H^1 (\Omega)$ is a \emph{weak solution} if for all $\vec v \in H_0^1 (\Omega) \cap L^\infty (\Omega)$ we have
+		\[ \int_\Omega \nabla \vec u : \nabla \vec v \, dx = \lambda \int_\Omega |\nabla\vec u|^2 \vec u \cdot \vec v \, dx .\]
+\begin{theorem}
+	Let $\Omega \subseteq \R^d$ be a $C^1$-domain, and suppose $\vec u \in M$ is a minimiser of the Dirichlet energy subject to the pointwise constraint $|\vec u| = 1$, i.e.
+		\[ E[\vec u] = \inf_{\vec v \in M} E[\vec v]. \] 
+	Then $\vec u$ is a weak solution of the harmonic maps equation.
+\end{theorem}	
+
+\begin{proof}
+	Fix $\vec v \in H^1_0 (\Omega) \cap L^\infty (\Omega)$, then $|\vec u + t \vec v| \neq 0$ for $|t| \ll 1$. Thus the normalisation 
+		\[ \vec v (t) := \frac{\vec u + t \vec v}{|\vec u + t \vec v|}  \]
+	is in the admissible class. Thus 
+		\[  i (t) := E[\vec v(t)]\]
+	has minimum at $t = 0$, and so $i'(0) = 0$. Differentiating under the integral sign
+		\[  i'(0) = \int_\Omega \nabla \vec u : \nabla \vec v' (0) \, dx = \int_\Omega \nabla \vec u : \nabla \vec v - \nabla \vec u : \nabla ((\vec u \cdot \vec v) \vec u)\,  dx.\]
+	Since $|\vec u|^2 \equiv 1$, we have $(\nabla \vec u)^{\top} \vec u = \vec 0$, and hence	$\nabla \vec u : \nabla ((\vec u \cdot \vec v) \vec u) = |\nabla \vec u|^2 (\vec u \cdot \vec v)$, substituting into the above completes the proof. 
+\end{proof}
+
+
+\bibliographystyle{alpha}
+\bibliography{biblio}
+\end{document}

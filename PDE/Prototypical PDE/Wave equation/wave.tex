@@ -1,0 +1,532 @@
+\documentclass[reqno]{amsart}
+
+\usepackage{amsfonts,latexsym,amsthm,amssymb,amsmath,amscd,euscript,bm}
+\usepackage[sc]{mathpazo}
+\usepackage[margin = 2cm]{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+% sets numbering of enumerate to a, b, c, ...
+\renewcommand{\theenumi}{\alph{enumi}}
+
+% Theorems, propositions, etc.
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem*{claim}{Claim}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{notation}{Notation}
+
+\usepackage{tikz-cd}
+
+\usepackage{thmtools}
+\usepackage[framemethod=TikZ]{mdframed}
+	\mdfdefinestyle{mdrecbox}
+		{%
+			linewidth=0.5pt,
+			skipabove=12pt,
+			frametitleaboveskip=5pt,
+			frametitlebelowskip=0pt,
+			skipbelow=2pt,
+			frametitlefont=\bfseries,
+			innertopmargin=4pt,
+			innerbottommargin=8pt,
+			nobreak=true,
+		}
+	\declaretheoremstyle
+		[
+			headfont=\bfseries,
+			mdframed={style=mdrecbox},
+			headpunct={\\[3pt]},
+			postheadspace={0pt},
+		]
+		{thmrecbox}
+\newcounter{problem}[section]	\declaretheorem[style=thmrecbox,name=Problem, numberlike=problem]{statement}
+
+
+% Solution environment
+\newenvironment{solution}
+	{
+		\begin{proof}[Solution]}{\end{proof}
+	}
+
+
+% Math blackboard font
+\newcommand{\nc}{\newcommand}
+\nc{\on}[1]{\operatorname{#1}}
+
+\nc{\R}{\mathbb R}
+\nc{\C}{\mathbb C}
+\nc{\Q}{\mathbb Q}
+\nc{\Z}{\mathbb Z}
+\nc{\N}{\mathbb N}
+\nc{\HH}{\mathbb H}
+\nc{\DD}{\mathbb D}
+\nc{\TT}{\mathbb T}
+\nc{\EE}{\mathbb E}
+\nc{\PP}{\mathbb P}
+
+\nc{\cT}{\mathcal T}
+\nc{\cA}{\mathcal A}
+\nc{\cM}{\mathcal M}
+\nc{\cR}{\mathcal R}
+\nc{\cB}{\mathcal B}
+\nc{\cG}{\mathcal G}
+\nc{\cD}{\mathcal D}
+\nc{\cS}{\mathcal S}
+\nc{\cF}{\mathcal F}
+\nc{\cL}{\mathcal L}
+\nc{\cE}{\mathcal E}
+
+\nc{\diam}{\operatorname{diam}}
+\nc{\del}{\partial}
+\nc{\osc}{\operatorname{osc}}
+\nc{\inter}{\mathrm{o}}
+\nc{\close}[1]{\overline{#1}}
+\nc{\supp}{\operatorname{supp}}
+\nc{\BV}{\operatorname{BV}}
+\nc{\Per}{\operatorname{Per}}
+\nc{\loc}{\text{loc}}
+\nc{\Lip}{\operatorname{Lip}}
+\nc{\ACL}{\operatorname{ACL}}
+
+% Why the f*** would you ever use \epsilon
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\emph}{\textsc}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+%inverse Fourier transform widecheck
+\DeclareFontFamily{U}{mathx}{\hyphenchar\font45}
+\DeclareFontShape{U}{mathx}{m}{n}{
+      <5> <6> <7> <8> <9> <10>
+      <10.95> <12> <14.4> <17.28> <20.74> <24.88>
+      mathx10
+      }{}
+\DeclareSymbolFont{mathx}{U}{mathx}{m}{n}
+\DeclareFontSubstitution{U}{mathx}{m}{n}
+\DeclareMathAccent{\widecheck}{0}{mathx}{"71}
+
+\let\vec\mathbf
+
+% Title: change problem set number as needed
+\title
+{
+	\emph{Wave equation}
+} 
+
+\author{Jason Zhao}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+	The prototypical example of a hyperbolic partial differential equation is the \textit{wave equation}
+		\[ \Box u = f. \]
+	We are interested in solving the equation subject to initial data $(u, \partial_t u)_{|t = 0} = (\phi_0, \phi_1)$. 	To this end, we exposit two methods for solving the wave equation.
+\end{abstract}
+
+\tableofcontents
+
+\section{Introduction}
+
+Let $d \geq 1$, the \emph{wave operator} is a second-order partial differential operator on $\R^{1 + d}$ defined as
+	\[ \Box := - \partial_0^2 + \partial_1^2 + \dots + \partial_d^2 = - \partial_t^2 + \Delta,  \]
+where $t = x^0$ represents the time coordinate and $x^1, \dots, x^d$ represent the spatial coordinates. It is of interest to solve the initial data problem for the \emph{wave equation},
+\begin{align*}
+	\Box \phi
+		&= f, \\
+	\phi_{|t = 0}
+		&= \phi_0, \\
+	\partial_t \phi_{|t = 0}
+		&= \phi_1,	
+\end{align*}
+given a forcing term $f : [0, T] \times \R^d \to \R$ and initial data $\phi_0, \phi_1 : \R^d \to \R$ representing position and velocity at time $t = 0$ respectively. When $f = 0$, the equation is known as the \emph{free wave equation}, describing the evolution of a wave barring any interference from external sources. 
+
+\subsection{Symmetries}
+
+The wave operator arises as the Laplace-Beltrami operator of the \emph{Minkowski space-time}, a Lorentzian manifold $(\R \times \R^d, M)$ where $M$ is the quadratic form with matrix representation 
+	\[ 
+		M 
+		=
+		\begin{pmatrix}
+			-1	& 		& 			&0 \\
+				& 1	&			&  \\
+				&		&\ddots 	&  \\
+			0	&		& 			&1
+		\end{pmatrix}.
+	\]
+Indeed, denoting $x^0 = t$, 
+	\[ \Box = -\partial_t^2 + \sum_{j = 1}^d \partial_j^2 = \sum_{j, k = 0}^d M^{j, k} \partial_j \partial_k. \]		
+Thus the affine maps $T: \R \times \R^d \to \R \times \R^d$ preserving the Minkowski metric $T^* M T = M$ are exactly the affine maps preserving the wave operator $\Box (\phi \circ T) = (\Box \phi) \circ T$. These maps form the \emph{Poincare group}, which is generated by the following:
+\begin{itemize}
+	\item Spatial translations; for example, translation in the $x^1$ coordinate by $s \in \R$:
+				\[ T\begin{pmatrix} t \\ x^1 \\ x^2\\ \vdots \\ x^d \end{pmatrix} =  \begin{pmatrix} t \\ x^1 + s \\ x^2 \\ \vdots  \\ x^d \end{pmatrix}.\]
+			Infinitesimal translation in the $x^k$-spatial coordinate corresponds to the vector field $\partial_k$. 	
+	
+	\item Spatial rotations; for example, rotation in the $(x^1, x^2)$-plane by $\theta \in S^1$:
+				\[
+					T \begin{pmatrix} t \\ x^1 \\ x^2 \\ x^3 \\ \vdots \\ x^d \end{pmatrix}
+					=
+					\begin{pmatrix} t \\ x^1 \cos \theta  -x^2 \sin \theta  \\ x^1 \sin \theta  +  x^2 \cos \theta  \\  x^3 \\ \vdots \\ x^d \end{pmatrix}.
+				\]
+			Infinitesimal rotation in the $(x^j, x^k)$-plane corresponds to the vector field $\Omega_{j, k} := x^j \partial_k - x^k \partial_j$. 
+	
+	\item Lorentz boosts; these transformations are essentially rotations in the time coordinate. Let $v \in \R^d$ with $|v| < 1$, then an example of a boost is
+				\[
+					T
+					\begin{pmatrix} t \\ x^1 \\ x^2 \\ \vdots \\ x^d \end{pmatrix}
+					 = \begin{pmatrix} \frac{1}{\sqrt{1 - |v|^2}} (t - v x^1) \\  \frac{1}{\sqrt{1 - |v|^2}} (x^1 - v t) \\ x^2 \\ \vdots \\ x^d \end{pmatrix}
+				 \]
+			The infinitesimal Lorentz boost in the $x^j$-spatial coordinate corresponds to the vector field $H_j := t \partial_j + x^j \partial_t$. 	 
+\end{itemize}
+The last two symmetries generate the \emph{Lorentz group}, the group of maps under which the scalar quantity $s^2 (t, x) := t^2 - |x|^2$ is invariant. Although not exactly a symmetry, it will also be fruitful to consider scaling:
+\begin{itemize}
+	\item Spatial scaling; for example, scaling by $\lambda > 0$ of space is given by 
+				\[
+					T
+					\begin{pmatrix}
+						t \\ x^1 \\ \vdots \\ x^d
+					\end{pmatrix}
+					=
+					\begin{pmatrix}
+						t \\ \lambda x^1\\ \vdots \\ \lambda x^d
+					\end{pmatrix}
+				\]
+			Infinitesimal scaling in space corresponds to the vector field $S = t \partial_t + \sum_j x^j \partial_j$. 		 
+\end{itemize}
+The first three vector fields commute with the wave operator, that is, $[\partial_k, \Box] = [\Omega_{j, k}, \Box] = [H_j, \Box] = 0$. While scaling is not a full symmetry, it is a conformal symmetry with commutator $[S, \Box] = -2 \Box$. Moreover, the commutator vanishes on solutions to the free wave equation, i.e. if $\Box \phi = 0$ then $\Box (S \phi) = S(\Box \phi) = 0$. 
+
+\section{Fundamental solution}
+
+The \emph{forward fundamental solution} of the wave operator is a distribution $E_+ \in C^\infty_c (\R^{1 + d})^*$ such that 
+	\begin{align*}
+			\Box E_+
+				&= \delta_0, \\
+			\supp E_+
+				&\subseteq \{ (t, x) \in \R^{1 + d} : 0 \leq |x| \leq t \}.	
+	\end{align*}
+From the perspective of optics, we can view the forward fundamental solution as the wave evolution forwards in time arising from the unit light source concentrated at the origin. The set containing the support of $E_+$ is known as the \emph{forward light cone}. We will obtain explicit representations for distributional solutions to the initial data problem by convolving with the forward fundamental solution. The forward fundamental solution takes the form
+	\[ E_+ (t, x) := -\frac{\pi^{\frac{1 - d}{2}}}{2}  \chi_+^{-\frac{d - 1}{2}} (t^2 - |x|^2) \mathbb 1_{t \geq 0} (t) \]
+where $\chi_+^{-\frac{d - 1}{2}} \in C^\infty_c (\R)^*$ is some homogeneous distribution of order $-\tfrac{d - 1}{2}$ supported on $[0, \infty)$. 
+
+\begin{remark}
+	The property that the forward fundamental solution is supported in the forward light cone guarantees uniqueness. If $E_+, E \in C^\infty_c (\R^{1 + d})^*$ are forward fundamental solutions, then 
+		\[E= \delta_0 * E = \Box E_+ *E = E_+ * \Box E = E_+ * \delta_0 = E_+,\]
+	where the convolutions are well-defined since $E$ and $E_+$ are supported in the forward light cone. 	
+\end{remark}
+
+
+
+\subsection{Derivation}
+
+The wave operator is a homogeneous differential operator of order 2, while the Dirac delta is a homogeneous distribution of order $-1 - d$. Both are invariant under spatial rotation and Lorentz boosts, thus we expect the forward fundamental solution to be homogeneous of order $1 - d$ and invariant under the Lorentz group. From this discussion, we make the \textit{ansatz}
+	\[ E_+ (t, x) = c_d \chi_+^{-\frac{d - 1}{2}} (t^2 - |x|^2) \mathbb 1_{t \geq 0} (t) \]
+for some dimensional constant $c_d \in \R$. We define $\chi_+^{-\frac{d - 1}{2}} \in C^\infty_c (\R)^*$ by analytic continuation. For $\Re a > -1$, define the homogeneous distribution $x^a_+ \in L^1_{\loc} (\R)$ of order $a$ by 
+	\[ x^a_+ := x^a \mathbb 1_{x \geq 0}. \]
+The functional equation 
+	\[ \frac{d}{dx} x^a_+ = a x^{a - 1}_+, \]	
+which holds for $\Re a > 0$, allows us to meromorphically continue $x^a_+$ to a homogeneous distribution of order $a \in \C \setminus \{-1, -2, \dots \}$ with simple poles at the negative integers. Define
+	\[ \chi^a_+ := \frac{x^a_+}{\Gamma (a + 1)}, \]
+which forms a homogeneous distribution of order $a \in \C$ satisfying 
+	\[ \frac{d}{dx} \chi^a_+ = \chi^{a - 1}_+. \]
+We see by construction that $E_+$ satisfies the desired support and homogeneity properties. Applying the wave operator, we compute using the chain rule
+	\begin{align*}
+		 \Box E_+ 
+		 	&= c_d (\partial_t^2 - \Delta)  \chi_+^{-\frac{d - 1}{2}} (t^2 - |x|^2) \\
+		 	&= c_d \partial_t (2t \chi_+^{-\frac{d + 1}{2}} (t^2 - |x|^2) ) + c_d \nabla_x \cdot (2x \chi_+^{-\frac{d + 1}{2}} (t^2 - |x|^2) ) \\
+		 	&= 4c_d  (t^2 - |x|^2) \chi_+^{-\frac{d + 3}{2}} (t^2 - |x|^2) + 2 c_d (d + 1) \chi_+^{-\frac{d + 1}{2}} (t^2 - |x|^2) = 0,
+	\end{align*}	 
+for $t > 0$, where the last equality follows from the identity $x \chi^a_+ = (a + 1) \chi^{a + 1}_+$. Therefore $\Box E_+$ is a homogeneous distribution of order $- d - 1$ supported at the point $(t, x) = (0, 0)$. The only such distributions are scalar multiples of the Dirac delta, 
+	\[ \Box E_+ = c \delta_0, \]
+for some $c \in \R$. We leave as an exercise showing that 
+	\[ c_d := -\frac{\pi^{\frac{1 - d}{2}}}{2} \]
+implies $c = 1$. From the wave equation $\partial_t^2 E_+ = \Delta E_+$ for $t \neq 0$ and the support property, we see that the forward fundamental solution has $C^2$-regularity in time taking values in the space of compactly supported distributions $(C^\infty)^*_x (\R^d)$, that is, $E_+ \in C^2_t (C^\infty)^*_x (\R \times \R^d)$.
+
+\subsection{Kirchhoff's representation formula}
+
+Given $f \in C^\infty (\R^{1 + d})$, suppose that $\phi \in C^\infty (\R^{1 + d})$ solves the wave equation $\Box \phi = f$. We want to derive a representation of the solution for $t \geq 0$ in terms of the forcing term, initial data, and the forward fundamental solution. We compute
+	\begin{align*}
+		\phi
+			&= \delta_0 * \phi \mathbb 1_{t \geq 0} = \Box E_+ * \phi \mathbb 1_{t \geq 0} = \partial_t^2 E_+ * \phi \mathbb 1_{t \geq 0} - E_+ * \Delta \phi \mathbb 1_{t \geq 0} \\
+			&= \partial_t^2 E_+ * \phi \mathbb 1_{t \geq 0}  - E_+ * (\partial_t^2 \phi) \mathbb 1_{t \geq 0} + E_+ * f \mathbb 1_{t \geq 0}. 
+	\end{align*}
+Consider the first two terms on the second line above. By the distributional product rule, 
+	\begin{align*}
+		\partial_t^2 E_+ * \phi \mathbb 1_{t \geq 0}  - E_+ * (\partial_t^2 \phi) \mathbb 1_{t \geq 0} 
+			&= \partial_t E_+ * (\partial_t \phi) \mathbb 1_{t \geq 0} + \partial_t E_+ * \phi \delta_{t = 0} - E_+ * (\partial_t^2 \phi) \mathbb 1_{t \geq 0} \\
+			&= E_+ * (\partial_t^2 \phi) \mathbb 1_{t \geq 0} + E_+ * (\partial_t \phi) \delta_{t = 0} + \partial_t E_+ * \phi \delta_{t = 0} - E_+ * (\partial_t^2 \phi) \mathbb 1_{t \geq 0} \\
+			&= E_+ * (\partial_t \phi) \delta_{t = 0} + \partial_t E_+ * \phi \delta_{t = 0}.
+	\end{align*}
+Here all convolutions are taken with respect to space-time $(t, x)$, and are well-defined since $E_+$ is supported on the forward light cone. Collecting our results, we obtain
+	
+\begin{theorem}[Smooth Kirchhoff's representation formula]
+	Let $f \in C^\infty (\R^{1 + d})$ and suppose that $\phi_0, \phi_1 \in C^\infty (\R^d)$, then $\phi \in C^\infty ([0, \infty) \times \R^d)$ defined by the formula
+		\[ \phi = (\partial_t E_+) * (\phi_0 \delta_{t = 0}) + E_+ * (\phi_1 \delta_{t = 0}) + (f \mathbb 1_{t \geq 0} ) * E_+ \]
+	is the unique solution to the wave equation $\Box \phi = f$ with initial data $(\phi, \partial_t \phi)_{|t = 0} = (\phi_0, \phi_1)$.
+\end{theorem}
+
+Recalling that the support of a convolution is contained in the algebraic sum of the supports, we deduce
+
+\begin{corollary}[Finite speed of propagation]
+	Let $f \in C^\infty (\R^{1 + d})$ and suppose that $\phi \in C^\infty (\R^{1 + d})$ solves the wave equation $\Box \phi = f$ with initial data $(\phi, \partial_t \phi)_{|t = 0} = (\phi_0, \phi_1)$. Given a point $(t, x) \in (0, \infty) \times \R^d$, if
+		\begin{align*}
+			f (s, y) 
+				&= 0, \qquad \text{for $0 < s < t$ and $|y - x| \leq t - s$},\\
+			\phi_0 (y) = \phi_1 (y)
+				&= 0, \qquad \text{for $|y - x| \leq t$,}	
+		\end{align*} 	
+	then $\phi(t, x) = 0$. 	
+\end{corollary}
+
+In odd dimensions, we have a much stronger result since $\chi^a$ is supported at the origin when $a$ is a negative integer. More precisely, we have
+	\[ \chi^{-k}_+  = \frac{d^k}{dx^k} \chi^0_+  = \frac{d^k}{dx^k} \mathbb 1_{x \geq 0} = \delta^{(k - 1)}_0.\]
+Thus whenever $d \geq 3$ is odd, the forward fundamental solution is a distribution supported on the boundary of the forward light cone $t = |x|$ of the form
+	\[ E_+ = -\frac{\pi^{\frac{1 - d}{2}}}{2} \delta^{\left(\frac{d - 3}{2} \right)} (t^2 - |x|^2) \mathbb 1_{t \geq 0} (t). \]
+
+\begin{corollary}[Huygen's principle]
+	Let $d \geq 3$ be an odd integer, $f \in C^\infty (\R^{1 + d})$, and suppose $\phi \in C^\infty (\R^{1 + d})$ solve the wave equation $\Box \phi = f$ with initial data $(\phi, \partial_t \phi)_{|t = 0} = (\phi_0, \phi_1)$. Given a point $(t, x) \in (0, \infty) \times \R^d$, if
+		\begin{align*}
+			f (s, y) 
+				&= 0, \qquad \text{for $0 < s < t$ and $|y - x| = t - s$},\\
+			\phi_0 (y) = \phi_1 (y)
+				&= 0, \qquad \text{for $|y - x| = t$,}	
+		\end{align*} 	
+	then $\phi(t, x) = 0$. 	
+\end{corollary}
+
+We can weaken the regularity hypotheses on the initial data and the source term to working in the category of distributions. To circumvent the technicality of defining the product of distributions, we decouple the time and space variables. In view of $E_+ \in C^2_t  (C^\infty)^*_x (\R \times \R^d)$ and Fubini's theorem, there exists a unique family of distributions $E_+ (t) \in (C^\infty)^*_x (\R^d)$ compactly supported in $|x| \leq t$ with $C^2$-dependence on $t$ such that
+	\[ \langle \phi, E_+ \rangle = \int_\R  \langle \phi (t) , E_+ (t) \rangle \, dt \] 
+for all $\phi \in  C^\infty_c (\R^{1 + d})$. We may now write the representation formula as
+
+\begin{theorem}[Distributional Kirchhoff's representation formula]
+	Let $f \in C^0_t (C^\infty_c)^*_x ([0, \infty) \times \R^{d})$ and suppose that $\phi_0, \phi_1 \in (C^\infty_c)^*_x (\R^d)$, then $\phi \in C^2_t (C^\infty_c)^*_x (\R \times \R^d)$ defined by 
+		\[ \phi (t) := (\partial_t E_+)(t) * \phi_0 + E_+ (t) * \phi_1 + \int_0^t E_+ (t - s) * f(s) \, ds \]
+	is the unique solution to the wave equation $\Box \phi = f$ with initial data $(\phi, \partial_t \phi)_{|t = 0} = (\phi_0, \phi_1)$.
+\end{theorem}
+
+\begin{proof}
+	By construction of the fundamental solution, it is clear that $\Box \phi = f$, so it remains to show that $\phi$ satisfies the initial data, i.e.
+		\[ \lim_{t \to 0} \phi (t) = \phi_0, \qquad \lim_{t \to 0} \partial_t \phi(t) = \phi_1. \]
+	It would suffice to show
+		\[ E_+ (t) = 0, \qquad \partial_t E_+ (t) = \delta_{x = 0}, \qquad \partial_t^2 E_+ (t) = 0.\]	
+	The last identity follows from the first and the wave equation $\partial_t^2 E_+ (t) = \Delta E_+ (t)$. To prove the first and second identities, for $\phi \in C^\infty_c (\R^{1 + d})$ we write
+		\begin{align*}
+			\phi(0, 0)
+				&= \int_0^\infty \langle \phi(t),  \Box E_+ (t) \rangle \, dt = \int_0^\infty \langle \partial_t^2 \phi(t), E_+ (t) \rangle \, dt - \int_0^\infty \langle \phi(t), \Delta E_+ (t) \rangle \, dt \\
+				&= \int_0^\infty \langle \partial_t^2 \phi(t), E_+ (t) \rangle \, dt - \int_0^\infty \langle \phi(t), \partial_t^2 E_+ (t) \rangle \, dt = \langle \phi(0), \partial_t E_+ (0) \rangle - \langle \partial_t \phi(0), E_+ (0) \rangle. 
+		\end{align*}	
+	Given $\psi \in C^\infty_c (\R^d)$, choosing $\phi$ such that $(\phi, \partial_t \phi)_{|t = 0}	 = (\psi, 0)$ and $(\phi, \partial_t \phi)_{|t = 0} = (0, \psi)$ gives the desired second and first identities respectively. 
+\end{proof}	
+
+\subsection{Propagators}
+
+Let $\phi \in C_t^1 \cS_{x}^* (\R \times \R^d)$ be a distributional solution to the free wave equation subject to initial data $\phi_0, \phi_1 \in \cS^*_x (\R^d)$. Converting from spatial physical space to spatial frequency space via the spatial Fourier transform, the PDE in space-time takes the form of an ODE in time, 
+\begin{align*}
+	- \partial_t^2 \widehat \phi - 4\pi^2 |\xi|^2 \widehat \phi 
+		&= 0, \\
+	\widehat \phi_{|t = 0}
+		&= \widehat{\phi_0}, \\
+	\partial_t \widehat{\phi}_{|t = 0}
+		&= \widehat{\phi_1}.		
+\end{align*}
+This admits the unique solution 
+	\[ \widehat \phi (t, \xi) = \cos (2\pi t |\xi|) \widehat{\phi_0} (\xi) + \frac{\sin(2\pi t|\xi|)}{2\pi |\xi|} \widehat{\phi_1} (\xi) . \]
+Converting back to spatial physical space, we can write the solution to the free wave equation as
+	\[ \phi(t, x) = \cos(t |\nabla|) \phi_0 (x) + \frac{\sin(t |\nabla|)}{|\nabla|} \phi_1 (x), \]
+where $\cos (t |\nabla|)$ and $\sin(t |\nabla|)/|\nabla|$ are Fourier multipliers known as the \emph{wave propagators}. With the free solutions at hand, to solve the general wave equation we can reduce to the case of zero initial data, so upon applying the spatial Fourier transform we want to solve the inhomogeneous ODE in time
+\begin{align*}
+	- \partial_t^2 \widehat \phi - 4\pi^2 |\xi|^2 \widehat \phi 
+		&= \widehat f (t), \\
+	\widehat \phi_{|t = 0}
+		&= 0, \\
+	\partial_t \widehat{\phi}_{|t = 0}
+		&= 0.		
+\end{align*}
+By variation of parameters, we see that the unique solution arises as a superposition of free solutions with initial data from the forcing term $f$, 
+	\[ \phi(t, x) = \int_0^t \frac{\sin((t - s)|\nabla|)}{|\nabla|} f(s) \, ds. \]
+Collecting our results, we obtain	
+
+\begin{theorem}[Duhamel's formula]	
+	Suppose $\phi_0, \phi_1 \in \cS_x^* (\R^d)$ and $f \in C^0_t \cS_x^* ([0, T] \times \R^d)$. Then $\phi \in C_t^2 \cS^*_x ([0, T] \times \R^d)$ defined by the formula
+		\[ \phi (t) := \cos(t |\nabla|) \phi_0 + \frac{\sin(t |\nabla|)}{|\nabla|} \phi_1 + \int_0^t \frac{\sin ((t-s) |\nabla|)}{|\nabla|} f(s) \, ds \]
+	is the unique solution to the wave equation $\Box \phi = f$ with initial data $(\phi, \partial_t \phi)_{|t = 0} = (\phi_0, \phi_1)$.
+\end{theorem}
+
+\begin{remark}
+	We can view the forward fundamental solution as the wave propagation of the Dirac delta initial data,
+		\begin{align*}
+			E_+ (t)
+				&= \cos (t |\nabla|) \delta_{x = 0} = \int_{\R^d} \cos(2\pi t |\xi|) e^{2\pi i x \cdot \xi} \, d \xi, \\
+			\partial_t E_+ (t)
+				&= \frac{\sin(t|\nabla|)}{|\nabla|} \delta_{x = 0} = \int_{\R^d} \frac{\sin(2\pi t |\xi|)}{2\pi |\xi|} e^{2\pi i x \cdot \xi} \, d \xi	.
+		\end{align*}
+	Let $\phi_0, \phi_1 \in \cS_x (\R^d)$ be Schwartz, then it follows from the method of stationary phase that 
+		\[ | \partial_t E_+ (t) * \phi_0| + |E_+ (t) * \phi_1| \lesssim_{\phi_0, \phi_1, d} \langle t \rangle^{- \frac{d - 1}{2}}.\]	
+	Thus sufficiently regular solutions to the 	wave equation satisfy a \textit{dispersive estimate}.
+\end{remark}
+
+\begin{corollary}[Energy estimates]	
+	For $s \in \R$, let $(\phi_0, \phi_1) \in H^s_x (\R^d) \times H^{s - 1}_x (\R^d)$ and $f \in L^1_t H^{s - 1}_x ([0, T] \times \R^d)$. Then the solution to the wave equation $\Box \phi = f$ with initial data $(\phi, \partial_t \phi)_{|t = 0} = (\phi_0, \phi_1)$ satisfies
+		\begin{align*}
+			||\nabla_{t, x} \phi||_{C^0_t H^{s - 1}_x} 
+				&\lesssim ||\nabla_x \phi_0||_{H^{s - 1}_x} + ||\phi_1||_{H^{s - 1}_x} + ||f||_{L^1_t H^{s - 1}_x}, \\
+			||\phi||_{C^0_t H^{s}_x}
+				&\lesssim \langle T \rangle \left(|| \phi_0||_{H^{s}_x} + ||\phi_1||_{H^{s - 1}_x} + ||f||_{L^1_t H^{s - 1}_x}	\right).
+		\end{align*}
+	In particular, the solution has regularity $\phi \in C_t^0 H^s_x \cap C^1_t H^{s - 1}_x ([0, T] \times \R^d)$.	\label{cor:energy}
+\end{corollary}
+
+\begin{proof}
+	Both inequalities follow from an application of the triangle inequality, Minkowski's integral inequality, Plancharel's theorem, and $L^2$-boundedness of Fourier multipliers. For the first inequality, 
+		\begin{align*} 
+			||\nabla_x \phi||_{H^{s - 1}_x} (t)
+				&\lesssim || \cos(t |\nabla|)  \nabla_x\phi_0||_{H^{s - 1}_x} + || \sin(t |\nabla|)\frac{\nabla}{|\nabla|} \phi_1 ||_{H^{s - 1}_x} + \int_0^t || \sin((t - t') |\nabla|) \frac{\nabla}{|\nabla|} f ||_{H^{s - 1}_x} (t') \, d t' \\
+				&\lesssim || \nabla_x \phi_0||_{H^{s - 1}_x} + ||\phi_1||_{H^{s - 1}_x} + || f||_{L^1_t H^s_x}, \\
+			||\partial_t \phi||_{H^{s - 1}_x} (t)
+				&\lesssim ||\sin(t |\nabla|) |\nabla| \phi_0 ||_{H^{s - 1}_x} + ||\cos (t |\nabla|) \phi_1||_{H^{s - 1}_x} + \int_0^t ||\cos((t - t') |\nabla|) f||_{H^{s - 1}_x} (t') \, dt' \\
+				&\lesssim || \nabla_x \phi_0||_{H^{s - 1}_x} + ||\phi_1||_{H^{s - 1}_x} + || f||_{L^1_t H^s_x}.
+		\end{align*}
+	For the second inequality, note $|\sin(t |\xi|)| \langle \xi \rangle /|\xi| \lesssim \langle t \rangle$, hence
+		\begin{align*}
+			||\phi||_{H^s_x} (t)
+				&\lesssim  || \cos(t |\nabla|)  \phi_0||_{H^{s}_x} + || \frac{\sin(t |\nabla|)}{|\nabla|} \phi_1 ||_{H^{s}} + \int_0^t ||  \frac{\sin((t - t') |\nabla|)}{|\nabla|} f ||_{H^{s}_x} (t') \, d t' \\
+				&\lesssim \langle T \rangle \left(|| \phi_0||_{H^{s}_x} + ||\phi_1||_{H^{s - 1}_x} + ||f||_{L^1_t H^{s - 1}_x}	\right).
+		\end{align*}	
+	This completes the proof.	
+\end{proof}
+
+\begin{remark}
+	The first energy estimate states that the higher order norms of the solution remain uniformly bounded, while the second energy estimate states that the lowest order terms can grow linearly in time. 
+\end{remark}
+
+\begin{corollary}[Conservation of energy]
+	Let $\phi \in C_t^0 H^1_x \cap C_t^1 L^2_x ([0, T] \times \R^d)$ be a solution to the free wave equation $\Box \phi = 0$. Then the energy functional
+		\[ E[\phi] (t) := \frac12 ||\nabla_{t, x} \phi||_{L^2_{x}}^2 (t)  \]
+	is constant in time. \label{cor:conserve}
+\end{corollary}
+
+\begin{proof}
+	The solution satisfies the following two identities in spatial frequency space, 
+\begin{align*}
+	|\xi| \widehat \phi (t, \xi)
+		&= \cos(2\pi t |\xi|) |\xi| \widehat{\phi_0} (\xi) + \sin(2\pi t |\xi|) \widehat{\phi_1} (\xi), \\
+	\partial_t \widehat \phi(t, \xi)
+		&= - \sin(2\pi t |\xi|) |\xi| \widehat{\phi_0} (\xi) + \cos (2\pi t |\xi|) \widehat{\phi_1} (\xi). 	
+\end{align*}
+	Squaring and adding the two identities, we obtain 
+		\[ |\xi|^2 |\widehat \phi (t, \xi)|^2 + |\partial_t \widehat\phi (t, \xi)|^2 = |\xi|^2 |\widehat{\phi_0} (\xi)|^2 + |\widehat{\phi_1} (\xi)|^2. \]
+	Integrating in $\xi$, we conclude from Plancharel's theorem that $E[\phi](t) = E[\phi] (0)$ for all $t \in [0, T]$. 
+\end{proof}
+
+\section{Energy method}
+
+In the realm of non-constant coefficient non-linear wave equations, we generally do not have access to explicit representation formulas. We instead approach the wave equation starting from the energy estimates in Corollary \ref{cor:energy}, which we now refer to as \textit{a priori} estimates, as we derive the estimates on the solution prior to knowing the solution exists. The natural solution space is therefore $C^0_t H^s_x \cap C^1_t H^{s - 1}_x ([0, T] \times \R^d)$ endowed with the norm 
+	\[ ||\phi||_{C^0_t H^s_x \cap C^1_t H^{s - 1}_x} := ||\phi||_{C^0_t H^s_x} + ||\phi||_{C^1_t H^{s - 1}_x}. \]	
+We refer to distributional solutions $\phi \in C^0_t H^s_x \cap C^1_t H^{s - 1}_x ([0, T] \times \R^d)$ to the wave equation as \emph{weak solutions}. In view of Sobolev embedding, weak solutions are in fact classical solutions provided sufficient regularity or integrability.
+
+
+\subsection{Conservation laws}
+
+Multiplying the wave equation by $\partial_t \phi$, we can write
+\begin{align*}
+			f \partial_t \phi = \Box \phi \partial_t \phi
+				&= \left( - \partial_t \phi + \sum_{j = 1}^d \partial_j^2 \phi \right) \partial_t \phi \\
+				&= \partial_t \left( -\frac12 |\partial_t \phi|^2 \right) + \sum_{j = 1}^d \partial_j (\partial_j \phi \partial_t \phi) - \partial_j \phi \partial_t \partial_j \phi \\
+				&= \partial_t \left( -\frac12 |\partial_t \phi|^2 - \frac12 \sum_{j = 1}^d |\partial_j \phi|^2 \right) + \nabla_x \cdot (\partial_t \phi \nabla_x \phi),\\
+				&=  \partial_t \left( -\frac12|\nabla_{t, x} \phi|^2\right) + \nabla_x \cdot (\partial_t \phi \nabla_x \phi).
+		\end{align*}	
+This identity is known as the \textit{multiplier identity}, which corresponds via Noether's theorem to the time-translation symmetry of the energy functional 
+	\[ E[\phi](t) := \frac12 ||\nabla_{t, x} \phi||_{L^2_x} (t). \]	
+
+\begin{theorem}[Conservation of energy]
+	Let $f \in L^1_t L^2_x ([0, T] \times \R^d)$ and suppose $\phi \in C_t^0 H^1_x \cap C_t^1 L^2_x ([0, T] \times \R^d)$ is a solution to the wave equation $\Box \phi = f$. Then 
+		\[ \int_{t = 0} \frac12 |\nabla_{t, x} \phi|^2 dx = \int_{t = T} \frac12 |\nabla_{t, x} \phi|^2 dx - \int_{0}^{T} \int_{\R^d} f \partial_t \phi \, dx dt. \]
+\end{theorem}
+
+\begin{proof}
+	We integrate both sides of the multiplier identity over the region $(0, T) \times \R^d$. Applying the divergence theorem, the second term on the right vanishes, so rearranging furnishes the identity. 
+\end{proof}
+
+\begin{theorem}[Finite speed of propagation]
+	Let $f \in L^1_t L^2_x ([0, T] \times \R^d)$ and suppose $\phi \in C^0_t H^1_x \cap C^1_t L^2_x ([0, T] \times \R^d)$ is a solution to the wave equation $\Box \phi = f$. If 	$f \equiv 0$ on the cone 
+		\[ C_R (x) := \{ (t, y) \in \R^{1 + d} : y \in B_{R - t} (x) \} \]
+	and $(\phi, \partial_t \phi)_{|t = 0} \equiv (0, 0)$ on $B_R (x) \subseteq \R^d$, then $\phi (t) \equiv 0$ on $B_{R - t} (x) \subseteq \R^d$. 
+\end{theorem}
+
+\begin{proof}
+	We argue by a monotonicity formula, verifying that for $0 \leq t \leq R$ the localised energy
+		\[ E_{B_{R - t}}[\phi] := \frac12 || \nabla_{t, x} \phi||_{L^2_x (B_{R - t})}^2 (t) \]
+	is 	non-increasing in $t$. This would furnish finite speed of propagation. Integrating the multiplier identity on the light cone and applying the divergence theorem, we obtain 
+		\begin{align*}
+			 0 
+			 	&= \int_{t_1}^{t_2} \int_{B_{R - t} (x)}\partial_t \left( -\frac12 |\nabla_{t, x} \phi|^2 \right) + \nabla_x \cdot (\partial_t \phi \nabla_x \phi) \, dy dt \\
+			 	&= \int_{t_1}^{t_1}\int_{\partial B_{R - t} (x)} \left( - \frac12 |\nabla_{t, x} \phi|^2, \partial_t \phi \nabla_x \phi \right) \cdot \left(\frac12, -\frac{x}{2|x|} \right) dS(y) dt - E_{B_{R - t_2}}[\phi] + E_{B_{R - t_1} (x)} [\phi] .
+		\end{align*} 	
+	It remains to check that the integral term on the second line is non-positive. Indeed, $|\partial_t \phi \nabla_x \phi| \leq \tfrac12 |\nabla_{t, x} \phi|^2$ by the arithmetic-geometric mean inequality.
+\end{proof}
+
+\subsection{Global well-posedness}
+
+An initial data problem for the wave equation is \textit{well-posed} if there exists a unique solution depending continuously on the initial data. More generally, hyperbolic partial differential equations are exactly the class of evolutionary equations exhibiting well-posedess. To show the result, we argue by \textit{a priori} estimates and duality. 
+
+\begin{lemma}[A priori estimate]
+	For $s \in \R$, let $f \in L^1_t H^{s - 1}_x ([0, T] \times \R^d)$ and suppose $\phi \in C_t^0 H^s_x \cap C^1_t H^{s - 1}_x ([0, T] \times \R^d)$ is a solution to the wave equation $\Box \phi = f$. Then 
+		\begin{align*}
+			||\nabla_{t, x} \phi||_{C^0_t H^{s - 1}_x} 
+				&\lesssim ||\nabla_{t, x} \phi ||_{H^{s - 1}_x} (0) + ||f||_{L^1_t H^{s - 1}_x}, \\
+			||\phi||_{C^0_t H^{s}_x}
+				&\lesssim \langle T \rangle \left(|| \phi||_{H^{s}_x} (0) + ||\nabla_{t, x} \phi||_{H^{s - 1}_x} (0) + ||f||_{L^1_t H^{s - 1}_x}	\right).
+		\end{align*}\label{cor:apriori}
+\end{lemma}
+
+\begin{proof}
+	It suffices to prove the result for $s = 1$, as commuting the Fourier multiplier $\langle \nabla \rangle^s$ with the wave operator $\Box$ we apply the $s = 1$ case to the wave equation  $\Box \langle \nabla \rangle \phi = \langle \nabla \rangle f$. Applying the triangle inequality and Cauchy-Schwartz to the conservation of energy identity,
+		\[ ||\nabla_{t, x} \phi||_{L^2_x}^2 (t') \leq  ||\nabla_{t, x} \phi ||_{L^2_x}^2 (0) + 2\int_{0}^{t'} ||f ||_{L^2_x} ||\nabla_{t, x} \phi||_{L^2_x} \, dt \]
+	for all $0 \leq t' \leq T$. We conclude the first energy estimate via a bootstrap argument. Assume the bound
+		\[||\nabla_{t, x} \phi||_{L^2_x} (t) \leq  4 ||\nabla_{t, x} \phi ||_{L^2_x} (0) + 8 ||f||_{L^1_t L^2_x}  \]	
+	for all $0 \leq t \leq t'$. Clearly the bound is satisfied for $t = 0$, so to continuously induct on time, we need to prove a stronger bound. Substituting the bootstrap assumption above into the previous inequality, we obtain
+		\[ ||\nabla_{t, x} \phi||_{L^2_x}^2 (t') \leq  ||\nabla_{t, x} \phi ||_{L^2_x}^2 (0) +  \left( 8||\nabla_{t, x} \phi||_{L^2_x} (0) + 16 ||f||_{L^1_t L^2_x} \right) \int_0^{t'} ||f||_{L^2_x} dt \leq \left( ||\nabla_{t, x} \phi||_{L^2_x} (0) + 4||f||_{L^1_t L^2_x} \right)^2. \]	
+	Taking the square root, 
+		\[  ||\nabla_{t, x} \phi||_{L^2_x} (t') \leq ||\nabla_{t, x} \phi||_{L^2_x} (0) + 4||f||_{L^1_t L^2_x}\]
+	completing the bootstrap. To prove the second energy estimate, we control the low order terms by the triangle inequality, the fundamental theorem of calculus, and Minkowski's integral inequality,
+		\[ ||\phi ||_{L^2_x} (t) - ||\phi||_{L^2_x} (0) \leq ||\phi(t) - \phi(0)||_{L^2_x} \leq || \partial_t \phi||_{L^1_t L^2_x} \]
+	for all $0 \leq t \leq T$. Rearranging and applying the first energy estimate, 
+		\[ ||\phi||_{C^0_t L^2_x} \leq  ||\phi||_{L^2_x} (0) + || \partial_t \phi||_{L^1_t L^2_x} \lesssim  ||\phi||_{L^2_x} (0) + T \left( ||\nabla_{t, x} \phi||_{L^2_x} (0) + ||f||_{L^1_t L^2_x} \right). \]
+	We conclude the second energy estimate. 
+\end{proof}
+
+\begin{theorem}[Global well-posedness]
+	Let $f \in L^1_t H^{s -1}_x ([0, T] \times \R^d)$ and suppose $(\phi_0, \phi_1) \in H^s (\R^d) \times H^{s - 1} (\R^d)$. Then there exists a unique solution $\phi \in C^0_t H^s_x  \cap C^1_t H^{s - 1}_x ([0, T] \times \R^d)$ to the wave equation $\Box \phi = f$ with initial data $(\phi, \partial_t \phi)_{|t = 0} = (\phi_0, \phi_1)$. Furthermore the solution map $(\phi_0, \phi_1) \mapsto \phi$ is continuous. 
+\end{theorem}
+
+\begin{proof}
+	Uniqueness and continuous dependence on initial data follow from the energy estimates in Corollary \ref{cor:apriori}. To prove existence, we reduce to the case of zero initial data by setting
+		\[
+			u (t, x)
+				:= \phi_0 (x) + t \phi_1 (x).
+		\]			
+	Then given a weak solution $\eta \in C^0_t H^s_x \cap C^1_t H^{s - 1}_x ([0, T] \times \R^d)$ to the wave equation $\Box \eta = f - \Box u$ with initial data $(\eta, \partial_t \eta)_{|t = 0} = (0,0)$, setting $\phi:= \eta + u$ furnishes a weak solution our original problem. Assume then $(\phi_0, \phi_1) = (0, 0)$, we argue by Hahn-Banach, defining the linear functional
+		\begin{align*}
+			\Box 
+				C^\infty_c ((-\infty, T) \times \R^d)
+				&\to \R,\\
+			 \Box \psi 
+			 	&\mapsto \int_0^T \int_{\R^d} \psi f \, dx dt.
+		\end{align*}	 
+	Note the functional is well-defined by uniqueness of solutions with zero initial data. We obtain boundedness with respect to the $L^1_t H^{-s}_x$-norm by Holder's inequality and the \textit{a priori} estimate
+	\begin{align*}
+		\left|\int_0^T \int_{\R^d} \psi f \, dx dt \right| \leq ||f||_{L^1_t H^{s - 1}_x} ||\psi||_{C^0_t H^{1 - s}_x} \lesssim \langle T \rangle ||f||_{L^1_t H^{s - 1}_x} || \Box \psi ||_{L^1_t H^{-s}_x}.
+	\end{align*}	
+	 We know from Hahn-Banach that there exists $\phi \in L^\infty_t H^s_x ((-\infty, T) \times \R^d)$ such that 
+	 	\[  \int_0^T \int_{\R^d} \psi f \, dx dt = \int_0^T \int_{\R^d} \Box \psi \, \phi \, dx dt \]
+	 for all $\psi \in C^\infty_c ((-\infty, T) \times \R^d)$ and $\psi (t) \equiv 0$ for all $t \leq 0$. Using the equation, we see that our solution has the desired regularity $\phi \in C^0_t H^s_x \cap C^1_t H^{s - 1}_x ([0, T] \times \R^d)$. 
+\end{proof}
+
+
+\end{document}

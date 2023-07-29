@@ -1,0 +1,53 @@
+When studying function spaces, such as Lorentz spaces or Sobolev spaces, it is useful to decompose a generic function into simpler pieces, and attempt to prove the desired results for each of those pieces. For example, functions in Lorentz spaces can be decomposed in \textit{physical space} into the sum of \textit{quasi-step functions}. Our approach in these notes will be to decompose into \textit{frequency-localised} pieces and  study the various ways these pieces sum. 
+
+\subsection{Littlewood-Paley projections}
+
+We construct a dyadic partition of unity as follows; let $\phi  \in C^\infty_c (\R^d)$ satisfy $0 \leq \phi \leq 1$ and 
+\begin{align*}
+	\phi(x) 
+		:= 
+		\begin{cases}
+			1 , 				&|x| \leq 1.4, \\
+			0, 				&|x| > 1.42. 
+		\end{cases}
+\end{align*}
+Denote the dyadics by $2^\Z := \{ 2^n : n \in \Z \}$. For $N \in 2^\Z$, define $\psi, \psi_N, \phi_N \in C^\infty_c (\R^d)$ to be 
+	\[ \psi(x) := \phi(x) - \phi(2x), \qquad \psi_N (x) := \psi(x/N), \qquad \phi_N (x) := \phi(x/N).  \]
+Observe that $\sum_N \psi_N \equiv 1$ since pointwise it forms a telescoping sum. Given a tempered distribution $f \in \cS' (\R^d)$, we define its \emph{Littlewood-Paley projections} to frequencies $|\xi| \sim N$ and $|\xi| \lesssim N$ respectively by
+	\begin{align*}
+		\widehat{u_N} &= \widehat{P_N u}  = \psi_N \widehat u , \qquad
+		\widehat{u_{\leq N}} = \widehat{P_{\leq N} u} = \phi_N \widehat u.
+	\end{align*}	
+Define the Littlewood-Paley projections to frequencies $|\xi| \gtrsim N$ and $N \lesssim |\xi| \lesssim M$ respectively by 
+	\[ u_{\geq N} = P_{\geq N} u = (1 - P_{\leq N}) u, \qquad u_{N \leq - \leq M} = P_{N \leq - \leq M} u = \sum_{N \leq K \leq M} P_K u. \]
+
+\begin{remark}
+	By the Paley-Wiener theorem, the projections are analytic functions in physical space. Thus we can study the Littlewood-Paley projections pointwise without any philosophical consternation.
+\end{remark}
+
+\subsection{Homogeneous spaces}
+
+We will also need to define a suitable subspace of Schwartz space which behaves better with respect to scaling $u_\lambda (x) := u(x/\lambda)$. Define the \emph{homogeneous Schwartz space} $\dot \cS (\R^d)$ as the space of Schwartz functions whose Fourier transform vanishes to every order at the origin, 
+	\[\dot \cS (\R^d) := \{ u \in \cS (\R^d) : \nabla^k \widehat u (0) = 0 \text{ for every $k$} \}. \]
+We remark that the dual space is the space of tempered distributions modulo the space of polynomials $\mathcal P (\R^d)$. 	
+	
+\begin{proposition}
+	The dual space of the homogeneous Schwartz space is
+		\[ \dot \cS (\R^d)^* = \cS(\R^d)^* / \mathcal P (\R^d). \]
+\end{proposition}
+
+\begin{proof}
+	Define $T: \cS (\R^d)^* \to \dot \cS (\R^d)^*$ be the restriction map
+		\[ T u := u_{|\dot \cS (\R^d)}.  \]
+	We claim that the restriction map is surjective and the kernel is precisely the space of polynomials. The first isomorphism theorem furnishes the result. Surjectivity follows from Hahn-Banach, so it remains to study the kernel. 	Suppose $u \in \operatorname{ker} T$, then by Plancharel 
+		\[ 0 = \langle u, \phi \rangle = \langle \widehat u, \widehat \phi \rangle \]
+	for all $\phi \in \dot \cS (\R^d)$. Since $\widehat \phi$ vanishes to infinite order at the origin, it follows that $\widehat u$ must be supported at the origin. Such distributions are derivatives of the Dirac mass at the origin, which upon applying the Fourier inverse shows that $u$ is a polynomial. 
+\end{proof}	
+
+\begin{remark}
+	One can formulate the homogeneous function spaces as subspaces of $\dot \cS (\R^d)^*$. This is equivalent to our approach of defining the spaces via metric completion of the homogeneous Schwartz space $\dot \cS (\R^d)$. 
+	
+	Another way of dealing with the problem of low frequencies is to define the space of tempered distributions $\cS_h (\R^d)^*$ such that 
+		\[ \lim_{\lambda \to \infty} ||\theta (\lambda \nabla) u||_{L^\infty} = 0 \]
+	for all $\theta \in C^\infty (\R^d)$. Working in this space has the advantage of being a subspace of $\cS(\R^d)^*$, rather than a quotient space. However, it has the disadvantage of not being a closed subspace. See Section 1.2.2 and Remark 2.26 in \cite{BahouriEtAl2011} for further commentary. 
+\end{remark}

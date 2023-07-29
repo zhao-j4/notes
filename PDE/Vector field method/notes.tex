@@ -1,0 +1,130 @@
+\documentclass[10pt, reqno]{article}
+
+\usepackage{amsfonts,latexsym,amsthm,amssymb,amsmath,amscd,euscript,bm}
+\usepackage[sc]{mathpazo}
+\usepackage[margin = 2cm]{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{slashed}
+\usepackage{xcolor}
+% sets numbering of enumerate to a, b, c, ...
+\renewcommand{\theenumi}{\alph{enumi}}
+
+% Theorems, propositions, etc.
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem*{claim}{Claim}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{notation}{Notation}
+
+\usepackage{thmtools}
+\usepackage[framemethod=TikZ]{mdframed}
+	\mdfdefinestyle{mdrecbox}
+		{%
+			linewidth=0.5pt,
+			skipabove=12pt,
+			frametitleaboveskip=5pt,
+			frametitlebelowskip=0pt,
+			skipbelow=2pt,
+			frametitlefont=\bfseries,
+			innertopmargin=4pt,
+			innerbottommargin=8pt,
+			nobreak=true,
+		}
+	\declaretheoremstyle
+		[
+			headfont=\bfseries,
+			mdframed={style=mdrecbox},
+			headpunct={\\[3pt]},
+			postheadspace={0pt},
+		]
+		{thmrecbox}
+	\declaretheorem[style=thmrecbox,name=Example, numberlike=theorem]{examplebox}
+
+\newenvironment{example}
+	{
+	\begin{examplebox} 
+	\leavevmode
+	\begin{enumerate}}
+	{	\end{enumerate} 
+	\end{examplebox}
+	}
+
+
+% Math blackboard font
+\newcommand{\nc}{\newcommand}
+\nc{\on}[1]{\operatorname{#1}}
+
+\nc{\R}{\mathbb R}
+\nc{\C}{\mathbb C}
+\nc{\Q}{\mathbb Q}
+\nc{\Z}{\mathbb Z}
+\nc{\N}{\mathbb N}
+\nc{\HH}{\mathbb H}
+\nc{\DD}{\mathbb D}
+\nc{\TT}{\mathbb T}
+
+\nc{\cT}{\mathcal T}
+\nc{\cP}{\mathcal P}
+\nc{\cM}{\mathcal M}
+\nc{\cC}{\mathcal C}
+\nc{\cB}{\mathcal B}
+\nc{\cG}{\mathcal G}
+\nc{\cA}{\mathcal A}
+\nc{\cS}{\mathcal S}
+\nc{\cF}{\mathcal F}
+\nc{\cL}{\mathcal L}
+\nc{\cR}{\mathcal R}
+
+\nc{\diam}{\operatorname{diam}}
+\nc{\del}{\partial}
+\nc{\inter}{\mathrm{o}}
+\nc{\close}[1]{\overline{#1}}
+\nc{\supp}{\operatorname{supp}}
+\nc{\loc}{\text{loc}}
+\nc{\length}{\operatorname{length}}
+\nc{\Ric}{\operatorname{Ric}}
+% Why the f*** would you ever use \epsilon
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\emph}{\textsc}
+
+\let\vec\mathbf
+
+
+% Title: change problem set number as needed
+\title
+{
+	\emph{Non-linear wave equations and general relativity}
+} 
+
+\author{Jason Zhao}
+\date{\emph{Fall 2021}}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+	Notes on the seminar organised by Sung-Jin Oh introducing the vector field method and its applications to non-linear wave equations and general relativity. 
+\end{abstract}
+
+\tableofcontents
+
+\section{Introduction to the vector field method}
+\input{intro}
+
+\section{Existence for $\Box \phi = Q(\phi, \phi)$ with null structure on $\R_t \times \R^3_x$}
+\input{nullform}
+
+
+\bibliography{biblio}
+\bibliographystyle{alpha} 
+
+\end{document}
