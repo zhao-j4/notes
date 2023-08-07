@@ -1,0 +1,107 @@
+Studying the proof of the Picard-Lindelof existence theorem, we see that the corresponding solutions to initial data in any domain $\Omega \subseteq \R^n$ can be taken to exist on the same time-interval $[0, T]$, provided there exists a uniform bound and Lipschitz constant on an $\epsilon$-neighborhood $\overline{B_\epsilon (\Omega)} \subseteq \R^n$. Combined with uniqueness, the \emph{solution operator} $S : \Omega \to C^0 ([0, T] \to \R^n)$ mapping initial data to solutions is well-defined. Our goal in this section will be to study the regularity of this operator. 
+
+
+
+\subsection{$C^{0, 1}$-dependence}
+
+We begin with Lipschitz dependence on initial data. This is a simple consequence of retracing the proof of the Picard-Lindelof theorem and tracking down the constants. 
+
+\begin{theorem}[$C^{0, 1}$-dependence on data]
+	Let $\Omega \subseteq \R^n$ be a domain, and suppose $F \in C^{0, 1}(\overline{B_\epsilon (\Omega)} \to \R^n)$ is Lipschitz and bounded with constants
+		\begin{align*}
+			L &:= ||F||_{\dot C^{0, 1} (\overline{B_\epsilon (\Omega)})}, \\
+			M &:= ||F||_{C^{0} (\overline{B_\epsilon (\Omega)})}.
+		\end{align*}
+	Then for $T< \min (\epsilon/M, 1/L)$, the solution operator $S : \Omega \to C^0 ([0, T] \to \R^n)$	 is well-defined and Lipschitz continuous with constant $\frac{1}{1 - TL}$.
+\end{theorem}
+
+\begin{proof}
+	The solution $S u_0$ is a fixed point of $\Phi_{u_0}$, so we can write
+		\[ S u_0 - Sv_0 = \Phi_{u_0} (S u_0) - \Phi_{v_0} (S v_0) + u_0 - v_0. \]
+	Following the Picard-Lindelof existence proof, we showed that the integral operators $\Phi_{u_0}$ are contractions on $C^0([0, T] \to \Omega)$ for every initial data $u_0 \in \Omega$ with Lipschitz constant $TL$. Thus, taking norms above and applying the triangle inequality, we obtain 
+		\[ || Su_0 - Sv_0||_{C^0 [0, T]} \leq ||\Phi_{u_0} (Su_0) - \Phi(S v_0)||_{C^0 [0, T]} + |u_0 - v_0| \leq  TL || Su_0 - Sv_0||_{C^0 [0, T]} + |u_0 - v_0|.\]
+	Rearranging, 
+		\[ || Su_0 - Sv_0||_{C^0 [0, T]} \leq \frac{1}{1 - TL} |u_0 - v_0|,  \]
+	as desired. 		
+\end{proof}
+
+\subsection{$C^1$-dependence}
+
+Assume the non-linearity is continuously differentiable, we want to show that the solution operator is continuously differentiable. This is meant in the \textit{Frechet} sense, i.e. there exists a linear operator $DS(u_0) : \R^n \to C^0 ([0, T] \to \R^n)$ such that 
+	\[ \lim_{v \to 0}\left|\left| \frac{S(u_0 + v) - S(u_0) - DS(u_0)}{|v|} \right|\right|_{C^0[0, T]} = 0 \]
+and $u_0 \to DS(u_0)$ is continuous. As in the finite-dimensional codomain setting, this is equivalent to the existence and continuity of ``partial'' Frechet derivatives, so we will consider smooth one-parameter families of initial data $h \mapsto u_0 (h)$ for $|h| \ll 1$, and show that the solution $u(t, h) := Su_0 (h) (t)$ is continuously differentiable in $h$. The total derivative $DS$ can be reconstructed from the partial derivatives $\partial_h u$.
+
+ The difference quotient in $h$ satisfies 
+	\[ \partial_t \left( \frac{u(t, h) - u(t, 0)}{h} \right) = \frac{F(u(t, h)) - F(u (t, h_0))}{h},  \]
+then, assuming $u$ is continuously differentiable in $h$ and $F$ is continuously differentiable, taking $h \to 0$ gives
+	\[ \partial_t \partial_h u (t, 0) = \nabla F(u(t, 0)) \cdot \partial_h u (t, 0). \]
+This shows that $\partial_h u$, if it exists, satisfies the \emph{linearised equation},
+	\begin{equation}
+		\begin{split}
+			\partial_t A 
+		 	&= \nabla F (u) \cdot A,\\
+		 A_{|t = 0}
+		 	&= \partial_h u_0 (0)	.
+		\end{split}
+		\tag{Lin}
+		\label{eq:linear}
+		\end{equation}
+\textit{A priori}, we do not know if $u$ is continuously differentiable with respect to its initial data, so we instead work backwards by studying the linearised initial data problem. Heuristically, the \textit{dynamics} of the original equation are dominated by the linearised equation, as the higher-order terms in the non-linearity are negligible. 
+
+
+\begin{theorem}[$C^{1}$-dependence on data]
+	Let $\Omega \subseteq \R^n$ be a domain, and suppose $F \in C^{1}(\overline{B_\epsilon (\Omega)} \to \R^n)$ is continuously differentiable and bounded with constants
+		\begin{align*}
+			L &:= ||F||_{\dot C^{1} (\overline{B_\epsilon (\Omega)})}, \\
+			M &:= ||F||_{C^{0} (\overline{B_\epsilon (\Omega)})}.
+		\end{align*}
+	Then for $T< \min (\epsilon/M, 1/L)$, there exists a unique solution $u \in C^2_{\loc} ([0, T] \to \R^n)$ to (\ref{eq:idp}), and the solution operator $S : \Omega \to C^0 ([0, T] \to \R^n)$	 is well-defined and continuously differentiable.
+\end{theorem}
+
+\begin{proof}
+	Using the equation and the chain rule, we see that the solution obtained from Picard-Lindelof iteration has regularity $u \in C^2_{\loc} ([0, T] \to \R^n)$. By local well-posedness, the linearised equation (\ref{eq:linear}) admits a solution in $[0, T]$. We claim that $\partial_h u(t, 0)$ exists and $A = \partial_h u (t, 0)$. Translating, this argument shows that $\partial_h u (t, h)$ exists for all $t \in [0, T]$ and $|h| \ll 1$. Set
+		\[ B(t) := \frac{u(t, h) - u(t, 0)}{h} - A(t) , \]
+	our goal is to show that $B (t) \to 0$ as $h \to 0$ for each fixed $t$. Differentiating and using the equations, 
+		\begin{align*}
+			\partial_t B (t)
+				&= \frac{F(u(t, h)) - F(u(t, 0))}{h} - \nabla F(u(t, 0)) \cdot A(t)  \\
+				&=  \int_0^1 \frac{u(t, h) - u(t, 0)}{h} \cdot \nabla F(s \cdot u(t, h) + (1 - s) \cdot u (t, 0)) \, ds - \nabla F(u(t, 0)) \cdot A(t) \\
+				&= C_1 (t) \cdot B(t) + C_2 (t) \cdot A(t),
+		\end{align*}	
+	where
+		\begin{align*}
+			C_1 (t) 
+				&:=\int_0^1 \nabla F(s \cdot u(t, h) + (1 - s) \cdot u (t, 0)) \, ds, \\
+			C_2 (t)
+				&:= \int_0^1  \left(\nabla F(s\cdot u(t, h) + (1 - s)\cdot u (t, 0)) - \nabla F (u(t, 0))\right)\, ds .
+		\end{align*}	
+	From our regularity assumptions, we see that $|A|, |C_1|, |C_2| \leq N$ for some uniform constant $N \gg 1$. Thus, integrating the expression for $\partial_t B$ and applying the bounds above, we obtain 
+		\[ |B(t)| \leq |B(0)| + TN ||C_2||_{C^0[0, T]}  + N \int_0^t |B(s)| \, ds.  \]	
+	Using Gronwall's inequality, this implies
+		\[ |B(t)| \leq e^{t} \left( |B(0)| + TN ||C_2||_{C^0[0, T]} \right)  \]	
+	Since $h \mapsto u(0, h)$ and $F$ are continuously differentiable, $|B(0)|$ and $||C_2||_{C^0[0, T]}$ vanish as $h \to 0$. We conclude from construction of $B$ that $\partial_h u$ exists and is given by $A$. 
+	
+	It remains to show that $\partial_h u$ is continuous in $h$ uniformly in $t$. Again, by translation it is not a loss of generality to show the result for $h = 0$. Integrating the linearised equation, we obtain
+		\begin{align*}
+			|\partial_h u (t, h) - \partial_h u (t, 0)|
+				&\leq |\partial_h u(0, h) - \partial_h u (0, 0)| + \int_0^t |\nabla F (u(s, h)) \cdot \partial_h u (s, h) - \nabla F(u(s, 0)) \cdot \partial_h u(s, 0)| \, ds\\
+				&\leq |\partial_h u(0, h) - \partial_h u (0, 0)| + \int_0^t |\nabla F (u(s, h)) - \nabla F(u(s, 0))|  \cdot |\partial_h u(s, h)| \, ds \\
+				&\qquad+ \int_0^t |\nabla F(u(s, 0)) \cdot | \partial_h u(s, h) - \partial_h u(s, 0)| \, ds
+		\end{align*}
+	By Gronwall's inequality.
+		\[ |\partial_h u (t, h) - \partial_h u (t, 0)| \leq e^{L t} \left( |\partial_h u_0 (h) - \partial_h u_0 (0)| + C \int_0^t   |\nabla F (u(s, h)) - \nabla F(u(s, 0))| \, ds \right) \]	
+	for some $L, C > 0$. Since $\partial_h u_0$ and $\nabla F$ are continuous, the right-hand side vanishes uniformly in $t$ as $h \to 0$. 	
+\end{proof}
+
+\begin{corollary}[$C^{k}$-dependence on data]
+	Let $\Omega \subseteq \R^n$ be a domain, and suppose $F \in C^{k}(\overline{B_\epsilon (\Omega)} \to \R^n)$ is continuously differentiable and bounded with constants
+		\begin{align*}
+			L &:= ||F||_{C^{k} (\overline{B_\epsilon (\Omega)})}, \\
+			M &:= ||F||_{C^{0} (\overline{B_\epsilon (\Omega)})}.
+		\end{align*}
+	Then for $T< \min (\epsilon/M, 1/L)$, the solution operator $S : \Omega \to C^0 ([0, T] \to \R^n)$	 is well-defined and continuously differentiable.
+\end{corollary}
+
+\begin{proof}
+	Induction on $k$ and the $C^1$-wellposedness theory. 
+\end{proof}
