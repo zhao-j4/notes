@@ -34,7 +34,14 @@ In the previous sections, we have studied the \textit{local} well-posedness theo
 \end{corollary}
 
 \begin{proof}
-	This is the contrapositive of the continuation criterion. 
+	Suppose $u$ does not blow-up, then there exists a compact subset $K \subseteq \Omega$ on which $u(t) \in K$ for all $[0, T_{\text{max}})$, and denote
+		\begin{align*}
+			L
+				&:= ||F||_{\dot C^{0, 1} (\overline{B_\epsilon(K)})} ,\\
+			M
+				&:= ||F||_{C^{0}(\overline{B_\epsilon(K)})}.
+		\end{align*}	
+	Then for all $t$, local well-posedness theory allows us to extend $u$ to a solution on $[t, t + T]$ for $T < \min (\epsilon/M, 1/L)$. Taking $t \uparrow T_{\text{max}}$ contradicts maximality of $T_{\text{max}}$. 
 \end{proof}
 
 \begin{remark}

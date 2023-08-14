@@ -1,0 +1,126 @@
+The classical trace, Poincare, and Hardy inequalities concern trading \textit{regularity} for \textit{spatial localisation} via the uncertainty principle. As a concrete example, consider the Heisenberg uncertainty principle
+	\begin{equation} ||u||_{L^2_x}^2 \lesssim ||x u||_{L^2_x} ||\nabla u||_{L^2_\xi}. \tag{*}\label{eq:heisen}
+	\end{equation}
+Normalising $||u||_{L^2_x} = 1$, if $u$ is localised in physical space in that $||xu||_{L^2_x} \ll 1$, then the inequality above forces a loss in regularity $||\nabla u||_{L^2_\xi}\gg 1$. Conversely, we can use regularity to control spatial localisation. 
+
+\subsection{Traces}
+
+In the interest of solving boundary value problems, we study the boundedness properties of the \emph{trace} operator $T$ which sends a function $u : \R^d \to \C$ to its restriction on a hyperplane $u_{|x_d = 0} : \R^{d - 1} \to \C$, 
+	\[ T u (x') := u(x', 0) = \langle u, \delta_{x_d = 0} \rangle \]
+where we use the notation $x = (x_1, \dots, x_d)$ and $x' = (x_1, \dots, x_{d - 1})$. We similarly denote $\cF'$ the Fourier transform and $P_N'$ the Littlewood-Paley projections on the hyperplane $\R^{d - 1}$. The main ingredient for studying the trace operator on Sobolev spaces is the uncertainty principle. This is encapsulated by the following two lemmas: 
+
+\begin{lemma}
+	Given a tempered distribution $u \in \cS' (\R^d)$, the trace of the Littlewood-Paley projection $P_{\leq N} u$ has Fourier support in $|\xi'| \lesssim N$. In particular, 
+		\[ P'_M T P_{\leq N} u = 0 \]
+	for $M \gtrsim N$. 
+\end{lemma}
+
+\begin{proof}
+	From the uncertainty principle, restricting to a point in physical space is equivalent to integrating in frequency space, that is, $\langle \delta_0, \phi \rangle = \langle 1, \widehat \phi \rangle$. Moreover, the composition of the Fourier transform on $\R^{d - 1}_{x'}$ with the Fourier transform on $\R_{x_d}$ gives the Fourier transform on $\R^d_x$. Hence, in frequency space
+		\[ \cF' T P_{\leq N} u = \cF' P_{\leq N} u (\xi', 0) = \int_\R \cF P_{\leq N} u \, d\xi_d. \]
+	As $\cF P_{\leq N} u$ is supported in the ball $|\xi| \lesssim N$, we see that $T P_N u$ has Fourier support in the ball $|\xi'| \lesssim N$. 	
+\end{proof}
+
+\begin{lemma}
+	Given a tempered distribution $u \in \cS' (\R^d)$, the trace of the Littlewood-Paley projection $P_{\leq N} u$ satisfies
+		\[ || TP_{\leq N} u ||_{L^p (\R^{d - 1}_{x'})} \lesssim N^{\frac1p} ||P_{\leq N} u||_{L^p (\R^d_x)} \]
+\end{lemma}
+
+\begin{proof}
+	Since $\cF P_{\leq N} u$ is supported in $|\xi| \lesssim N$, we see that $\cF_{x_d} P_{\leq N} u$ is supported in $|\xi_d| \lesssim N$ for each fixed $x' \in \R^{d - 1}$. Thus by Minkowski's integral inequality and Bernstein's inequality in one-dimension, 
+		\begin{align*}
+			||T P_{\leq N} u||_{L^p (\R^{d - 1}_{x'})}
+				&\leq \left|\left| || P_{\leq N} u||_{L^\infty (\R_{x_d})} \right|\right|_{L^p (\R^{d - 1}_{x'})} \\
+				&\lesssim  \left|\left| N^{\frac1p} || P_{\leq N} u||_{L^p (\R_{x_d})} \right|\right|_{L^p (\R^{d - 1}_{x'})} = N^{\frac1p} ||P_{\leq N} u||_{L^p (\R^d_x)}.
+		\end{align*}
+	This completes the proof. 	
+\end{proof}
+	
+\begin{theorem}[Sobolev trace theorem]
+	Let $1 < p < \infty$ and $s > \sigma> \tfrac1p$, then the trace map satisfies
+		\[ ||T u||_{W^{s - \sigma, p} (\R^{d - 1})} \lesssim ||u||_{W^{s, p} (\R^d)}. \]
+	In particular, it extends to a bounded linear operator $T : W^{s, p} (\R^d) \to W^{s - \sigma, p} (\R^{d - 1})$.
+\end{theorem}
+
+\begin{proof}
+	We perform a Littlewood-Paley decomposition $u = \sum_N P_N u$. By linearity, we can write $P'_M T u = \sum_N P'_M T P_N u$. Applying the triangle inequality and Sobolev-Bernstein gives
+		\[ || \langle \nabla' \rangle^{s - \sigma} Tu||_{L^p (\R^{d - 1}_{x'})} \lesssim ||P'_{\leq 1} Tu||_{L^p (\R^{d - 1}_{x'})} +  \sum_{M \in 2^\N} M^{s - \sigma} ||P'_M T u||_{L^p (\R^{d - 1}_{x'})} .\]
+	Applying the previous two lemmas and Sobolev-Bernstein gives, for low frequencies, 
+		\begin{align*}
+			||P'_{\leq 1} Tu||_{L^p (\R^{d - 1}_{x'})}
+				&\leq\sum_{N \gtrsim 1}
+			||P'_{\leq 1} T P_N u||_{L^p (\R^{d - 1}_{x'})}\\
+				&\lesssim \sum_{N \gtrsim 1} N^{1/p} ||P_{N} u||_{L^p (\R^d_x)} \\
+				&\lesssim  \sum_{N \gtrsim 1} N^{1/p - s} ||\langle \nabla \rangle^s u||_{L^p (\R^d_x)} \sim   ||\langle \nabla \rangle^s u||_{L^p (\R^d_x)}
+		\end{align*}
+	and for high frequencies, 
+		\begin{align*}
+			\sum_{M \in 2^\N} M^{s - \sigma} ||P'_M T u||_{L^p (\R^{d - 1}_{x'})}
+				&\lesssim \sum_{M \in 2^\N} \sum_{N : M \lesssim N} M^{s - \sigma} ||P'_M T P_N u||_{L^p (\R^{d - 1}_{x'})}\\
+				&\lesssim \sum_{M \in 2^\N} \sum_{N : M \lesssim N} M^{s - \sigma} N^{1/p} || P_N u||_{L^p (\R^{d}_{x})} \\
+				&\lesssim \sum_{M \in 2^\N} \sum_{N : M \lesssim N} M^{s - \sigma} N^{1/p - s} || \langle \nabla \rangle^s u||_{L^p (\R^{d}_x)} \sim ||\langle \nabla \rangle^s u||_{L^p (\R^d_x)}.
+		\end{align*}
+	This completes the proof. 
+\end{proof}
+
+\begin{remark}
+	This proof does not extend to the endpoints $p = 1, \infty$ due to the failure of the Littlewood-Paley decomposition $u = \sum_N P_N u$ to converge in $L^p (\R^d)$. The endpoint $s = \sigma$ holds in the Hilbert space case $p = 2$; we leave this as an exercise. 
+\end{remark}
+
+\subsection{Poincare inequality}
+
+The uncertainty principle tells us that functions localised to frequency scale $|\xi| \lesssim N$ are approximately constant at physical scales $\sim 1/N$. Combined with the uniform boundedness of the Littlewood-Paley projections, this tells us that the support of $u \in C^\infty_c (\R^d)$ sees very little of the mass of its projection $P_N u$ for large $N\gg 1$, as $P_N$ spreads out the mass to increasingly large scales. Thus, high frequencies $P_{\geq M} u$ are the dominant contributions to $u$ for $M \ll 1$. 
+
+\begin{theorem}[Poincare inequality]
+	Let $1 \leq p \leq \infty$, and suppose $u \in C^\infty_c (|x| \leq R)$ for some $R > 0$. Then 
+		\[ ||u||_{L^p} \lesssim R ||\nabla u||_{L^p}. \]
+\end{theorem}
+
+\begin{proof}
+	Let $\chi \in C^\infty_c (|x| \leq 2R)$ such that $\chi \equiv 1$ on the ball $|x| \leq R$ and $0 \leq \chi \leq 1$. We decompose
+		\[u = \chi P_{> C/R} u + \sum_{N < C/R} \chi P_N u \]
+	for some small constant $C \ll 1$ to be chosen later. It follows from Holder's inequality and Bernstein's inequality
+		\[  \sum_{N \leq C/R} ||\chi P_N u||_{L^p} \lesssim R^{d/p} \sum_{N \leq C/R} ||P_N u||_{L^\infty} \lesssim R^{d/p} \sum_{N \leq C/R} N^{d/p} ||P_N u||_{L^p} \lesssim C^{d/p} ||u||_{L^p}.   \]	
+	Choosing $C \ll 1$, this shows that the high frequencies are the dominant contribution to the decomposition. We conclude from Sobolev-Bernstein
+		\[ ||u||_{L^p} \lesssim ||P_{> C/R} u||_{L^p} \lesssim R ||\nabla u||_{L^p}. \]
+	This completes the proof. 
+\end{proof}
+
+\begin{remark}
+	One can also prove the $L^2$-Poincare inequality using the Heisenberg uncertainty principle (\ref{eq:heisen}). We leave this as an exercise. 
+\end{remark}
+
+\subsection{Hardy's inequality}
+
+The uncertainty principle roughly states that $\triangle x \cdot \triangle \xi \gtrsim 1$. Formally rearranging, one arrives at an inequality of the form $\tfrac{1}{x} \lesssim \tfrac{d}{dx}$. This heuristic calculation is made precise by Hardy's inequality, 
+
+\begin{theorem}[Hardy's inequality]
+	Let $0 \leq s < d/2$, then 
+		\[ \left|\left| \frac{u}{|x|^s} \right|\right|_{L^2} \lesssim |||\nabla|^s u||_{L^2}. \]
+\end{theorem}
+
+\begin{proof}
+	We decompose dyadically in both physical and frequency space, writing 
+		\begin{align*}
+			\int_{\R^d} \frac{|u(x)|^2}{|x|^{2s}} dx 
+				&\lesssim \sum_R R^{-2s} \int_{|x| \leq R} |u|^2 \, dx \\
+				&\lesssim \sum_R \sum_N R^{-2s} ||P_N u||_{L^2 (|x| \leq R)}^2 \leq  \sum_R  R^{-2s} \left(\sum_N \min\{ 1, (NR)^{d/2} \} ||P_N u||_{L^2}\right)^2 ,
+		\end{align*}
+	where the last inequality follows from the bounds
+		\begin{align*}
+			||P_N u||_{L^2 (|x| \leq R)} 
+				&\leq ||P_N u||_{L^2} ,\\
+			||P_N u||_{L^2 (|x| \leq R)}
+				&\lesssim R^{d/2} ||P_N u||_{L^\infty} \lesssim (NR)^{d/2} ||P_N u||_{L^2}.
+		\end{align*}	
+	This reduces the problem to showing boundedness of the linear operator $A : \ell^2 (2^\Z) \to \ell^2 (2^\Z)$ defined as
+		\[ A(\{c_N\}_{N \in 2^\Z})_R := \sum_N \min \{ (NR)^{-s}, (NR)^{d/2 - s} \} c_N. \]
+	Taking $c_N := N^s ||P_N u||_{L^2}$ completes the proof. By Schur's test, we simply need to show that the corresponding kernel of the operator $K(R, N) :=  \min \{ (NR)^{-s}, (NR)^{-d/2 - s} \}$ is uniformly summable in $N$ and $R$. Indeed, 
+		\begin{align*}
+			\sum_{R} K(R, N) 
+				&\sim \sum_{R \geq 1/N} N^{-s} R^{-s} + \sum_{R < 1/N} N^{-d/2 - s} R^{d/2- s} \sim 1, \\
+			\sum_{N} K(R, N) 
+				&\sim \sum_{N \geq 1/R} N^{-s} R^{-s} + \sum_{N < 1/R} N^{-d/2 - s} R^{d/2- s} \sim 1	,
+		\end{align*}
+	as desired. 
+\end{proof}

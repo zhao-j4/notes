@@ -115,7 +115,7 @@ Suppose now we only had continuity of the non-linearity $F$ and no control over 
 	\end{itemize}
 \end{lemma}
 
-While we can approximate the non-linearity in the uniform topology by Lipschitz functions, there is no uniform control over the Lipschitz constants. Thus, following the proof of the Picard-Lindelof theorem, we cannot quantitatively show the approximate solutions exist on the same time interval existence. We instead turn to a more qualitative argument relying on \textit{continuous induction on time}. 
+While we can approximate the non-linearity in the uniform topology by Lipschitz functions, there is no uniform control over the Lipschitz constants. Thus, following the proof of the Picard-Lindelof theorem, we cannot quantitatively show the approximate solutions exist on the same time interval existence. We instead turn to a more qualitative argument relying on \textit{continuous induction on time} to show that the solutions do not ``escape'' a ball in arbitrarily small time. 
 
 \begin{lemma}[Bootstrap argument]
 	Let $f : [0, T) \to [0, \infty)$ be continuous, and suppose $f(0) \leq C$. Suppose that $f(t) \leq 2C$ implies the stronger bound $f(t) \leq C$, then the stronger bound holds for all time. 
@@ -162,14 +162,15 @@ While we can approximate the non-linearity in the uniform topology by Lipschitz 
 				u_{|t = 0}		&= 0.
 			\end{align*}
 	Then 
-		\[
-			u_c (t) = 
+		\begin{equation}
+			u (t) = 
 				\begin{cases}
-					0, 												&\text{if } x \leq c, \\
-					(t - c)^\frac{1}{1 - \alpha}, 	&\text{if } t > c,
-				\end{cases}
-		\]		
-	is an infinite family of solutions indexed by $c \geq 0$. Following the proof of Peano's existence theorem, we observe that uniqueness breaks down in that our solution depends on the choice of approximation by smooth functions. 
+					0, 												&\text{if } t \leq t_0, \\
+					\left(\frac{1}{1 - \alpha} \right)^{\frac{1}{\alpha - 1}} (t - t_0)^\frac{1}{1 - \alpha}, 	&\text{if } t > t_0,
+				\end{cases} \tag{*} \label{eq:nonunique}
+		\end{equation}
+	is an infinite family of solutions indexed by $t_0 \geq 0$. As a general principle, \textit{sub-linear} forcing terms contribute to non-uniqueness. 
+	
 	
 	\begin{figure}[h]
 	\begin{center}
@@ -178,3 +179,20 @@ While we can approximate the non-linearity in the uniform topology by Lipschitz 
 	\end{center}
 \end{figure}
 \end{remark}
+
+\begin{example}
+	Uniqueness breaks down in that the compactness solution depends on the choice of approximation by smooth functions. Let's consider the previous example for $\alpha = \tfrac12$. Fix $t_0 \geq 0$, and define a uniform approximation of $F(u) := |u|^{1/2}$ by Lipschitz functions $F_k : \R \to \R$ by
+		\[
+			F_k (u) := \left( \max\left\{ |u| - \frac1k, 0 \right\} + \frac{1}{k^2 t_0^2} \right)^{1/2}.	
+		\]
+	The solutions $u_k : [0, \infty) \to \R$ to the corresponding initial data problems are given by 
+		\[ u_k (t) 
+			:= \begin{cases}
+				\frac{t}{kt_0}, 
+					&\text{if } t \leq t_0, \\
+				\frac1k - \frac{1}{k^2 t_0^2} + \frac{(t - t_0 + \frac{2}{kt_0})^2}{4}
+					&\text{if } t > t_0,
+				\end{cases}	
+		\]	
+	and converge locally uniformly to (\ref{eq:nonunique}). 
+\end{example}

@@ -21,9 +21,6 @@
 \theoremstyle{remark}
 \newtheorem*{remark}{Remark}
 \newtheorem*{notation}{Notation}
-\newtheorem*{example}{Example}
-
-\usepackage{tikz-cd}
 
 % Math blackboard font
 \newcommand{\nc}{\newcommand}
@@ -35,23 +32,15 @@
 \nc{\Z}{\mathbb Z}
 \nc{\N}{\mathbb N}
 \nc{\HH}{\mathbb H}
-\nc{\DD}{\mathbb D}
 \nc{\TT}{\mathbb T}
-\nc{\EE}{\mathbb E}
-\nc{\PP}{\mathbb P}
 
-\nc{\cT}{\mathcal T}
-\nc{\cA}{\mathcal A}
 \nc{\cM}{\mathcal M}
 \nc{\cR}{\mathcal R}
-\nc{\cB}{\mathcal B}
-\nc{\cG}{\mathcal G}
-\nc{\cD}{\mathcal D}
 \nc{\cS}{\mathcal S}
 \nc{\cF}{\mathcal F}
-\nc{\cL}{\mathcal L}
-\nc{\cN}{\mathcal N}
 
+\nc{\diam}{\operatorname{diam}}
+\nc{\supp}{\operatorname{supp}}
 \nc{\loc}{\text{loc}}
 
 % Why the f*** would you ever use \epsilon
@@ -59,12 +48,23 @@
 \renewcommand{\emph}{\textsc}
 \renewcommand{\Re}{\operatorname{Re}}
 \renewcommand{\Im}{\operatorname{Im}}
+%inverse Fourier transform widecheck
+\DeclareFontFamily{U}{mathx}{\hyphenchar\font45}
+\DeclareFontShape{U}{mathx}{m}{n}{
+      <5> <6> <7> <8> <9> <10>
+      <10.95> <12> <14.4> <17.28> <20.74> <24.88>
+      mathx10
+      }{}
+\DeclareSymbolFont{mathx}{U}{mathx}{m}{n}
+\DeclareFontSubstitution{U}{mathx}{m}{n}
+\DeclareMathAccent{\widecheck}{0}{mathx}{"71}
 
 \let\vec\mathbf
 
+% Title: change problem set number as needed
 \title
 {
-	\emph{Ordinary differential equations}
+	\emph{Sobolev spaces}
 } 
 
 \author{Jason Zhao}
@@ -74,7 +74,7 @@
 \maketitle
 
 \begin{abstract}
-	We give an exposition of the initial data problem for ordinary differential equations, with a view towards non-linear evolutionary partial differential equations in mind. The material presented borrows a great deal from \cite[Chapter 1]{Tao2006}. 
+	These notes exposit the theory of Sobolev spaces $W^{s, p} (\R^d)$ from an harmonic analysis perspective via the Riesz and Bessel potentials. This definition is robust in that it allows us to define fractional regularity spaces and prove the classical inequalities using Littlewood-Paley theory, which clarifies the underlying role of the uncertainty principle. We draw from \cite[Chapter III]{Stein16} and \cite[Appendix A]{Tao2006}.
 \end{abstract}
 
 \tableofcontents
@@ -82,23 +82,16 @@
 \section{Preliminaries}
 \input{prelim}
 
-\section{Existence}
-\input{exist}
+\section{Sobolev spaces}
+\input{sobolev}
 
-\section{Uniqueness}
-\input{unique}
+\section{Embeddings}
+\input{embed}
 
-\section{Continuous dependence on initial data}
-\input{cts}
-
-\section{Maximal solutions}
-\input{blowup}
-
-\section{Semi-linear equations}
-\input{lin}
+\section{Localisation}
+\input{trace}
 
 \bibliographystyle{alpha}
 \bibliography{biblio}
-
 
 \end{document}
