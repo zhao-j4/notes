@@ -1,0 +1,39 @@
+\documentclass[reqno]{amsart}
+
+\usepackage{external/takodachi}
+
+\renewcommand{\emph}[1]{\textsc{#1}}
+
+\title
+{
+	{Littlewood-Paley theory}
+} 
+
+\author{Jason Zhao}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+	The Littlewood-Paley projections separate the frequencies of a function in a quantitative manner, reducing the study of a generic function to that of its frequency-localised pieces. These notes take inspiration from \cite{Tao2006}, \cite{BahouriEtAl2011}, \cite{Stein16}, \cite{Grafakos2014a}. 
+\end{abstract}
+
+\tableofcontents
+
+\section{Littlewood-Paley projections}
+\input{internal/intro}
+
+\section{Convergence of $P_{1/N \leq - \leq N}$ and $P_{\leq N}$}
+\input{internal/converge}
+
+\section{Estimates}
+\input{internal/properties}
+
+\section{Littlewood-Paley square function}
+\input{internal/square}
+
+\bibliographystyle{alpha}
+\bibliography{external/biblio}
+
+\end{document}

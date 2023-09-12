@@ -1,0 +1,39 @@
+\documentclass[reqno]{amsart}
+
+\usepackage{external/takodachi}
+
+\renewcommand{\emph}{\textsc}
+
+\title
+{
+	\emph{Sobolev spaces}
+} 
+
+\author{Jason Zhao}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+	These notes exposit the theory of Sobolev spaces $W^{s, p} (\R^d)$ from an harmonic analysis perspective via the Riesz and Bessel potentials. This definition is robust in that it allows us to define fractional regularity spaces and prove the classical inequalities using Littlewood-Paley theory, which clarifies the underlying role of the uncertainty principle. We draw from \cite[Chapter III]{Stein16} and \cite[Appendix A]{Tao2006}.
+\end{abstract}
+
+\tableofcontents
+
+\section{Preliminaries}
+\input{internal/prelim}
+
+\section{Sobolev spaces}
+\input{internal/sobolev}
+
+\section{Embeddings}
+\input{internal/embed}
+
+\section{Localisation}
+\input{internal/trace}
+
+\bibliographystyle{alpha}
+\bibliography{external/biblio}
+
+\end{document}
