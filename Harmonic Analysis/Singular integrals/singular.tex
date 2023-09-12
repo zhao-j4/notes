@@ -2,7 +2,7 @@
 
 \usepackage{amsfonts,latexsym,amsthm,amssymb,amsmath,amscd,euscript,bm}
 \usepackage[sc]{mathpazo}
-\usepackage[margin = 2cm]{geometry}
+\usepackage[margin = 2.6cm]{geometry}
 \usepackage{enumitem}
 \usepackage{hyperref}
 % sets numbering of enumerate to a, b, c, ...
@@ -24,37 +24,7 @@
 
 \usepackage{tikz-cd}
 
-\usepackage{thmtools}
-\usepackage[framemethod=TikZ]{mdframed}
-	\mdfdefinestyle{mdrecbox}
-		{%
-			linewidth=0.5pt,
-			skipabove=12pt,
-			frametitleaboveskip=5pt,
-			frametitlebelowskip=0pt,
-			skipbelow=2pt,
-			frametitlefont=\bfseries,
-			innertopmargin=4pt,
-			innerbottommargin=8pt,
-			nobreak=true,
-		}
-	\declaretheoremstyle
-		[
-			headfont=\bfseries,
-			mdframed={style=mdrecbox},
-			headpunct={\\[3pt]},
-			postheadspace={0pt},
-		]
-		{thmrecbox}
-\newcounter{problem}[section]	\declaretheorem[style=thmrecbox,name=Problem, numberlike=problem]{statement}
-
-
-% Solution environment
-\newenvironment{solution}
-	{
-		\begin{proof}[Solution]}{\end{proof}
-	}
-
+\usepackage{graphicx}
 
 % Math blackboard font
 \newcommand{\nc}{\newcommand}
@@ -84,21 +54,14 @@
 \nc{\cE}{\mathcal E}
 
 \nc{\diam}{\operatorname{diam}}
-\nc{\del}{\partial}
-\nc{\osc}{\operatorname{osc}}
-\nc{\inter}{\mathrm{o}}
-\nc{\close}[1]{\overline{#1}}
 \nc{\supp}{\operatorname{supp}}
-\nc{\BV}{\operatorname{BV}}
-\nc{\Per}{\operatorname{Per}}
 \nc{\loc}{\text{loc}}
-\nc{\Lip}{\operatorname{Lip}}
-\nc{\ACL}{\operatorname{ACL}}
 \nc{\pv}{\operatorname{pv}}
 
 % Why the f*** would you ever use \epsilon
 \renewcommand{\epsilon}{\varepsilon}
 \renewcommand{\emph}{\textsc}
+
 \renewcommand{\Re}{\operatorname{Re}}
 \renewcommand{\Im}{\operatorname{Im}}
 %inverse Fourier transform widecheck
@@ -129,7 +92,7 @@
 \begin{abstract}
 	This article surveys the study of linear operators taking the form 
 		\[ Tf(y) := \int_{\R^d} K(x, y) f(x) \, dx \]
-	where $K : \R^d \times \R^d \to \C$ is known as the \textit{kernel} of the \textit{integral operator} $T$. A fundamental problem in harmonic analysis is determining the boundedness of the operator $T$ between function spaces given certain conditions on the kernel $K$. This has applications in establishing the Sobolev embedding inequalities and energy estimates for linear PDE.  
+	where $K : \R^d \times \R^d \to \C$ is known as the \textit{kernel} of the \textit{integral operator} $T$. A fundamental problem in harmonic analysis is determining the boundedness of the operator $T$ between function spaces given certain conditions on the kernel $K$. This has applications in establishing the Sobolev embedding inequalities and energy estimates for linear PDE. Standard references include \cite{Duoandikoetxea2001} and \cite{Stein1970}. 
 \end{abstract}
 
 \tableofcontents
@@ -771,5 +734,8 @@ Since $\widetilde{\psi_N} \equiv 1$ on the support of $\psi_N$, it follows that 
 		\end{align*}
 	This completes the proof. 	
 \end{proof}
+
+\bibliographystyle{alpha}
+\bibliography{biblio}
 
 \end{document}

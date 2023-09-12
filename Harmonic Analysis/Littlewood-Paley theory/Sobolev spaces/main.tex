@@ -1,67 +1,9 @@
 \documentclass[reqno]{amsart}
 
-\usepackage{amsfonts,latexsym,amsthm,amssymb,amsmath,amscd,euscript,bm}
-\usepackage[sc]{mathpazo}
-\usepackage[margin = 2cm]{geometry}
-\usepackage{enumitem}
-\usepackage{hyperref}
-% sets numbering of enumerate to a, b, c, ...
-\renewcommand{\theenumi}{\alph{enumi}}
+\usepackage{external/takodachi}
 
-% Theorems, propositions, etc.
-\newtheorem{theorem}{Theorem}
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{corollary}[theorem]{Corollary}
-
-\theoremstyle{definition}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem*{claim}{Claim}
-
-\theoremstyle{remark}
-\newtheorem*{remark}{Remark}
-\newtheorem*{notation}{Notation}
-
-% Math blackboard font
-\newcommand{\nc}{\newcommand}
-\nc{\on}[1]{\operatorname{#1}}
-
-\nc{\R}{\mathbb R}
-\nc{\C}{\mathbb C}
-\nc{\Q}{\mathbb Q}
-\nc{\Z}{\mathbb Z}
-\nc{\N}{\mathbb N}
-\nc{\HH}{\mathbb H}
-\nc{\TT}{\mathbb T}
-
-\nc{\cM}{\mathcal M}
-\nc{\cR}{\mathcal R}
-\nc{\cS}{\mathcal S}
-\nc{\cF}{\mathcal F}
-
-\nc{\diam}{\operatorname{diam}}
-\nc{\supp}{\operatorname{supp}}
-\nc{\loc}{\text{loc}}
-
-% Why the f*** would you ever use \epsilon
-\renewcommand{\epsilon}{\varepsilon}
 \renewcommand{\emph}{\textsc}
-\renewcommand{\Re}{\operatorname{Re}}
-\renewcommand{\Im}{\operatorname{Im}}
-%inverse Fourier transform widecheck
-\DeclareFontFamily{U}{mathx}{\hyphenchar\font45}
-\DeclareFontShape{U}{mathx}{m}{n}{
-      <5> <6> <7> <8> <9> <10>
-      <10.95> <12> <14.4> <17.28> <20.74> <24.88>
-      mathx10
-      }{}
-\DeclareSymbolFont{mathx}{U}{mathx}{m}{n}
-\DeclareFontSubstitution{U}{mathx}{m}{n}
-\DeclareMathAccent{\widecheck}{0}{mathx}{"71}
 
-\let\vec\mathbf
-
-% Title: change problem set number as needed
 \title
 {
 	\emph{Sobolev spaces}
@@ -80,18 +22,18 @@
 \tableofcontents
 
 \section{Preliminaries}
-\input{prelim}
+\input{internal/prelim}
 
 \section{Sobolev spaces}
-\input{sobolev}
+\input{internal/sobolev}
 
 \section{Embeddings}
-\input{embed}
+\input{internal/embed}
 
 \section{Localisation}
-\input{trace}
+\input{internal/trace}
 
 \bibliographystyle{alpha}
-\bibliography{biblio}
+\bibliography{external/biblio}
 
 \end{document}

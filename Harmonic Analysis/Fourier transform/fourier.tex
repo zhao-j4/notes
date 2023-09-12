@@ -2,7 +2,7 @@
 
 \usepackage{amsfonts,latexsym,amsthm,amssymb,amsmath,amscd,euscript,bm}
 \usepackage[sc]{mathpazo}
-\usepackage[margin = 2cm]{geometry}
+\usepackage[margin = 2.6cm]{geometry}
 \usepackage{enumitem}
 \usepackage{hyperref}
 % sets numbering of enumerate to a, b, c, ...
@@ -55,16 +55,8 @@
 \nc{\cE}{\mathcal E}
 
 \nc{\diam}{\operatorname{diam}}
-\nc{\del}{\partial}
-\nc{\osc}{\operatorname{osc}}
-\nc{\inter}{\mathrm{o}}
-\nc{\close}[1]{\overline{#1}}
 \nc{\supp}{\operatorname{supp}}
-\nc{\BV}{\operatorname{BV}}
-\nc{\Per}{\operatorname{Per}}
 \nc{\loc}{\text{loc}}
-\nc{\Lip}{\operatorname{Lip}}
-\nc{\ACL}{\operatorname{ACL}}
 \nc{\Id}{\operatorname{Id}}
 
 \nc{\Trans}{\operatorname{Trans}}
@@ -102,6 +94,12 @@
 
 \begin{document}
 \maketitle
+
+\begin{abstract}
+	In these notes we study the \textit{Fourier transform},
+		\[ \widehat f (\xi) = \int_{\R^d} e^{-2\pi i x \cdot \xi} f(x) \, dx, \]
+	an integral operator which furnishes the duality between \textit{physical space} $\R^d_x$ and \textit{frequency space} $\R^d_\xi$. Standard texts which were useful in compiling these notes include \cite{Tao2006}, \cite[Chapter 1]{Duoandikoetxea2001}, and \cite{Grafakos2014}. 
+\end{abstract}
 
 \tableofcontents
 
@@ -499,5 +497,8 @@ This implies that the fundamental solution is supported in the forward light con
 	\[ \supp \cF_\xi^{-1} \left( \mathbb 1_{[0, \infty]} (t) \frac{\sin (2\pi t |\xi|)}{2\pi |\xi|} \right) \subseteq \{ (t, x) \in \R_+ \times \R^d_x : t \geq 0 \text{ and } |x| \leq t \}. \]
 Physically, this states that given a point light-source at the origin, waves emitted cannot travel faster than the speed of light, which in this case is normalized to be $c = 1$. 
 \end{remark}
+
+\bibliographystyle{alpha}
+\bibliography{biblio}
 
 \end{document}

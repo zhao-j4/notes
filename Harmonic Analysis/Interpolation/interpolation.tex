@@ -2,7 +2,7 @@
 
 \usepackage{amsfonts,latexsym,amsthm,amssymb,amsmath,amscd,euscript,bm}
 \usepackage[sc]{mathpazo}
-\usepackage[margin = 2cm]{geometry}
+\usepackage[margin = 2.6cm]{geometry}
 \usepackage{enumitem}
 \usepackage{hyperref}
 % sets numbering of enumerate to a, b, c, ...
@@ -24,38 +24,7 @@
 
 \usepackage{tikz-cd}
 
-\usepackage{thmtools}
-\usepackage[framemethod=TikZ]{mdframed}
-	\mdfdefinestyle{mdrecbox}
-		{%
-			linewidth=0.5pt,
-			skipabove=12pt,
-			frametitleaboveskip=5pt,
-			frametitlebelowskip=0pt,
-			skipbelow=2pt,
-			frametitlefont=\bfseries,
-			innertopmargin=4pt,
-			innerbottommargin=8pt,
-			nobreak=true,
-		}
-	\declaretheoremstyle
-		[
-			headfont=\bfseries,
-			mdframed={style=mdrecbox},
-			headpunct={\\[3pt]},
-			postheadspace={0pt},
-		]
-		{thmrecbox}
-	\declaretheorem[style=thmrecbox,name=Example, numberlike=theorem]{examplebox}
-
-\newenvironment{example}
-	{
-	\begin{examplebox} 
-	\leavevmode
-	\begin{enumerate}}
-	{	\end{enumerate} 
-	\end{examplebox}
-	}
+\usepackage{graphicx}
 
 
 % Math blackboard font
@@ -86,20 +55,13 @@
 \nc{\cE}{\mathcal E}
 
 \nc{\diam}{\operatorname{diam}}
-\nc{\del}{\partial}
-\nc{\osc}{\operatorname{osc}}
-\nc{\inter}{\mathrm{o}}
-\nc{\close}[1]{\overline{#1}}
 \nc{\supp}{\operatorname{supp}}
-\nc{\BV}{\operatorname{BV}}
-\nc{\Per}{\operatorname{Per}}
 \nc{\loc}{\text{loc}}
-\nc{\Lip}{\operatorname{Lip}}
-\nc{\ACL}{\operatorname{ACL}}
 
 % Why the f*** would you ever use \epsilon
 \renewcommand{\epsilon}{\varepsilon}
 \renewcommand{\emph}{\textsc}
+
 \renewcommand{\Re}{\operatorname{Re}}
 \renewcommand{\Im}{\operatorname{Im}}
 %inverse Fourier transform widecheck

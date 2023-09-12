@@ -1,0 +1,181 @@
+If we want to reduce the study of tempered distributions or functions to that of their Littlewood-Paley pieces, we need to figure out under what conditions and which topologies do the following limits hold, 
+	\[ f = \lim_{N \to \infty} f_{\leq N} , \qquad f = \lim_{N \to \infty} f_{1/N \leq - \leq N} . \]
+We refer to the former as the limit of  \textit{inhomogeneous} projections, and the latter as the sum of \textit{homogeneous projections}, abbreviating
+	\[ \sum_{N \in 2^\Z} := \lim_{N \to \infty} f_{1/N \leq - \leq N}. \]
+
+
+\subsection{$\cS$ and $\cS^*$-convergence}
+
+The natural starting point is the weakest topology in which these projections could converge: the topology of tempered distributions. By duality, this would follow from proving convergence in the Schwartz topology, which is a straight-forward application of dominated convergence. 
+
+\begin{proposition}[Inhomogeneous projections on $\cS (\R^d)^*$]
+	Let $f \in \cS (\R^d)$ be a Schwartz function, then 
+		\[ f = \lim_{N \to \infty} f_{\leq N} \]
+	in the sense of Schwartz functions. Dually, if $f \in \cS (\R^d)^*$ is a tempered distribution, then the limit holds in the sense of tempered distributions. 
+\end{proposition}
+
+\begin{proof}
+	Since the Fourier transform is an isomorphism, the projections converge $P_{\leq N} f \to f$ in the $\cS (\R^d)$-topology if and only if $\phi_{\leq N} \widehat f \to \widehat f$ also converge in $\cS (\R^d)$-topology. Fix a Schwartz semi-norm indexed by multi-indices $\alpha, \beta \in \N^d_0$, we write using the Leibniz rule
+		\begin{align*}
+			 ||\xi^\alpha \Big( \partial^\beta (1 - \phi_{\leq N}) \widehat f \Big) ||_{L^\infty}
+			 	&\lesssim ||\xi^\alpha (1 - \phi_{\leq N})\partial^\beta \widehat f||_{L^\infty} +  \sum_{0 < \gamma \leq \beta}||\xi^\alpha \partial^{\gamma}  \phi_{\leq N} \partial^{\beta - \gamma} \widehat f ||_{L^\infty} .
+		\end{align*}	 
+	Here we used the triangle inequality to split between the cases where the derivatives only hit $\widehat f$ and when derivatives hit $1 - \phi_{\leq N}$. In the former case, the multiplier $1 - \phi_{\leq N}$ is supported on $|\xi| \gtrsim N$, so the first term on the right vanishes under the limit by rapid decay of $\partial^\beta \widehat f \in \cS (\R^d)$. In the latter case, we compute
+		\[ \partial^\gamma \phi_{\leq N} (\xi) = N^{-|\gamma|} \partial^\gamma \phi (\xi/N). \]
+	As $|\partial^\gamma \phi|, |\xi^\alpha \partial^{\beta - \gamma} \widehat f| \lesssim 1$, the decay from the negative powers of $N$ shows the second term on the right vanishes.
+	
+	For tempered distributions $f \in \cS (\R^d)^*$, the inhomogeneous projections converge pointwise and thus in the $\cS (\R^d)^*$-topology. This follows from self-adjointness of the projections and continuity of tempered distributions, 
+		\begin{align*}
+			\lim_{N \to \infty}\langle  g, P_{\leq N} f \rangle = \lim_{N \to \infty} \langle P_{\leq N} g, f \rangle = \langle g, f \rangle
+		\end{align*}
+	for every $g \in \cS (\R^d)$. 
+\end{proof}
+
+\subsection{Homogeneous spaces}
+
+Formally, the linear map
+	\[ f \mapsto \sum_{N \in 2^\Z} f_N \]
+has non-trivial kernel, namely the tempered distributions with Fourier transform supported at the origin. These are precisely the polynomials $\mathcal P (\R^d)$, so any hope of proving convergence in the homogeneous case must be up to polynomials. Moreover, this map isn't even well defined! We write $(1 - P_{1/N \leq - \leq N}) f$ in frequency space as the sum of a \textit{low frequency tail} and \textit{high frequency tail},
+	\[ (1 - \psi_{1/N \leq - \leq N}) \widehat f = \phi_{\leq 1/N} \widehat f + (1 - \phi_{\leq N}) \widehat f .\]
+Let $f \in \cS (\R^d)$, and consider the Schwartz semi-norms. The high frequencies are dealt with exactly as in the inhomogeneous case. The problem arises when derivatives hit the low frequencies, as $\partial^\beta \phi_{\leq 1/N} (x) = N^{|\beta|} \partial^\beta \phi(Nx)$ grows in amplitude as $N \to \infty$. To get around this issue, note $\phi_{\leq 1/N}$ is supported at frequencies $|\xi| \lesssim 1/N$, so multiplying by a function which vanishes to infinite order allows us to ``defeat'' this growth via Taylor's theorem. 
+
+Define the \emph{homogeneous Schwartz space} $\dot \cS (\R^d)$ as the space of Schwartz functions whose Fourier transform vanishes to every order at the origin, 
+	\[\dot \cS (\R^d) := \{ f \in \cS (\R^d) : \nabla^k \widehat f (0) = 0 \text{ for every $k$} \}. \]
+As expected from our initial remark, the dual space is the space of tempered distributions modulo the space of polynomials $\mathcal P (\R^d)$.
+
+\begin{proposition}
+	The dual space of the homogeneous Schwartz space is
+		\[ \dot \cS (\R^d)^* = \cS(\R^d)^* / \mathcal P (\R^d). \]
+\end{proposition}
+
+\begin{proof}
+	Define $T: \cS (\R^d)^* \to \dot \cS (\R^d)^*$ be the restriction map
+		\[ T u := u_{|\dot \cS (\R^d)}.  \]
+	We claim that the restriction map is surjective and the kernel is precisely the space of polynomials. The first isomorphism theorem furnishes the result. Surjectivity follows from Hahn-Banach, so it remains to study the kernel. 	Suppose $u \in \operatorname{ker} T$, then by Plancharel 
+		\[ 0 = \langle u, \phi \rangle = \langle \widehat u, \widehat \phi \rangle \]
+	for all $\phi \in \dot \cS (\R^d)$. Since $\widehat \phi$ vanishes to infinite order at the origin, it follows that $\widehat u$ must be supported at the origin. Such distributions are derivatives of the Dirac mass at the origin, which upon applying the Fourier inverse shows that $u$ is a polynomial. 
+\end{proof}	
+
+\begin{proposition}[Homogeneous projections on $\dot \cS (\R^d)^*$]
+	Let $f \in \cS (\R^d)$ be a Schwartz function, then 
+		\[ f = \sum_{N \in 2^\Z} f_N \]
+	in the sense of Schwartz functions if and only if $f \in \dot \cS (\R^d)$. Dually, if $f \in \cS (\R^d)$ is a tempered distribution, then the series holds in the sense of tempered distributions up to polynomials. 	
+\end{proposition}
+
+Of course, we are interested in the theory of tempered distributions for the sake of studying partial differential equations. It's quite technically annoying and unsatisfying to solve an equation in a quotient space, so one might ask under what conditions does the formula $f = \sum_N f_N$ hold? 
+
+\begin{proposition}[Homogeneous projections on $\cS (\R^d)^*$]
+	Let $f \in \cS(\R^d)^*$, then 
+		\[ f = \sum_{N \in 2^\Z} f_N \]
+	in the sense of tempered distributions if and only if the low frequency tail vanishes in the sense of tempered distributions,
+		\[ \lim_{N \to \infty} f_{\leq 1/N} = 0. \]	
+\end{proposition}
+
+\begin{remark}
+	Failure of convergence for low frequencies is sometimes known as \textit{infrared divergence}. 
+\end{remark}
+
+Define the space of tempered distributions for which the representation formula $f = \sum_N f_N$ holds by 
+	\[ \cS_h^* := \{ f \in \cS (\R^d)^* :  \lim_{N \to \infty} f_{\leq 1/N} = 0\}.  \]
+The low frequency projections act identically on polynomials, so this space does not contain any polynomials, which were the main obstruction to the representation formula from holding. However, we have to pay a price for this formula; this is not a closed subspace of $\cS (\R^d)^*$. For example, take any $f \in \cS (\R^d)$ such that $f (0) = 1$, then the rescalings $f_n (x) := f(x/n)$ converge to the constant function $1$. 
+\begin{example}
+	The following are sufficient conditions for $f \in \cS_h^*$:
+\begin{itemize}
+		\item $||f_{\leq 1/N}||_{L^\infty} \to 0$ since the $L^\infty$-topology is stronger than the $\cS^*$-topology. This is the approach taken by \cite{BahouriEtAl2011} in the interest of \textit{realising} the homogeneous Besov spaces. 
+		
+		\item $\widehat f$ is locally integrable near the origin. In particular, the space of compactly supported distributions is a subspace, $C^\infty (\R^d)^* \subseteq \cS^*_h$. 
+\end{itemize}
+\end{example}	
+
+
+
+
+\subsection{$L^p$-convergence}
+
+We prove the projections converge to $f \in L^p (\R^d)$ in the norm topology modulo modifications at the endpoints $p = 1, \infty$. This is particularly useful in the homogeneous case $f = \sum_N f_N$, as it allows us to use the triangle inequality with impunity and estimate
+	\[ ||f||_{L^p} \leq \sum_{N \in 2^\Z} ||f_N||_{L^p} .\]
+playing into the philosophy that if one wants to study $f$, it suffices to study each of its Littlewood-Paley pieces. 
+
+\begin{proposition}[$L^p$-boundedness]
+	Let $1 \leq p \leq \infty$, then 
+		\[||f_N||_{L^p}  \lesssim ||f||_{L^p},\]	
+	uniformly for $f \in L^p (\R^d)$ and $N \in 2^\Z$. The analogous inequality holds replacing $f_N$ with $f_{\leq N}$. \label{prop:bounded}
+\end{proposition}
+
+\begin{proof}
+	We prove the results for $f_N$, the proof is analogous for $f_{\leq N}$. It follows from Young's convolution inequality and a change of variables $Nx = y$ that 
+		\[ ||f_N||_{L^p} = || f * \widecheck{\psi_N} ||_{L^p} \leq ||f||_{L^p} ||N^d \widecheck \psi (Nx)||_{L^1_x} = ||f||_{L^p} ||\widecheck \psi (y) ||_{L^1_y}. \] 
+	This proves boundedness in $L^p (\R^d)$. 
+\end{proof}
+
+\begin{proposition}[$L^p$-convergence, non-endpoint]
+	Let $1 < p < \infty$ and $f \in L^p (\R^d)$, then
+		\[ f = \lim_{N \to \infty} f_{\leq N} = \sum_{N \in 2^\Z} f_N \]
+	in $L^p$-norm. \label{prop:converge}
+\end{proposition}
+
+\begin{proof}
+	By Plancharel and dominated convergence, the result clearly hold for $p = 2$. For $p \neq 2$, we first show convergence in $L^p$-norm for Schwartz $f \in \cS (\R^d)$ via interpolation, and then extend to general $L^p$-functions by density. Consider the case where $1 < p < 2$, and let $0 < \theta < 1$ satisfy $\tfrac1p = \tfrac{\theta}{1} + \tfrac{1 - \theta}{2}$, then 
+		\begin{align*}
+			 ||f_{\leq N} - f||_{L^p} 
+					 	&\leq ||f_{\leq N} - f||_{L^1}^\theta ||f_{\leq N} - f||_{L^2}^{1 - \theta}\\
+					 	& \lesssim ||f||^\theta_{L^1}||f_{\leq N} - f||_{L^2}^{1 - \theta} \overset{N \to \infty}{\longrightarrow} 0. 
+		\end{align*}
+	In the case $2 < p < \infty$, let $0 < \theta < 1$ satisfy $\tfrac1p = \tfrac\theta2 + \tfrac{1 - \theta}{\infty}$, then 
+				\begin{align*}
+					 ||f_{\leq N} - f||_{L^p} 
+					 	&\leq ||f_{\leq N} - f||_{L^2}^\theta ||f_{\leq N} - f||_{L^\infty}^{1 - \theta}\\
+					 	& \lesssim ||f_{\leq N} - f||_{L^2}^{\theta}   ||f||^{1 - \theta}_{L^\infty}\overset{N \to \infty}{\longrightarrow} 0. 
+				\end{align*}	
+	Suppose now $f \in L^p (\R^d)$, then for every $\epsilon > 0$ there exists $g \in \cS (\R^d)$ such that $||f - g||_{L^p} < \epsilon$. By the triangle inequality and convergence in $L^p$-norm for Schwartz functions, we have 
+		\begin{align*}
+			||f_{\leq N} - f ||_{L^p} 								&\leq || g_{\leq N} - g||_{L^p} + ||f - g||_{L^p} + ||(f - g)_{\leq N}||_{L^p}\lesssim \epsilon.
+		\end{align*}		
+	for $N \gg 1$. 	
+\end{proof}
+
+At the $p = \infty$ endpoint, we recall from Paley-Wiener that each Littlewood-Paley piece is analytic and thus continuous. Continuous functions form a closed subspace of $L^\infty (\R^d)$, so continuity is a necessary condition for convergence to hold in the uniform topology. 
+
+\begin{proposition}[$L^\infty$-convergence]
+	Let $f \in C_0 (\R^d)$, then
+		\[ f = \lim_{N \to \infty} f_{\leq N} = \sum_{N \in 2^\Z} f_N \]
+	in $L^\infty$-norm. Conversely, if $f \in L^\infty (\R^d)$ and the limit holds, then $f$ is continuous. \label{prop:inftyconv}
+\end{proposition}
+
+\begin{proof}
+	As in the $L^p$-case, to show convergence it suffices to show the result for $f \in \cS (\R^d)$ as the Schwartz space is dense in $C_0 (\R^d)$ in the uniform topology. In place of interpolation, we instead use the $L^1 \to L^\infty$-inequality of the Fourier transform and dominated convergence,
+		\[ || f_{\leq N} - f||_{L^\infty} \leq || \phi_{\leq N} \widehat f - \widehat f||_{L^1} \overset{N \to \infty}{\longrightarrow} 0. \]
+	Conversely, if the limit holds, then $f$ must be continuous, since the Littlewood-Paley projections are continuous and continuity is preserved under uniform limits. 	
+\end{proof}
+
+At the endpoint $p = 1$, the Fourier integrals of $f \in L^1 (\R^d)$ are well-defined. In particular, the mean is given precisely by the contribution from frequency zero, $\int f = \widehat f (0)$. Thus the homogeneous projections $f_{1/N \leq - \leq N}$ have mean zero, which if they converge to $f$ in $L^1$-norm would imply $f$ also has mean zero.  Again, we see a difference between the homogeneous and inhomogeneous cases due to low frequencies. 
+
+\begin{proposition}[$L^1$-convergence]
+	Let $f \in L^1 (\R^d)$, then 
+		\[ f = \lim_{N \to \infty} f_{\leq N} \]
+	in $L^1$-norm. In the homogeneous case, convergence holds
+		\[ f = \sum_{N \in 2^\Z} f_N \]
+	in $L^1$-norm if and only if $\int f = 0$. 
+\end{proposition}
+
+\begin{proof}
+	By density, let us assume $f \in C^\infty_c (\R^d)$, in which case by Proposition \ref{prop:inftyconv} we know convergence holds pointwise. It follows from Fatou's lemma and the triangle inequality that 
+		\[ ||f_{\leq N} - f||_{L^1} \leq \sum_{K \geq N} ||f_K||_{L^1} \]
+	and 
+		\[ ||f_{1/N \leq - \leq N} - f||_{L^1} \leq ||f_{\leq 1/N}||_{L^1} + \sum_{K \geq N} ||f_K||_{L^1} . \]
+	For the high frequency terms $K \geq N$, we can gain decay in the sum by paying a derivative on $f$ via the Sobolev-Bernstein inequality,
+		\[ \sum_{K \geq N} ||f_K||_{L^1} \sim \sum_{K \geq N} K^{-1} || |\nabla| f_K||_{L^1} \lesssim \sum_{K \geq N} K^{-1} || |\nabla| f||_{L^1} \sim N^{-1} || |\nabla| f||_{L^1} \overset{N \to \infty}{\longrightarrow} 0.\]
+	This proves the inhomogeneous case. To finish the proof of the homogeneous case, we similarly get decay of the low frequency terms by paying a derivative now on the kernel of the projection. More precisely, assume $\int f = 0$,  we can then write pointwise
+		\begin{align*}
+			 f_{\leq 1/N} (x) = (f * \widecheck{\phi_{\leq 1/N}})(x)
+				&= N^{-d} \int_{\R^d} f(y)   \widecheck \phi(N^{-1} (x - y))  \, dy \\
+				&= N^{-d} \int_{y \in \supp f} f(y)  \Big( \widecheck \phi(N^{-1} (x - y)) - \widecheck \phi(N^{-1} x) \Big) \, dy\\							&= N^{-d} \int_{y \in \supp f} f(y)  \Big(N^{-1} y \cdot \int_0^1 \nabla \widecheck \phi(N^{-1} x - \theta N^{-1} y )\, d \theta \Big) \, dy,
+		\end{align*}
+	where we use the mean-zero condition in the second line and the fundamental theorem of calculus in the third line. We can estimate the inner integrand $|\nabla \widecheck \phi (N^{-1} x - \theta N^{-1}y)| \lesssim_f \langle N^{-1} x \rangle^{-100d}$, since $y$ is in the compact support of $f$ and $\nabla \widecheck \phi \in \cS (\R^d)$. Taking the $L^1$-norm of the above, we obtain
+			\begin{align*}
+				||f_{\leq 1/N} ||_{L^1}								&\lesssim N^{-d - 1} \int_{\R^d} \int_{y \in \supp f} \frac{|y|}{\langle N^{-1}x \rangle^{100d}}|f(y)| dy dx   \sim_{f, d} N^{-1} \overset{N \to \infty}{\longrightarrow} 0,
+					\end{align*}	
+	as desired. To show necessity of the mean-zero condition, note that $\int f_{1/N \leq - \leq N} = \widehat{f_{1/N \leq - \leq N}} (0) = 0$, so convergence in $L^1$-norm would imply that $\int f = 0$. 
+\end{proof}	
+
+

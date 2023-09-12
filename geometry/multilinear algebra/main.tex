@@ -1,0 +1,44 @@
+\documentclass[reqno]{amsart}
+
+\usepackage{external/takodachi}
+\renewcommand{\emph}{\textsc}
+
+% Title: change problem set number as needed
+\title
+{
+	\emph{Multi-linear algebra}
+} 
+
+\author{Jason Zhao}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+	These notes serve as a short primer for multi-linear algebra with a view towards geometry. We use \cite[Chapter 12]{Lee2012} as a reference. 
+\end{abstract}	
+
+\tableofcontents
+
+\section{Change of basis}
+\input{internal/intro}
+
+\section{Tensors}
+\input{internal/tensor}
+
+\section{Symmetric and alternating tensors}
+\input{internal/sym}
+
+\section{Tensor algebra}
+\input{internal/product}
+
+\section{Exterior algebra}
+\input{Internal/exterior}
+
+\section{Inner products}
+\input{Internal/inner}
+
+\bibliographystyle{alpha}
+\bibliography{external/biblio}
+\end{document}
