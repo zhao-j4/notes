@@ -1,0 +1,46 @@
+\documentclass[reqno]{amsart}
+
+\usepackage{external/takodachi}
+\graphicspath{ {./graphics/} }
+\renewcommand{\emph}[1]{\textsc{#1}}
+
+\title
+{
+	{Ordinary differential equations}
+} 
+
+\author{Jason Zhao}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+	We give an exposition of the initial data problem for ordinary differential equations, with a view towards non-linear evolutionary partial differential equations in mind. The material presented borrows a great deal from \cite[Chapter 1]{Tao2006}. 
+\end{abstract}
+
+\tableofcontents
+
+\section{Preliminaries}
+\input{internal/prelim}
+
+\section{Existence}
+\input{internal/exist}
+
+\section{Uniqueness}
+\input{internal/unique}
+
+\section{Continuous dependence on initial data}
+\input{internal/cts}
+
+\section{Maximal solutions}
+\input{internal/blowup}
+
+\section{Semi-linear equations}
+\input{internal/lin}
+
+\bibliographystyle{alpha}
+\bibliography{external/biblio}
+
+
+\end{document}

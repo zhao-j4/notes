@@ -1,0 +1,108 @@
+A tensor is an object which encodes information about a multi-linear relationship between vectors and co-vectors. We present three equivalent definitions which are well-suited for their respective contexts. 
+
+
+
+\subsection{Multi-linear functionals}
+
+The simplest and most intuitive definition of a tensor is that it is a multi-linear functional, i.e. a functional which is linear in each of its arguments. A \emph{$(k, \ell)$-tensor} is a $(k + \ell)$-linear functional
+	\[ \overbrace{V^* \times \dots \times V^*}^{\text{$k$-copies}} \times \overbrace{V \times \dots \times V}^{\text{$\ell$-copies}}  \to \R. \]
+We denote the \emph{space of $(k, \ell)$-tensors} by $T^{(k, \ell)} (V)$, where by convention $T^{(0, 0)} (V) := \R$. More precisely, this is the space of tensors which are $k$-contravariant and $\ell$-covariant. 
+
+\begin{example}
+\leavevmode
+\begin{enumerate}
+	\item A vector, using the natural identification with the double dual space, $v\in V$ is a $(1, 0)$-tensor, while a co-vector $\omega \in V^{*}$ is a $(0, 1)$-tensor. 
+	
+	\item An inner product $ g: V \times V \to \R$ is a symmetric $(0, 2)$-tensor. 
+	
+	\item A linear transformation $T : V \to V$ can be identified with the $(1, 1)$-tensor given by 
+			\[ (\omega, v) \mapsto \langle T(v), \omega \rangle.\]
+		More generally, if $T: (V^*)^k \times V^\ell \to V$ is multi-linear, then it can be identified with the $(k + 1, \ell)$-tensor
+			\[ (\omega_1, \dots, \omega_k, \omega_{k + 1}, v_1, \dots, v_\ell) \mapsto \langle T(\omega_1, \dots, \omega_k, v_1, \dots, v_\ell) , \omega_{k + 1}\rangle .\]
+		
+	
+	\item In view of (c), the cross product $\times : \R^3 \times \R^3 \to \R^3$ is a $(1, 2)$-tensor. 
+
+\end{enumerate}
+\end{example}
+
+
+\subsection{Coordinate representations}
+
+When performing computations with tensors, it is convenient to work with the coordinate representations. These coordinates are defined with respect to a natural choice of basis for the space of tensors. Abbreviating the multi-indices $I:= (i_1, \dots, i_k)$ and $J := (j_1 ,\dots j_\ell)$, the collection of tensors $\{ e_{i_1} \otimes \dots \otimes e_{i_k} \otimes \epsilon^{j_1} \otimes \dots \otimes \epsilon^{j_\ell} \}_{I, J} \subseteq T^{(k, \ell)} (V)$ forms a basis. More precisely, each $T \in T^{(k, \ell)} (V)$ admits the unique \emph{coordinate representation}
+		\begin{align*}
+			T 
+				&= T^{i_1\dots i_k}_{j_1 \dots j_\ell} e_{i_1} \otimes \dots \otimes e_{i_k} \otimes \epsilon^{j_1} \otimes \dots \otimes \epsilon^{j_\ell} ,
+		\end{align*}
+	with coordinates given by $T^{i_1\dots i_k}_{j_1 \dots j_\ell} := T(\epsilon_{i_1}, \dots , \epsilon_{i_k} ,e^{j_1} , \dots, e^{j_\ell})$. This also shows that $\dim T^{(k, \ell)} (V) = (\dim V)^{k + \ell}$. This can be checked by evaluating $T$ and its coordinate representation on $k$-tuples of co-vectors $\omega = \omega_i \epsilon^i$ and $\ell$-tuples of vectors $v = v^i e_i$, computing each appropriately to show that they agree, and that the coefficients vanish $ T^{i_1\dots i_k}_{j_1 \dots j_\ell} = 0$ if and only if $T \equiv 0$. These coordinates obey the \emph{transformation law}
+		\[ \widetilde T^{i_1'\dots i_k'}_{j_1' \dots j_\ell'} = (C^{-1})^{i_1'}_{i_1} \cdots  (C^{-1})^{i_k'}_{i_k} T^{i_1\dots i_k}_{j_1\dots j_\ell} C^{j_1}_{j_1'} \cdots C^{j_\ell}_{j_\ell'}, \]
+	where $\{ \widetilde T^{i_1'\dots i_k'}_{j_1' \dots j_\ell'} \}_{I, J} \subseteq \R$ denote the unique coordinates with respect to the basis $\{\widetilde e_j\}_j$. That is, the upper indices transform contravariantly, i.e. with respect to the inverse change of basis matrix, and the lower indices transform covariantly, i.e. with respect to the change of basis matrix. We sometimes indent the indices if the order of the arguments is important, e.g. if $T: V \times V^* \times V \to \R$ is multi-linear, then 
+		\[ T = T\indices{_\alpha^\beta_\gamma} \epsilon^\alpha \otimes e_\beta \otimes \epsilon^\gamma. \] 
+
+\begin{example}
+\leavevmode
+\begin{enumerate}
+	\item Vectors and co-vectors have coordinate representations $v = v^i e_i$ and $\omega = \omega^j \epsilon_j$, where the coordinates can be computed by testing against the dual basis $v^i := \langle v, \epsilon^i \rangle$ and $\omega_j := \langle e_j, \omega \rangle$. 
+	
+	
+	\item If $\{e_i\}_i \subseteq V$ is an orthonormal basis with respect to the inner product $g : V \times V \to \R$, then $g = \delta^{ij} \epsilon_i \otimes \epsilon_j$.
+	
+	\item We can write the image of the basis under a linear transformation $T: V \to V$ as $Te_i = T^j_i e_j$. The coefficients $T^j_i$ are precisely those when $T$ is viewed as a $(1, 1)$-tensor in this basis. 
+	
+	\item Let $\{e_1, e_2, e_3\} \subseteq \R^3$ be the standard Euclidean basis, then the cross product is $v \times w = \epsilon\indices{^i_j_k}  e_i v^j w^k$.
+	
+\end{enumerate}
+\end{example}
+	
+\begin{remark}
+	In view of the existence and uniqueness of coordinates, we can alternatively characterise a tensor as a map sending a basis for $V$ to a $(k + \ell)$-dimensional array of coordinates satisfying the transformation law. Denote $\operatorname{Fr} (V)$ the space of ordered bases on $V$, there is a natural action by the general linear group $\mathsf{GL} (\R^n)$. Let $\rho : \mathsf{GL} (\R^n) \to \mathsf{GL} (\R^{n^{k + \ell}})$ be the group homomorphism 
+		\[ 
+			\rho(C) 
+				:=
+				\operatorname{diag} (\overbrace{C^{-1}, \dots, C^{-1}}^{k\text{-times}}, \overbrace{C, \dots, C}^{\ell\text{-times}}).
+		\]
+	Then a $(k, \ell)$-tensor is a map $T: \operatorname{Fr} (V) \to \R^{n^{k + \ell}}$ which is $\rho$-equivariant, 
+		\[ T(C \beta) = \rho(C) T(\beta). \]
+	This is the perspective of \textit{representation theory}; we will not need this level of abstract nonsense. 
+	
+	\end{remark}	
+	
+\subsection{Tensor products of vector spaces}
+
+In linear algebra, a vector is defined as an element of a vector space. Analogously, we can take an intrinsic approach to tensors, viewing them as elements of an algebraic construction. For notational convenience, we work in full generality: let $V_1, \cdots, V_k$ be real vector spaces, the \emph{free vector space} $F(V_1 \times \dots \times V_k)$ is the set of all formal linear combinations of symbols $(v_1, \dots, v_k) \in V_1 \times \dots \times V_k$. Let $R(V_1 \times \dots \times V_k) \hookrightarrow F(V_1 \times \dots \times V_k)$ be the subspace generated by the $k$-linear relations
+	\[		(v_1, \dots, av_i, \dots, v_k) - a(v_1, \dots, v_i, \dots, v_k), \]
+	\[	
+		(v_1, \dots, v_i + w_i, \dots, v_k) - (v_1, \dots, v_i, \dots, v_k) - (v_1, \dots, w_i, \dots, v_k)
+	\]
+for $v_j, w_j \in V_j$ and $a \in \R$ and $i = 1, \dots, k$. The \emph{tensor product} of $V_1, \dots, V_k$ is defined as the quotient 
+	\[ V_1 \otimes \dots \otimes V_k := F(V_1 \times \dots \times V_k) / R(V_1 \times \dots \times V_k).\]
+
+
+\begin{lemma}[Universal property of tensor products]
+	Let $V_1, \dots, V_k$ and $U$ be finite dimensional vector spaces and denote by $\iota : V_1 \times \dots \times V_k \to V_1 \otimes \dots \otimes V_k$ the $k$-linear map $(v_1, \dots, v_k) \mapsto v_1 \otimes \dots \otimes v_k$. Then for every $k$-linear map $\phi : V_1 \times \dots \times V_k \to U$, there exists a unique linear map $\widetilde \phi :  V_1 \otimes \dots \otimes V_k  \to U$ such that the diagram commutes
+	\begin{center}
+		\begin{tikzcd}
+V_1 \times \dots \times V_k \arrow[r, "\iota"] \arrow[rd, "\phi"'] &  V_1 \otimes \dots \otimes V_k  \arrow[d, "\widetilde \phi"] \\
+                                           & U                                         
+\end{tikzcd}
+	\end{center}
+\end{lemma}
+
+\begin{proof}
+	By the universal property of free vector spaces, there exists a unique linear map $\overline \phi : F(V_1 \times \dots V_k) \to U$ induced by 
+		\[ \overline \phi (v_1, \dots, v_k) := \phi(v_1, \dots, v_k).  \]
+	We see from $k$-linearity of $\phi$ that $R(V_1 \times \dots \times V_k) \hookrightarrow \ker \overline \phi$, so $\overline \phi$ descends to $\widetilde \phi : V_1 \otimes \dots \otimes V_k \to U$ the unique linear map satisfying 
+		\[ \widetilde \phi (v_1 \otimes \dots \otimes v_k) = \overline \phi (v_1, \dots, v_k) = \phi(v_1, \dots, v_k). \]
+	The condition above can be rewritten as $\widetilde \phi \circ \iota = \phi$, completing the proof. 
+\end{proof}
+
+\begin{theorem}[Equivalence of definitions]
+	Let $V$ be a finite dimensional vector space, then there is a canonical isomorphism
+		\[ {V}^{\otimes k} \otimes {(V^*)}^{\otimes \ell} \cong T^{(k, \ell)} (V).  \]
+\end{theorem}
+
+\begin{proof}
+	Each tensor $T \in T^{(k, \ell)} (V)$ is a mult-linear map $T: (V^*)^k \times V^\ell  \to \R$, so by the universal property there exists unique corresponding linear map $\widetilde T : {(V^*)}^{\otimes k} \otimes {V}^{\otimes \ell} \to \R$, which we can view as an element of the dual space $\widetilde T \in ({(V^*)}^{\otimes k} \otimes {V}^{\otimes \ell})^*$. It is easy to check that the map $T \mapsto \widetilde T$ is linear, and furthermore by the universal property we can construct a natural isomorphism between the dual of tensor products and the tensor products of dual spaces, $({(V^*)}^{\otimes k} \otimes {V}^{\otimes \ell})^* \cong {V}^{\otimes k} \otimes {(V^*)}^{\otimes \ell}$. This completes the proof. 
+\end{proof}
+
+

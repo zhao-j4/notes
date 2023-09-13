@@ -1,0 +1,113 @@
+The starting point for the study of fractional differential and integral operators is the observation that the Fourier transform maps differentiation to multiplication by a monomial, namely 
+	\[\widehat{\nabla u} (\xi) = 2\pi i \xi \widehat u (\xi).\]
+We see from the formula above that differentiation \textit{accentuates} high frequencies and \textit{diminishes} low frequencies. Conversely, we expect integration to diminish high frequencies and accentuate low frequencies. The natural way to generalise the formula above is to replace the monomial $2\pi i \xi$ with fractional powers $|2\pi i \xi|^s$, where positive powers $s > 0$ correspond then to differential operators, and negative powers $s < 0$ to integrals. 
+
+
+\subsection{Riesz potential}
+
+For $s \in \R$ and $u \in \cS (\R^d)$, define the \emph{Riesz potential} to be the Fourier multiplier
+	\[ \widehat{(|\nabla|^s u)} (\xi) := |2\pi i \xi|^s \widehat u(\xi).  \]	
+The multiplier $|2\pi i \xi|$ is smooth, non-vanishing, and grows linearly at infinity on $\R^d \setminus 0$, however it is non-differentiable and vanishes at the origin. Thus it does not quite map the Schwartz space onto itself, so to remedy this, define the \emph{homogeneous Schwartz space} $\dot \cS (\R^d)$ as the space of Schwartz functions whose Fourier transforms vanish to infinite order at the origin,  
+	\[ \dot \cS (\R^d) := \{ u \in \cS (\R^d) : \nabla^k \widehat u (0) = 0 \text{ for all $k$} \}. \]
+The Riesz potentials map the homogeneous Schwartz space onto itself isomorphically, $|\nabla|^s : \dot \cS (\R^d) \to \dot \cS (\R^d)$, with the obvious inverse $|\nabla|^s |\nabla|^{-s} = \operatorname{Id}$. Furthermore, this subspace is still generic enough for us to apply density arguments, 
+
+\begin{lemma}[Genericity of $\dot \cS (\R^d)$]
+	Let $f \in \cS(\R^d)$ and $1 \leq p < \infty$, then there exists $\{ g_\epsilon\}_{\epsilon > 0} \subseteq \dot \cS (\R^d)$ such that $||f - g_\epsilon||_{L^p} \to 0$. In particular, $\dot \cS (\R^d)$ is dense in $L^p (\R^d)$. 
+\end{lemma}
+
+\begin{proof}
+	Let $\phi \in C^\infty_c (\R^d)$ be a bump function satisfying $\phi \equiv 1$ for $|\xi| \leq 1$. Define 
+		\[ \widehat{g_\epsilon} (\xi) := \widehat g (\xi) (1 - \phi(\xi/\epsilon)). \]
+	By construction the Fourier transform of $g_\epsilon$ vanishes in a neighborhood of the origin, so in particular $g_\epsilon \in \dot \cS  (\R^d)$. Writing $g - g_\epsilon = g * \epsilon^d \phi(\epsilon - )$, it follows from Young's inequality and a change of variables $\epsilon x = y$ that 
+		\[ ||g - g_\epsilon||_{L^p} \leq ||g||_{L^1} ||\epsilon^d \phi(\epsilon x)||_{L^p_x} \lesssim \epsilon^{d - \frac{d}{p}} ||\phi(y)||_{L^p_y} \overset{\epsilon \to 0}{\longrightarrow} 0,  \]
+	as desired. 	
+\end{proof}
+
+For $-d < s < 0$, the multiplier $|2\pi i \xi|^s$ decays at infinity and is locally integrable at the origin, so $|\nabla|^s$ can be well-defined as an integral operator on $\cS (\R^d)$. To compute its kernel, we remark that $|2\pi i \xi|^s$ is homogeneous of order $s$, so in view of the Fourier transform, the corresponding kernel has homogeneity of order $-d - s$. 
+	
+\begin{proposition}[Kernel of Riesz potential]
+	Let $0 < \alpha < d$, then 
+		\[ \widecheck{|2\pi i \xi|^{-\alpha}} = 2^{-\alpha} \pi^{- d/2} \frac{\Gamma (\frac{d - \alpha}{2})}{\Gamma(\frac{\alpha}{2})} |x|^{\alpha - d}. \]
+\end{proposition}
+
+\begin{proof}
+	The key observation is that $|\xi|$ can be expressed as a weighted integral in $t$ of Gaussians $\{  e^{-\pi t |\xi|^2}\}_{t > 0}$. Indeed, making the change of variables $u = \pi t|\xi|^2$, we compute
+		\begin{align*}
+			\int_0^\infty e^{-\pi t |\xi|^2} t^{\frac{\alpha}{2}} \frac{dt}{t}
+				&= \int_0^\infty e^{-u} \left( \frac{u}{\pi |\xi|^2} \right)^{\frac{\alpha}{2}} \frac{du}{u}\\
+				&= \frac{|\xi|^{-\alpha}}{\pi^{\frac{\alpha}{2}}} \int_0^\infty e^{-u} u^{\frac{\alpha}{2}} \frac{du}{u} = \Gamma \left(\frac{\alpha}{2}\right) \frac{|\xi|^{-\alpha}}{\pi^{\frac{d - \alpha}{2}}}.
+		\end{align*}	
+	Taking the inverse Fourier transform of the left-hand side formally, noting that the computation can be made rigorous in the sense of tempered distributions using Fubini's theorem, 
+		\begin{align*}
+			\widecheck{\int_0^\infty e^{-\pi t |\xi|^2} t^{\frac{\alpha}{2}} \frac{dt}{t}}
+				&= \int_0^\infty e^{-\pi |x|^2/t} t^{\frac{\alpha - d}{2}} \frac{dt}{t} = \Gamma \left(\frac{d - \alpha}{2}\right) \frac{|x|^{\alpha - d}}{\pi^{\frac{\alpha}{2}}},
+		\end{align*}
+	where the first equality is the Fourier transform of Gaussians $\widecheck{e^{-\pi t |\xi|^2}} = e^{-\pi |x|^2/t} t^{-d/2}$ and the second equality is an application of our initial computation, replacing $\alpha$ with $d - \alpha$. Rearranging completes the proof. 
+\end{proof}
+
+\begin{remark}
+	This computation furnishes the fundamental solution of the Laplacian for dimension $d \geq 3$. Indeed, Laplace's equation takes the form, in physical space and frequency space respectively, 
+	\begin{align*}
+		\Delta u
+			&= f, \\
+		4\pi^2 |\xi|^2 \widehat u
+			&= \widehat f.	
+	\end{align*}
+	Thus, for example, in dimension $d = 3$, the solution is given by 
+		\[ \widehat u (\xi) = \frac{1}{4\pi |\xi|^2} \widehat f(\xi) = \widehat{ \frac{1}{4\pi |x|} * f} (\xi). \]
+\end{remark}
+
+\begin{remark}
+	The integral operator $\mathcal I_\alpha u := \widecheck{|2\pi i \xi|^{-\alpha}} * u$ is traditionally known as the \textit{Riesz fractional integration} operator. Inversely, we can view the positive order operator $|\nabla|^s$ for $s > 0$ as \textit{fractional differentiation} operator. 
+\end{remark}
+
+
+
+\subsection{Bessel potential}
+
+For $s \in \R$ and $u \in \cS (\R^d)$, define the \emph{Bessel potential} to be the Fourier multiplier
+	\[ \widehat{(\langle \nabla \rangle^s u)} (\xi) := \langle 2\pi i \xi \rangle^s \widehat u (\xi).  \]
+The multiplier $\langle 2\pi i \xi \rangle = (1 + 4\pi^2 |\xi|^2)^{1/2}$ is smooth, non-vanishing, and grows linearly at infinity, so the Bessel potential maps Schwartz space onto itself isomorphically, $\langle \nabla \rangle^s : \cS (\R^d) \to \cS (\R^d)$ with the obvious inverse $\langle \nabla \rangle^s \langle \nabla \rangle^{-s} = \operatorname{Id}$. By construction, the Bessel potential treats high frequencies the same as the Riesz potential, however it has the advantage that low frequencies are better treated. 
+
+\begin{proposition}[Kernel of Bessel potential]
+	Let $\alpha > 0$, then 
+		\[\widecheck{\langle 2\pi i \xi \rangle^{-\alpha}}  = \frac{1}{(4\pi)^{\frac\alpha2} \Gamma(\frac\alpha2)} \int_0^\infty  e^{- \frac{\pi |x|^2}{t}} e^{-\frac{t}{4\pi}}  t^{\frac{\alpha - d}{2}} \, \frac{dt}{t}. \]
+\end{proposition}
+
+\begin{proof}
+	We follow our computation of the Riesz potential kernel, where recall we represented $|\xi|$ as an integral of Gaussians. Replacing $|\xi|$ with $(1 + 4\pi^2 |\xi|^2)^{1/2}$ in that computation gives
+		\begin{align*}
+			 \int_0^\infty e^{-\frac{t}{4\pi} (1 + 4\pi^2 |\xi|^2)} t^{\frac\alpha2} \frac{dt}{t} = \Gamma\left(\frac\alpha2\right)\frac{(1 + 4\pi^2 |\xi|^2)^{-\frac\alpha2} }{(4\pi)^{\frac\alpha2}} . 
+		\end{align*}
+	Taking the inverse Fourier transform of the left-hand side and rearranging gives the result. 
+\end{proof}
+
+\begin{proposition}[Asymptotics of Bessel potential kernel]
+	Let $\alpha > 0$, then the kernel of the Bessel potential satisfies the following properties: 
+	\begin{enumerate}
+		\item It is non-negative, integrable, and unit mass,  
+			\[ ||\widecheck{\langle 2\pi i \xi \rangle^{-\alpha}}||_{L^1} = \int_{\R^d} \widecheck{\langle 2\pi i \xi \rangle^{-\alpha}} \, dx = 1.  \]
+			
+		\item The growth at infinity is at most exponential, 
+			\[ \widecheck{\langle 2\pi i \xi \rangle^{-\alpha}} (x) \lesssim e^{-|x|/2}, \qquad \text{uniformly in $|x| \geq 1$.} \]
+		
+		\item For $0 < \alpha < d$, the growth at zero is that of the Riesz potential kernel to leading order, 
+			\[
+				 \widecheck{\langle 2\pi i \xi \rangle^{-\alpha}} (x)= 2^{-\alpha} \pi^{- d/2} \frac{\Gamma (\frac{d - \alpha}{2})}{\Gamma(\frac{\alpha}{2})} |x|^{\alpha - d} + o(|x|^{\alpha - d}), \qquad \text{as $|x| \to 0$.}
+			\] 
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\leavevmode
+\begin{enumerate}
+	\item Non-negativity is obvious, $||\widecheck{\langle 2\pi i \xi \rangle^{-\alpha}}||_{L^1} = 1$ follows from Fubini's theorem, or remarking that its Fourier transform is precisely $1$ at the origin. 
+	
+	\item Observe that $\tfrac{\pi |x|^2}{t} + \tfrac{t}{4\pi} \geq \tfrac{t}{4\pi} + \tfrac\pi t$ and $\tfrac{\pi |x|^2}{t} + \tfrac{t}{4\pi} \geq |x|$ whenever $|x| \geq 1$. Averaging between the two inequalities furnishes 
+		\[
+			\widecheck{\langle 2\pi i \xi \rangle^{-\alpha}} (x)  \leq \left( \frac{1}{(4\pi)^{\frac\alpha2} \Gamma(\frac\alpha2)} \int_0^\infty  e^{-\frac{t}{8\pi} - \frac{\pi}{2t}}   t^{\frac{\alpha - d}{2}} \, \frac{dt}{t}\right) e^{-|x|/2}.
+		\]
+	\item Substituting the asymptotic expansion $e^{-t/4\pi} = 1 + o(e^{-t/4\pi})$ into the kernel and recalling our computation of the Riesz potential kernel gives the result. 
+\end{enumerate}
+\end{proof}
+

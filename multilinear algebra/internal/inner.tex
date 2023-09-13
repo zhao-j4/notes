@@ -1,0 +1,19 @@
+We say that $g: V \times V \to \R$ is an \emph{inner product}, or in geometry a \emph{metric}, on $V$ if it is a positive-definite symmetric $(0, 2)$-tensor. In coordinates, we write
+	\[ g = g_{ij} \epsilon^i \otimes \epsilon^j, \]
+where $g_{ij}$ is symmetric and positive definite in the sense of matrices. We say that a basis $\{e_i\}_i$ is \emph{orthogonal} with respect to $g$ if the coordinates form a diagonal matrix, and \emph{orthonormal} if $g_{ij} = \delta_{ij}$. By the \textit{Gram-Schmidt algorithm}, we know that an orthonormal basis always exists. 
+
+We can naturally view an inner product as a linear map $g : V \to V^*$ given by 
+	\[ v \mapsto g(v, -). \]
+In coordinates,
+	\[ v^i \mapsto g_{ij} v^i. \]	
+It is standard practice to denote $v_i := g_{ij} v^i$, in which case we say that the metric $g$ \textit{lowers an index}. Conversely, since $g$ is non-degenerate, there is an inverse map $g^{-1} : V^* \to V$, where the matrix $(g^{-1})^{ij}$ is simply the inverse matrix of $g_{ij}$. It is known as the \emph{inverse metric tensor}, writing
+	\[ g^{-1} = (g^{-1})^{ij} e_i \otimes e_j,  \]
+and, viewed as a map from covectors to vectors, 
+	\[ \omega \mapsto g^{-1} (\omega, -). \]	
+In coordinates, 
+	\[ \omega_j \mapsto (g^{-1})^{ij} \omega_j. \]
+Again by convention, we denote $\omega^j :=  (g^{-1})^{ij} \omega_j$, in which we say the inverse metric \textit{raises an index}. More generally, we can define a family of operators $g: T^{(k, \ell)} (V) \mapsto T^{(k - 1, \ell + 1)} (V)$ lowering the $p$-th contravariant index and $g^{-1} : T^{(k, \ell)} (V) \mapsto T^{(k + 1, \ell - 1)} (V)$ lowering the $q$-th covariant index. This is sometimes referred to as \textit{metric contraction}, as we can also construct the maps as the tracing the tensor product with the metric. 
+
+\begin{remark}
+	From an algebraic point of view, there is no natural isomorphism between $V$ and its dual $V^*$. However, once a specific metric is chosen, we can freely and naturally move between the two; this is known as the \textit{musical isomorphism}. 
+\end{remark}

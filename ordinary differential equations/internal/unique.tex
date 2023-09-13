@@ -1,0 +1,31 @@
+As seen in Peano's theorem, uniqueness breaks down once the solution leaves the regime where the non-linearity is Lipschitz continuous. Thus we restrict our attention to solutions which stay within the state space $\Omega$. In this regime, we have uniqueness for $F \in \dot C^{0, 1}_{\loc} (\Omega \to \R^n)$, complementing the local existence theory. Our key ingredient will be Gronwall's inequality, which states that linear feedback bounds can at worst lead to exponential growth. 
+
+\begin{lemma}[Gronwall's integral inequality]
+	Let $u: [0, T] \to \R^+$ be a continuous and non-negative function, and suppose $u$ obeys the integral inequality
+		\[ u(t) \leq A + \int_0^t B(s) u(s) \, ds \]
+	for some $A \geq 0$ and $B :[0, T] \to \R^+$ continuous and non-negative. Then 
+		\[ u(t) \leq A \exp \left( \int_0^t B(s) \,ds \right). \]	
+	Moreover, this estimate is sharp, with equality when $u(t) := A \exp (\int_0^t B(s) \, ds)$. 	
+\end{lemma}
+
+\begin{proof}
+	By a limiting argument we can assume $A > 0$. Differentiating the right-hand side of the integral inequality, the fundamental theorem of calculus and the inequality imply
+		\[ \frac{d}{dt} \left(A + \int_0^t B(s) u(s) \, ds \right) \leq B(t) \left( A + \int_0^t B(s) u(s) \, ds \right) .\]
+	Hence by the chain rule
+		\[ \frac{d}{dt} \log \left(  A + \int_0^t B(s) u(s) \, ds  \right) \leq B(t). \]	
+	Integrating, we obtain
+		\[  \log \left(  A + \int_0^t B(s) u(s) \, ds  \right) \leq \log A + \int_0^t B(s) \, ds, \]
+	which upon exponentiating completes the proof. 		
+\end{proof}
+
+\begin{theorem}[Picard-Lindelof uniqueness theorem]
+	Let $\Omega \subseteq \R^n$ be a domain, and suppose $F \in \dot C^{0, 1}_{\loc} (\Omega \to \R^n)$ is locally Lipschitz. If $u, v \in C^1_{\loc} ([0, T] \to \Omega)$ are solutions to the initial data problem (\ref{eq:idp}), then $u \equiv v$. 
+\end{theorem}
+
+\begin{proof}
+	Since $[0, T]$ is a compact interval, $u$ and $v$ range over a compact subset of $\Omega$. Therefore by local Lipschitz continuity there exists $L > 0$ such that $|F(u) - F(v)| \leq L |u - v|$. The difference of the two solutions satisfy
+		\[ \partial_t (u - v) = F(u) - F(v).\]
+	Integrating and applying the triangle inequality gives 
+		\[ |u(t) - v(t)| \leq \int_0^t |F(u(s)) - F(v(s))| \, ds \leq L \int_0^t |u(s) - v(s)| \, ds .\]
+	We conclude from Gronwall's inequality that $u \equiv v$. 	
+\end{proof}

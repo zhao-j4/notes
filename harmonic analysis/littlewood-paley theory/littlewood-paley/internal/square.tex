@@ -1,0 +1,66 @@
+Although the frequency supports of the Littlewood-Paley projections overlap, they nonetheless retain a degree of independence of one another in that one can multiply each projection of $f \in L^p (\R^d)$ by $\pm 1$ and the resulting function will still remain in $L^p (\R^d)$. This is encapsulated by the square function estimate; define the \emph{Littlewood-Paley square function} by
+	\[ S(f) := ||f_N||_{\ell^2_N} = \Big( \sum_{N \in 2^\Z} |f_N|^2 \Big)^\frac12. \]	 
+We claim that the $||f||_{L^p} \sim ||S(f)||_{L^p}$. The aforementioned independence suggests the following probabilistic approach:	
+
+\begin{lemma}[Khinchine's inequality]
+	Let $\{ X_n \}_n$ be i.i.d. random variables with $X_n = \pm 1$ with equal probability, then 
+		\[ \Big( \EE \Big\{ \Big| \sum_n c_n X_n \Big|^p \Big\}  \Big)^\frac1p \sim_p \Big( \sum_n |c_n|^2\Big)^\frac12 \]
+	for all $1 < p < \infty$ and $\{c_n\}_n \subseteq \C$. 	
+\end{lemma}
+
+\begin{proof}
+	When $p = 2$, we have
+		\begin{align*}
+			 \EE \Big\{ \Big| \sum_n c_n X_n \Big|^2\Big\}
+			 	&= \EE \Big\{ \Big( \sum_n c_n X_n \Big)\Big( \sum_m \overline{c_n} X_n \Big)\Big\} \\
+			 	&= \sum_n |c_n|^2 \, \EE \{ X_n^2 \} + \sum_{m \neq n} c_n \overline{c_m} \, \EE\{X_n X_m\} = \sum_n |c_n|^2
+		\end{align*}
+	since $\EE\{X_n^2\} = 1$ and, by independence, $\EE \{X_n X_m\} = \EE \{X_n\} \EE \{X_m\} = 0$ whenever $m \neq n$. 	
+	
+	For the remaining $1 < p < \infty$, we assume without loss of generality $c_n \in \R$. By the layered cake decomposition, we can write
+		\[ \EE \Big\{ \Big| \sum_n c_n X_n \Big|^p \Big\} = p \int_0^\infty \lambda^p \PP \Big\{ \Big| \sum_n c_n X_n \Big| > \lambda \Big\} \frac{d\lambda}{\lambda}. \]
+	Moreover, 
+		\[  \PP \Big\{ \Big| \sum_n c_n X_n \Big| > \lambda \Big\} = \PP \Big\{ \sum_n c_n X_n  > \lambda \Big\} + \PP \Big\{  \sum_n c_n X_n < - \lambda \Big\}. \]	
+	We bound the first term on the right; arguing similarly will give the same bound on the second term on the right. It follows from the exponential Chebyshev inequality and independence that
+		\begin{align*}
+			\PP \Big\{ \sum_n c_n X_n  > \lambda \Big\}
+				&\leq e^{-\lambda t} \EE \Big\{ e^{t \sum_n c_n X_n} \Big\} = e^{-\lambda t} \prod_n \EE \Big\{ e^{t c_n X_n} \Big\} =e^{-\lambda t} \prod_n \frac{e^{t c_n} + e^{- t c_n}}{2} = e^{-\lambda t} \prod_n \cosh (tc_n)
+		\end{align*}	
+	for any $t > 0$. Recalling that $\cosh x \leq e^{x^2/2}$	and choosing $t = \lambda /\sum_n |c_n|^2$ gives
+		\[ \PP \Big\{ \sum_n c_n X_n  > \lambda \Big\} \leq  e^{-\lambda^2/2\sum_n |c_n|^2} .\]
+	Returning to the layered cake decomposition, making a change of variables $\alpha = \lambda /(\sum_n |c_n|^2)^{1/2}$, we obtain
+		\[  \EE \Big\{ \Big| \sum_n c_n X_n \Big|^p \Big\} \leq 2p \int_0^\infty \lambda^p e^{-\lambda^2/2 \sum_n |c_n|^2} \frac{d\lambda}{\lambda} = 2p \Big(\sum_n |c_n|^2 \Big)^{\frac{p}{2}} \int_0^\infty \alpha^p e^{-\alpha^2/2} \frac{d\alpha}{\alpha} \lesssim_p \Big(\sum_n |c_n|^2 \Big)^{\frac{p}{2}}. \]	
+	For the reverse inequality, it follows from Holder's inequality and the inequality above that
+		\begin{align*}
+			 \sum_n |c_n|^2 = \EE \Big\{ \Big| \sum_n c_n X_n \Big|^2 \Big\} &\leq \Big( \EE \Big\{ \Big|\sum_n c_n X_n \Big|^p \Big\} \Big)^\frac1p \Big( \EE \Big\{ \Big|\sum_n c_n X_n \Big|^{p'} \Big\} \Big)^\frac{1}{p'} \\
+			 & \lesssim \Big(\sum_n |c_n|^2 \Big)^\frac12 \Big( \EE \Big\{ \Big|\sum_n c_n X_n \Big|^p \Big\} \Big)^\frac1p.  
+		\end{align*}	 
+	Rearranging furnishes the result. 	 
+\end{proof}
+
+\begin{theorem}[Littlewood-Paley square function estimate]\label{thm:square}
+	For $1 < p < \infty$ and $f \in L^p (\R^d)$, we have
+		\[ || S(f)||_{L^p} \sim ||f||_{L^p}. \]
+\end{theorem}
+
+\begin{proof}
+	Let $\{X_N\}_{N \in 2^\Z}$ be i.i.d with $X_N = \pm 1$ with equal probability. By Khinchine's inequality, 
+		\[ \EE \Big\{ \Big|\sum_{N \in 2^\Z} f_N X_N \Big\}\Big|^p  \sim |S(f)|^p. \]
+	Then 
+		\[ ||S(f)||_{L^p}^p \sim \int_{\R^d} \EE \Big\{ \Big|\sum_{N \in 2^\Z} f_N X_N \Big|^p \Big\} dx. \]	
+	We claim that $m (\xi) := \sum_N X_N \psi_N (\xi)$ is a Mikhlin multiplier uniformly with respect to choice of $X_N$. Indeed, since $\psi (\xi)$ is localised about $|\xi| \sim 1$, we obtain
+		\[ |\partial^\alpha_\xi m (\xi)| \leq \sum_{N \in 2^\Z} |\partial^\alpha_\xi \psi_N (\xi)| \lesssim \sum_{N \in 2^\Z} N^{-|\alpha|} |\partial^\alpha_\xi \psi(\xi/N)| \sim \sum_{|\xi| \sim N} N^{-|\alpha|} \lesssim |\xi|^{-|\alpha|}.  \]
+	Thus
+		\[ ||S(f)||_{L^p}^p \sim \EE \{ || m(\nabla) f ||_{L^p}^p \}\lesssim \EE \{ ||f||_{L^p}^p \} = ||f||_{L^p}^p. \]	
+	For the reverse inequality, we argue by duality and the fattened projections. Denote $\widetilde S(f)$ the fattened square function, i.e. replacing the projections $P_N f$ with the fattened projections $\widetilde{P_N} f$. The inequality above continues to hold replacing $S$ with $\widetilde S$. We write
+	\begin{align*}
+		||f||_{L^p}
+			&= \sup_{||g||_{L^{p'}} = 1} \langle f, g \rangle = \sup_{||g||_{L^{p'}} = 1} \sum_{N \in 2^\Z} \langle \widetilde{P_N} P_N f, g \rangle = \sup_{||g||_{L^{p'}} = 1} \sum_{N \in 2^\Z} \langle  P_N f, \widetilde{P_N} g \rangle \\
+			&\leq  \sup_{||g||_{L^{p'}} = 1} \langle S(f), \widetilde{S} (g) \rangle \leq  \sup_{||g||_{L^{p'}} = 1} || S(f) ||_{L^p} ||\widetilde{S}(g)||_{L^{p'}} \lesssim ||S(f)||_{L^p},
+	\end{align*}
+	where the second equality holds since $f =\sum_N \widetilde{P_N} P_N = \sum_N P_N f$ in $L^p (\R^d)$, the third equality holds by self-adjointness of Fourier multipliers, the first inequality holds by Cauchy-Schwartz in $N$, the second by Holder in $x$, and the third by the square function inequality for the fattened projections. 
+\end{proof}	
+
+\begin{remark}
+	The estimate fails at the endpoints. For $p = \infty$, taking $f = 1$, we have $f_N = 0$ and therefore $S(f) = 0$. For $p = 1$, take $f = \phi_\epsilon$ where $\{\phi_\epsilon\}_\epsilon \subseteq C^\infty_c (\R^d)$ is an approximation to the identity. 
+\end{remark}

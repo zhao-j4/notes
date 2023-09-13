@@ -1,0 +1,43 @@
+\documentclass[reqno]{amsart}
+
+\usepackage{external/takodachi}
+\renewcommand{\emph}[1]{\textsc{#1}}
+
+% Title: change problem set number as needed
+\title
+{
+	\emph{Littlewood-Paley theory of function spaces}
+} 
+
+\author{Jason Zhao}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+	We present an approach to function spaces based on frequency space localisations. This approach reduces the classical results of Sobolev embedding and traces to elementary Littlewood-Paley theory and interpolation. We draw primarily from \cite{Triebel1983}, \cite{BahouriEtAl2011}, \cite{WangEtAl2011}, and \cite{Grafakos2014a}. 
+\end{abstract}
+
+\tableofcontents
+
+\section{Preliminaries}
+\input{internal/prelim}
+
+\section{Besov spaces}
+\input{internal/besov}
+
+\section{Triebel-Lizorkin spaces}
+\input{internal/triebel}
+
+\section{Embeddings between $B^{s, p}_q (\R^d)$ and $F^{s, p}_q (\R^d)$}
+\input{internal/embed}
+
+\section{Dimensional analysis}
+\input{internal/diverse}
+
+
+
+\bibliographystyle{alpha}
+\bibliography{external/biblio}
+\end{document}

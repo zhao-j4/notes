@@ -1,0 +1,66 @@
+We now turn to the problem of showing that the Besov and Triebel-Lizorkin spaces in fact represent a diversity of function spaces via dimensional analysis. This is done by testing the norms against sums of Schwartz functions that are \textit{modulated, rescaled, and translated},
+	\[ u(x) := \sum_{j = 1}^n a_j e^{2\pi i x \cdot \xi_j} \chi(\frac{x - x_j}{R_j}).\]
+\paragraph*{\textbf{Regularity}}
+Let's first study the \textit{regularity} exponent $s$ by modulating a single Schwartz function $\chi$ which is frequency-localised to $|\xi| \ll 1$. Choose $|\xi_M| \sim M$ for $M \in 2^\N$, and define, equivalently in frequency space or physical space,
+	\begin{align*}
+		\widehat{f_M} (\xi)
+			:= \widehat\chi(\xi - \xi_M)	,\qquad
+		f_M (x) 
+			:= e^{2\pi i x \cdot \xi_M} \chi(x).
+	\end{align*}	
+Observe that $f_M$ is frequency-localised to $|\xi| \sim N$. It follows that $P_N f_M = f_M$ if and only if $N = M$, and vanishes otherwise, thus 
+	\begin{align*}
+		 ||f_M||_{\dot B^{s, p}_q}
+		 	&= M^s ||\chi||_{L^p},\\
+		  ||f_N||_{\dot F^{s, p}_q}
+		 	&= M^s ||\chi||_{L^p}.	
+	\end{align*} 
+\paragraph*{\textbf{Integrability}}
+To study the \textit{integrability} exponent $p$, we argue by rescaling by $R \in 2^\Z$. Fix any Schwartz function $\chi \in \cS (\R^d)$, and denote its rescaling by $\chi_R (x) := \chi(x/R)$. Since the Fourier transform satisfies $\cF \chi_R = R^d (\cF \chi)_{1/R}$ and similarly for its inverse, the Littlewood-Paley projections of the rescalings are $P_N \chi_R (x) = P_{R N} \chi(x/R)$. Making a change of variables $x/R \mapsto x$ and $R N \mapsto N$, we obtain 
+		\begin{align*}
+			||\chi_R||_{\dot B^{s, p}_q} 
+				&= R^{\frac{d}{p} - s} ||\chi||_{\dot B^{s, p}_q},\\
+			||\chi_R||_{\dot F^{s, p}_q} 
+				&= R^{\frac{d}{p} - s} ||\chi||_{\dot F^{s, p}_q}.
+		\end{align*}	
+	\paragraph*{\textbf{Summability}} 
+	The \textit{summability} exponent $q$ gives control over the number of frequency scales, thus it is a ``logarithmic'' quantity which is of lesser importance compared to regularity and integrability. Again, let $\chi \in \cS (\R^d)$ frequency-localised to $|\xi| \ll 1$, and frequencies $|\xi_K| = K$ for dyadic integers $K \in 2^\N$. We define, equivalently in frequency space or physical space, $g_N$ to be a superposition of frequency-localised pieces, 
+		\begin{align*}
+			 \widehat{g_N} (\xi) 
+			 	:= \sum_{K = 1}^N \widehat\chi(\xi - \xi_K),\qquad
+			 g_N (x)
+			 	:= \sum_{K = 1}^N e^{2\pi i x \cdot \xi_K} \chi(x). 
+		\end{align*}	 	
+	It follows that 
+		\begin{align*}
+			||g_N||_{\dot B^{s, p}_q} 
+				&= |\log_2 N|^{\frac1q} ||\chi||_{L^p}, \\
+			||g_N||_{\dot F^{s, p}_q}
+				&= |\log_2 N|^{\frac1q} ||\chi||_{L^p}.
+		\end{align*}
+	So far the dimensional analyses for the Besov and Triebel-Lizorkin spaces have been identical. To distinguish the two, we introduce spatial translation, which we remark commutes with the Littlewood-Paley projections. Let $|x_K| \ll_p |x_{2K}|$ be sufficiently separated, and define 
+			\begin{align*}
+			 \widehat{h_N} (\xi) 
+			 	:= \sum_{K = 1}^N  e^{2\pi i \xi \cdot x_K}\widehat\chi(\xi - \xi_K),\qquad h_N (x)
+			 	:= \sum_{K = 1}^N e^{2\pi i x \cdot \xi_K} \chi(x - x_K). 
+		\end{align*}	
+	Compared to the previous scenario, the Besov norm is unchanged since taking the $L^p$-norm of each Littlewood-Paley piece is translation-invariant. However,  the pieces constituting $h_N$ are separated not only in frequency but also pointwise spatially. Thus its Triebel-Lizorkin norm is, up to a negligible error, the $L^p$-norm of $\log_2 N$-many disjoint identical masses. That is,  	
+		\begin{align*}
+			||h_N||_{\dot B^{s, p}_q} 
+				&= |\log_2 N|^{\frac1q} ||\chi||_{L^p}, \\
+			||h_N||_{\dot F^{s, p}_q}
+				&\sim |\log_2 N|^{\frac1p} ||\chi||_{L^p}.
+		\end{align*}
+	Heuristically then, the $q$ exponent only controls the number of frequency scales for the Triebel-Lizorkin norm when the scales are also physically localised, while the Besov norm is agnostic about where these scales are physically located due to the translation-invariance. 
+
+\begin{proposition}
+	Let $1 \leq q_1, q_2 \leq \infty$ and $s_1, s_2 \in \R$. 
+	\begin{enumerate}
+		\item If $1 \leq p_1, p_2 \leq \infty$, then $\dot B^{s_1, p_1}_{q_1} (\R^d) = \dot B^{s_2, p_2}_{q_2} (\R^d)$ if and only if $s_1 = s_2$, $p_1 = p_2$, and $q_1 = q_2$. 
+		
+		\item If $1 \leq p_1, p_2 < \infty$, then $\dot F^{s_1, p_1}_{q_1} (\R^d) = \dot F^{s_2, p_2}_{q_2} (\R^d)$ if and only if $s_1 = s_2$, $p_1 = p_2$, and $q_1 = q_2$. 
+		
+		\item If $1 \leq p_1 < \infty$ and $1 \leq p_2 \leq \infty$, then $\dot F^{s_1, p_1}_{q_1} (\R^d) = \dot B^{s_2, p_2}_{q_2} (\R^d)$ if and only if $s_1 = s_2$ and $p_1 = p_2 = q_1 = q_2$. 
+	\end{enumerate}
+	The analogous statements also hold for the inhomogeneous spaces. 
+\end{proposition}

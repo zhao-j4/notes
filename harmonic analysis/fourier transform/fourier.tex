@@ -1,0 +1,503 @@
+\documentclass[reqno]{amsart}
+
+\usepackage{amsfonts,latexsym,amsthm,amssymb,amsmath,amscd,euscript,bm}
+\usepackage[sc]{mathpazo}
+\usepackage[margin = 2cm]{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+% sets numbering of enumerate to a, b, c, ...
+\renewcommand{\theenumi}{\alph{enumi}}
+
+% Theorems, propositions, etc.
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem*{claim}{Claim}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{notation}{Notation}
+\newtheorem*{examples}{Examples}
+\newtheorem*{example}{Example}
+
+\usepackage{tikz-cd}
+
+
+% Math blackboard font
+\newcommand{\nc}{\newcommand}
+\nc{\on}[1]{\operatorname{#1}}
+
+\nc{\R}{\mathbb R}
+\nc{\C}{\mathbb C}
+\nc{\Q}{\mathbb Q}
+\nc{\Z}{\mathbb Z}
+\nc{\N}{\mathbb N}
+\nc{\HH}{\mathbb H}
+\nc{\DD}{\mathbb D}
+\nc{\TT}{\mathbb T}
+\nc{\EE}{\mathbb E}
+\nc{\PP}{\mathbb P}
+
+\nc{\cT}{\mathcal T}
+\nc{\cA}{\mathcal A}
+\nc{\cM}{\mathcal M}
+\nc{\cR}{\mathcal R}
+\nc{\cB}{\mathcal B}
+\nc{\cG}{\mathcal G}
+\nc{\cD}{\mathcal D}
+\nc{\cS}{\mathcal S}
+\nc{\cF}{\mathcal F}
+\nc{\cL}{\mathcal L}
+\nc{\cE}{\mathcal E}
+
+\nc{\diam}{\operatorname{diam}}
+\nc{\del}{\partial}
+\nc{\osc}{\operatorname{osc}}
+\nc{\inter}{\mathrm{o}}
+\nc{\close}[1]{\overline{#1}}
+\nc{\supp}{\operatorname{supp}}
+\nc{\BV}{\operatorname{BV}}
+\nc{\Per}{\operatorname{Per}}
+\nc{\loc}{\text{loc}}
+\nc{\Lip}{\operatorname{Lip}}
+\nc{\ACL}{\operatorname{ACL}}
+\nc{\Id}{\operatorname{Id}}
+
+\nc{\Trans}{\operatorname{Trans}}
+\nc{\Mod}{\operatorname{Mod}}
+\nc{\Dil}{\operatorname{Dil}}
+\nc{\Invol}{\operatorname{Ref}}
+\nc{\Conj}{\operatorname{Conj}}
+
+% Why the f*** would you ever use \epsilon
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\emph}{\textsc}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+%inverse Fourier transform widecheck
+\DeclareFontFamily{U}{mathx}{\hyphenchar\font45}
+\DeclareFontShape{U}{mathx}{m}{n}{
+      <5> <6> <7> <8> <9> <10>
+      <10.95> <12> <14.4> <17.28> <20.74> <24.88>
+      mathx10
+      }{}
+\DeclareSymbolFont{mathx}{U}{mathx}{m}{n}
+\DeclareFontSubstitution{U}{mathx}{m}{n}
+\DeclareMathAccent{\widecheck}{0}{mathx}{"71}
+
+\let\vec\mathbf
+
+% Title: change problem set number as needed
+\title
+{
+	\emph{Fourier transform}
+} 
+
+\author{Jason Zhao}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+\section{Fourier transform}
+
+Formally, the \emph{Fourier transform} is defined as the integral operator
+	\[ \cF [f] (\xi) := \int_{\R^d} e^{-2\pi i x \cdot \xi} f(x) \, dx \]
+mapping a function $f : \R^d \to \C$ to a function $\cF [f] : \R^d \to \C$. We will also denote the Fourier transform by $\widehat f$. Interpreting the function $f$ as a distribution on \textit{physical space} $\R^d_x$, the Fourier transform $\widehat f$ describes the distribution on \textit{frequency space} $\R^d_\xi$. As a motivating example of this heuristic, smoothness in physical space corresponds to decay in frequency space, and vice versa. Thus the natural setting of the Fourier transform is a function space of smooth functions with ``rapidly decaying'' derivatives. 
+
+\subsection{Schwartz functions and tempered distributions}
+
+A \emph{Schwartz function} $f: \R^d \to \C$ is a smooth function such that the semi-norm
+	\[ ||f||_{k, m} := \sup_{x \in \R^d} |x|^k | \nabla^m f (x)| \]
+is finite for all $k, m \in \N$. The space of Schwartz functions $\cS (\R^d)$ forms a Frechet space with respect to this countable family of semi-norms, under which a sequence $\{\phi_n\}_n \subseteq \cS (\R^d)$ converges to $\phi \in \cS (\R^d)$ if and only if $\phi_n \to \phi$ with respect to each semi-norm $|| \cdot ||_{k, m}$. 
+
+The space of Schwartz functions $\cS (\R^d)$ forms a topological vector space, so it admits a continuous dual space $\cS (\R^d)^*$ consisting of \emph{tempered distributions}, continuous linear functionals $u : \cS (\R^d) \to \C$ where we denote the action on a Schwartz function $f \in \cS (\R^d)$ by $f \mapsto \langle f , u \rangle$. 
+
+\begin{examples}
+Some examples and properties of Schwartz functions:
+\begin{itemize}
+	\item The space of test functions $C^\infty_c (\R^d)$ embeds into Schwartz space $\cS (\R^d)$
+	
+	\item A \emph{Gaussian} $f: \R^d \to \C$ is a function of the form 
+			\[ f(x) := A e^{2\pi i \theta} e^{2\pi i \xi_0 \cdot x} e^{- \pi |x - x_0|^2/ R^2} \]
+		for $A \in \R$, $\theta \in \R/\Z$, and $x_0, \xi_0 \in \R^d$. This is the prototypical example of non-compactly supported Schwartz function. 
+	
+	\item The Schwartz space is closed under multiplication, differentiation, and convolution. Furthermore, the product of a Schwartz function with a polynomial is also Schwartz. 
+	
+\end{itemize}	
+Some examples and properties of tempered distributions:
+\begin{itemize} 
+	\item The space of tempered distributions $\cS (\R^d)^*$ embeds into the space of distributions $C^\infty_c (\R^d)^*$. This is a strict embedding; the function $e^x \in L^1_{\loc} (\R)$ forms a distribution but not continuously with respect to the Schwartz topology. 
+
+	\item Every Schwartz function $u \in \cS (\R^d)$ can be identified with a tempered distribution given by the action under the $L^2$-inner product $f \mapsto \langle f, u \rangle$. 
+	
+	\item The space of tempered distributions is closed under multiplication with a Schwartz function, differentiation, and convolution with a Schwartz function. Furthermore, the product of a tempered distribution with a smooth function with derivatives of polynomial growth is also tempered. 
+\end{itemize}	
+\end{examples}
+
+
+
+\begin{proposition}
+	The space of Schwartz functions embeds densely into $L^p (\R^d)$ for every $1 \leq p < \infty$ and $C_0 (\R^d)$. 
+\end{proposition}
+
+\begin{proof}
+	We prove the result for $1 \leq p < \infty$, the endpoint case of $C_0 (\R^d)$ follows from an analogous argument with the usual modifications. We first verify that Schwartz functions are contained in $L^p (\R^d)$. Let $f \in \cS (\R^d)$, we have $|f(x)|^p \leq ||f||_{0, 0}^p$ and $|x|^{kp} |f(x)|^p \leq ||f||_{k, 0}^p$. Adding the two inequalities, rearranging and integrating, 
+		\[ \int_{\R^d} |f(x)|^p \, dx \leq \int_{\R^d} \frac{||f||_{0, 0}^p + ||f||_{k, 0}^p}{1 + |x|^{kp}} \, dx . \]
+	Choosing $kp > d$, the integral on the right converges. To show density, it suffices to show the space of test functions $C^\infty_c (\R^d) \subseteq \cS (\R^d)$ embeds densely into $L^p (\R^d)$. By dominated convergence, we can assume without loss of generality that $f \in L^p (\R^d)$ is compactly supported. Choose an approximation to the identity $\{\phi_\epsilon\}_\epsilon \subseteq C^\infty_c (\R^d)$, it follows by convolution smoothing that $f * \phi_\epsilon \in C^\infty_c (\R^d)$ and $f * \phi_\epsilon \to f$ in $L^p (\R^d)$.
+\end{proof}
+
+\begin{remark}
+	A similar argument shows that $\cS (\R^d)$ embeds densely into $\cS (\R^d)^*$. 
+\end{remark}
+
+\subsection{Fourier transform on $\cS (\R^d)$ and $\cS (\R^d)^*$}
+
+It is natural to study the Fourier transform	on the space of Schwartz functions, as the rapid decay of $f \in \cS(\R^d)$ implies that the integral
+	\[ \cF [f] (\xi) := \int_{\R^d} e^{-2\pi i x \cdot \xi} f(x) \, dx \]	
+converges absolutely for every $\xi \in \R^d$. The space of Schwartz functions also allows us to use techniques such as differentiation under the integral, integration by parts, and Fubini's theorem with impunity. As an immediate application, endowing $\cS (\R^d)$ with the $L^2$-inner product, the adjoint Fourier transform is given by 
+	\[ \cF^* [f] (x) = \int_{\R^d} e^{2\pi i x \cdot \xi} f(\xi) \, d \xi. \]
+We will also denote the adjoint Fourier transform by $\widecheck f$. Given a tempered distribution $u \in \cS(\R^d)^*$, we define its Fourier transform $\cF u \in \cS (\R^d)^*$ via duality, 
+	\[ \langle f, \cF u \rangle := \langle \cF^* f, u \rangle.  \]
+
+\begin{example}
+	Consider the Gaussian $f(x) := e^{-\pi |x|^2}$, which we recall has unit mass. Completing the square, applying Fubini's theorem, and performing a contour shift, we see that it is a $1$-eigenfunction of the Fourier transform, 
+	\begin{align*}
+		\cF f(\xi) 
+			&= \int_{\R^d} e^{-2\pi i x \cdot \xi - \pi |x|^2} d x = f(\xi) \int_{\R^d} e^{-\pi |x + i \xi|^2} d x \\
+			&= f(\xi) \prod_{j = 1}^d  \int_{\R} e^{-\pi |x_j + i \xi_j|^2} d x_j = f(\xi) \left( \int_{\R} e^{-\pi |x|^2} d x\right)^d = f(\xi).
+	\end{align*}		
+\end{example}
+
+Working in Schwartz space, we want to rigorously study the correspondence established by the Fourier transform between operators acting on physical and frequency space. Define the spatial translation by $x_0 \in \R^d$ and frequency modulation $\xi_0 \in \R^d$ respectively by
+	\[ \Trans_{x_0} f(x) := f(x - x_0), \qquad \Mod_{\xi_0} f(x) := e^{2\pi i x \cdot \xi_0} f(x). \]
+Let $1 \leq p \leq \infty$, define the change of variable by $U \in \mathsf{GL} (\R^d)$ by
+	\[  \Dil_U^p f(x) := \frac{1}{|\det U|^{1/p}} f(U^{-1} x). \]
+For $\lambda > 0$, we denote the non-normalised dilation by $f_\lambda (x) := f(x/\lambda)$. Denote reflection and conjugation by
+	\[ \Invol f (x) := f(-x), \qquad \Conj f (x) := \overline{f(x)} \]
+	
+
+\begin{proposition}
+	The Fourier transform satisfies the following properties:
+	\begin{enumerate}
+		\item exchanges translation with frequency modulation; for any $x_0, \xi_0 \in \R^d$, 
+						\[ \cF \Trans_{x_0} = \Mod_{-x_0} \cF, \qquad \cF \Mod_{\xi_0} = \Trans_{x_0} \cF , \]
+		\item exchanges regularity with decay; for any $\alpha \in \N^d$,
+						\[ \cF \partial_x^\alpha  = (2\pi i  \xi)^\alpha \cF , \qquad \cF (2\pi ix)^\alpha = (-1)^{|\alpha|} \partial_\xi^\alpha \cF, \] 
+		\item exchanges a linear change of variables with its inverse adjoint; for any $1 \leq p \leq \infty$ and $U \in \mathsf{GL} (\R^d)$, 
+						\[ \cF \Dil^p_U = \Dil^{p'}_{(U^*)^{-1}} \cF,\]
+		\item exchanges conjugation with the conjugate reflection,
+			\[ \cF \Conj = \Conj \Invol \cF \]
+											
+		\item exchanges convolution with multiplication; for any $f \in \cS (\R^d)$ and $g \in \cS (\R^d)^*$, 
+						\[ \cF [f * g] = \cF [f] \cF[g], \qquad \cF[fg] = \cF[f] * \cF[g]. \]			
+
+	\end{enumerate}
+	\label{prop:symmetry}
+\end{proposition}
+
+\begin{proof}
+	(a), (c) follow from change of variables, (b) follows from integration by parts and differentiating under the integral, (d) is trivial, (e) follows from Fubini's theorem. 
+\end{proof}
+
+\begin{remark}
+\leavevmode
+\begin{itemize}
+	\item (b) can be viewed as an infinitesimal instance of (a). 
+	\item A useful consequence of (c) is that the Fourier transform preserves parity; if $f$ is even/odd, then $\widehat f$ is even/odd. 
+	\item Analogous results hold for the adjoint Fourier transform, modulo signs. 
+\end{itemize}
+\end{remark}
+
+\begin{theorem}[Fourier inversion]
+	The Fourier transform is a homeomorphism on Schwartz space $\cF: \cS (\R^d) \to \cS (\R^d)$ and the space of tempered distributions $\cF : \cS (\R^d)^* \to \cS (\R^d)^*$	 with inverse given by the adjoint Fourier transform $\cF^{-1} = \cF^*$. 
+\end{theorem}
+	
+\begin{proof}
+	It follows from Proposition \ref{prop:symmetry} (a), (b), (d) that the Fourier transform and the adjoint Fourier transform are continuous operators on $\cS (\R^n)$. Indeed, for $f \in \cS (\R^d)$, we can write
+		\[ |\xi^\alpha \partial^\beta \cF f (\xi)| \sim |\xi^\alpha \cF [x^\beta f] (\xi)| \sim |\cF[\partial^\alpha x^\beta f] (\xi)| \lesssim || \partial^\alpha x^\beta f ||_{L^1} \]
+	uniformly in $\xi \in \R^d$ by the triangle inequality and $|e^{2\pi i x \cdot \xi}| = 1$. This proves the Fourier transform of a Schwartz function is also Schwartz. To show continuity, it suffices by linearity to show that if $\{ f_n \}_n \subseteq \cS( \R^d)$ converges to zero, then $\{\cF f_n\}_n \subseteq \cS (\R^d)$ also converges to zero. Using the inequality above and $\langle x\rangle^{-d-1} \in L^1 (\R^d)$, we have
+		\[ ||\cF f_n||_{k, m} \lesssim || |\nabla|^k |x|^m f_n||_{L^1} \lesssim || \langle x \rangle^{d + 1} |\nabla|^k |x|^m f_n||_{L^\infty} || \langle x \rangle^{-d - 1} ||_{L^1} \overset{n \to \infty}{\longrightarrow} 0.\]
+	Arguing similarly gives the result for the adjoint Fourier transform. 
+	
+	We now need to show the adjoint Fourier transform is the inverse Fourier transform. By dominated convergence theorem, we introduce a factor of a Gaussian in $\xi$ to justify a change in the order of integration,
+		\begin{align*}
+			\cF^* \cF f (x)
+				&= 
+					\int_{\R^d} \int_{\R^d} e^{2\pi i (x - y)\cdot \xi} f(y) dy d\xi\\
+				&= \lim_{\epsilon \to 0} 
+					\int_{\R^n}  \int_{\R^d} e^{2\pi i (x - y) \cdot \xi - \pi \epsilon^2 |\xi|^2} f(y) dy d\xi \\
+					&= \lim_{\epsilon \to 0} 
+				\int_{\R^d}  \left(\int_{\R^d} e^{2\pi i (x - y) \cdot \xi - \pi \epsilon^2 |\xi|^2} d\xi\right) f(y) dy.
+		\end{align*}	
+	Observe that the integral with respect to $\xi$ is the Fourier transform of a Gaussian evaluated at $x - y$, namely
+		\[ \int_{\R^d} e^{2\pi i (x - y) \cdot \xi - \pi \epsilon^2 |\xi|^2} d\xi = \cF[e^{-\pi \epsilon^2 |\xi|^2}] (y - x) = \epsilon^{-d} e^{-\pi \frac{|x - y|^2}{\epsilon^2}} = \phi_\epsilon (x - y) \]
+	where $\phi (x) := e^{-\pi |x|^2}$. This shows that $\cF^* \cF f$ can be written as the convolution smoothing by an approximation to the identity, from which we conclude
+		\[ \cF^* \cF f (x) = \lim_{\epsilon \to 0} (f * \phi_\epsilon) (x) = f(x) \]
+	as desired. 
+\end{proof}
+
+\begin{remark}
+\leavevmode
+\begin{itemize}
+	\item The same proof of the inversion formula holds under the assumptions that $f, \widehat f \in L^1 (\R^d)$.  
+	
+	\item A similar argument and a change of variables will show that $\cF^2 = \Invol$. In particular, $\cF^4 = \Id$, so the only possible eigenvalues are the fourth-roots of unity $\{ \pm 1, \pm i \}$. 
+\end{itemize}
+\end{remark}	
+
+
+\subsection{Fourier transform on $L^p (\R^d)$}
+
+We now turn to the question of identifying the Fourier transform of a function in $L^p (\R^d)$, which \textit{a priori} exists only in the sense of tempered distributions. In the case $p = 1$, the integral defining the Fourier transform converges absolutely and thus forms a well-defined operator on $L^1 (\R^d)$, however this argument fails for general $1 < p \leq \infty$. We instead rely on density arguments and complex interpolation, establishing the strong-type $(1, \infty)$ and $(2, 2)$ inequalities for the Fourier transform.
+
+
+\begin{theorem}[Riemann-Lebesgue lemma]
+	The Fourier transform obeys the strong-type $(1, \infty)$ inequality
+		\[ ||\widehat f||_{L^\infty} \leq ||f||_{L^1}. \]
+	In particular, the Fourier transform is a bounded linear operator $\cF : L^1 (\R^d) \to C_0 (\R^d)$. 
+\end{theorem}
+
+\begin{proof}
+	The strong-type $(1, \infty)$ inequality follows from the definition of the Fourier transform and the triangle inequality. As the space of Schwartz functions is dense in $L^1 (\R^d)$, we can find a sequence $\{f_n\}_n \subseteq \cS (\R^d)$ such that $f_n \to f$ in $L^1 (\R^d)$. Then 
+		\[ ||\widehat f - \widehat{f_n}||_{L^\infty} \leq ||f - f_n||_{L^1} \overset{n \to \infty}{\longrightarrow} 0. \]
+	The space $C_0 (\R^d)$ is closed under uniform convergence and $\widehat{f_n} \in \cS (\R^d) \subseteq C_0 (\R^d)$, completing the proof. 
+\end{proof}
+
+\begin{remark}
+	The Fourier transform does not map $L^1 (\R^d)$ onto $C_0 (\R^d)$. For a concrete example in $d \geq 2$, one can explicitly compute the adjoint Fourier transform of 
+		\[
+			f(x)
+				=
+				\begin{cases}
+					\sqrt{1 - |x|^2}, 		&\text{if } |x| \leq 1, \\
+					0, 								&\text{otherwise},
+				\end{cases}
+		\]
+	and verify that $\cF^* f \not\in L^1 (\R^d)$.
+\end{remark}
+
+\begin{theorem}[Plancharel's theorem]
+	The Fourier transform is an $L^2$-isometry, that is, 
+		\[ \langle f, g \rangle = \langle \widehat f, \widehat g \rangle, \qquad ||f||_{L^2} = ||\widehat f||_{L^2} \]
+	for all $f, g \in \cS (\R^d)$. Furthermore, the Fourier transform extends uniquely to a unitary operator $\cF : L^2 (\R^d) \to L^2 (\R^d)$. 
+\end{theorem}
+
+\begin{proof}
+	By Fubini's theorem, 
+		\[ \int_{\R^d} \widehat f (\xi) h(\xi) \, d \xi = \int_{\R^d} \left( \int_{\R^d} e^{-2\pi i x \cdot \xi} f(x)  dx  \right)h(\xi) \, d \xi = \int_{\R^d} f(x) \left( \int_{\R^d} e^{-2\pi i x \cdot \xi} h(\xi) \, d \xi \right) d x = \int_{\R^d} f(x) \widehat h(x) \, dx.\]
+	Taking $h := \overline{\widehat g}$ shows that the Fourier transform preserves the $L^2$-inner product, while taking $f = g$ shows that the Fourier transform preserves the $L^2$-norm. By density, it extends uniquely to an isometry on $L^2 (\R^d)$. 
+	
+	To show this extension is unitary, we need to verify surjectivity. Observe if we can show the image of the Fourier transform is closed, we are done, since $\cF$ is a homeomorphism on $\cS (\R^d)$. Let $g \in L^2 (\R^n)$ be in the closure of the image of the Fourier transform, i.e. there exists $\{ f_n \}_n \subseteq L^2 (\R^d)$ such that $\widehat f_n \to g$. Since the Fourier transform is an isometry, $f_n \to f$ for some $f \in L^2 (\R^d)$, and
+		\[ \lim_{n \to \infty} ||\widehat{f_n} - \widehat f||_{L^2} = \lim_{n \to \infty} ||f_n - f||_{L^2} = 0,  \]
+	so $g = \widehat f$, as desired. 		
+\end{proof}
+
+
+\begin{theorem}[Hausdorff-Young inequality]
+	Let $1 \leq p \leq 2$ and $f\in \cS (\R^d)$, then 
+		\[ ||\widehat f ||_{L^{p'}} \leq ||f||_{L^p}. \]
+	In particular, the Fourier transform extends uniquely to a bounded linear operator $\cF : L^p (\R^d) \to L^{p'} (\R^d)$. Conversely, if there exist $1 \leq p, q \leq \infty$ such that
+		\[  ||\widehat f ||_{L^{q}} \lesssim ||f||_{L^p} \]	
+	uniformly for all $f \in \cS (\R^d)$, then $1 \leq p \leq 2$ and $q = p'$. 	
+\end{theorem}
+
+\begin{proof}
+	We know that the Fourier transform admits the strong-type $(1, \infty)$ and strong-type $(2, 2)$ inequalities
+		\[ ||\widehat f ||_{L^\infty} \leq ||f||_{L^1}, \qquad ||\widehat f||_{L^2} = ||f||_{L^2}, \]
+	by the triangle inequality and Plancharel's theorem respectively. Riesz-Thorin interpolation furnishes the Hausdorff-Young inequality and density of Schwartz space allows us to extend the Fourier transform to $L^p (\R^d)$. 
+	
+	For the converse, we argue by scaling, recalling that $\widehat{f_\lambda} (\xi) = \lambda^d \widehat f (\lambda \xi)$. Applying a change of variables to the inequality $||\widehat{f_\lambda}||_{L^q} \lesssim ||f_\lambda||_{L^p}$, we obtain
+		\[ \lambda^{\frac{d}{q'}} ||\widehat f||_{L^q}  \lesssim \lambda^{\frac{d}{p}} ||f||_{L^p}. \]
+	Taking $\lambda \to \infty$, we see that $p \leq q'$, and taking $\lambda \to 0$, we see that $p \geq q'$, so we conclude $p = q'$. It remains to show that $1 \leq p \leq 2$, which we note is equivalent to verifying $p \leq p'$. Denote $g(x) := e^{-\pi |x|^2}$ and define
+		\[ f(x) := \sum_{n = 1}^N e^{2\pi i x \cdot nv} g(x - n v) \]
+	for $N \in \N$ and $v \in \R^d$ to be chosen later. By construction, $||f||_{L^p} \sim_p N^{1/p}$ for $N, |v| \gg_p 1$, and furthermore the symmetries of the Fourier transform imply
+		\[ \widehat f(\xi) = \sum_{n = 1}^N e^{-2 \pi i \xi \cdot n v} g(\xi - nv) = \overline{f(\xi)}. \]
+	Applying Hausdorff-Young gives
+		\[ N^{1/p'} \sim ||\widehat f||_{L^{p'}} \lesssim ||f||_{L^p} \sim N^{1/p}. \]
+	Taking $N \to \infty$ we see that $p \leq p'$ is necessary, as desired. 	
+\end{proof}
+
+\begin{remark}
+	The converse implies that the Fourier transform cannot be a surjective operator $\cF : L^p (\R^d) \to L^{p'} (\R^d)$ for $1 \leq p < 2$. If it were surjective, by the open mapping theorem the inverse Fourier transform extends to a continuous linear operator $\cF^{-1} : L^{p'} (\R^d) \to L^p (\R^d)$, which cannot hold by the converse for $\cF^{-1}$. 
+\end{remark}
+
+\section{Convergence of Fourier integrals}
+
+Let $B \subseteq \R^d$ be an open convex neighborhood of the origin, and denote $B_R := \{ Rx : x \in B \}$ its scaling by $R > 0$. Define the Fourier multiplier
+	\[ \mathbb 1_{B_R} (\nabla) f (x) := \cF^{-1} \mathbb 1_{B_R} \cF f (x)= \int_{B_R} e^{2\pi i x \cdot \xi} \widehat f (\xi) d \xi\]
+for $f \in \cS (\R^d)$. By Calderon-Zygmund theory, we know that the multiplier extends to a bounded operator $\mathbb 1_{B_R} (\nabla) : L^p (\R^d) \to L^p (\R^d)$ for all $1 < p < \infty$. We interpret the multiplier as a ``partial Fourier inversion''. A classic problem in harmonic analysis is determining the conditions under which the convergence
+	\[  \mathbb 1_{B_R} (\nabla) f \overset{R \to \infty}{\longrightarrow} f \]
+holds in $L^p (\R^d)$ and pointwise almost everywhere for $f \in L^p (\R^d)$. As a preliminary result, Fourier inversion and dominated convergence furnishes the result in the class of Schwartz functions $f \in \cS (\R^d)$ for $1 \leq p < \infty$. The natural strategy therefore will be to appeal to density and try to pass this result to the limit uniformly in $R$.
+
+\subsection{$L^p$-convergence}
+
+We restate the problem of convergence in norm as follows:
+
+\begin{lemma}
+	Let $B \subseteq \R^d$ be an open convex neighborhood of the origin, and suppose $1 \leq p < \infty$. Then 
+		\[ \lim_{R \to \infty} ||\mathbb 1_{B_R} (\nabla) f - f||_{L^p} = 0  \]
+	for all $f \in L^p (\R^d)$ if and only if	
+		\[ || \mathbb 1_{B_R} (\nabla) f ||_{L^p} \lesssim_p ||f||_{L^p} \]
+	uniformly for $f \in L^p (\R^d)$. 	
+\end{lemma}
+
+\begin{proof}
+	For the forward, convergence in $L^p$-norm implies $\{ \mathbb 1_{B_R} (\nabla) f\}_R \subseteq L^p (\R^d)$ is bounded for each $f \in L^p (\R^d)$, i.e. the family of operators $\{\mathbb 1_{B_R} (\nabla)\}_R$ are weakly bounded on $L^p (\R^d)$. It follows from the uniform boundedness principle that the family of operators is strongly bounded on $L^p (\R^d)$, as desired. 
+	
+	For the converse, recall convergence in norm holds for Schwartz functions. Fix $\epsilon > 0$ and $f \in L^p (\R^d)$, by density we can choose $g \in \cS (\R^d)$ such that $||f - g||_{L^p} < \epsilon$. Hence
+		\[ ||\mathbb 1_{B_R} (\nabla) f - f||_{L^p} \leq || \mathbb 1_{B_R} (\nabla) (f - g)||_{L^p} + || \mathbb 1_{B_R} (\nabla) g - g||_{L^p} + ||f - g||_{L^p} \lesssim_p \epsilon\]
+	for $R \gg_\epsilon 1$, completing the proof. 	
+\end{proof}
+
+Norm convergence holds in general for $p = 2$ by Plancharel's theorem. However, in higher dimensions $d \geq 2$ Fefferman showed that norm convergence fails for $p \neq 2$. Furthermore, the problem of almost everywhere convergence remains open in higher dimensions. In one dimension $d = 1$, we consider for simplicity the interval $B = (-1, 1)$, in which case the partial Fourier inversion takes the form
+	\[ \mathbb 1_{(-R, R)} (\nabla) f (x) = \int_{-R}^R e^{2\pi i x \xi} \widehat f(\xi) d\xi = \int_\R\left( \int_{-R}^R e^{2\pi i \xi (x - y)}  d\xi \right) f(y) dy = (D_R * f)(x) \]
+where	 $D_R$ is the \emph{Dirichlet kernel}, given by
+	\[ D_R (x) := \int_{-R}^R e^{2\pi i x \xi} d \xi = \frac{\sin(2\pi R x)}{\pi x}. \]
+\begin{theorem}[Kolmogorov]
+	There exists $f \in L^1 (\R)$ such that the partial Fourier inversion does not converge in $L^1 (\R)$ and diverges everywhere.  
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+	We know from Young's convolution inequality that the operator norm of $f \mapsto D_R * f$ on $L^1 (\R)$ is 
+		\[ ||D_R||_{L^1} = \infty, \]
+	so there exists $f \in L^1 (\R)$ such that norm convergence fails by the previous lemma. Moreover, following the proof of the uniform boundedness principle via Baire category, such functions are generic. 
+\end{proof}
+
+\begin{theorem}
+	Let $1 < p < \infty$, then the partial Fourier inversion converges in $L^p(\R)$ for every $f \in L^p (\R)$.
+\end{theorem}
+
+\begin{proof}
+	Consider the identity
+		\[ \mathbb 1_{(-R, R)} (\nabla)  = \frac{i}{2} (\Mod_R H \Mod_{-R} - \Mod_{-R} H \Mod_R ),  \]
+	where $H$ is the Hilbert transform, which is bounded on $L^p (\R)$. Modulation is also clearly bounded on $L^p (\R)$ uniformly in $R > 0$, so we conclude the partial Fourier inversion is bounded on $L^p (\R)$. The previous lemma furnishes the result.
+\end{proof}
+
+\subsection{Pointwise convergence}
+
+The full proof of pointwise a.e. convergence goes far beyond the scope of these notes, so we conclude with a brief discussion of the starting point. The key estimate in showing convergence in norm 
+	\[ || \mathbb 1_{(-R, R)} (\nabla) f||_{L^p} \lesssim_p ||f||_{L^p} \]
+essentially established that the partial Fourier inversions are uniformly bounded in \textit{size}. However, it is possible that mass ``moves'' in such a way where, for example, the partial inversions take the form of the \textit{typewriter} sequence as $R \to \infty$. To preclude this scenario, we need to ensure that the partial inversions are also uniformly bounded in \textit{shape}, 
+	\[ || C f (x)||_{L^p} \lesssim_p ||f||_{L^p}\]
+where $C$ is the \emph{Carleson maximal operator}	 
+	\[ Cf (x) := \sup_{R > 0} \left| \mathbb 1_{(-R, R)} (\nabla) f \right| = \sup_{R > 0} \left| \int_{-R}^R e^{2\pi i x\xi} \widehat f(\xi) \, d \xi \right|. \]
+We know from the theory of maximal operators that pointwise a.e. convergence follows immediately from boundedness of the Carleson maximal operator, giving rise to the famous Carleson-Hunt theorem, 
+	
+\begin{theorem}[Carleson-Hunt]
+	Let $1 < p \leq 2$, then the partial Fourier inversion converges a.e. for every $f \in L^p (\R)$. 
+\end{theorem}
+
+\section{The uncertainty principle}
+
+
+
+\subsection{Heisenberg's uncertainty principle}
+
+The classical uncertainty principle states that a function cannot be localised simultaneously in both physical space and frequency space, or, informally, 
+	\[ 1 \lesssim d x \cdot d \xi.  \]
+In quantum mechanics, this manifests itself in the Heisenberg uncertainty principle: the position and momentum of a particle cannot be simultaneously localised about the origin. 
+
+\begin{theorem}[Heisenberg's uncertainty principle]
+	Let $\phi \in \cS (\R^d)$, then 
+		\[ \frac{d}{4\pi}||\phi||_{L^2_x}^2 \leq ||x \phi||_{L^2_x} ||\xi\widehat \phi||_{L^2_\xi}. \]
+	This inequality is sharp, with equality achieved by the Gaussian $\phi(x) = e^{-\pi |x|^2}$. 	
+\end{theorem}
+
+\begin{proof}
+	Consider the identity
+		\[ \frac12\sum_{k = 1}^d  x_k \partial_{x_k} |\phi|^2 = \frac12 \sum_{k = 1}^d x_k (\overline \phi \partial_{x_k} \phi + \phi \overline{\partial_{x_k} \phi})= \Re (\nabla \phi \cdot \overline{x \phi}). \]
+	Integrating by parts, applying Cauchy-Schwartz and Plancharel, we obtain
+		\begin{align*}
+			\frac{d}{2}
+			||\phi||_{L^2_x}^2
+				&= 
+			\frac12\int_{\R^d} \sum_{k = 1}^d  x_k \partial_{x_k} |\phi|^2 dx
+			\\
+			&\leq \int_{\R^d} |\nabla \phi \cdot \overline{x \phi}| dx \leq ||\nabla \phi||_{L^2_x} ||x \phi||_{L^2_x} = 2\pi ||\xi \widehat \phi||_{L^2_\xi} ||x \phi||_{L^2_x}.
+		\end{align*}	
+	Rearranging gives the result. 	
+\end{proof}
+
+\begin{remark}
+	Normalizing by choosing $||\phi||_{L^2_x} = ||\widehat \phi||_{L^2_\xi} = 1$, we view $|\phi|^2$ and $|\widehat \phi|^2$ as probability density functions of the position and momentum of a particle respectively. Then the uncertainty principles becomes
+		\[ \frac{d^2}{16\pi^2} \leq \left( \int_{\R^d} |x|^2 |\phi(x)|^2 dx \right) \left( \int_{\R^d} |\xi|^2 |\widehat\phi(\xi)|^2 dx \right) .\]
+	The right-hand side is the product of the \textit{second moments}, or \textit{variances} of the PDFs about the origin. 
+\end{remark}
+
+
+\subsection{Hardy spaces}
+
+Formally extending to the complex plane and differentiating the Fourier transform, 
+	\[ \widehat f(\xi) =\int_\R f(x) e^{2\pi i x \xi} dx, \]
+we observe that $\widehat f$ satisfies the Cauchy-Riemann equations, since the kernel $(x, \xi) \mapsto e^{2\pi i x \xi}$ is holomorphic in $\xi$. However, this integral may not be well-defined as the kernel grows exponentially as $x \to -\infty$ for $\Im \xi < 0$. 
+
+We can circumvent this issue by assuming $f$ is supported on the positive real axis $\R_+$, in which case we only see exponential decay of the kernel as $x \to \infty$ for $\Im \xi < 0$, which furnishes holomorphicity of $\widehat f$ in the lower half-plane. Moreover, note that 
+	\[ \widehat f(\xi + i \eta) =  \int_0^\infty [f(x) e^{2\pi x \eta}] e^{-2\pi i x \xi} dx = \cF_x [f(x) e^{2\pi x \eta}] (\xi). \]
+It follows from Plancharel's theorem that
+	\[ \int_\R |\widehat{f} (\xi + i \eta)|^2 d \xi = \int_\R \cF_x [f(x) e^{2\pi x \eta}] (\xi)|^2 d \xi =  \int_0^\infty |f(x)|^2 e^{4\pi x \eta} d x. \]
+By dominated convergence theorem and monotonicity of $\eta \mapsto e^{2\pi x \eta}$, 
+	\[ \sup_{\eta < 0}  \int_\R |\widehat{f} (\xi + i \eta)|^2 d \xi = \lim_{\eta \uparrow 0}\int_0^\infty |f(x)|^2 e^{4\pi x \eta}dx = \int_0^\infty |f(x)|^2 dx . \]
+This shows that the Fourier transform furnishes a norm-preserving map from $L^2 (\R_+)$ and the \emph{Hardy space} $H^2 (\C_-)$, the space of holomorphic functions on the lower half-plane $F: \C_- \to \C$ with finite norm
+	\[ ||F||_{H^2} := \sup_{\eta < 0} \int_\R |F(\xi + i \eta)|^2 d \xi . \]
+In fact, the Fourier transform maps surjectively onto the Hardy space, so in summary, 
+
+\begin{theorem}[Paley-Wiener]
+	The Fourier transform $\cF : L^2 (\R_+) \to H^2 (\C_-)$ is an isometry. 
+\end{theorem}
+
+\subsection{Paley-Wiener theorem}
+
+Following the proof of the Paley-Wiener theorem, one sees that if instead we had compact support, then the Fourier transform extends to an entire function. One can view this as another instance of the exchange of decay with regularity under the Fourier transform; ``ultimate'' decay (compact support) is exchanged for ``ultimate'' regularity (global holomorphicity). 
+
+\begin{theorem}[Paley-Wiener]
+	An entire function $F: \C^n \to \C$ is the Fourier transform of a distribution $u \in C^\infty (\R^d)^*$ supported in the ball $|x| \leq A$ if and only if
+		\[ |F(\xi)| \leq C (1 + |\xi|)^m e^{2\pi A |\Im \xi|} \]
+	for some $C > 0$ and $m \in \N$. 
+\end{theorem}
+
+\begin{proof}
+	To prove the forward, let $\delta > 0$, then arguing by Riemann sums, we can write
+		\[ \widehat u (\xi) = u (e^{-2\pi i x \cdot \xi} \chi_\delta (x) ) \]
+	where $\chi_\delta \in C^\infty_c (|x| \leq A + \delta)$ is a radial cut-off satisfying $\chi_\delta \equiv 1$ on $|x| \leq A + \delta/2$ and 
+		\[ ||\partial^\alpha \chi_\delta||_{L^\infty} \lesssim_\alpha \delta^{-|\alpha|}. \]
+	It is clear that the Fourier transform satisfies the Cauchy-Riemann equations, hence it is entire. It remains to show the growth estimate on the Fourier transform. By the product rule and the estimate above, 
+		\[ \left| \partial_x^\alpha (e^{-2\pi i x \cdot \xi} \chi_\delta (x)) \right| \leq \sum_{\beta \leq \alpha} ||\partial^\beta \chi_\delta||_{L^\infty} (1 + |\xi|)^{|\alpha| - |\beta|} \left|e^{- 2\pi i x \cdot \xi}\right| \lesssim_\alpha \sum_{\beta \leq \alpha} \delta^{-|\beta|} (1 + |\xi|)^{|\alpha| - |\beta|} e^{2\pi (A + \delta) |\Im \xi|}. \]
+	Choosing $\delta = 1/(1 + |\xi|)$, it follows that 
+		\[\left| \partial_x^\alpha (e^{-2\pi i x \cdot \xi} \chi_\delta (x)) \right| \lesssim_{A,\alpha} (1 + |\xi|)^{|\alpha|} e^{2\i A |\Im \xi|}. \]
+	Let $m \in \N$ be the order of $u$. Viewing $u$ as a bounded functional on the space of test functions, we conclude
+		\[ |\widehat u (\xi)| \lesssim_{n} \sum_{|\alpha| \leq m} || \partial_x^\alpha (e^{-2\pi i x \cdot \xi} \chi_\delta (x))  ||_{L^\infty} \lesssim (1 + |\xi|)^m e^{2\pi A |\Im \xi|}. \]		
+	Conversely, let $F : \C^n \to \C$ be entire satisfying the growth condition,
+		\[ |F (\xi)| \lesssim (1 + |\xi|)^m e^{2\pi A |\Im \xi|} \]
+	which implies that $F$ is a tempered distribution when restricted to $\R^d$. We want to show that $\cF^{-1} F_{|\R^d}$ is supported in the ball $|x| \leq A$. Consider first the case where $m < -n$, which implies $F_{|\R^d}$ is integrable with continuous inverse Fourier transform. By a contour shift, we can write
+		\[ \cF^{-1} F_{|\R^d} (x) =  \int_{\R^d} F(\xi) e^{2\pi i x \cdot \xi} d \xi =  \int_{\R^d} F(\xi + i \eta) e^{2\pi i x \cdot (\xi + i \eta)} d \xi \]
+	for any $\eta \in \R^d$. Hence, for $|x| > A$, choosing $\eta := \lambda x$, 
+		\[ |\cF^{-1} F_{|\R^d} (x)| \lesssim_n \int_{\R^d} (1 + |\xi + i \lambda x|)^m e^{2\pi  \lambda A|x| }e^{- \lambda |x|^2} d \xi \lesssim_m e^{2\pi \lambda |x| (A  - |x|)} \overset{\lambda \to \infty}{\longrightarrow} 0 , \]
+	proving the result. In the general case, our goal is to show that $\cF^{-1} F_{|\R^d} (\psi) = 0$ for every $\psi \in C^\infty_c (|x| > A)$. Let $\phi \in C^\infty_c (|x| \leq 1)$ be radial, non-negative with unit mass $\int \phi = 1$, then, iterating integration by parts, for every $N \in \N$ its Fourier transform admits decay of the form
+		\[ |\widehat \phi(\xi)| \lesssim_N (1 + |\xi|)^{-N} e^{2\pi |\Im \xi|} d \xi. \] 
+	Set $\phi_\epsilon (x) := \epsilon^{-n} \phi(\epsilon^{-1} x)$ and $F_\epsilon := F \widehat{\phi_\epsilon}$, then 
+		\[ |F_\epsilon (\xi)| \lesssim_N (1 + \epsilon |\xi|)^{m - N} e^{2\pi (A + \epsilon) |\Im \xi|} \lesssim_\epsilon (1 + |\xi|)^{m - N} e^{2\pi \epsilon |\Im \xi|}. \]		
+	Choosing $N \gg 1$, our proof of the initial case applies to $F_\epsilon$, i.e. there exists a distribution $v_\epsilon \in C^\infty (\R^d)^*$ supported in the ball $|x| \leq A + \epsilon$ such that $\widehat{v_\epsilon} = F_\epsilon$. Since $\widehat{\phi_\epsilon} (\xi) = \widehat{\phi} (\epsilon \xi)$ and $\widehat \phi(0) = \int \phi = 1$, we can write by dominated convergence theorem and Plancharel's theorem 
+	\begin{align*}
+		\cF^{-1} F_{|\R^d} (\psi) 
+			&= \int_{\R^d} F(\xi) \cF^{-1} \psi (\xi) d \xi = \lim_{\epsilon \downarrow 0} \int_{\R^d} F(\xi) \widehat{\phi_\epsilon} (\xi) \cF^{-1} \psi (\xi) d \xi \\
+			&= \lim_{\epsilon \downarrow 0} \int_{\R^d} \widehat{v_\epsilon} (\xi) \cF^{-1} \psi (\xi) d \xi = \lim_{\epsilon\downarrow 0} \int_{\R^d} v_\epsilon (x) \psi (x) d x = 0.
+	\end{align*}
+	This completes the proof. 	
+\end{proof}
+
+\begin{remark}
+A direct corollary of the Paley-Wiener theorem is \textit{finite speed of propagation} for solutions of the wave equation. The spatial Fourier transform of the fundamental solution obeys the estimate
+	\[ \left|\frac{\sin (2\pi t |\xi|)}{2\pi |\xi|}\right| \lesssim  e^{2\pi t |\Im \xi|}. \]
+This implies that the fundamental solution is supported in the forward light cone, 
+	\[ \supp \cF_\xi^{-1} \left( \mathbb 1_{[0, \infty]} (t) \frac{\sin (2\pi t |\xi|)}{2\pi |\xi|} \right) \subseteq \{ (t, x) \in \R_+ \times \R^d_x : t \geq 0 \text{ and } |x| \leq t \}. \]
+Physically, this states that given a point light-source at the origin, waves emitted cannot travel faster than the speed of light, which in this case is normalized to be $c = 1$. 
+\end{remark}
+
+\end{document}
