@@ -1,0 +1,20 @@
+
+
+
+Energy dispersion
+	\[ \sfED [\phi] = \sup_{N \in 2^\Z} ||P_N \phi||_{L^\infty_{t, x} [I]} \]
+Scaling dictates that 
+	\[ ||P_N \phi||_{L^\infty_x} \lesssim ||\phi||_{\dot H^1_x} \]	
+So while we do not have the endpoint embedding $\dot H^1 \subseteq L^\infty$, we do have this embedding into the energy dispersion space, which is essentially the Besov-type space $L^\infty_t (B^{0, \infty}_\infty)_x$. 	
+
+\begin{theorem}[Energy-dispersed regularity theorem]
+	Let $\phi$ be a solution to the wave maps equation \eqref{wave} with finite energy $\cE[\phi] \leq \cE$, then there exists $F(\cE) \gg 1$ and $\epsilon (\cE) \ll 1$ such that 
+		\[ \sfED[\phi] \leq \epsilon (\cE), \]
+	then 
+		\[ ||\phi||_{\cS [I]} \leq F(\cE).  \]
+	Furthermore, considering an admissible frequency envelope $c$ attached to some $\vec \phi$, we obtain 
+		\[ ||P_N \phi||_{\cS [I]} \lesssim c_N \]
+	such a solution extends to a neighborhood of the interval $I$. 
+\end{theorem}
+
+Extends and complements the threshold theorem. Establishing dichotomy between bubbling and regularity. 
