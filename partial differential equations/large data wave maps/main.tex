@@ -4,11 +4,12 @@
 
 % To show labels in the margin:
 \usepackage[notref, notcite]{showkeys}
-
+\usepackage{xcolor}
 \usepackage{slashed}
 
 \newcommand{\II}{\mathrm{II}}	% Second fundamental form
 \newcommand{\sfED}{\mathsf{ED}}
+\newcommand{\MM}{\mathbb M}
 
 \title
 {
@@ -22,7 +23,8 @@
 \maketitle
 
 \begin{abstract}
-	In these notes we present the large-data theory for the energy-critical wave maps equation a l\'a the \textit{energy dispersion method} of Sterbenz and Tataru in their series of papers	\cite{SterbenzTataru2010, SterbenzTataru2010a}. 
+	In these notes we present the large-data theory for the energy-critical wave maps equation a l\'a the \textit{energy dispersion method} of Sterbenz and Tataru in their series of papers	\cite{SterbenzTataru2010a, SterbenzTataru2010}.
+The contents of these notes interpolate in detail between those papers and the summary contained in the Oberwolfach notes of Tataru \cite[Geometric Wave Equations]{KochEtAl2014}. 
 \end{abstract}
 
 \tableofcontents
@@ -30,8 +32,14 @@
 \section{Introduction}
 \input{internal/intro}
 
+\section{Renormalisation}
+\input{internal/renorm}
+
 \section{Energy dispersion method}
 \input{internal/dispersed}
+
+\section{Bubbling}
+\input{internal/bubble}
 
 \bibliographystyle{alpha}
 \bibliography{external/biblio}
