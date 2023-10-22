@@ -19,7 +19,7 @@ of which the wave maps equation \eqref{wave} is the Euler-Lagrange equation. The
 	 \]
 which is divergence-free
 	\[ \partial^\alpha T_{\alpha \beta} [\phi] = 0. \]
-Then, contracting the stress-energy tensor with the vector field $\partial_t$, applying the divergence-free condition and Stokes' theorem on the space-time slab $I \times \R^2$ furnishes conservation of the \emph{Dirichlet energy} for solutions to the wave maps equation, 
+Then, contracting the stress-energy tensor with the vector field $\partial_t$, applying the divergence-free condition and Stokes' theorem on the space-time slab $I \times \R^2$ furnishes conservation of the \emph{energy} for solutions to the wave maps equation, 
 	\[ \cE[\phi (t)] := ||\vec \phi||_{\dot H^1 \times L^2}^2 (t) = \int_{\R^2} |\partial_t \phi|^2 + |\nabla_x \phi|^2 \, dx , \]
 where we have denoted $\phi[t]= (\phi, \partial_t \phi) (t)$. In view of Noether's theorem, conservation of energy corresponds to the time-translation symmetry of the Lagrangian $\cL [\phi]$. Note that the wave maps equation and its Lagrangian are invariant with respect to the scaling 
 	\[ \phi(t, x) \mapsto \phi(\lambda t, \lambda x). \]
@@ -63,7 +63,7 @@ Using the symmetries of the equation and the finite speed of propagation, we can
 \begin{remark}
 	The soliton resolution conjecture asks whether the nature of blow-up or non-scattering can be completely characterised by a superposition of solitons. The question of blow-up was partially answered by the thesis of Grinis \cite{Grinis2016}, using the bubble tree argument. In this case, the energy concentration can be completely decomposed into the sum of energies of solitons,
 		\[
-			\lim_{t} \cE_{S_t} [\phi] = \sum_{Q \text{ bubble}} ||Q||_{\dot H^1}, 
+			\lim_{t} \cE_{C_\gamma \cap S_t} [\phi] = \sum_{Q \text{ bubble}} ||Q||_{\dot H^1}, 
 		\]
 	 sometimes known as the \emph{energy identity}. The remarkable heart of the analysis is showing that no energy is lost between the scales at which the solitons appear.  
 \end{remark}
@@ -77,7 +77,7 @@ Using the symmetries of the equation and the finite speed of propagation, we can
 		
 		\item (weak Lipschitz dependence) The flow map is globally Lipschitz in the $\dot H^{\sigma}$ topology for $\sigma < 1$ close to $1$. 
 		
-		\item (scattering) The $\cS^1$ norm is finite.
+		\item (scattering) The $\sfS$-norm is finite.
 	\end{enumerate}	
 \end{theorem}
 

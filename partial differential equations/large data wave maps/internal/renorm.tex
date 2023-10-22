@@ -1,60 +1,42 @@
-To identify the frequency interactions between the terms of the wave maps equation \eqref{wave}, we work instead with the paradifferential formulation. 
-
-Paradifferential equation 
+To identify the frequency interactions between the terms of the wave maps equation \eqref{wave}, we work instead with the paradifferential formulation, localising to frequencies $|\xi| \sim 2^k$. Decomposing each term in the non-linearity into Littlewood-Paley pieces $\bfS(\phi)_{k_1} \partial_\alpha \phi_{k_2}\partial^\alpha \phi_{k_3}$, we make the following dichotomy
+	\begin{enumerate}
+		\item high-high interactions, e.g. $k_2 \sim k_3 \gg k_1$, or the derivative terms have low frequencies, $k_1 \gg k_2, k_3$, 
+		
+		\item low-high-low interactions $k_2 \gg k_1, k_3$ or low-low-high interactions $k_3 \gg k_1, k_2$, i.e. one derivative term is high frequency.
+	\end{enumerate}
+The former are good interactions and can always be treated peturbatively, while for the latter one has to identify the non-peturbative part of the interaction. One also wants to use the geometry of the problem, namely $\bfS(\phi) \partial \phi = 0$. Paralinearising and adding to our paradifferential equation, we obtain 
 	\[
-		\Box \phi_k = - \bfS(\phi)_{< k} \partial \phi_{< k} \partial \phi_k + \text{perturbative}
+		\Box \phi_k = - \bfA(\phi)^\alpha_{\ll k} \partial_\alpha \phi_k + G(\phi)
 	\]
-We can use geometry $\bfS(\phi) \partial \phi = 0$ so that 	
+for some non-linear term $G(\phi)$ which we want to treat as perturbative and anti-symmetric matrices
 	\[
-		\Box \phi_k = - \bfA(\phi)_{< k} \partial \phi_{< k} \partial \phi_k + \text{perturbative}
-	\]
-for anti-symmetric $\bfA$. Gives some conservation structure. One seeks a linear transformation $w_k = U_{< k} \psi_k$ to make the equation 
-	\[
-		\Box w_k = \text{perturbative} 
+		\bfA(\phi)^\alpha_{\ll k} := (\bfS(\phi) - \bfS(\phi)^\top)_{\ll k} \partial^\alpha \phi_{\ll k}.
 	\]
 	
-	\begin{align*}
-		\text{error}
-			&=	\left(\Box U_{< k - m} - U_{< k - m} (\Box + 2 \bfA (\phi)_{< k - m} \partial^\alpha \phi_{< k - m} \partial_\alpha) \right) \phi_k\\
-			&= \Box U_{< k - m} \phi_k + 2(\partial^\alpha U_{< k - m} - U_{< k - m} \bfA (\phi)_{< k - m} \partial^\alpha \phi_{< k - m}) \partial_\alpha \phi_k
-	\end{align*}
-		
+\subsection{Renormalisation}	
+Tao in his work \cite{Tao2001} on the small data problem for the case $\mathbb M = \mathbb S^k$ developed a renormalisation procedure which transforms the non-linearity into a perturbative non-linearity. One seeks a linear transformation $w_k = U_{< k} \psi_k$ to transform the linear paradifferential equation to the constant coefficient equation
+	\[
+		\Box w_k = \text{perturbative} .
+	\]
+Define the anti-symmetric matrix $\bfB$ by 
+	\[
+		B_k = (\bfS(\phi) - \bfS(\phi)^\top)_{< k - 10} \phi_k
+	\]
+then one wants to solve the ordinary differential equation
 	\begin{equation}
 		\begin{split}
 			\frac{d}{dk} U_{< k}
 				&= U_{< k} \bfB_k, \\
 			\lim_{k \to - \infty} U_{< k}
-				&= I
+				&= I.
 		\end{split}
 		\label{eq:ODE}
 	\end{equation}	
-	
-One wants 
-	\[
-		\partial U_{< k} = U_{< k} \partial \phi_{< k}
-	\]	
-
-\begin{lemma}[Diffusion gauge]
-	Then 
-		\begin{align*}
-			||P_k U_k||_{\sfS}
-				&\lesssim_\cF 2^{-\delta |k - k'|} 2^{-C ( k - k')} + c_k, \\
-			||P_{k'} \nabla^J_{t, x} U_k||_{L^1_{t,x}}
-				&\lesssim 2^{(|J| - 3)k} 2^{-C(k' - k)} c_k		
-		\end{align*}
-	and
-		\begin{align}
-			||P_{k'} (U_{< k - 20} G) ||_{\sfN}
-				&\lesssim_\cF 2^{-|k' - k|} ||G||_{\sfN}, \\
-			||P_k (\Box U_{k_1} \psi_{k_2}) ||_{\sfN}
-				&\lesssim_\cF 2^{-|k - k_2|} 2^{-\delta(k_2 - k_1)} c_{k_1} ||\psi_{k_2}||_{\sfS}	
-		\end{align}	
-	and
-		\begin{equation}
-			U_{< k}^\top \nabla_\alpha U_{< k} = \nabla_\alpha \bfB_{< k} - \int_{-\infty}^k [B_{k'}, U^\top_{< k'} , \nabla_\alpha U_{< k'}] dk'
-		\end{equation}
-\end{lemma}	
-	
+We want the solution to have good $\sfS$ and $\sfN$-estimates, and approximately renormalise the equation $\bfA_\alpha = \nabla_\alpha \bfB$,
+	\begin{equation}
+			U_{< k}^\top \nabla_\alpha U_{< k} = \nabla_\alpha \bfB_{< k} - \int_{-\infty}^k [B_{k'}, U^\top_{< k'} , \nabla_\alpha U_{< k'}] dk'.
+	\end{equation}
+To get good estimates using this \emph{diffusion gauge}, one still needs smallness of the coefficients $\bfA(\phi)_{\ll k}$ in our paradifferential equation. In the case of the small data problem, this is no issue, however for large data we have to introduce a large \emph{frequency gap} $m$ to compensate.
 	
 \begin{proposition}[Gauge covariant $\sfS$-estimate]
 	Let $\psi_k$ be a frequency-localised solution to the linear equation 
@@ -80,7 +62,6 @@ One wants
 \begin{proof}
 	Standard energy estimates
 		\begin{equation}
-			||\psi_k||_{\underline{\mathsf E}[I]} \lesssim_\cF ||\psi_k [0]||_{\dot H^1 \times L^2} + 2^{\delta m} || G||_{\sfN [I]} + 2^{-\delta m} || \psi_k||_{\sfS[I]}
+			||\psi_k||_{\underline{\mathsf E}[I]} \lesssim_\cF ||\psi_k [0]||_{\dot H^1 \times L^2} + 2^{\delta m} || G||_{\sfN [I]} + 2^{-\delta m} || \psi_k||_{\sfS[I]}.
 		\end{equation}
-	
 \end{proof}
