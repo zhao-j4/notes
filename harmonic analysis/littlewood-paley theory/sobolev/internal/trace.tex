@@ -124,3 +124,26 @@ The uncertainty principle roughly states that $\triangle x \cdot \triangle \xi \
 		\end{align*}
 	as desired. 
 \end{proof}
+
+\subsection{Smooth localisation}
+
+\begin{proposition}[Localisation of $W^{s, p}$-functions]
+	Let $\psi \in \cS (\R^d)$ be a spherically-symmetric Schwartz function. Then for $s \geq 0$ we have 
+		\[ ||u(x) \psi(x/R) ||_{W^{s, p}} \lesssim_{s, d, \psi} ||u||_{W^{s, p}} \]
+	uniformly in $R \geq 1$. 
+\end{proposition}
+
+\begin{proof}
+	We proceed by induction on $s$ integer. The case $s = 0$ is trivial. Suppose the result holds for $s$, we want to show it for $s + 1$. Indeed, 
+		\[
+			\langle \nabla \rangle^s (\nabla u \psi + \frac1R u \nabla \psi)
+		\]
+	Ok then 
+		\[
+			||\nabla u(x) \psi(x/R)||_{W^{s, p}} \lesssim ||\nabla u||_{W^{s, p}}.
+		\]	
+	Also
+		\[
+			\frac1R || u \nabla \psi ||_{W^{s, p}} \lesssim 
+		\]	
+\end{proof}

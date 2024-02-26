@@ -1,0 +1,44 @@
+\documentclass[reqno]{amsart}
+
+\usepackage{External/takodachi}
+
+\renewcommand{\div}{\operatorname{div}}
+\newcommand{\nlin}{\mathrm{nlin}}
+\newcommand{\lin}{\mathrm{lin}}
+
+\title
+{
+	Regularity for $L^\infty_t L^3_x$-solutions to Navier-Stokes via rigidity
+} 
+\author{Jason Zhao}
+\date{\today}
+
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+	We give two proofs of the regularity for solutions to the incompressible Navier-Stokes equations which are a priori bounded in the critical space $L^3_x (\mathbb R^3)$, following the concentration compactness method as in Gallagher-Koch-Planchon and the stacking argument of Tao. The overarching idea one should take away is that rigidity arises from unique continuation in the context of Navier-Stokes. 
+\end{abstract}
+
+\tableofcontents
+
+\section{Introduction}
+\input{internal/intro}
+
+\section{Concentration compactness}\label{sec:cc}
+\input{internal/compact}
+
+\section{Rigidity}\label{sec:rigid}
+\input{internal/rigid}
+
+\section{``Dispersion'' implies regularity}\label{sec:disperse}
+\input{internal/disperse}
+
+\section{Stacking argument}\label{sec:stack}
+\input{internal/quant}
+
+\bibliographystyle{alpha}
+\bibliography{external/biblio}
+
+\end{document}

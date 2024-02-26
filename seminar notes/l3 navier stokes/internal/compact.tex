@@ -1,0 +1,58 @@
+We begin with a proof of Theorem \ref{thm:ESS} via the concentration compactness + rigidity strategy of Kenig and Merle. From \cite{Kato1984}, we know that local existence holds for large $L^3$-data and global existence holds for sufficiently small $L^3$-data. It follows that there exists a maximum threshold $0 < A_{\mathrm{crit}} \leq \infty$ below which control of the critical $L^\infty_t L^3_x$-norm implies global existence. Conversely, if the threshold is finite, then we can view it as the minimum threshold above which there exists a solution which exhibits finite-time blow-up. More precisely, 
+	\begin{align*}
+		A_{\mathrm{crit}} 
+			&= \sup \left\{ A  > 0 :  ||u||_{L^\infty_t L^3_x [0, T^*)} \leq A \implies T^* = + \infty \right\}\\
+			&= \inf\left\{||u||_{L^\infty_t L^3_x [0, T^*)}  : T^* < + \infty \right\}.
+	\end{align*}
+Assume towards a contradiction that $A_{\mathrm{crit}} < \infty$. In this section we argue by the non-linear profile decomposition to show that 
+	\begin{enumerate}
+		\item there exists a minimal blow-up solution which achieves the threshold
+			\[
+				||u_{\mathrm{crit}}||_{L^\infty_t L^3_x [0, T^*)} = A_{\mathrm{crit}},\]
+		\item compactness of the minimal blow-up solution, up to rescaling and translation. 
+	\end{enumerate}
+	
+
+\subsection{Existence of a minimal blow-up solution}
+
+Our goal will be to establish the existence of a blow-up solution which achieves $A_{\mathrm{crit}}$, that is, 
+
+\begin{proposition}[Existence of a minimal counterexample]
+	Suppose that the $L^3_t L^\infty_x$-criterion, fails, i.e. there exists a finite minimal norm $A_{\mathrm{crit}} < \infty$ above which there exist examples of blow-up to Navier-Stokes \eqref{NS}. Then this minimal norm is witnessed,
+		\[
+			||u||_{L^\infty_t L^3_x[0, T^*)} = A_{\mathrm{crit}},
+		\]
+	by a solution $u_{\mathrm{crit}}: [0, T^*) \times \R^3 \to \R^3$ which blows-up in finite time $T^* < + \infty$.
+\end{proposition}
+
+\begin{proof}	
+By definition of $A_{\mathrm{crit}} < \infty$, there exists a bounded sequence of initial data $\{u_{0, n}\}_n \subseteq L^3 (\R^3)$ with associated strong solutions $\{u_n\}_n \subseteq C_t^0 L^3_x$ such that $||u_n||_{L^\infty_t L^3_x [0, T^*_n)} \downarrow A_{\mathrm{crit}}$.
+	\begin{equation}
+		u_n (t, x)
+			=  \sum_{j = 0}^J \frac{1}{\lambda_{j, n}} U_j \left( \frac{t}{\lambda_{j, n}^2} , \frac{x - x_{j, n}}{\lambda_{j, n}} \right) + w^J_n (t, x) + r^J_n (t, x),
+	\end{equation}
+	We reorder the profiles based on blow-up time, and by minimality and almost orthogonality show that the first blow-up profile must have been the only profile. This is our critical element.
+\end{proof}
+
+\subsection{Compactness modulo symmetries}
+
+Let $u_{\mathrm{crit}} \in C^0_t L^3_x ([0, T^*) \times \R^3)$ be a minimal blow-up solution, our goal now is to show that, up to the symmetries of the problem, the collection of time-snapshots $\{ u_{\mathrm{crit}} (t)\}_t \subseteq L^3 (\R^3)$ is pre-compact. 
+	\[
+		K = \left\{ \frac{1}{\lambda (t)} u_{\mathrm{crit}} \left( \frac{x - x(t)}{\lambda(t)} , s(t) \right) : t \in [0, T^*) \right\}
+	\]
+We are actually only concerned about compactness of a sequence going towards the blow-up time. That is, we prove
+
+\begin{proposition}[Compactness of minimal counterexample]
+	Let $u_{\mathrm{crit}}: [0, T^*) \times \R^3 \to \R^3$ be a minimal counterexample. Then for any $t_n \uparrow T^*$, there exist $t_n \leq s_n \leq T^*$ and scales $\lambda_n \to \infty$ and centers $x_n \in \R^3$ such that 
+		\[
+			\frac{1}{\lambda_n} u_{\mathrm{crit}} \left( s_n, \frac{x - x_n}{\lambda_n} \right) \overset{L^3_x}{\longrightarrow} v(x). 
+		\]
+\end{proposition}
+
+\begin{remark}
+	This is a lie. For the $L^3_x$-problem, actually the convergence holds in the slightly weaker negative regularity critical Besov space $B^{-1 + \frac3p, p}_p (\R^3)$. 
+\end{remark}
+
+\begin{proof}
+	Profile decomposition. The scales must go to infinity $\lambda_n \to \infty$ since the solution blows up, which corresponds to the profile being concentrated into smaller and smaller spatial scales. 
+\end{proof}

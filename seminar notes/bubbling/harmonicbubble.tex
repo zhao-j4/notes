@@ -1,0 +1,247 @@
+\documentclass[reqno]{amsart}
+
+\usepackage{amsfonts,latexsym,amsthm,amssymb,amsmath,amscd,euscript,bm}
+\usepackage[sc]{mathpazo}
+\usepackage[margin = 2cm]{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+% sets numbering of enumerate to a, b, c, ...
+\renewcommand{\theenumi}{\alph{enumi}}
+
+% Theorems, propositions, etc.
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem*{claim}{Claim}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{notation}{Notation}
+
+\usepackage{tikz-cd}
+
+
+% Math blackboard font
+\newcommand{\nc}{\newcommand}
+\nc{\on}[1]{\operatorname{#1}}
+
+\nc{\R}{\mathbb R}
+\nc{\C}{\mathbb C}
+\nc{\Q}{\mathbb Q}
+\nc{\Z}{\mathbb Z}
+\nc{\N}{\mathbb N}
+\nc{\HH}{\mathbb H}
+\nc{\DD}{\mathbb D}
+\nc{\TT}{\mathbb T}
+\nc{\EE}{\mathbb E}
+\nc{\PP}{\mathbb P}
+
+\nc{\cT}{\mathcal T}
+\nc{\cA}{\mathcal A}
+\nc{\cM}{\mathcal M}
+\nc{\cR}{\mathcal R}
+\nc{\cB}{\mathcal B}
+\nc{\cG}{\mathcal G}
+\nc{\cD}{\mathcal D}
+\nc{\cS}{\mathcal S}
+\nc{\cF}{\mathcal F}
+\nc{\cL}{\mathcal L}
+\nc{\cE}{\mathcal E}
+
+\nc{\diam}{\operatorname{diam}}
+\nc{\osc}{\operatorname{osc}}
+\nc{\supp}{\operatorname{supp}}
+\nc{\loc}{\text{loc}}
+\nc{\BlowUp}{\mathsf{BlowUp}}
+
+
+% Why the f*** would you ever use \epsilon
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\emph}{\textsc}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+
+\let\vec\mathbf
+
+% Title: change problem set number as needed
+\title
+{
+	An introduction to bubbling analysis
+} 
+
+\author{Jason Zhao}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+	Bubbling analysis, first coined in the work of Sacks and Uhlenbeck (1982), is a method of performing blow-up analysis for conformally invariant elliptic PDE, such as harmonic maps, Einstein manifolds, and elliptic Yang-Mills. We will illustrate the analysis a lá Lin and Rivière (2002) in the case of energy supercritical harmonic maps into spheres.
+\end{abstract}
+
+\tableofcontents
+
+\section{Harmonic maps}
+
+Denote $B^n \subseteq \R^n$ the unit ball, and let $N$ be a closed Riemannian manifold. We say that $u \in H^1 (B^n; N)$ is a \emph{stationary harmonic map} if it is a critical point of the \emph{Dirichlet energy},
+	\[ E[u] := \int_M |\nabla u|^2 \, dx. \]
+In particular, it satisfies the corresponding Euler-Lagrange equation 
+	\[ \Delta u + \text{II} (u) (\nabla u, \nabla u) = 0, \]	
+where $\text{II} (u)$ denotes the second fundamental form of $N$ at the point $u$.
+
+\subsection{Monotonicity formula}
+
+Stationary harmonic maps also satisfy the conservation law
+	\[ \operatorname{div} \left(  |\nabla u|^2  \delta_{ij} - 2 \partial_i u \partial_k u \right) = 0. \]
+Integrating the above identity, we see that the scale-invariant Dirichlet energy
+	\[ \theta_r (x) := \frac{1}{r^{n - 2}} \int_{B^n_r (x)} |\nabla u|^2 \, dx \]
+is a monotone quantity $\theta_r \uparrow$ with 
+	\[ \frac{d}{dr} \theta_r (x) = \frac{2}{r^{n - 2}} \int_{\partial B^n_r (x)} \frac{1}{\rho} \left| \frac{\partial u}{\partial \rho} \right|^2 \, d\Theta.\]	
+
+\subsection{$\epsilon$-regularity}
+
+\begin{theorem}
+	There exists $\epsilon (n, N) > 0$ such that if $u: B_r^n (0) \to N$ is a stationary harmonic map and 
+		\[ \theta_r (0) < \epsilon \]
+	then $u$ is smooth in a neighborhood of the origin and 
+		\[ |\nabla u(0)|^2 \lesssim_{n, N} \frac{\theta_r (0)}{r^2}.\]	
+\end{theorem}	
+
+\begin{theorem}
+	Let $M, N$ be closed Riemannian manifolds, and suppose $u: M \to N$ is a non-trivial smooth harmonic map. Then there exists $\epsilon (M, N) > 0$ such that
+		\[ E[u] \geq \epsilon (M , N). \]
+\end{theorem}
+
+
+
+\section{Preliminaries}
+
+
+Let $u_i : B^n \to N$ be a sequence of harmonic maps with uniformly bounded energy, then we can pass to a subsequence converging weakly to $u$. The motivating question which begins the bubbling analysis is: to what extent does weak convergence fail to be strong? This is captured precisely by the set of energy concentration, 
+	\[ \Sigma := \bigcap_{r > 0} \left\{ x \in B^n : \liminf_{i \to \infty} \theta(r) \geq \epsilon(n, N) \right\}. \]
+Furthermore, it follows from Fatou's lemma that there exists a non-negative measure $\nu$ such that
+	\[ \lim_{i \to \infty} |\nabla u_i|^2 \, dx = |\nabla u|^2 dx + \nu. \]	
+
+	
+\begin{lemma}
+	Let $u: B^n \to N$ be a stationary harmonic map, then the $(k - 2)$-dimensional Hausdorff measure of the singular set is zero. 
+\end{lemma}
+
+\begin{proof}
+	Suppose $x \in \operatorname{sing} u$, then by the $\epsilon$-regularity theorem there exists $r_x > 0$ such that
+		\[ \epsilon \leq \frac{1}{r_x^{n - 2}} \int_{B^n_{r_x} (x)} |\nabla u|^2 \, dx.  \]
+	Using the Besocovitch covering lemma, there exists a disjoint collection of balls $B^n_{r_j} (x_j)$ such that
+		\[ \Sigma \subseteq \bigcup_{j} B^n_{5r_j} (x_j) .\]
+	By disjointness and the estimates above
+		\[ \epsilon \sum_j r_j^{n - 2} \lesssim  \int_{\bigcup_j B^n_{r_j} (x_j)} |\nabla u|^2 \, dx . \]		
+	This proves that the singular set has finite $(n - 2)$-Hausdorff measure. Note that this further implies that it has Lebesgue measure zero, so by dominated convergence we in fact have that the singular set has $(n - 2)$-Hausdorff measure zero. 
+\end{proof}
+
+\subsection{Model case}
+
+Suppose there exists a smooth, non-constant harmonic map with finite energy $\phi : \R^2 \to N$. By rescaling, we can find a smooth family of harmonic maps $\{ \phi_i \}_i$ such that the energy densities concentrate
+	\[ |\nabla \phi_i|^2 \, dx \to c_0 \delta_0. \]
+Evidently by undoing the scaling we see that $c_0$ is precisely given by the energy of $\phi$. We can extend this example to $\R^n$ by constants 
+	\[ |\nabla \phi_i|^2 \, dx \to c_0 \, d \mathcal H^{n - 2} \big|_P. \]
+	
+	
+\subsection{Rescaling}	
+
+In view of the model example, we want to begin the bubbling analysis by locally approximating the singular set $\Sigma$ by a plane. Indeed, by rectifiability one has for $\mathcal L^{n - 2}$-a.e. $x_0 \in \Sigma$ a unique classical tangent space $P$, i.e. the blow-up at $x_0$ of the defect measure converges to the tangent measure,
+	\[ \lim_{r \to 0} \frac{1}{r^{n - 2}}\BlowUp_{x_0, r} \left(e \, d\mathcal H^{n - 2} \big|_{\Sigma}\right) = e(x_0) \, d\mathcal H^{n - 2} \big|_{P}, \]
+where $\BlowUp_{x_0, r} \mu (A) = \mu(x_0 + rA)$ for any measure $\mu$. On the other hand, Federer-Ziemer established the following well-known Lebesgue differentiation-type result for harmonic maps, 
+	\[\lim_{r \to 0} \theta_r (x_0) = \lim_{r \to 0} \frac{1}{r^{n - 2}} \int_{B_r^n (x_0)} |\nabla u|^2 \, dx = 0 \]
+for $\mathcal H^{n -2}$-a.e. $x_0 \in B^n$. Collecting the two results, we can write
+	\begin{align*}	
+		\lim_{r \to 0} \lim_{i \to \infty} \frac{1}{r^{n - 2}} \BlowUp_{x_0, r} \left( |\nabla u_i|^2 \, dx \right) 
+			&= \lim_{r \to 0} \frac{1}{r^{n - 2}} \BlowUp_{x_0, r} \left( |\nabla u|^2 \, dx + e \, d \mathcal H^{n - 2} \big|_{\Sigma} \right) \\
+			&= e(x_0) \, d\mathcal H^{n - 2} \big|_{P} 
+	\end{align*}			
+for $\mathcal H^{n -2}$-a.e. $x \in \Sigma$. Thus there exist radii $r_k \downarrow 0$ and indices $i_k \uparrow \infty$ such that  
+	\[ \lim_{k \to \infty} |\nabla \widetilde u_k|^2 \, dx = \lim_{k \to \infty}  \frac{1}{r_k^{n - 2}} \BlowUp_{x_0, r_k} \left( |\nabla u_{i_k}|^2 \, dx \right) = e(x_0) \, d\mathcal H^{n - 2} \big|_{P},  \]
+where $\widetilde u_k (x) := \BlowUp_{x_0, r_k} u_{i_k} (x) = u_{i_k} (x_0 + r_k x)$. That is, we can write the tangent defect measure as the defect measure of a rescaled sub-sequence of harmonic maps converging weakly to a constant.
+
+Henceforth we pass to this rescaled sequence, and assume without loss of generality that $x_0$ is the origin and $P = \R^{n -2} \times \{0^2\}$. It follows from the monotonicity formula, c.f. Lin, that one has
+	\begin{equation}
+		 \lim_{k \to \infty} \int_{B^{n - 2}_1 (0) \times B^2_1 (0)} \sum_{j = 1}^{n - 2} \left| \frac{\partial u_k}{\partial x_j}  \right|^2 dx = 0. \label{eq:symmetry}
+	\end{equation}
+
+\section{Bubbling analysis}
+
+A \emph{bubble} $\phi : \R^n \to N$ is a smooth non-constant harmonic map which is invariant under translation with respect to some $(n - 2)$-dimensional subspace $P \subseteq \R^n$. We define the energy of $\phi$ to be 
+	\[ E[\phi] := \int_{P^\perp} |\nabla \phi|^2 \, d\mathcal L^{n - 2}.  \]
+We say that $\phi$ is a bubble of $\{u_i\}_i$ at $x \in \Sigma$ if there exists a sequence $x_i \to x$ and $r_i \to 0$ such that the blow-ups 
+	\[ u_i ( x_i + r_i x) \to \phi \]
+where the convergence is smooth away from a closed set of finite $(n - 2)$ Hausdorff measure. We denote by $\mathcal B[x]$ the collection of all bubbles at $x$. 
+
+
+\subsection{Good slices}	
+
+It follows from Allard's constancy lemma that the energy density $e(x_0)$ of the defect measure can be written as the limit of the energies along slices,
+	\begin{equation}
+		 \lim_{k \to \infty} \int_{\{X^{n - 2} \} \times B^2_1 (0)} |\nabla u_k|^2 dX^2 = e, \qquad \text{a.e. $X^{n - 2} \in P$.} \label{eq:slice}
+	\end{equation} 
+It will be convenient to work on ``good slices'' $\{ X^{n - 2} = X^{n - 2}_k \}$ where certain norms are controlled. Define $f_k : B^{n - 2} \to \R$ by 
+	\[ f_k (X^{n - 2}) := \int_{\{X^{n - 2}\} \times B^2 (0)} \sum_{j = 1}^{n - 2} \left| \frac{\partial u_k}{\partial x_j}  \right|^2 dX^2.  \]
+It follows from (\ref{eq:symmetry}) that $||f_k||_{L^1} \to 0$. Recall the Hardy-Littlewood maximal inequality 
+	\[ | \{ X^{n - 2}: Mf_k (X^{n - 2}) \geq \lambda  \}| \lesssim \frac{|| f_k||_{L^1}}{\lambda} \overset{k \to \infty}{\longrightarrow} 0. \]	
+This implies that there exists $E_k$ such that $|E_k| > 0.99 |B^{n - 2}_{1/2}|$ for $k \gg 1$ such that
+	\begin{equation}
+		 \sup_{0 < r < 1/2} \frac{1}{r^{n - 2}} \int_{B^{n - 2}_r (X^{n - 2}_k) \times B^2 (0)} \sum_{j = 1}^{n - 2} \left| \frac{\partial u_k}{\partial x_j}  \right|^2 dx \overset{k \to \infty}{\longrightarrow}0, \qquad \text{a.e. $X^{n - 2} \in E_k$} \label{eq:maximal}
+	\end{equation}	 	
+by setting $E_k := \{ X^{n - 2} : Mf_k (X^{n - 2}) < \lambda_k^{(1)} \}$ for $\lambda_k := ||f_k||_{L^1}^{1/2}$. Towards controlling the \textit{neck regions}, we would also like the $L^{2, 1}$-norm of the gradient to be controlled. Indeed
+	\[ || \nabla u_k||_{L^{2, 1} (Q_{2/3})} \lesssim ||u_i||_{W^{2, 1} (Q_{2/3})} \lesssim || \Delta u_k ||_{\mathcal H_a  (Q_{2/3})} \lesssim || \nabla u_k ||_{L^2 (Q_{1})} \lesssim 1,\]
+where the first inequality follows from Sobolev embedding and the third inequality from a lemma of Helein. By Fubini's theorem, there exists $F_k$ such that $|F_k| > 0.99 |B^{n - 2}_{1/2}|$ and
+	\begin{equation}
+		||\nabla u_k||_{L^{2, 1} (B^2_{1/2} (0))}(X^{n - 2}) \lesssim 1, \qquad \text{a.e. $X^{n - 2} \in F_k$}.\label{eq:lorentz}
+	\end{equation}
+Thus, combined with partial regularity, we can choose $\{X^{n - 2}_k	\}_k \subseteq B^{n - 2}_{1/2} (0)$ such that (\ref{eq:maximal}), (\ref{eq:lorentz}) hold, and $u_k$ is smooth in a neighborhood of $(X^{n - 2}_k, X^2)$ for all $X^2 \in B^2_{1/2} (0)$. 
+	
+\subsection{Extracting the bubbles}
+
+To find the first bubble, we need to determine the first characteristic scale and point of energy concentration. To this end, we claim that there exist $0 < \lambda_k^{(1)} < \tfrac12$ and $X^2_k \in B^2_{1/2} (0)$ achieving the maximum value of 
+	\[ \max_{X^2 \in B^2_{1/2} (0)} \frac{1}{\left(\lambda_k^{(1)}\right)^{n - 2}} \int_{B^{n - 2}_{\lambda_k^{(1)}} (X^{n - 2}_k) \times B_{\lambda_k^{(1)}}^2 (X^2)} |\nabla u_i|^2 \, dx= \frac{\epsilon(2, N)}{c(n)}.\]
+This follows from $\epsilon$-regularity and monotonicity. For brevity, we take the concentration points to be the origin $(X^{n - 2}_k, X^2_k) = (0^{n - 2}, 0^2)$. It is showed in Lin that, upon passing to a subsequence, the blow-up at the characteristic scale centered at the concentration point converges in $C^{1,\alpha}_\loc (\R^n)$ and $H^1_\loc (\R^n)$ to the first bubble, 
+	\[ \BlowUp_{\lambda_k^{(1)}} u_k \overset{k \to \infty}{\longrightarrow} \phi^{(1)} \qquad \text{in $H^1_\loc$}. \]	
+The existence of additional bubbles is equivalent to energy concentration at higher scales $\lambda_k^{(2)} \gg \lambda_k^{(1)}$. Assume that there exists $\epsilon_0 > 0$ such that, upon passing to a subsequence, there exists $\lambda_k^{(2)} \downarrow 0$ such that	
+	\begin{equation}
+		 \frac{1}{\left( \lambda_k^{(2)} \right)^{n - 2}} \int_{B^{n - 2}_{\lambda_k^{(2)}} (0) \times B^{2}_{2\lambda_k^{(2)}} (0) \setminus B^2_{\lambda_k^{(2)}} (0)} |\nabla u_k|^2 \, dx \geq \epsilon_0 
+	\end{equation}	 
+and $	\lambda_k^{(2)}/\lambda_k^{(1)} \to \infty$. Here, when passing to a subsequence, we get 
+	\[ \BlowUp_{\lambda_k^{(2)}} u_k \overset{k \to \infty}{\longrightarrow} \psi \qquad \text{in $L^2_\loc$}.\]
+There are two possibilities as detailed in the first section. First, the convergence is strong, in which case we obtain another bubble $\phi^{(2)} := \psi$. Second, the convergence is weak, in which case this is measured precisely by a defect measure,
+	\[ |\nabla \BlowUp_{\lambda_k^{(2)}} u_k|^2 \, dx \to |\nabla \psi|^2 \, dx + \sum_{j = 1}^\ell c_j \, d \mathcal H^{n - 2} \big|_{P_j} \]
+for some parallel planes $P_j$, and we perform the bubbling analysis as with the first bubble. 
+	
+\subsection{Neck regions}
+
+Arguing inductively by Fatou's lemma, we see that the energy density $e(x)$ bounds above the energy of the bubbles. \textit{A priori}, it is possible that the inequality is strict, as, following the bubble construction, some of the energy could be lost in \textit{neck regions} between characteristic scales. For example, in the case of a single bubble $m = 1$, we know that its energy is given by 
+	\[ \int_{\R^2} |\nabla \phi|^2 \, dX^2 = \lim_{R \to \infty} \int_{\{X^{n - 2}_i \} \times B^4_R (X^i_2)} |\nabla \phi|^2 \, dX^2 = \lim_{R \to \infty} \lim_{i \to \infty} \int_{\{X^{n - 2}_i\} \times B^2_{R \lambda_k^{(1)}} (X^i_2)} |\nabla u_i|^2 \, dX^2. \]
+Furthermore, we chose a slice such that (\ref{eq:slice}) holds, 
+	\[ e(x) = \lim_{i \to \infty} \int_{\{X^{n - 2}_i\} \times B^2_{1} (0)} |\nabla u_i|^2 \, dX^2, \]
+so to conclude the energy identity, it suffices to show
+	\[  \lim_{R \to \infty} \lim_{i \to \infty} \int_{\{X^{n - 2}_i\} \times B^2_1 (0) \setminus B^2_{R \lambda_k^{(1)}} (X^i_2)} |\nabla u_i|^2 \, dX^2 = 0. \]		
+From the inductive construction of the bubbles, we see that in the case $m = 1$ there cannot be any energy concentration in the intermediate region at smaller scales. More precisely, for every $\epsilon > 0$, there exists $R \gg 1$ and $i_0 \in \N$ such that
+	\[  \frac{1}{r^{n - 2}} \int_{B_r^{n - 2} (0) \times B_{2r}^2 (0) \setminus B^2_r (0)} |\nabla u_i|^2 \, dx \leq \sqrt\epsilon \]
+for all $R\lambda_k^{(1)} \leq r \leq \tfrac12$ and $i \geq i_0$. Choosing $\epsilon \ll 1$, we can apply $\epsilon$-regularity to deduce that
+	\[ |X^2| \, |\nabla u_i (0, X^2)| \lesssim \epsilon. \]
+We can view this as a Lorentz space estimate. Indeed, suppose  $X^2 \in B^2_{1/2} (0) \setminus B^2_{R \lambda_k^{(1)}} (0)$ satisfies $|\nabla u_i (0, X^2)| > t$, then the inequality above implies that $|X^2| \lesssim \sqrt\epsilon/t$. In particular, $t |\{ X^2 : |\nabla u_i (0, X^2)| > t\}|^{1/2} \lesssim \sqrt\epsilon$, i.e.
+	\[ ||\nabla u||_{L^{2, \infty} ( B^2_{1/2} (0) \setminus B^2_{R \lambda_k^{(1)}})} \lesssim \sqrt\epsilon. \]
+By Holder's inequality we are done. 
+
+In the case of two bubbles, $m = 2$, it suffices to show that 
+	\begin{align*}
+		 \lim_{R \to \infty} \lim_{k \to \infty} \int_{\{0^{n - 2}\} \times B^2_{\lambda_k^{(2)}/R} (0) \setminus B^2_{R \lambda_k^{(1)}} (0)} |\nabla u_k|^2 \, dx =0 
+	\end{align*}	 
+and
+	\begin{align*}
+		 \lim_{R \to \infty} \lim_{k \to \infty} \int_{\{0^{n - 2}\} \times B^2_{1} (0) \setminus B^2_{R \lambda_k^{(2)}} (0)} |\nabla u_k|^2 \, dx = 0
+	\end{align*}	
+	
+
+
+\end{document}

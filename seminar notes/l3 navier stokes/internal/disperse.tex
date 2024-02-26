@@ -1,0 +1,110 @@
+We now turn to the proof of quantitative regularity, Theorem \ref{thm:tao1}, in the critical space $L^\infty_t L^3_x ([0, T] \times \R^3)$. Throughout we will assume the solution satisfies the \emph{a priori} $L^\infty_t L^3_x$-bound 
+	\begin{equation}
+		||u||_{L^\infty_t L^3_x} 
+			\leq A, \label{eq:apriori}
+	\end{equation}
+for some $A \geq C_0 \gg 1$. To give some motivation for the main stacking argument in Section \ref{sec:stack}, we first prove an ``energy-dispersion implies regularity''-type theorem. More precisely, we claim that if the solution does not concentrate in amplitude at small scales, then the solution must be regular. Before stating the theorem, we record a standard regularity lemma which will be useful throughout: 
+
+\begin{lemma}\label{lem:prelim}
+	Let $u: I \times \R^3 \to \R^3$ be a strong solution to \eqref{NS} which obeys an $L^\infty_t L^3_x$-bound \eqref{apriori}. Then 
+		\begin{enumerate}
+			\item if we had control over the subcritical quantities
+			 \begin{align*}
+			||\nabla u^\nlin||_{L^\infty_t L^2_x} 
+				&\leq M,\\
+			||\nabla^2 u^\nlin||_{L^2_{t, x}}
+				&\leq M,
+		\end{align*}
+	then we have regularity, 
+		\[
+			||\nabla^j_x u(t)||_{L^\infty_x} \lesssim_A M^{c} t^{-\frac{j + 1}{2}}.
+		\]
+			
+			\item we can bound supercritical quantities in terms of $A$, e.g.
+				\[
+					||u^\nlin||_{L^\infty_t L^2_x} + ||\nabla u^\nlin||_{L^2_{t, x}} \lesssim A^2.
+				\]
+		\end{enumerate}
+\end{lemma}
+
+\begin{remark}
+	The splitting into linear and non-linear components of the solution is convenient since it is difficult to control $u^\lin$ in $L^2_x (\R^3)$, since parabolic smoothing only allows us to control it in higher $L^p_x$-spaces. 
+\end{remark}
+
+\begin{theorem}[``Energy-dispersed'' regularity theorem]
+	Let $u: [0, T] \times \R^3 \to \R^3$ be a classical solution to the Navier-Stokes equations \eqref{NS} which obeys the a priori $L^\infty_t L^3_x$-bound \eqref{apriori}. Then there exists $\epsilon \ll 1$ and $N_* \gg_A 1$ such that if
+		\[
+			N^{-1} ||P_N u||_{L^\infty_{t, x}} < \epsilon
+		\]
+	for all $N_0 \geq N_*$, then 
+		\[
+			||\nabla^j_x u(t)||_{L^\infty_x} \lesssim N_*^{O(1)} t^{-\frac{j + 1}{2}}.
+		\]
+\end{theorem}
+
+\begin{proof}
+	By scaling, it suffices to consider the case $t = 1$. We split the velocity and vorticity fields into the linear components, $u^\lin := e^{t \Delta} u_0$ and $\omega^\lin := e^{t \Delta} \omega_0$, and non-linear components, $u = u^\lin + u^\nlin$ and $\omega = \omega^\lin + \omega^\nlin$. We argue by the energy method, defining the non-linear enstrophy
+		\[
+			E(t) := \frac12 \int_{\R^3} |\omega^\nlin (t, x)|^2 \,dx .
+		\]
+	We compute
+		\[
+			\partial_t E(t)
+				= - Y_1 (t) + Y_2 (t) + Y_3 (t) + Y_4(t) + Y_5 (t),
+		\]	
+	where
+		\begin{align*}
+			Y_1 (t)
+				&= \int_{\R^3} |\nabla \omega^\nlin|^2 \, dx, \\
+			Y_2 (t)
+				&=- \int_{\R^3} \omega^\nlin \cdot (u \cdot \nabla) \omega^\lin \, dx ,\\
+			Y_3 (t)
+				&= \int_{\R^3}\omega^\nlin \cdot (\omega^\nlin \cdot \nabla) u^\nlin \, dx, \\
+			Y_4 (t)
+				&= \int_{\R^3} \omega^\nlin \cdot (\omega^\nlin \cdot \nabla) u^\lin \, dx, \\
+			Y_5 (t)
+				&= \int_{\R^3} \omega^\nlin \cdot (\omega^\lin \cdot \nabla) u^\nlin \, dx, \\
+			Y_6 (t)
+				&= \int_{\R^3}\omega^\nlin \cdot (\omega^\lin \cdot \nabla) u^\lin \, dx.		
+		\end{align*}	
+	To conclude, we aim for control over the sub-critical quantities $E(t)$ and $\int Y_1 \, dt$. Applying parabolic smoothing and the a priori estimate \eqref{apriori} for the linear contributions, Holder's inequality gives
+		\begin{align*}
+			Y_2 (t), Y_6 (t)
+				&\lesssim A^2 E(t)^{1/2} \lesssim A^4 + E(t), \\
+			Y_4 (t), Y_5(t)
+				&\lesssim A E(t). 	
+		\end{align*}
+	We use the non-concentration at high frequencies to handle the purely non-linear term $Y_3 (t)$. Performing a Littlewood-Paley decomposition, placing low frequencies in $L^\infty_x$ and high frequencies in $L^2_x$, we write
+		\begin{align*}
+			Y_3 (t)
+				&\leq \sum_{N_1, N_2, N_3} \int_{\R^3} |P_{N_1} \omega^\nlin \cdot (P_{N_2} \omega^\nlin \cdot \nabla) P_{N_3} u^\nlin| \, dx \\
+				&\lesssim \sum_{\substack{N_1, N_2, N_3 \\ N_1 \sim N_2 \gtrsim N_3} } ||P_{N_1} \omega^\nlin ||_{L^2_x}^2 ||P_{N_3} \omega^\nlin||_{L^\infty_x}.
+		\end{align*}	
+	We control the $L^\infty$-norm for frequencies $N_3 \leq N_*$ using the trivial bound coming from the a priori estimate \eqref{apriori} and Sobolev-Bernstein, while the non-concentration kicks in at frequencies $N_* \leq N_3 \lesssim N_2$. Thus, we can control the sum in $N_3$ by 
+		\[
+			\sum_{\substack{N_3 : N_3 \lesssim N_2}} ||P_{N_3} \omega^\nlin||_{L^\infty_x} \lesssim \epsilon N_2^2 + AN_*^2. 
+		\]	
+	Inserting this back into the estimate for $Y_3(t)$, using Cauchy Schwartz and Plancharel gives
+		\[
+			Y_3 (t) \lesssim \epsilon Y_1 (t) + AN_*^2 E(t).
+		\]	
+	Collecting our results and choosing $\epsilon \ll 1$ such that $\epsilon Y_1 (t)$ can be absorbed into the left-hand side, we obtain
+		\[
+			\partial_t E(t) + Y_1 (t) \lesssim AN_*^2 E(t) + A^4. 
+		\]	
+	It remains to prove the desired estimate for $E(t)$ on, e.g. the interval $[3/4, 1]$, as inserting the bound into the above and integrating would give the desired control over $\int Y_1 \, dt$. Applying Gronwall, 
+		\[
+			E(t_2) \lesssim E(t_1) + A^4
+		\]	
+	for $|t_2 - t_1| \leq A^{-1} N_*^{-2}$. On the other hand, we can control the supercritical quantity 
+		\[
+			\int_{1/2}^1 E(t) \lesssim A^4,
+		\]	
+	see Lemma \ref{lem:prelim}. Pigeonholing, we can find $E(t) \lesssim A^5 N_*^2$ in an interval of length $A^{-1} N_*^{-2}$. This can be extended by our Gronwall argument to $t \in [3/4, 1]$. Going back into our energy estimates, this controls $\int Y_1 \, dt$ as well, so we have enough sub-critical control to conclude the proof. 
+\end{proof}
+
+\begin{remark}
+	One should compare with the energy dispersion implies regularity results for dispersive equations, e.g. wave maps \cite{SterbenzTataru2010a}, or the non-linear wave equation. However, in this context, it seems one needs smallness for all frequency scales, not just large frequencies. Essentially the argument boils down to applying the refined Sobolev inequality to control the non-linearity, allowing us to close the regularity argument with Strichartz. 
+\end{remark}
+
+

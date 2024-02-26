@@ -1,0 +1,161 @@
+
+In this note we give an exposition of the Escauriaza-Seregin-Sverak blow-up criterion for the Navier-Stokes equations from the perspective of tools developed in the study of dispersive equations. The \emph{incompressible Navier-Stokes equations} are
+	\begin{equation}
+	\begin{split}
+		\partial_t u - \Delta u + u \cdot \nabla u + \nabla p
+			&= 0,\\
+		\div u
+			&= 0,
+	\end{split}
+	\tag{NS}
+	\label{eq:NS}
+	\end{equation}
+where $u : [0, T] \times \R^3 \to \R^3$ is the velocity vector field and $p: [0, T] \times \R^3 \to \R$ is the pressure scalar field. In view of the divergence-free condition, we can eliminate the pressure from the equation by applying the Leray projection $\PP = 1 - \Delta^{-1} \nabla \div$ onto divergence-free vector fields to rewrite \eqref{NS} as
+	\begin{equation*}
+		\partial_t u - \Delta u + \PP \div u \otimes u = 0.
+	\end{equation*}
+It will also be convenient to work with the vorticity $\omega = \nabla \times u$, as it obeys what can be thought of as a heat equation with variable coefficients given by the Biot-Savart law
+	\begin{equation}
+		\begin{split}
+		\partial_t \omega - \Delta \omega + (u \cdot \nabla) \omega - (\omega \cdot \nabla) u 
+			&= 0,\\
+		u 
+			&= - \Delta^{-1} \nabla \times \omega.	
+		\end{split}	\label{eq:vortNS}\tag{$\omega$-NS}
+	\end{equation}	
+	
+\subsection{Symmetries, conservation laws, and smoothing}	
+	
+From dimensional analysis, the units of length, time and velocity obey the relation $[x] = [t]^{1/2} = [u]^{-1}$, so the equations admit the scaling symmetry
+	\begin{align*}
+		u_\lambda (t, x)
+			&:= \lambda u (\lambda^2 t, \lambda x).
+	\end{align*}
+This rescaling has the effect of zooming into smaller scales as $\lambda \to \infty$. For homogeneous Banach spaces $X_{t, x} (I \times \R^3)$, we can write
+	\[
+		||u_\lambda||_{X} = \lambda^\alpha ||u||_X
+	\]	
+leading to the following trichotomy:
+	\begin{itemize}
+		\item if $\alpha > 0$, then $X$ is \emph{sub-critical}, providing better control as one considers smaller scales, e.g. 
+			\begin{align*}
+				||\omega||_{L^\infty_t L^2_x}
+					&\qquad \text{enstrophy}, \\
+				||\nabla \omega||_{L^2_{t, x}}
+					&\qquad \text{enstrophy dissipation},
+			\end{align*}
+			
+		
+		\item if $\alpha = 0$, then $X$ is \emph{critical}, controlling all scales equally well, e.g.
+				\[
+		\dot H^{\frac12} (\R^3) \hookrightarrow L^3 (\R^3) \hookrightarrow \dot B^{-1 + \frac3p, p}_p (\R^3) \hookrightarrow \mathrm{BMO}^{-1} (\R^3) \hookrightarrow \dot B^{-1, \infty}_\infty (\R^3),
+	\]	
+		
+		\item if $\alpha < 0$, then $X$ is \emph{super-critical}, providing worse control as one considers smaller scales, e.g.
+			\begin{align*}
+				||u||_{L^\infty_t L^2_x}
+					&\qquad \text{energy}, \\
+				||\nabla u||_{L^2_{t, x}}
+					&\qquad \text{energy dissipation}.	
+			\end{align*}
+	\end{itemize}
+	
+\begin{remark}
+	The critical space $\mathrm{BMO}^{-1} (\R^3)$ is the largest space, in which solutions are referred to as \emph{Koch-Tataru solutions} \cite{KochTataru2001}, where one has small-data well-posedness theory in the sense that one has norm inflation for arbitrarily small data in the endpoint critical Besov space $B^{-1, \infty}_\infty (\R^3)$, see \cite{BourgainPavlovic2008}.	
+\end{remark}
+
+As a loose principle, sub-critical control gives good regularity theory, critical control gives good local control for large data and global control for small data, and super-critical control tells us very little. Unfortunately, the only known conserved quantity is the balance between energy and dissipation, which are super-critical with respect to the natural scaling. 
+
+\begin{proposition}[Energy balance]
+	Let $u: [0, T] \times \R^3 \to \R^3$ be a classical solution to \eqref{NS}, then 
+	\begin{equation}
+		\frac12 ||u (t)||_{L^2_x}^2 + \int_0^t ||\nabla u (s)||_{L^2_x}^2  \, ds = \frac12 ||u_0||_{L^2_x}^2.
+		\tag{$\equiv$}
+		\label{eq:energy}
+	\end{equation}	
+\end{proposition}
+
+\begin{proof}
+	Multiplying the equation \eqref{NS} by $u$ and then integrating-by-parts, it suffices to show that the non-linear term vanishes. Indeed, 
+		\begin{align*}
+			\int_{\R^3} u \cdot (u \cdot \nabla u + \nabla p ) \, dx
+				&= \int_{\R^3} u \cdot \nabla \left( \frac12 |u|^2 + p \right) \, dx\\
+				&= - \int_{\R^3} \nabla \cdot u \left( \frac12 |u|^2 + p \right) \, dx = 0
+		\end{align*}
+	since $u$ is divergence-free. 	
+\end{proof}
+
+Since Navier-Stokes is a parabolic equation, when linear effects dominate, the solution will actually gain in regularity, provided we allow the solution to evolve for some time. 
+
+\begin{proposition}[Parabolic smoothing]
+	Let $f \in \cS(\R^3)$ be Schwartz, then the heat propagator $e^{t \Delta}$ obeys the smoothing estimates
+		\begin{equation}
+			\begin{split}
+			||P_N e^{t \Delta} \nabla^j f||_{L^q (\R^3)}
+				&\lesssim_j \exp(-N^2 t/20) N^{-j  - \frac{3}{p} + \frac{3}{q}} ||f||_{L^p (\R^3)},\\
+			||e^{t \Delta} \nabla^j f||_{L^q (\R^3)}
+				&\lesssim_j t^{-\frac{j}2 - \frac{3}{2p} + \frac{3}{2q}} ||f||_{L^p (\R^3)}
+			\end{split}	
+				\tag{$\infty$}
+				\label{eq:smooth}	
+		\end{equation}
+	for $1 \leq p \leq q \leq \infty$. 	
+\end{proposition}
+	
+\subsection{$L^\infty_t L^3_x$-regularity and blow-up criterion}
+
+In the absence of a critical or sub-critical controlled quantity, it is natural to ask, assuming an \textit{a priori} critical bound, what can we say about the regularity of the solution? We are interested in the $L^\infty_t L^3_x$-regularity theory. Roughly speaking, uniform control over the critical $L^3_x$-norm implies regularity, and blow-up can only occur if the $L^3_x$-norm blows up. 
+
+	
+\begin{theorem}[Escauriaza-Seregin-Sverak blow-up criterion, \cite{EscauriazaEtAl2003, Gallagheretal2013}]\label{thm:ESS}
+	Let $u: [0, T^*) \times \R^3 \to \R^3$ be an $L^3$-strong solution to the Navier-Stokes equations \eqref{NS} which is bounded in $L^3 (\R^3)$ up to the maximal development, then $u$ is global, i.e. $T^* = + \infty$. Equivalently, a solution blows up in finite time $T^* < \infty$ only if
+		\[
+			\limsup_{t \uparrow T^*}||u(t)||_{L^3_x} = + \infty.
+		\]	
+\end{theorem}
+
+Since the $L^\infty_t L^3_x$-norm cannot be made small even when restricting to small regions in space-time, the first proofs of this blow-up criterion relied on a compactness argument to extract a blow-up profile, and then ruling out such situations using unique continuation and backwards uniqueness. As an illustration, we will sketch the concentration compactness + rigidity approach, see Sections \ref{sec:cc} and \ref{sec:rigid}. Due to the non-constructive nature of such proofs, there is no good way of extracting quantitative information on the rate at which the $L^3_x$-norm blows-up. As an answer to this problem, we turn to Tao's approach in Sections \ref{sec:disperse} and \ref{sec:stack} to prove
+
+\begin{theorem}[Quantitative regularity for $L^\infty_t L^3_x$-solutions, \cite{Tao2020}]\label{thm:tao1}
+	Let $u: [0, T] \times \R^3 \to \R^3$ be a classical solution to the Navier-Stokes equations \eqref{NS} which obeys the a priori $L^\infty_t L^3_x$-bound
+	\[
+		||u||_{L^\infty_t L^3_x} \leq A.
+	\]
+	Then
+		\begin{align}
+			||\nabla^j_x u (t)||_{L^\infty_x} 
+				&\leq \exp \exp \exp (A^{C}) t^{-\frac{j + 1}{2}}, 
+				\label{eq:quantbound}
+		\end{align}
+	for some absolute constant $C \gg 1$.
+\end{theorem}
+
+\begin{corollary}[Quantitative $L^3_x$-blow-up criterion]
+	Let $u: [0, T^*) \times \R^3 \to \R^3$ be a classical solution to the Navier-Stokes equations \eqref{NS} which blows up in finite time $T^* < \infty$. Then 
+		\begin{equation}
+			\limsup_{t \uparrow T^*} \frac{||u(t)||_{L^3_x}}{(\log \log \log \frac{1}{T^* - t})^{c}} = + \infty
+		\end{equation}
+	for some absolute constant $c \ll \tfrac1C$.
+\end{corollary}
+
+\begin{proof}
+	Suppose towards a contradiction that there exists a blow-up solution such that
+		\begin{equation*}
+			\limsup_{t \uparrow T^*} \frac{||u(t)||_{L^3_x}}{(\log \log \log \frac{1}{T^* - t})^c} < +\infty.
+		\end{equation*}
+	Rearranging, we obtain the growth bound on the $L^3_x$-norm,
+		\begin{equation*}
+			||u(t)||_{L^3_x} \lesssim \left(\log \log \log \left(1 + \frac{1}{T^* - t} \right) \right)^c
+		\end{equation*}
+	for all $t \in [0, T^*)$. Inserting this bound into the quantitative regularity bounds \eqref{quantbound} in Theorem \ref{thm:tao1} gives an inverse polynomial growth bound on the $L^\infty_x$-norm of the velocity field $u$. In particular, choose $c \ll 1$ such that this growth is sufficiently slow, e.g.
+		\begin{align*}
+			||u(t)||_{L^\infty_x}
+				&\lesssim (T^* - t)^{-1/10}
+		\end{align*} 		 
+	then it would follow that $u$ is bounded in $L^2_t L^\infty_x$-norm, violating the Prodi-Serrin-Ladyshenskaya blow-up criterion. 
+\end{proof}
+
+\begin{remark}
+	Alternatively, one could use the quantitative regularity bounds for the vorticity, and, choosing $c \ll 1$, conclude $\omega$ is bounded in $L^1_t L^\infty_x$-norm, violating the Beale-Kato-Majda blow-up criterion.  
+\end{remark}
+
