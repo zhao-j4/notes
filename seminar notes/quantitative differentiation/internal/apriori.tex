@@ -1,0 +1,25 @@
+The quantitative control over the singular stratum furnishes \textit{a priori} estimates for minimising harmonic maps. We first define the notion of regularity scale by 
+	\[ r (x) := \sup \{ r > 0 : \sup_{B_r (x)} r |\nabla f| \leq 1  \}. \]
+This allows us to partition the domain into ``good'' and ``bad'' sets depending on the behavior of $f$. Define
+	\[ \cB_r := \{ x \in B_1 (0) : r(x) \leq r \}.  \]
+The critical dimension for minimising harmonic maps is $n - 3$. Thus, given scale $r > 0$, if the map is sufficiently close to an $(n - 2)$-homogeneous, we expect the map to be essentially constant, and thus very smooth. More precisely 
+
+\begin{lemma}[$\epsilon$-regularity]
+	Let $f: B_2 (0) \to N$ be a minimising harmonic map with bounded energy $E[f] \leq \Lambda$. Then there exists $\eta \ll_{n, N, \Lambda, r} 1$ such that if $f$ is $(\eta, r, n - 2)$-homogeneous, then $r(0) \geq r$. In particular, 
+		\[ \cB_r \subseteq \cS^{n - 3}_{\eta, r}. \]
+\end{lemma}
+
+\begin{theorem}
+	Let $f : B_2 (0) \to N$ be a minimising harmonic map with bounded energy $E[f] \leq \Lambda$. Then we have the following 
+		\[ |B_r (\cB_r)| \lesssim_{n, N, \lambda, \eta} r^{3 - \eta}. \]
+	Moreover, for every $0 < p < 3$, we have
+		\[ \int_{B_1 (0)} |\nabla f|^p \, \dV \leq \int_{B_1 (0)} r(x)^{-p} \, \dV \lesssim_{n, N, \Lambda, p} 1. \]	
+\end{theorem}	
+
+\begin{proof}
+	Let $N \in 2^{\Z}$ denote a dyadic integer, then choosing $\eta \ll 3 - p$, we have
+		\begin{align*}
+			 \int_{B_1 (0)} r(x)^{-p} \, \dV
+			 	&\leq \int_{r(x) \geq 1} r(x)^{-1} \, \dV + \sum_{N \leq 1} \int_{r(x) \sim N} r(x)^{-p} \, \dV \lesssim 1 + \sum_{N \leq 1} r^{3 - p - \eta} \lesssim 1. 
+		\end{align*}
+\end{proof}

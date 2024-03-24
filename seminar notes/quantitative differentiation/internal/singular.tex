@@ -1,0 +1,59 @@
+Our goal is to study the singular set of stationary and minimising harmonic maps. To this end, we stratify the singular set with regards to the homogeneity of the tangent map. Define
+	\begin{align*}
+		\operatorname{reg} f 
+			&:= \{ x \in B_1 (0) : \text{$f$ is continuous in a neighborhood of $x$} \},\\
+		 \operatorname{sing} f 
+		 	&:= B_1 (0) \setminus \operatorname{reg} f.
+	\end{align*}
+The following is known about the singular set:
+\begin{enumerate}
+	\item $\cH^{n - 3} (\mathrm{sing} (f)) < \infty$ for minimising harmonic maps, \cite{SchoenUhlenbeck1982}. 
+	\item $\cH^{n - 2} (\mathrm{sing} (f)) = 0$ for stationary harmonic maps, \cite{Bethuel1993,Lin1999}. 
+	\item Let $B \subseteq \R^3$ be the unit ball, then for any non-constant $\phi : \partial B \to S^2$, there exists a weakly harmonic map in $W^{1, 2} (B, S^2)$ satisfying the Dirichlet problem for $\phi$ which is discontinuous everywhere, \cite{Riviere1995}.
+\end{enumerate}
+
+
+\subsection{Blow-up profile}
+
+Let $f : \Omega \to N$ be a stationary harmonic map with bounded energy, define the blow-up at $y \in \Omega$ at scale $r > 0$ by
+	\[ \mathsf T_{y, r} f (x) := f(y + r x). \]
+We can extract a sub-sequence from the family $\{ \mathsf T_{y, r} f \}_{y, r}$ which converges weakly to a radially-invariant map, i.e. $0$-homogeneous. This shows that homogeneity is the correct infinitesimal structure to consider. Indeed, note that by a change of variables we can write
+	\[ \theta_1 [\mathsf T_{y, r} f] (0) = \int_{B_1 (0)} |\nabla \mathsf T_{y, r} f|^2 \, \dV = \frac{1}{r^{n - 2}} \int_{B_r (y)} |\nabla f|^2 \, \dV = \theta_r [f](y). \]
+It follows from the monotonicity of $\theta$ that the energy of the blow-ups is uniformly bounded in $r \ll 1$, hence there exists a sub-sequence converging weakly in $H^1 (B_1 (0) ; N)$ to $\mathsf T_y f : \R^n \to N$. Such a map is known as a \emph{tangent map}. Furthermore, we see from the monotonicity formula that for any $0 < R < 1$ we have
+	\begin{align*}
+		\int_R^1  \int_{\partial B_\rho (0)} \frac{1}{\rho^{n - 2}} \left| \frac{\partial \mathsf T_y f}{\partial \rho} \right|^2 d\rho \dA
+			&=	 \theta_1 [\mathsf T_y f](0) - \theta_R [\mathsf T_y f] (0)\\
+			&= \lim_{i \to \infty} \theta_1 [\mathsf T_{y, r_i} f] (0) - \theta_R [\mathsf T_{y, r_i} f] (0)= \lim_{i \to 0} \theta_{r_i} [f] (y) - \theta_{Rr_i} [ f](y) = 0. 
+	\end{align*}	 
+Since $R$ was arbitrary, we can conclude $\partial_\rho \mathsf T_y f\equiv 0$ on the entire ball $B_1 (0)$. Replacing the ball $B_1 (0)$ with $B_R (0)$ for any $R > 0$ and carrying through the same argument shows that convergence holds in $H^1_{\loc} (\R^n; N)$ and $\mathsf T_y f$ is in fact homogeneous of degree zero. 
+
+\begin{remark}
+	The uniqueness of tangent maps is an open problem. There are counter-examples due to \cite{White1991}.
+\end{remark}
+
+\begin{theorem}
+	Let $f: B_2 (0) \to N$ be a stationary harmonic map with finite energy. Then $f$ is smooth in a neighborhood of $y \in B_2 (0)$ if and only if the tangent map is constant, i.e. $n$-homogeneous. 
+\end{theorem}	
+
+\begin{proof}
+	This follows from $\epsilon$-regularity, c.f. \cite[Chapter 3.2]{Simon1996}. 
+\end{proof}
+
+	
+\subsection{Main result}
+
+Motivated by the results from the previous section, we have the following stratification of the singular set, 
+	\[ \cS^k := \{ y \in B_2 (0) : \text{no tangent map at $y$ is $(k + 1)$-homogeneous}\}. \]
+It is known that $\dim \cS^k \leq k$ and clear from construction that
+	\[ \cS^0 \subseteq \cS^1 \subseteq \dots \subseteq \cS^{n - 1} = \operatorname{sing} f. \]
+We refine the stratification, defining the \emph{quantitative $k$-th stratum} that is $\eta$-singular above scale $r > 0$ by 
+	\[ \cS^k_{\eta, r} := \{ y \in B_2 (0) :  \text{$f$ is not $(\eta, s, k + 1)$-homogeneous at $y$ for all $r \leq s \leq 1$}  \}. \]	
+It is clear from construction that
+	\[ \cS^{k'}_{\eta, r} \subseteq \cS^k_{\eta', r'} , \qquad \cS^k = \bigcup_{\eta > 0} \bigcap_{r > 0} \cS^k_{\eta, r}\]
+for $k' \leq k$, $\eta' \leq \eta$ and $r \leq r'$. Thus, to estimate the size of the singular set, it suffices to estimate the quantitative $k$-th stratums.
+	
+\begin{theorem}[Volume estimate on quantitative $k$-th stratum]
+	Let $f: B_2 (0) \to N^m$ be a stationary harmonic map with bounded energy $E[f] \leq \Lambda$. Then for each $\eta > 0$,  
+		\[ |B_r (\cS^k_{\eta, r})| \lesssim_{n, N, \Lambda, \eta} r^{n - k - \eta}. \]
+		\label{thm:strat}
+\end{theorem}

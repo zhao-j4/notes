@@ -1,0 +1,33 @@
+Let $\Omega \subseteq \R^n$ be a bounded smooth domain, and $N^m$ be a compact Riemannian manifold, which for concreteness we view as isometrically embedded into some Euclidean space $\R^k$ via Nash's theorem. With this in mind, we define the Sobolev space
+	\[ H^1 (\Omega ; N) := \{ f \in H^1 (\Omega ; \R^k) : f(x) \in N \text{ for a.e. $x$} \}. \]
+For $f \in H^1 (\Omega ; N)$, define the \emph{Dirichlet energy} by 	
+	\[ E[f] := \int_{\Omega} |\nabla f|^2 \, \dV \]
+In view of the calculus of variations, we say that $f \in H^1 (\Omega; N)$ is a
+\begin{enumerate}
+	\item \emph{minimising harmonic map} if it minimises the Dirichlet energy over the class of maps with the same boundary values, 
+		\[ E[f] = \inf_{f_{|\partial \Omega} = g_{|\partial \Omega}} E[g], \]
+	
+	\item \emph{stationary harmonic map} if it is a critical point of the Dirichlet energy, 
+		\[ \frac{d}{ds}\Big|_{s = 0} E[f_s] = 0, \]
+	where the perturbation $f_s$ is the nearest point projection onto $N$ of $f + s \phi$ for $\phi \in C^\infty_c (\Omega; \R^k)$, 
+	
+	\item \emph{weakly harmonic map} if it satisfies the Euler-Lagrange equation in a weak sense, 
+		\[  \Delta f + \mathrm{II} (f) (\nabla f, \nabla f) = 0, \]
+		where $\mathrm{II}$ is the second fundamental form of $N$. 
+\end{enumerate}
+
+Let $g \in H^1 (B_2 (0) ; N)$, define for $x \in B_1 (0)$ and $0 < r < 1$ the scale-invariant Dirichlet energy
+	\[ \theta_r [g] (x) := \frac{1}{r^{n - 2}} \int_{B_r (x)} |\nabla f|^2 \, \dV. \]
+Whenever the function in question is clear, we suppress its occurrence by writing $\theta_r (x) := \theta_r [g](x)$. Stationary harmonic maps satisfy both the Euler-Lagrange equation and the stationary equation, i.e. the stress-energy tensor is divergence-free
+	\[ \partial^j \left(\frac12 |\nabla f|^2 \delta_{ij} -  \partial_i f \partial_j u \right) = 0.\]
+Contracting the stress-energy tensor with a radial vector field $X = \tfrac{x^k}{r} \partial_k = \partial_r$, we obtain:	
+
+
+\begin{lemma}[Monotonicity formula]
+	Let $f: B_2 (0) \to N$ be a stationary harmonic map, then the scale-invariant energy $\theta_r (x)$ is monotone non-decreasing and satisfies the formula
+			\[ \theta_r (x) - \theta_s (x) = \int_s^r \int_{\partial B_\rho (x)} \frac{1}{\rho^{n - 2}} \left| \frac{\partial f}{\partial \rho} \right|^2 d\rho \dA. \]	
+\end{lemma}
+
+\begin{proof}
+	C.f. \cite{Lin1999}. 
+\end{proof}

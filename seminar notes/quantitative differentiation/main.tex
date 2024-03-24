@@ -1,0 +1,53 @@
+\documentclass[reqno]{amsart}
+
+\usepackage{External/takodachi}
+\graphicspath{ {./graphics/} }
+
+\newcommand{\sfD}{\mathsf{Deviation}}
+
+\newcommand{\dV}{\mathrm{dV}}
+\newcommand{\dA}{\mathrm{dA}}
+
+\newcommand{\diam}{\operatorname{diam}}
+\newcommand{\BlowUp}{\mathsf{BlowUp}}
+
+\title
+{
+	Quantitative differentiation for harmonic maps
+} 
+
+\author{Jason Zhao}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+	It is well-known that stationary harmonic maps are singular on a set of at least codimension $2$. We will exposit the work of Cheeger and Naber \cite{CheegerNaber2013} which improves the result by establishing effective volume estimates of tubular neighborhoods of the singular set. The primary purpose of the talk is to highlight the two key ingredients in the proof, 
+	\begin{itemize}
+		\item quantitative differentiation; functions in a given class cannot be far away from the infinitesimal behavior except at finitely many scales,
+		\item cone-splitting; lesser symmetries can be combined to form a greater symmetry,
+	\end{itemize}
+which have proven extremely robust in the fields of geometric PDE and metric geometry. Combined with $\epsilon$-regularity theorems, one can pass to \textit{a priori} estimates, e.g. for minimizing harmonic maps in $W^{1, p} \cap W^{2, p/2}$ in the sub-critical regime $p < 3$. 
+\end{abstract}
+
+\tableofcontents
+
+\section{Introduction}
+\input{internal/intro}
+
+\section{Symmetry}
+\input{internal/symmetry}
+
+\section{Stratification}
+\input{internal/singular}
+
+\section{Covering}
+\input{internal/cover}
+
+\section{Regularity estimates}
+\input{internal/apriori}
+
+\bibliographystyle{alpha}
+\bibliography{external/biblio}
+\end{document}

@@ -1,0 +1,78 @@
+It suffices to prove the theorem for a discrete sequence of scales $r \in \{\gamma^j\}_j$ for some $\gamma \ll_{n, \eta} 1$ to be chosen later. This allows us to induct on scales to construct covers $\cC^k_{\eta, \gamma^j}$ of  $\cS^k_{\eta, \gamma^j}$ by balls of radius $\gamma^j$. At each stage of the induction, we decompose the stratum into disjoint subsets $E_{T^j} \subseteq B_1 (0)$ based on the behavior of points at various scales, and build up the cover $\cC^k_{\eta, \gamma^j}$ from sub-covers $\cC^k_{\eta, \gamma^j} (T^j) \subseteq \cC^k_{\eta, \gamma^j}$ of each subset, i.e.
+	\begin{alignat*}{2}
+		\cS^k_{\eta, \gamma^j} 
+			&= \bigcup_{T^j \in \{0, 1\}^j} \cS^k_{\eta, \gamma^j} \cap E_{T^j},
+			\\
+		\cC^k_{\eta, \gamma^j}
+			&= \bigcup	_{T^j \in \{0, 1\}^j} \cC^k_{\eta, \gamma^j} (T^j),	 \\
+		 \cS^k_{\eta, \gamma^j} \cap E_{T^j} 
+		 	&\subseteq \bigcup_{B_{\gamma^j} (x) \in \cC^k_{\eta, \gamma^j} (T^j)} B_{\gamma^j} (x).
+	\end{alignat*}	
+This covering will satisfy the following properties
+	\begin{enumerate}
+		\item by \textit{quantitative differentiation}, the number of non-empty $E_{T^j}$ and hence non-empty sub-covers $\cC^k_{\eta, \gamma^j} (T^j)$ is at most $j^Q$ for some $Q \lesssim_{n, \Lambda, \eta, \gamma, N} 1$, \label{prop:a}
+		\item by \textit{quantitative cone-splitting}, each non-empty sub-cover $\cC^k_{\eta, \gamma^j} (T^j)$ consists of at most $(c_1 \gamma^{-n})^{Q} (c_0 \gamma^{-k})^{j - Q}$ balls of radius $\gamma^j$ for some dimensional constants $c_0, c_1 \lesssim_n 1$. \label{prop:b}
+	\end{enumerate}
+Note doubling the radii in the covering furnishes a covering of the tubular neighborhood $B_{\gamma^j} (\cS^k_{\eta, \gamma^j})$. We conclude the proof as follows, 
+	\begin{align*}
+		|B_{\gamma^j}(\cS^k_{\eta, \gamma^j})| 
+			&\leq \sum_{\substack{T^j \in \{0, 1\}^j\\ E_{T_j} \neq \varnothing}} \sum_{B_{2\gamma^j} (x) \in \cC^k_{\eta, \gamma^j}} |B_{\gamma^j} (x)| \\
+			&\lesssim_n j^Q (c_1 \gamma^{-n})^{Q} (c_0 \gamma^{-k})^{j - Q} (\gamma^j)^n \lesssim j^Q c_0^j (\gamma^j)^{n - k} \lesssim (\gamma^j)^{n - k - \eta},
+	\end{align*}
+where we choose our scale $\gamma$ to handle a dimensional constant, $\gamma \leq c_0^{-2/\eta}$, and can control a polynomial bound by an exponential bound, $j^Q \lesssim_{\gamma, \eta, Q} (\gamma^j)^{\eta/2}$. 
+
+\subsection{Construction}
+
+For each $x \in B_1 (0)$, we track the scales $\gamma^i$ at which the deviation is ``good'' and ``bad'' via the $j$-tuple $T^j (x)\in \{0, 1\}^j$, setting the $i$-th entry to be 
+	\[
+		T^j_i (x)
+			:=
+			\begin{cases}
+				0, 		&\text{if $f$ is $(\epsilon, \gamma^i, 0)$-homogeneous at $x$} , \\
+				1, 		&\text{if $f$ is not $(\epsilon, \gamma^i, 0)$-homogeneous at $x$},
+			\end{cases}
+	\]
+where $\epsilon \ll 1$ will be chosen later to perform cone-splitting. For each $T^j \in \{0, 1\}^j$, define
+	\[ E_{T^j} := \{ x \in B_1 (0) : T^j (x) = T^j \}. \]	
+We construct the covers $\cC^k_{\eta, \gamma^j} (T^j)$ of $\cS^k_{\eta, \gamma^j} \cap E_{T^j}$ inductively in $j$. Denote $T^{j - 1}$ the $(j - 1)$-tuple obtained from $T^j$ by dropping the last entry. Then 
+\begin{itemize}
+	\item \textbf{Base:} Define 
+		\[ \cC^k_{\eta, \gamma^0} := \cC^k_{\eta, \gamma^0} (T^0) := \{ B_1 (0)\}.\] 
+		It is clear that $\cS^k_{\eta, \gamma^0} \cap E_{T^0}$ is covered by this collection of balls. 
+	
+	\item \textbf{Induction:} Suppose $\cC^k_{\eta, \gamma^{j - 1}} (T^{j - 1})$ is a cover of $\cS^k_{\eta, \gamma^{j - 1}} \cap E_{T^{j - 1}}$ by balls of radius $\gamma^{j - 1}$. For each ball $B_{\gamma^{j - 1}} (x) \in \cC^k_{\eta, \gamma^{j - 1}} (T^{j - 1})$, choose a minimal covering of $\cS^k_{\eta, \gamma^j} \cap E_{T^j} \cap B_{\gamma^{j - 1}} (x)$. 
+	
+	
+	
+	
+\end{itemize}
+
+
+
+\subsection{Quantitative differentiation}
+
+\textit{A priori}, there could be as many as $2^j$-many non-empty $E_{T^j}$ in the decomposition. However, we can control the number of scales on which the scale-invariant energy defect is large by the pigeonhole principle, which by quantitative rigidity implies control over the number of ``bad'' scales, 
+	\[ |T^j| \leq Q(n, N, \Lambda, \gamma, \epsilon) \qquad \text{whenever } E_{T^j} \neq \varnothing.\]
+Since $\binom{j}{Q} \leq j^Q$, this would imply Property (\ref{prop:a}) of the covering. Let $\delta, r \ll_{n, N, \Lambda, \epsilon} 1$ be as in Lemma \ref{lem:rigid}, and fix $x \in E_{T^j}$. Recall the energy bound $E[f] \leq \Lambda$, so it follows from the monotonicity formula that
+	\[ \sum_{[r\gamma^i, \gamma^i] \text{ disjoint}} \theta_{\gamma^i} (x) - \theta_{r\gamma^i} (x) \leq \Lambda. \]
+The number of disjoint intervals of the form $[r \gamma^i, \gamma^i]$ is precisely $|\log_\gamma r|$, so by the pigeonhole principle and the bound above we have that
+	\[  Q := |\log_\gamma r| \frac{\Lambda}{\delta}\]
+bounds the number of scales such that
+	\[ \theta_{\gamma^i} (x) - \theta_{r\gamma^i} (x) > \delta. \] 
+By quantitative rigidity, these are the only ``bad'' scales in that if the inequality above does not hold, then $f$ must be $(\epsilon, \gamma^i, 0)$-homogeneous, so we conclude $|T^j| \leq Q$. 
+
+
+\subsection{Cone-splitting}
+
+Recall that the coverings $\cC^k_{\eta, \gamma^j} (T^j)$ are constructed inductively from minimal coverings of $\cS^k_{\eta, \gamma^j} \cap E_{T^j} \cap B_{\gamma^{j - 1}} (x)$ by balls of radius $\gamma^j$. There are two possible bounds for the number of balls in this covering:
+
+\begin{enumerate}
+	\item the efficient bound $c_0 \gamma^{-k}$. Recall from cone-splitting, namely Corollary \ref{cor:cone}, that if $\gamma^{j - 1}$ is a good scale, i.e. $T^j_{j - 1} = 0$ then there exists a $k$-plane $V^k \subseteq \R^n$ such that
+		\[ \cS^k_{\eta, \gamma^j} \cap E_{T^j} \cap B_{\gamma^{j - 1}}(x) \subseteq B_{\frac{1}{1000} \gamma^j} (V^k) \cap  B_{\gamma^{j - 1}}(x). \]
+		We can cover $V^k \cap B_{\gamma^{j - 1}} (x)$ by $c_0 \gamma^{-k}$ balls of radius $\gamma^j$ for some $c_0 \lesssim_n 1$, which in turn will cover a $\tfrac{1}{1000} \gamma^j$-neighborhood.
+	
+	\item the crude bound $c_1\gamma^{-n}$. Without knowing that a scale is good, we do not have control over the geometry of $\cS^k_{\eta, \gamma^j} \cap E_{T^j}$, so we naively cover $B_{\gamma^{j - 1}} (x)$ by $c_1 \gamma^{-n}$ balls of radius $\gamma^j$ for some $c_1 \lesssim_n 1$.
+\end{enumerate}
+By quantitative differentiation, we need only to use the crude bound for $Q$-many steps in the induction, while for the other steps we can apply the efficient bound. This proves Property (\ref{prop:b}) of the covering and thereby concludes the proof of Theorem \ref{thm:strat}.
+
+
