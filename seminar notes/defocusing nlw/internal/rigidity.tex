@@ -1,0 +1,54 @@
+
+
+In our blow-up analysis, we showed that there are only two possibilities for energy concentration: either time-like concentration or self-similar concentration. Using the compactness lemma, we can extract either a stationary solution or a self-similar solution. Both are impossible, leading to a contradiction. 
+	
+\begin{proposition}[No non-trivial finite-energy stationary solutions]
+	Let $\phi$ be a finite-energy smooth solution to the defocusing \eqref{NLW} on $\R^{1 + d}$ which is stationary, i.e. there exists a unit constant time-like vector field $Y$ such that $Y\phi = 0$. Then $\phi \equiv 0$. 
+\end{proposition}	
+
+\begin{proof}
+	Any unit constant time-like vector field can be Lorentz transformed into the vector field $T = \partial_t$, so in particular we can write $Y \phi = \partial_t L_v \phi$ for some Lorentz transformation $L_v$. As these transformations commute with the wave operator $\Box$, it follows from stationarity that the Lorentz transformed solution satisfies the elliptic equation
+		\[
+			\Delta L_v \phi = \Box L_v \phi = L_v \Box \phi = L_v \left( |\phi|^{p - 1} \phi\right) = |L_v \phi|^{p - 1} L_v \phi. 
+		\]
+	Writing $Q = L_v \phi$, multiply the equation by $Q$ and integrate to obtain 
+		\[
+			 \int_{\R^d} Q \Delta Q \, dx = \int_{\R^d} |Q|^{p + 1} \, dx.
+		\]
+	Integrating the left-hand side by parts, we see that it is non-positive, while the right-hand side is non-negative. We conclude $Q \equiv 0$.	
+\end{proof}
+
+\begin{proposition}[No non-trivial finite-energy self-similar solutions]
+	Let $\phi$ be a finite-energy smooth solution to the defocusing \eqref{NLW} on the forward light cone $C_{(0, \infty)}$ which is self-similar, i.e. $(\partial_\rho + \tfrac1\rho) \phi = 0$. Then $\phi \equiv 0$. 
+\end{proposition}
+
+\begin{proof}
+	Writing in hyperbolic coordinates $\Box = -\rho^{-d} \partial_\rho \rho^d \partial_\rho + \rho^{-2} \Delta_{\HH^d}$, we compute 
+		\begin{align*}
+			\Box \phi 
+				&= - \rho^{-d} \partial_\rho \left( \rho^d \partial_\rho \phi \right) + \rho^{-2}\Delta_{\HH^d} \phi \\
+				&=  \rho^{-d} \partial_\rho (\rho^{d - 1} \phi) +  \rho^{-2}\Delta_{\HH^d} \phi \\
+				&= \left( (d - 1) \rho^{-2} \phi + \rho^{-1} \partial_\rho \phi \right) +  \rho^{-2}  \Delta_{\HH^d} \phi = \rho^{-2} \left( d - 2 +  \Delta_{\HH^d} \right) \phi. 
+		\end{align*}
+	Thus $\phi$ solves the elliptic equation 
+		\[
+			(d - 2 + \Delta_{\HH^d}) \phi = \rho^2 |\phi|^{p - 1} \phi. 
+		\]	
+	Since $\phi$ is finite-energy, we know that $\phi \in \dot H^1 (\HH^d_\rho)$ on each hyperboloid; we leave this as an exercise. As with the case of stationary solutions, multiplying the equation by $\phi$, integrating on $\HH^d$, and integrating-by-parts furnishes the result. 
+\end{proof}
+
+\begin{remark}
+	Recall self-similar coordinates for the non-linear wave equation are given by 
+		\[
+			\rho = \sqrt{t^2 - r^2}, \qquad \xi = \frac{|x|}{|t|}.
+		\]
+	The Minkowski metric can be expressed in these coordinates as 
+		\[
+			\bfm = - d \rho^2 + \rho^2 \left( \frac{d \xi^2}{(1 - \xi^2)^2} + \frac{\xi^2}{1 - \xi^2} g_{\SS^{d - 1}}\right).
+		\]	
+	In particular $(\partial_\rho - \tfrac1\rho) \phi = 0$ implies that 
+		\[
+			\phi(t, x) = t^{-\frac{2}{p - 1}} W(x/t)
+		\]
+	for some self-similar profile $W$. In view of the scaling symmetries, this implies that the flux on any portion of the null boundary is the same. 		
+\end{remark}

@@ -1,0 +1,64 @@
+\documentclass[reqno]{amsart}
+
+\usepackage{External/takodachi}
+\usepackage{slashed}
+
+% To show labels in the margin:
+\usepackage[notref, notcite]{showkeys}
+\usepackage{xcolor}
+
+% stupid amsart shows * headers in ToC
+\DeclareRobustCommand{\SkipTocEntry}[5]{}
+
+\newcommand{\arctanh}{\operatorname{arctanh}}
+\renewcommand{\d}{\mathrm{d}}
+\newcommand{\sfED}{\mathsf{ED}}
+\newcommand{\sfS}{\mathsf S}
+\newcommand{\sfN}{\mathsf N}
+
+\title
+{
+	Global well-posedness and scattering for the energy-critical defocusing non-linear wave equation
+} 
+\author{Jason Zhao}
+\date{\today}
+
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+	We give a new proof of the threshold theorem for the energy-critical non-linear wave equation using the energy dispersion + bubbling method of Sterbenz and Tataru.
+\end{abstract}
+
+\tableofcontents
+
+\section{Introduction}
+\input{internal/intro}
+
+\section{Geometric notation}
+\input{internal/prelim}
+
+\section{Conservation laws}
+\input{internal/conserve}
+
+\section{Localising to the light cone}\label{sec:local}
+\input{internal/local}
+
+\section{Concentration of energy}\label{sec:ED}
+\input{internal/disperse}
+
+\section{Bubbling off a soliton}
+\input{internal/compact}
+
+\section{Rigidity}
+\input{internal/rigidity}
+
+\appendix
+\section{Derivation of monotonicity formula}\label{app:A}
+\input{internal/monotonicity}
+
+\bibliographystyle{alpha}
+\bibliography{external/biblio}
+
+\end{document}

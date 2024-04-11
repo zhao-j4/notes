@@ -1,0 +1,46 @@
+\begin{thebibliography}{BCD11}
+
+\bibitem[BCD11]{BahouriEtAl2011}
+Hajer Bahouri, Jean-Yves Chemin, and Rapha{\"e}l Danchin.
+\newblock {\em Fourier {{Analysis}} and {{Nonlinear Partial Differential
+  Equations}}}, volume 343 of {\em Grundlehren Der Mathematischen
+  {{Wissenschaften}}}.
+\newblock {Springer}, {Berlin, Heidelberg}, 2011.
+
+\bibitem[JL23]{JendrejLawrie2023}
+Jacek Jendrej and Andrew Lawrie.
+\newblock Soliton {{Resolution}} for the {{Energy-Critical Nonlinear Wave
+  Equation}} in the {{Radial Case}}.
+\newblock {\em Annals of PDE}, 9(2):18, October 2023.
+
+\bibitem[KM08]{KenigMerle2008}
+Carlos~E. Kenig and Frank Merle.
+\newblock Global well-posedness, scattering and blow-up for the energy-critical
+  focusing non-linear wave equation.
+\newblock {\em Acta Mathematica}, 201(2):147--212, January 2008.
+
+\bibitem[OT16]{OhTataru2016}
+Sung-Jin Oh and Daniel Tataru.
+\newblock Global well-posedness and scattering of the (4+1)-dimensional
+  {{Maxwell-Klein-Gordon}} equation.
+\newblock {\em Inventiones mathematicae}, 205(3):781--877, September 2016.
+
+\bibitem[ST10a]{SterbenzTataru2010a}
+Jacob Sterbenz and Daniel Tataru.
+\newblock Energy {{Dispersed Large Data Wave Maps}} in 2~+~1 {{Dimensions}}.
+\newblock {\em Communications in Mathematical Physics}, 298(1):139--230, August
+  2010.
+
+\bibitem[ST10b]{SterbenzTataru2010}
+Jacob Sterbenz and Daniel Tataru.
+\newblock Regularity of {{Wave-Maps}} in dimension 2+1.
+\newblock {\em Communications in Mathematical Physics}, 298(1):231--264, August
+  2010.
+
+\bibitem[Tao06]{Tao2006}
+Terence Tao.
+\newblock {\em Nonlinear {{Dispersive Equations}}: {{Local}} and {{Global
+  Analysis}}}.
+\newblock {American Mathematical Soc.}, 2006.
+
+\end{thebibliography}

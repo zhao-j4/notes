@@ -1,0 +1,179 @@
+
+We derive the key monotonicity formula associated to the scaling vector field. We follow a computation similar to that for Maxwell-Klein-Gordon \cite[Section 5]{OhTataru2016}. In view of the degeneracy of the light cone, we make a translation in time $t \mapsto t + \epsilon$, defining 
+	\begin{align*}
+		X_\epsilon
+			&= \frac{1}{\rho_\epsilon^k} ((t + \epsilon) \partial_t + r \partial_r), \\
+		w_\epsilon
+			&= \frac{d - k - 1}{2 \rho^k_\epsilon},	
+	\end{align*}
+where $\rho_\epsilon := \sqrt{(t + \epsilon)^2 - r^2}$. In view of scaling, $k = d - 1 - \tfrac{4}{p - 1}$; we are interested in the NLW energy critical exponents, so $k = 1$. Observe that $X_0 = \tfrac1\rho S = \partial_\rho$, where $S$ is the scaling vector field. To simplify the discussion, we first restrict to the case $\epsilon = 0$. Translating in time, we will conclude
+
+
+\begin{theorem}[Monotonicity formula]
+	Let $\phi$ be a smooth solution to \eqref{NLW} on an open subset $\cO \subseteq C_{(0, \infty)}$ of the forward light cone. Then the $1$-current defined by 
+		\begin{equation}
+			^{(X_\epsilon)}P_\mu [\phi]
+				= {^{(X_\epsilon)}} J_\mu [\phi] + {^{(w_\epsilon)}} J_\mu [\phi] + {^{(\cH_\epsilon)}} J_\mu [\phi] +  {^{(\cN_\epsilon)}} J_\mu [\phi]
+		\end{equation}	
+	satisfies the divergence identity
+		\begin{equation}
+			\partial^\mu \left( {^{(X_\epsilon)}} P_\mu [\phi] \right) = \frac{1}{\rho_\epsilon} \left| \left( \partial_{\rho_\epsilon} + \frac1{\rho_\epsilon} \right)\phi \right|^2.
+		\end{equation}	
+	In null coordinates,
+		\begin{equation}
+		\begin{split}
+			{^{(X_\epsilon)}} P_L [\phi]
+				&= \frac12 \left( \frac{v_\epsilon}{u_\epsilon} \right)^{1/2} \left| r^{-\frac{d - 2}{2}} L \left( r^{\frac{d - 2}{2}} \phi \right)\right|^2 + \frac12 \left( \frac{u_\epsilon}{v_\epsilon} \right)^\frac12 \left( |\slashed \nabla \phi|^2 + \frac{(d - 2)^2}{4} \frac1{r^2} |\phi|^2 + \frac{2\kappa}{p + 1} |\phi|^{p + 1} \right)\\
+			{^{(X_\epsilon)}} P_{\underline L} [\phi]
+				&= \frac12 \left( \frac{u_\epsilon}{v_\epsilon} \right)^{1/2} \left| r^{-\frac{d - 2}{2}} \underline L \left( r^{\frac{d - 2}{2}} \phi \right)\right|^2 + \frac12 \left( \frac{v_\epsilon}{u_\epsilon} \right)^\frac12 \left(  |\slashed \nabla \phi|^2 + \frac{(d - 2)^2}{4} \frac1{r^2} |\phi|^2 + \frac{2\kappa}{p + 1} |\phi|^{p + 1} \right)	.
+		\end{split}	
+		\end{equation}	
+\end{theorem}
+
+\subsubsection{$0$-current}
+
+We first work in hyperbolic coordinates. Writing the metric in these coordinates, the Lie derivative of the metric along the coordinate vector field $\partial_\rho$ is given by $\cL_{\partial_\rho} \bfm = 2 \rho (\d y^2 + \sinh^2 (y) g_{\SS^{d - 1}})$. Thus, we can write the deformation tensor along $X_0$ as 
+	\begin{align*}
+		\frac12 {^{(X_0)}} \pi
+			&= \rho (\d y^2 + \sinh^2 (y) g_{\SS^{d - 1}} \\
+			&= \frac1\rho \d \rho^2 + \frac1\rho \bfm,	
+	\end{align*}
+with metric dual
+	\begin{align*}
+		\frac12 {^{(X_0)}} \pi^\# 
+			&= \rho (\partial_y \odot \partial_y + \sinh^2 (y) g_{\SS^{d - 1}}^{-1} ) \\
+			&= \frac1\rho \partial_\rho \odot \partial_\rho + \frac1\rho \bfm^{-1}. 	
+	\end{align*}
+The $0$-current is given by 
+	\begin{align*}
+		{^{(X_0)}} K[\phi]
+			&= T[\phi] \left( \frac12 {^{(X_0)}} \pi^\#\right) \\
+			&= \frac1\rho \left( T_{\rho \rho} + \operatorname{tr} T \right) \\
+			&= \frac1\rho \left( |\partial_\rho \phi|^2 + \frac{2 - d}{2} |\nabla \phi|^2 - \kappa \frac{d - 2}{2} |\phi|^{\frac{2d}{d - 2}} \right).
+	\end{align*}
+For $d \geq 3$, the second term has bad sign. Furthermore, we want to rewrite the first term in terms of the infinitesimal generator of the scaling symmetry $\Lambda = \partial_\rho + \tfrac1\rho$. To remove the term with bad sign, we introduce the generalised current. The d'Alembertian of our weight is $-\tfrac12 \Box \tfrac1\rho = - \frac{d - 2}{2} \tfrac1{\rho^3}$, so the generalised $0$-current takes the form 
+	\begin{align*}
+		{^{(w_0)}} K[\phi]
+			&= \frac{d - 2}{2\rho} |\nabla \phi|^2 - \frac{(d - 2)^2}{4} \frac{1}{\rho^3} |\phi|^2 + \kappa \frac{d - 2}{2 \rho} |\phi|^{\frac{2d}{d - 2}}\\
+			&= \frac1\rho \left( \frac{d - 2}{2} |\nabla \phi|^2 - \frac{(d - 2)^2}{4} \left| \frac1\rho \phi\right|^2 + \kappa \frac{d - 2}{2} |\phi|^{\frac{2d}{d - 2}} \right).
+	\end{align*}
+It remains to handle the first term of $^{(X_0)} K[\phi]$ and the second term coming from $^{(w_0)} K[\phi]$. This will be done by Hardy's inequality, or, more descriptively, completing-the-square with integration-by-parts. Define the Hardy $0$- and $1$-currents 
+	\begin{equation}
+	\begin{split}
+		{^{(\cH_0}} J_\rho [\phi]
+			&:= - \frac{d - 2}{2\rho^2} |\phi|^2, \\
+		{^{(\cH_0)}} K[\phi]
+			&:= - \frac{(d - 2)^2}{2\rho^3} |\phi|^2 + \frac{d - 2}{2\rho^2} |\phi|^2\\
+			&= \frac1\rho \left( \frac{(d -2)^2}{2} \left| \frac1\rho \phi \right|^2 + \frac{d - 2}{\rho^2} \phi \partial_\rho \phi \right)	.
+	\end{split}		
+	\end{equation}
+We set the other components of $^{(\cH_0)} J[\phi$ to be zero. Then, using $\nabla^\mu ({^{(\cH_0)}} J_\mu  = - \rho^{-d} \partial_\rho (\rho^d ({^{(\cH_0)}} J_\rho  ))$, we obtain the divergence identity 
+	\begin{equation}
+		\nabla^\mu \left( {^{(\cH_0)}} J_\mu [\phi] \right) = {^{(\cH_0)}} K[\phi].
+	\end{equation}
+Collecting the $0$-curents, 
+	\begin{align}
+		{^{(X_0)}} K[\phi]
+			&= \frac1\rho \left( |\partial_\rho \phi|^2 + \frac{2 - d}{2} |\nabla \phi|^2 - \kappa \frac{d - 2}{2} |\phi|^{\frac{2d}{d - 2}} \right),\\
+		{^{(w_0)}} K[\phi]
+			&= \frac1\rho \left( \frac{d - 2}{2} |\nabla \phi|^2 - \frac{(d - 2)^2}{4} \left| \frac1\rho \phi\right|^2 + \kappa \frac{d - 2}{2} |\phi|^{\frac{2d}{d - 2}} \right),\\
+		{^{(\cH_0)}} K[\phi]
+			&= \frac1\rho \left( \frac{(d - 2)^2}2 \left| \frac1\rho \phi\right|^2 + \frac{d - 2}{\rho^2} \phi \partial_\rho \phi \right),
+	\end{align}
+we write
+	\begin{equation}
+		 {^{(X_0)}} K[\phi] + {^{(w_0)}} K[\phi] + {^{(\cH_0)}} K[\phi] = \frac1\rho \left| \left( \partial_\rho + \frac{d - 2}{2 \rho} \right) \phi \right|^2.
+	\end{equation}
+\subsubsection{$1$-current}
+
+Ideally we wold like for the flux term to have a sign. It is convenient here to work in null coordinates, so we perform a null decomposition. At each point $p = (t_0, x_0)$, consider an orthonormal frame $\{ e_\fra \}_{\fra = 1, \dots, d - 1}$ for the sphere $\{t_0\} \times \partial B_{\rho_0} (0)$. Then $\{L, \underline L, e_1, \dots, e_{d - 1}\}$ forms a null frame at $p$. We decompose $\nabla \phi$ with respect to the null frame into $L\phi$, $\underline L \phi$ and $\slashed \nabla_\fra \phi$,
+	\begin{equation}
+		\begin{split}
+			T[\phi](L, \underline L)
+				&= |L\phi|^2, \\
+			T[\phi]	(\underline L, \underline L)
+				&= |\underline L \phi|^2, \\
+			T[\phi] (L, \underline L)
+				&= |\slashed \nabla \phi|^2 + \kappa \frac{d - 2}{d} |\phi|^{\frac{2d}{d - 2}}.
+		\end{split}
+	\end{equation}
+Furthermore, recall that 
+	\[
+		\rho^2 = uv, \qquad X_0 = \frac12 \left( \frac{v}{u} \right)^{1/2} L + \frac12 \left( \frac{u}{v} \right)^{1/2} \underline L. 
+	\]
+Then the $1$-currents in these coordinates take the form 
+	\begin{equation}
+	\begin{split}
+		{^{(X_0)}} J_L [\phi]
+			&= \frac12 \left( \frac{v}{u} \right)^{1/2}  |L \phi|^2 + \frac12 \left( \frac{u}{v}\right)^{1/2} \left( |\slashed \nabla \phi|^2 + \kappa \frac{d - 2}{d} |\phi|^{\frac{2d}{d - 2}}  \right),\\
+		{^{(X_0)}} J_{\underline L} [\phi]
+			&= \frac12 \left( \frac{u}{v} \right)^{1/2}  |\underline L \phi|^2 + \frac12 \left( \frac{v}{u}\right)^{1/2} \left( |\slashed \nabla \phi|^2 + \kappa \frac{d - 2}{d} |\phi|^{\frac{2d}{d - 2}}  \right)	
+	\end{split}
+	\end{equation}	
+and
+	\begin{equation}
+	\begin{split}
+		{^{(w_0)}} J_L [\phi]
+			&= \frac{d - 2}{2\rho} \phi L\phi + \frac{d - 2}{4} \left( \frac{u}{v} \right)^{1/2} \frac1{\rho^2} |\phi|^2,\\ 
+		{^{(w_0)}} J_{\underline L} [\phi]
+			&= \frac{d - 2}{2\rho} \phi \underline L\phi + \frac{d - 2}{4} \left( \frac{v}{u} \right)^{1/2} \frac1{\rho^2} |\phi|^2	
+	\end{split}
+	\end{equation}		
+and, writing $\d \rho = \tfrac12 \left(\tfrac{u}{v}\right)^{1/2} \d v + \tfrac12 \left( \tfrac{v}{u} \right)^{1/2} \d u$, 
+	\begin{equation}
+	\begin{split}
+		{^{(\cH_0)}} J_L [\phi]
+			&= - \frac{d -2}{2} \left( \frac{u}{v} \right)^{1/2} \frac1{\rho^2} |\phi|^2, \\
+		{^{(\cH_0)}} J_L [\phi]
+			&= - \frac{d -2}{2} \left( \frac{v}{u} \right)^{1/2} \frac1{\rho^2} |\phi|^2.	
+	\end{split}
+	\end{equation}
+Evidently, adding these three expressions does not give a good sign. We complete the square again, computing 
+	\begin{align*}
+		\left| r^{- \frac{d - 2}{2}} L \left( r^{\frac{d - 2}{2}} \phi \right) \right|^2	
+			&= |L\phi|^2 + \frac{d - 2}{r} \phi L \phi + \frac{(d - 2)^2}{4} \frac1{r^2} |\phi|^2, \\
+		\left| r^{- \frac{d - 2}{2}}\underline L \left( r^{\frac{d - 2}{2}} \phi \right) \right|^2	
+			&= |\underline L\phi|^2 - \frac{d - 2}{r} \phi L \phi + \frac{(d - 2)^2}{4} \frac1{r^2} |\phi|^2.
+	\end{align*}	
+The game then is to rewrite	
+	\begin{align*}
+		{\color{green} \frac{d - 2}{2\rho} \phi L \phi - \frac12 \left(\frac{v}{u} \right)^{1/2} \frac{d - 2}{r}  \phi L \phi}
+			&= {\color{green} -\frac{d - 2}{2} \frac{t}{r \rho} \phi L \phi}, 
+			\\
+		{\color{green} \frac{d - 2}{2\rho}  \phi \underline L  \phi  + \frac12 \left(\frac{u}{v} \right)^{1/2} \frac{d - 2}{r}  \phi \underline L  \phi }
+			&={\color{green} +\frac{d - 2}{2} \frac{t}{r \rho} \phi \underline L  \phi },
+			\\
+		{\color{red} -\frac{d - 2}{4} \left(  \frac{u}{v}\right)^{1/2} \frac{1}{\rho^2} |\phi|^2 - \frac12 \left(  \frac{v}{u}\right)^{1/2} \frac{(d - 2)^2}{4} \frac{1}{r^2} |\phi|^2 }	
+			&= {\color{red} - \left(\frac{d - 2}{4}    \frac{1}{\rho v}  + \frac12  \frac{(d - 2)^2}{4} \frac{v}{r^2 \rho} \right) |\phi|^2},
+			\\
+		{\color{red} -\frac{d - 2}{4} \left(  \frac{v}{u}\right)^{1/2} \frac{1}{\rho^2} |\phi|^2 - \frac12 \left(  \frac{u}{v}\right)^{1/2} \frac{(d - 2)^2}{4} \frac{1}{r^2} |\phi|^2 }
+			&= {\color{red}-\left( \frac{d - 2}{4}  \frac{1}{\rho u}  + \frac12 \frac{(d - 2)^2}{4} \frac{u}{r^2 \rho} \right) |\phi|^2}	.
+	\end{align*}
+To kill these terms and replace them with ones with non-negative sign, we introduce a divergence-free $1$-current known as the \emph{null current} (see for example \cite{OhTataru2016} for the Maxwell-Klein-Gordon case). Define 
+	\begin{align*}
+		{^{(N_0)}} J_L [\phi]
+			&:= + \frac{d - 2}{4} \frac{1}{r^{d - 1}} L \left( r^{d - 1} \frac{t}{\rho r} |\phi|^2 \right) ,
+			\\
+		{^{(N_0)}} J_{\underline L} [\phi]
+			&:=  -\frac{d - 2}{4} \frac{1}{r^{d - 1}} \underline L \left( r^{d - 1}\frac{t}{\rho r} |\phi|^2 \right)	,
+	\end{align*}
+and the other components are set to zero. This is divergence-free since mixed partials commute, $L \underline L = \underline L L$. Expanding via the product rule, we obtain
+	\begin{align*}
+		{^{(N_0)}} J_L [\phi]
+			&= {\color{green}+\frac{d - 2}{2} \frac{t}{r \rho}  \phi L \phi } 
+			{\color{red}+
+			\left(\frac{d - 2}{4} \frac{1}{\rho v} + \frac{(d - 2)^2}{4} \frac{v}{r^2 \rho} - \frac{(d - 2)^2}{4} \frac{1}{r \rho}\right) |\phi|^2},
+			\\
+		{^{(N_0)}} J_{\underline L} [\phi]
+			&= {\color{green} -\frac{d - 2}{2} \frac{t}{r \rho}  \phi \underline L  \phi } {\color{red}+
+			\left(\frac{d - 2}{4} \frac{1}{\rho u} + \frac{(d - 2)^2}{4} \frac{u}{r^2 \rho}  + \frac{(d - 2)^2}{4} \frac{1}{r \rho}\right) |\phi|^2}.
+	\end{align*}
+Adding the currents together, we see that the $ \phi L \phi $ terms cancel. It remains to examine the coefficient in front of $|\phi|^2$. Factoring out $\tfrac{d - 2}{4}$, we consider
+	\begin{align*}
+		\frac{v}{r^2 \rho} -\frac12 \frac{v}{r^2 \rho} -  \frac{1}{r \rho}
+			&= \frac12 \frac{v}{r^2 \rho} -  \frac{r}{r^2 \rho} = \frac12 \frac{u}{r^2 \rho} = \frac12 \left( \frac{u}{v} \right)^{1/2} \frac{1}{r^2}, \\
+		\frac{u}{r^2 \rho} -\frac12 \frac{u}{r^2 \rho} +  \frac{1}{r \rho}
+			&= \frac12 \frac{u}{r^2 \rho} +  \frac{r}{r^2 \rho} = \frac12 \frac{v}{r^2 \rho} = \frac12 \left( \frac{v}{u} \right)^{1/2} \frac{1}{r^2}.	
+	\end{align*}
+This completes the derivation of the monotonicity formula.
+

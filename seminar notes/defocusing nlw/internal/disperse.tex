@@ -1,0 +1,150 @@
+
+The bubbling analysis of a singularity begins by locating points $x(t)$ and scales $\lambda (t)$ at which the energy concentrates as $t \downarrow 0$ in the blow-up scenario or $t \uparrow \infty$ in the non-scattering scenario. For our purposes, it will suffice to perform the bubbling analysis along a sequence of times, though a continuous in time bubbling analysis is needed if one wants to show soliton resolution; see \cite{JendrejLawrie2023} and related works. 
+
+\subsection{Energy-dispersed regularity}
+
+We first locate the points and scales of concentration by showing that, if the energy does not concentrate, then the solution is regular. Define the energy dispersion norm
+	\[
+		||\phi||_{\sfED[I]} 
+			:= \sup_{N \in 2^\Z} \left( N^{-\frac{d - 2}{2}} ||P_N \phi||_{L^\infty_{t, x} (I \times \R^d)} + N^{ - \frac{d}{2}} ||\partial_t P_N \phi||_{L^\infty_{t, x} (I \times \R^d)} \right).
+	\]
+Proving well-posedness theory amounts to controlling the non-linear term in an appropriate dual Strichartz norm. One typically argues by Sobolev embedding to place each of the factors of the non-linearity in a judicious choice of Strichartz norm; in fact, one can be more efficient via
+
+\begin{lemma}[Refined Sobolev inequality]
+	Let $\phi \in \cS (\R^d)$, then 
+		\begin{equation}
+			||\phi||_{L^{\frac{2d}{d - 2}}_x} \lesssim ||\phi||_{\dot H^1}^{\frac{d - 2}{d}} \left( \sup_{N \in 2^\Z} N^{- \frac{d - 2}{2}}||\phi_N||_{L^\infty_x}\right)^{\frac2d}.
+		\end{equation}
+\end{lemma}
+
+\begin{proof}
+	See harmonic analysis notes. See also \cite[Theorem 2.43]{BahouriEtAl2011}.
+\end{proof}
+
+\begin{theorem}[Energy-dispersed regularity theorem]
+	There exist functions $\cF(\cE) \gg 1$ and $\epsilon(\cE) \ll 1$ of energy such that if $\phi \in C^1_{t, \loc} \dot H^1_x \cap C^0_{t, \loc} L^2_x (I \times \R^d)$ is a solution to the energy-critical non-linear wave equation \eqref{NLW} with sub-threshold energy $\cE[\phi] \equiv \cE$ and energy dispersion
+		\[
+			||\phi||_{\sfED[I]} \leq \epsilon(\cE), 
+		\]
+	then
+		\[
+			||\phi||_{\sfS[I]} \leq \cF(\cE).
+		\]
+	In addition, we can continue the solution to a larger interval $I \subset J$. 
+\end{theorem}
+
+\begin{proof}
+	By local well-posedness and the Strichartz estimates, there exists $T \ll 1$ such that 
+		\[
+			||\phi||_{\sfS [0, T]} \leq C \cE^{1/2}.
+		\]
+	To control the Strichartz norms, we argue by a continuity argument. Suppose we want to control a Strichartz norm $L^p_t L^q_x$. The refined Sobolev inequality with coercivity of energy gives control over the endpoint exponent $L^\infty_t L^{\frac{2d}{d - 2}}_x$ in terms of energy and energy dispersion, 
+		\[
+			||\phi||_{L^\infty_t L^{\frac{2d}{d - 2}}_x}
+				\leq C \cE^{\frac{d - 2}{2d}} || \phi||_{\sfED}^{\frac2d}.
+		\]			
+	Assume for a bootstrap assumption that every non-endpoint Strichartz norm is controlled by $2C \cE^{1/2}$. Then, choosing the energy dispersion smaller than $\tfrac1{1000} \cE^{1/2}$, we interpolate
+		\[
+			||\phi||_{L^p_t L^q_x} \leq ||\phi||_{L^\infty_t L^{\frac{2d}{d - 2}}_x}^\theta ||\phi||_{L^{2^+}_t L^{\frac{2d}{d - 3}^-}_{t, x}}^{1- \theta} \leq C  \cE^{1/2}.
+		\]	
+	This proves the result. Then a standard continuation argument using you favourite Strichartz norm, e.g. $L^{\frac{2(d + 1)}{d - 1}}_{t, x}$, \cite[Theorem 2.7]{KenigMerle2008}, furnishes the conclusion. 
+\end{proof}
+
+The energy-dispersed regularity theorem allows us to locate points and \textit{frequency} scales of energy concentration in the event of blow-up or non-scattering. Of course, the uncertainty principle would allow us to convert these frequency scales into physical scales, c.f. \cite[Section 6.2]{SterbenzTataru2010a}, though it will be more convenient for our physical space arguments to work with the following physical space version of energy dispersion as introduced in \cite[Section 8.1]{OhTataru2016},
+	\[
+		||\phi||_{\widetilde \sfED [I]} 
+			:= \sup_{N \in 2^\Z} \left( N^{-\frac{d - 2}{2}} ||\chi_{1/N} * \phi||_{L^\infty_{t, x} (I \times \R^d)} + N^{-\frac{d}{2}}  ||\partial_t \chi_{1/N} * \phi||_{L^\infty_{t, x} (I \times \R^d)} \right)
+	\]	
+where $\chi \in C^\infty_c (\R^d)$ is a cut-off supported in the unit ball $B \subseteq \R^d$ with unit mass $\int \chi = 1$, and the physical space scaling $\chi_{1/N} (x) := N^d  \chi(Nx)$ is the dual to the frequency space scaling $\widehat \chi_N (\xi) := \widehat \chi(\xi/N)$. Observe that the rescaled cut-off $\chi_{1/N}$ is supported in the ball $B_{1/N}$ and has unit mass $\int \chi_{1/N} = 1$. 
+
+\begin{corollary}[Physical-space version of energy-dispersed regularity]
+	The physical space version of energy-dispersion controls the usual energy-dispersion norm 
+		\[
+			||\phi||_{\sfED[I]} \lesssim ||\phi||_{\widetilde \sfED[I]}.
+		\]	
+	In particular, the energy-dispersed regularity theorem continues to hold replacing small $\sfED$-norm with small $\widetilde\sfED$-norm.	
+\end{corollary}
+
+\begin{proof}
+	Fix a large parameter $M_0 \in 2^\Z$, we compute
+		\begin{align*}
+			N^{- \frac{d - 2}{2}} ||P_N \phi||_{L^\infty_x}
+				&\leq N^{- \frac{d - 2}{2}} ||\chi_{1/M_0 N} * P_N \phi||_{L^\infty_x} + N^{- \frac{d - 2}{2}} ||  P_N \phi -  \chi_{1/M_0 N} * P_N \phi||_{L^\infty_x}.
+		\end{align*}
+	The first term can be controlled by boundedness of the Littlewood-Paley projections, 
+		\[
+			N^{- \frac{d - 2}{2}} ||\chi_{1/M_0 N} * P_N \phi||_{L^\infty_x} 
+				\leq M_0^{ \frac{d - 2}{2}} (M_0 N)^{- \frac{d - 2}{2}} ||\chi_{1/M_0 N} \phi||_{L^\infty_x}.
+		\]
+	We claim that the second term can be absorbed into the left-hand side after choosing $M_0 \gg 1$. Indeed, using the fact that $\int \chi_{1/M_0 N} = 1$, the fundamental theorem of calculus, and Sobolev-Bernstein, we have
+		\begin{align*}
+			\left|P_N \phi (x) - ( \chi_{1/M_0 N} * P_N \phi) (x)\right|
+				&\leq \int_{\R^d} \chi_{1/M_0 N} (x - y) |P_N \phi (y) - P_N \phi (x)| \, d y
+				 \\
+				&\leq \int_{\R^d} \chi_{1/M_0 N} (x - y) ||\nabla P_N \phi||_{L^\infty_x} |x - y| \, dy \\
+				&\leq \left( \int_{\R^d} \chi(x) |x| dx \right) M_0^{-1} N^{-1} ||\nabla P_N \phi||_{L^\infty_x} \lesssim_\chi M_0^{-1} ||P_N \phi||_{L^\infty_x}.
+		\end{align*}
+	Arguing similarly for $\partial_t \phi$, we conclude the result. 
+\end{proof}
+
+
+\subsection{Rescaling}
+
+It follows from the energy-dispersed regularity theorem that there exist $(t_n, \widetilde{x_n})$, approaching either $t_n \downarrow 0$ in the blow-up scenario or $t_n \uparrow \infty$ in the non-scattering scenario, and scales $\widetilde{N_n} \in 2^\Z$ at which the energy-dispersion is non-negligible, 
+	\begin{equation}\tag{$\widetilde{\mathrm{C}}$}
+		\widetilde{N_n}^{- \frac{d -2}{2}} |\chi_{1/\widetilde{N_n}} * \phi (t_n, \widetilde{x_n})| + \widetilde{N_n}^{-\frac{d}{2}} |\partial_t \chi_{1/\widetilde{N_n}} * \phi (t_n, \widetilde{x_n})| > \epsilon (\cE).
+	\end{equation}
+Due to flux decay, there exists a sequence $\epsilon_n \to 0$ such that  
+	\begin{equation}\tag{$\widetilde{\mathrm{F}}$}
+		\cF_{\partial C_{[\epsilon_n t_n, t_n]}} [\phi]  \leq \epsilon_n^{1/2} \cE.
+	\end{equation}
+Note in the non-scattering case, we also require that $\epsilon_n t_n \to \infty$. Furthermore, recall that in Section \ref{sec:local} we have truncated our solution so that the energy exterior to the light cone is negligible in the sense that 
+	\begin{equation}\tag{$\widetilde{\mathrm{E}}$}
+		\cE_{(\{t\} \times \R^d) \setminus S_t} [\phi]
+			\leq \epsilon^{1000} \cE .
+	\end{equation}
+Rescaling $\phi_n (t, x) := t_n^{\frac{d - 2}{2}}\phi(t_n t, t_n x)$, we obtain a sequence of finite-energy solutions to \eqref{NLW} on $ [\epsilon_n, 1]$ which admit points of concentration $x_n := \widetilde{x_n}/t_n$ at time $t = 1$ and scales $N_n := t_n \widetilde{N_n}$ such that 
+		\begin{equation}\tag{${\mathrm{C}}$}\label{eq:concentrate}
+		N_n^{- \frac{d -2}{2}} |\chi_{1/N_n} * \phi_n (1, x_n)| + N_n^{-\frac{d}{2}} |\partial_t \chi_{1/N_n} * \phi_n (1, x_n)| > \epsilon (\cE),
+	\end{equation}
+flux decay on the null boundary, 	
+	\begin{equation}\tag{${\mathrm{F}}$}\label{eq:fluxdecay}
+		\cF_{\partial C_{[\epsilon_n , 1]}} [\phi_n]  \leq \epsilon_n^{1/2} \cE,
+	\end{equation}
+negligible energy exterior to the light cone, 	
+	\begin{equation}\tag{${\mathrm{E}}$}\label{eq:exteriorenergy}
+		\cE_{(\{t\} \times \R^d) \setminus S_t} [\phi_n]
+			\leq \epsilon^{1000} \cE ,
+	\end{equation}
+for all $t \in [\epsilon_n, 1]$, and uniformly bounded energy, 
+	\begin{equation}\tag{${\mathrm{B}}$}\label{eq:boundedenergy}
+		\cE [\phi_n] \equiv \cE.
+	\end{equation}
+From this point on, we do not distinguish between the blow-up scenario and non-scattering scenario, and work with the sequence of finite-energy solutions $\phi_n : [\epsilon_n, 1] \times \R^d \to \R$ satisfying the properties \eqref{concentrate}, \eqref{fluxdecay}, \eqref{exteriorenergy}, \eqref{boundedenergy}. 
+
+	
+\subsection{Dichotomy}
+
+
+
+By the uncertainty principle, $P_N \phi$ is localised at physical scales $\tfrac1N$. Since the energy exterior to the light cone is negligible a la \eqref{exteriorenergy}, the pointwise concentration at a point $x$ and frequency scale $N$ must be negligible if the ball $B_{1/N} (x)$ sees a large portion of the exterior to the cone. Thus, for there to be concentration \eqref{concentrate}, our frequencies must be sufficiently large and our points of concentration cannot be too far outside the cone, 
+	\begin{align*}
+		N_n 
+			&\geq M_{\epsilon, \cE}, \\
+		|x_n|
+			&\leq 1 + N^{-1}_n \delta_{\epsilon, \cE}
+	\end{align*}
+for some uniform frequency $M_{\epsilon, \cE} \in 2^\Z$ and parameter $\delta_{\epsilon, \cE} > 0$. We are interested in the fastest concentrating scales, so we pass to a subsequence witnessing $\limsup_n N_n$. We obtain the following trichotomy:
+	\begin{enumerate}
+		\item self-similar concentration, $N_n \sim 1$, 
+		 
+		\item time-like concentration, $N_n \to \infty$ and $|x_n| \leq \gamma < 1$, 
+		
+		\item null concentration, $N_n \to \infty$ and $|x_n| \to 1$.
+	\end{enumerate}
+In fact, only the first two cases are admissible. We eliminate the null concentration scenario using the weighted monotonicity formula. 
+
+
+\begin{lemma}[No null concentration]
+	Let $\phi_n$ be a sequence of solutions to the energy-critical non-linear wave equation \eqref{NLW} on $[\epsilon_n, 1]$ satisfying \eqref{concentrate}, \eqref{fluxdecay}, \eqref{exteriorenergy} and \eqref{boundedenergy}. There exists $M(\cE) \gg 1$ and $0 < \gamma (\cE) < 1$ such that if $N_n \geq M$ and $|x_n| \geq \gamma$, then energy dispersion is small. 
+\end{lemma}
