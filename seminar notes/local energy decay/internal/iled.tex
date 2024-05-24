@@ -1,0 +1,271 @@
+
+
+To motivate the local energy norm, let us consider the model case of the free wave equation $\Box \phi = 0$ with initial data given by a spherically symmetric Gaussian wave packet localised near the origin. From our heuristic discussion at the beginning of this note, we established the model estimate
+	\[
+		||  \nabla_{t, x} \phi||_{L^2_{t, x} (\R \times A_N)} \lesssim N^{1/2} ||\nabla_{t, x} \phi (0)||_{L^2_x},
+	\]
+where $A_N \subseteq \R^d$ denotes an annulus adapted to the dyadic scale $N \in 2^\N$, 
+	\begin{align*}
+		A_1
+			&:= \{ x \in \R^d : |x| \leq 2\}, \\
+		A_N
+			&:= \{ x \in \R^d : N \leq |x| \leq 2N \}.
+	\end{align*}
+This motivates the introduction of the local energy norm and, to account the presence of forcing terms $\Box \phi = f$, its dual norm
+	\begin{align*}
+		||\psi||_{\LE_{t, x}}
+			&:= \sup_{N \in 2^\N} ||\langle r \rangle^{-\frac12} \psi||_{L^2_{t, x} (\R \times A_N)},\\
+		||f||_{\LE^*_{t, x}}
+			&:= \sum_{N \in 2^\N} || \langle r \rangle^{\frac12} f||_{L^2_{t, x} (\R \times A_N)}.	
+	\end{align*}
+Throughout we will denote by $\langle -, - \rangle$ for the $L^2_x$-inner product. 	
+
+\subsection{Morawetz estimate}
+
+Our main tool for proving \eqref{iled} will be the positive commutator method. As a primer, we will use it to give a proof of the classical integrated local energy decay statement due to Morawetz \cite{Morawetz1997}. As a general principle, one generates estimates for the linear wave equation by making a judicious choice of multiplier, integrate-by-parts, and apply a duality argument to handle the inhomogeneous setting. For example, the \textit{Noether's theorem} tells us $\Box \phi X \phi$ can be written as a continuity equation for a conserved quantity when $X$ is an infinitesimal generator of a symmetry of $\Box$. For example, taking $X = \partial_t$ corresponding to the time-translation symmetry, 
+
+\begin{proposition}[Energy identity]\label{lem:energy}
+	For $\phi : [0, T] \times \R^d \to \C$ with sufficient regularity and decay, we have
+		\[
+			\frac12 ||\nabla_{t, x} \phi(T)||_{L^2_x}^2 = \frac12 ||\nabla_{t, x}\phi(0)||_{L^2_x}^2 - \int_0^T \int_{\R^d} \Box \phi \partial_t \phi \, dx dt. 
+		\]
+	In particular, $\phi$ obeys the energy estimate
+		\[
+			||\nabla_{t, x} \phi||_{L^\infty_t L^2_x} \lesssim ||\nabla_{t, x}\phi(0)||_{L^2_x} + ||\Box \phi||_{L^1_t L^2_x}.
+		\]	
+\end{proposition}
+
+\begin{proof}
+	We rewrite the product $\Box \phi \, \partial_t \phi$ in divergence form, 
+		\begin{align*}
+			\Box \phi \, \partial_t \phi 
+				&= \left( - \partial_t^2 \phi + \sum_j \partial_j^2 \phi \right) \partial_t \phi \\
+				&=	\partial_t \left( - \frac12 |\partial_t \phi|^2 \right) + \sum_j \partial_j (\partial_j \phi \partial_t \phi) - \partial_j \phi \partial_t \partial_j \phi \\
+				&=\partial_t \left(-\frac12 |\partial_t \phi|^2 - \frac12 \sum_j |\partial_j \phi|^2 \right) + \nabla_x \cdot (\partial_t \phi \nabla_x \phi). 
+		\end{align*}
+	Integrating over the region $[0, T] \times \R^d$ and applying the divergence theorem, the boundary terms arising from the first term on the last line furnish the energy, while the second term vanishes provided sufficient decay at spatial infinity. This proves the energy identity. To prove the energy estimate, a duality argument and Cauchy's inequality imply that 
+		\[
+			\left|\int_0^t \int_{\R^d} \Box \phi \, \partial_t \phi \, dx dt\right| \leq ||\Box \phi||_{L^1_t L^2_x} ||\partial_t \phi||_{L^\infty_t L^2_x}  \leq 2||\Box \phi||_{L^1_t L^2_x}^2 + \frac14||\partial_t \phi||_{L^\infty_t L^2_x}^2,
+		\]
+	so the second term on the right can be absorbed into the left-hand side of the energy inequality. 
+\end{proof}
+
+
+For the \textit{positive commutator} argument, integration-by-parts is used to generate a commutator term, while one chooses the multiplier such that this commutator has positive sign. Suppose $X$ is stationary and anti-symmetric with respect to the $L^2_x$-inner product, then
+	\[
+		\langle X \phi, \Box \phi \rangle =  -\partial_t \langle X \phi, \partial_t \phi\rangle  + \frac12 \langle [X, \Delta] \phi, \phi \rangle,
+	\]
+since anti-symmetry allows us to write $\langle X\partial_t \phi, \partial_t \phi \rangle = 0$ and $2 \langle X \phi, \Delta \phi \rangle =\langle [\Delta, X] \phi, \phi \rangle$. We want to choose $X$ judiciously such that the commutator term has good sign. For example, one can choose the anti-symmetric operator $X = \partial_r + \tfrac{d - 1}{2r}$ and compute
+	\[
+		[\partial_r + \tfrac{d - 1}{2r}, \Delta] = - \frac2r \frac1{r^2} \slashed \Delta + \frac{(d - 1) (d - 3)}{2r} \frac{1}{r^2},
+	\]
+for $d \geq 4$; the modifications for the lower dimensional cases are left to the reader. Integrating-by-parts, we obtain
+
+\begin{theorem}[Morawetz estimate]
+	Let $\phi \in C^\infty_t \cS_x (\R \times \R^d)$ be a smooth solution to the free wave equation $\Box \phi = 0$, then 
+		\[
+			|| r^{-\frac32}  \slashed \nabla \phi ||_{L^2_{t, x}} + ||r^{-\frac32}\phi ||_{L^2_{t, x}}\lesssim ||\nabla_{t, x} \phi (0)||_{L^2_x}. 
+		\]
+\end{theorem}
+
+\begin{proof}
+	Since $X$ is anti-symmetric, multiplying the equation by $X\phi$ gives
+		\[
+			0 = \langle X \phi, \Box \phi \rangle = -\partial_t \langle X \phi, \partial_t \phi \rangle + \frac12 \langle [X, \Delta] \phi, \phi \rangle.
+		\]
+	Integrating the commutator term by parts gives control over $\slashed \nabla \phi$ and $\phi$ with the appropriate weights. Integrating in time and applying Cauchy-Schwartz, Hardy's inequality, and the energy identity, we conclude the estimate. 
+\end{proof}
+
+\begin{remark}
+	Another proof using the energy-momentum tensor formalism can be found in the appendix of \cite{SterbenzRodnianski2005}.
+\end{remark}
+
+\begin{remark}
+	When working with vector fields, recall that the commutator $[X, Y]$ is precisely the Lie derivative of $X$ along the flow of $Y$. In analogy with this picture, the principal symbol of the commutator $[X, \Box]$ is given by the derivative of the symbol of $X$ along the Hamilton flow of $\Box$. 
+\end{remark}	
+
+
+
+\subsection{\eqref{iled} for $\Box$}
+
+Using the proof of the Morawetz estimate as inspiration, let us outline the strategy for proving the integrated local energy decay estimate. Again, we want to choose our multiplier $X$ to be stationary and anti-symmetric, in which case integration-by-parts leads us to 
+	\[
+		\langle X \phi, \Box \phi \rangle = - \partial_t \langle X \phi, \partial_t \phi \rangle + \frac12 \langle [X, \Delta] \phi, \phi \rangle.
+	\]
+Integrating in time and applying a duality argument,  
+	\begin{equation}\tag{*}\label{eq:time}
+		\begin{split}
+		 \langle [X, \Delta] \phi, \phi \rangle 
+		 	&\lesssim  ||X \phi (0)||_{L^2_x} ||\partial_t \phi (0)||_{L^2_x} +  ||X \phi (T)||_{L^2_x} ||\partial_t \phi (T)||_{L^2_x} \\
+		 	&\qquad + ||X\phi||_{\LE_{t,x}\cap L^\infty_t L^2_x} ||\Box\phi||_{\LE_{t, x}^* + L^1_t L^2_x}.
+		 \end{split}
+	\end{equation}
+Aiming towards \eqref{iled}, we want to choose $X$ such that it is bounded from $\dot H^1_x (\R^d)$ to $L^2_x (\R^d)$, bounded from $\nabla_x \LE_{t, x} \cap r^{-1} \LE_{t,x}$ to $\LE_{t, x}$, and has positive commutator with the Laplacian, 
+	\begin{align}
+		||X \phi||_{L^2_x}
+			&\lesssim ||\nabla_x \phi||_{L^2_x}, \tag{L2}\label{eq:boundl2}\\
+		||X \phi||_{\LE_{t, x}}
+			&\lesssim ||\nabla_{t, x} \phi||_{\LE_{t, x}} + ||r^{-1} \phi||_{\LE_{t, x}},\tag{LE}\label{eq:boundle}\\	
+		\langle [X, \Delta] \phi, \phi \rangle
+			&\gtrsim ||\nabla_{t, x} \phi||_{\LE_{t, x}}^2 + ||r^{-1} \phi||_{\LE_{t, x}}^2\tag{C}\label{eq:boundpositive} .	
+	\end{align}	
+Indeed, inserting the inequalities above into \eqref{time}, we obtain
+	\begin{align*}
+		 ||\nabla_{t, x} \phi||_{\LE_{t, x}}^2 + ||r^{-1} \phi||_{\LE_{t, x}}^2 
+		 	&\lesssim ||\nabla_{t, x}\phi(0)||_{L^2_x}^2 + ||\nabla_{t, x} \phi(T)||_{L^2_x}^2 \\
+		 	&\qquad+ \left( ||\nabla_{t, x} \phi||_{\LE_{t, x} \cap L^\infty_tL^2_x} + ||r^{-1} \phi||_{\LE_{t, x} \cap L^\infty_t L^2_x}  \right) ||\Box \phi||_{\LE^*_{t, x} + L^1_t L^2_x}.
+	\end{align*}
+	In view of the energy identity from Lemma \ref{lem:energy} and duality, the $\LE_{t, x}$-norms on the left-hand side can be replaced by $\LE_{t, x} \cap L^\infty_t L^2_x$-norms, while on the right-hand side the energy at time $t = T$ can be controlled by the energy at time $t = 0$ and the last term on the right. Thus, we can write
+	\begin{align*}	 
+		 ||\nabla_{t, x} \phi||_{\LE_{t, x} \cap L^\infty_t L^2_x}^2 + ||r^{-1} \phi||_{\LE_{t, x} \cap L^\infty_t L^2_x}^2	
+		 	&\lesssim  ||\nabla_{t, x} \phi(0)||_{ L^2_x}^2 \\
+		 		&\qquad+ \left( ||\nabla_{t, x} \phi||_{\LE_{t, x} \cap L^\infty_tL^2_x} + ||r^{-1} \phi||_{\LE_{t, x} \cap L^\infty_t L^2_x}  \right) ||\Box \phi||_{\LE^*_{t, x} + L^1_t L^2_x}\\
+		 	&\lesssim ||\nabla_{t, x}\phi (0)||_{L^2_x}^2 + \frac{2}{\delta} ||\Box \phi||_{\LE^*_{t, x} + L^1_t L^2_x}^2 \\
+		 		&\qquad +  \delta \left( ||\nabla_{t, x} \phi||_{\LE_{t, x} \cap L^\infty_t L^2_x} + ||r^{-1} \phi||_{\LE_{t, x} \cap L^\infty_tL^2_x}  \right)^2 ,
+	\end{align*}
+using Cauchy's inequality. The choice of $\delta > 0$ here is arbitrary, so taking $\delta \ll 1$ we can absorb the final term on the second line into the left-hand side to conclude
+
+\begin{theorem}[\eqref{iled} for $\Box$]
+	The integrated local energy decay estimate \eqref{iled} holds for the d'Alembertian $P = \Box$. 
+\end{theorem}
+
+It remains to choose $X$ satisfying the boundedness properties \eqref{boundl2} and \eqref{boundle}, and the positivity of the commutator \eqref{boundpositive}. The multiplier $X = \partial_r + \tfrac{d - 1}{2r}$ is a good start for establishing \eqref{boundpositive}, however it does not furnish control over the radial derivatives or time derivatives, so some suitable modifications need to be made. In fact, the anti-symmetry of $X$ and the estimate \eqref{boundpositive} should not be taken too literally; as we detail the proof, some suitable substitutes will be introduced. Many computations will be omitted for brevity; to see details, we refer to \cite{MetcalfeSogge2006}.
+
+
+\begin{proof}[``Proof'' of positive commutator estimates \eqref{boundpositive}]
+	Our goal is to construct an anti-symmetric operator $X$ which has positive commutator with $\Delta$. Fix a smooth radial function $\alpha(r)$ to be chosen later, and set 
+	\[
+		X = \alpha \frac{x^j}{r} \partial_j + \partial_j \frac{x^j}{r} \alpha. 
+	\]
+The commutator is given by (exercise!)
+	\[
+		[X, \Delta] = -  \partial_k \frac{x^k}r \alpha' \frac{x^j}{r} \partial_j -  \partial_\ell \left( \delta^{\ell k} - \frac{x^k x^\ell}{r^2} \right) \frac{\alpha}{r} \left( \delta^{jk} - \frac{x^j x^k}{r^2} \right) \partial_j - (\Delta \partial_j) \left( \frac{x^j}{r} \alpha \right).
+	\]
+Integrating by parts, 
+	\begin{equation}\label{eq:positive}\tag{$\dagger$}
+		\langle [X, \Delta] \phi, \phi \rangle 
+			=  \int_{\R^d} \left(   \alpha' |\partial_r \phi|^2 + \frac{\alpha}{r} \frac{1}{r^2} |\slashed \nabla \phi|^2 -  (\Delta \partial_j) \left( \frac{x^j}{r} \alpha \right) |\phi|^2 \right) dx. 
+	\end{equation}
+We want to choose $\alpha$ such that we have non-negative terms $\alpha, \alpha', (\Delta \partial_j) (\tfrac{x^j}{r} \alpha) > 0$ which behave like the weights $\tfrac{\alpha}{r}, \alpha' \approx r^{-1}$ and $(\Delta \partial_j) (\tfrac{x^j}{r} \alpha)  \approx r^{-3}$. Fix a dyadic integer $N > 0$, then set
+	\[
+		\alpha(r) := \frac{r}{r + N}. 
+	\]
+We compute	
+	\begin{align*}
+		\alpha'(r)
+			&= \frac{N}{(r + N)^2},\\
+		-(\Delta \partial_j) \left( \frac{x^j}{r} \alpha \right)	
+			&= -\frac{1}{r^{d - 1}} \partial_r r^{d - 1} \partial_r \left( (d - 1) \frac{\alpha}{r} + \alpha' \right) \\
+			&= \frac{1}{r (N + r)^3} \left(  (d - 3) r + 3(d - 3) \frac{Nr}{N + r} + \frac{3 N^2 (d - 1)}{N + r} \right).
+	\end{align*}
+We see that the weights are non-negative and have the desired size on the dyadic annulus $A_N$, 
+	\begin{align*}
+		\frac{\alpha(r)}{r}  \sim \alpha'(r)
+			&\sim N^{-1}, \qquad \text{when $r \sim N$,}\\
+		-(\Delta \partial_j) \left( \frac{x^j}{r} \alpha \right)	
+			&\sim N^{-3},  \qquad \text{when $r \sim N$}.
+	\end{align*}
+The non-negativity allows us to restrict our attention to the dyadic annulus, in which case we can bound the commutator \eqref{positive} below by 
+	\[
+		\langle [X, \Delta] \phi, \phi \rangle \gtrsim || r^{-\frac12} \nabla_x \phi||_{L^2_x (A_N)}^2 +|| r^{-\frac12} r^{-1}  \phi||_{L^2_x (A_N)}^2.
+	\]
+	This estimate is uniform in $N$, so we can insert this into the left-hand side of \eqref{time} and take the supremum over $N$ to recover the full local energy norm of $\nabla_x \phi$ and $r^{-1} \phi$. 
+\end{proof}
+
+\begin{remark}
+	The Morawetz multiplier $X = \partial_r + \tfrac{d - 2}{r}$ corresponds to the choice $\alpha(r) = \tfrac1{2r}$. 
+\end{remark}
+
+\begin{proof}[Modifying the proof of \eqref{boundpositive} to control $\partial_t$]
+	Our proof of the positive commutator bound does not control the time-derivatives of $\phi$, since for anti-symmetric multipliers $\langle X \partial_t \phi, \partial_t \phi \rangle = 0$. On the other hand, if we were to choose a positive symmetric multiplier, then one could hope to recover the full estimate provided the lower-order error terms can be handled. Let $\beta(r)$ be a smooth radial function to be chosen later, set
+		\[
+			Y := X + \beta. 
+		\]
+	Then multiplying the equation by $Y\phi$, we obtain 
+		\begin{align*}
+			\langle Y \phi, \Box \phi \rangle 
+				&= - \partial_t \langle X \phi, \partial_t \phi \rangle + \frac12 \langle [X, \Delta] \phi, \phi \rangle \\
+				&\qquad - \partial_t \langle \beta \phi, \partial_t \phi \rangle + \langle \beta \partial_t \phi, \partial_t \phi \rangle + \langle \beta \phi, \Delta \phi \rangle. 
+		\end{align*}
+	Evidently the term $\langle \beta \partial_t \phi, \partial_t \phi \rangle = \int \beta |\partial_t \phi|^2$ gives the desired control over the time derivatives, provided we choose $\beta > 0$ and $\beta \approx r^{-1}$. However, we must contend with the final term having bad sign, indeed, integrating-by-parts and using symmetry, 
+		\begin{equation}\tag{$\dagger \dagger$}\label{eq:bad}
+		\begin{split}
+			\langle \beta \phi, \Delta \phi \rangle 
+				&= \langle - \beta \nabla \phi, \nabla \phi \rangle + \langle - \nabla \beta \phi, \nabla \phi \rangle \\
+				&= -\langle  \beta \nabla \phi, \nabla \phi \rangle + \frac12 \langle \Delta \beta \phi,  \phi \rangle \\
+				&=  \int_{\R^d} -\beta |\partial_r \phi|^2 - \frac{\beta}{r^2} |\slashed \nabla \phi|^2 + \frac12 \Delta \beta |\phi|^2 \, dx. 
+		\end{split}
+		\end{equation}
+	We choose $\beta$ carefully such that the contributions of bad sign to \eqref{bad} are dominated by the good signs arising from the positive commutator identity \eqref{positive}. Choose for example
+		\[
+			\beta(r) := \frac12\alpha'(r)= \frac12\frac{N}{(r + N)^2},
+		\]	
+	then the coefficient in front of $|\partial_r \phi|^2$ is killed, the coefficient for $\tfrac1{r^2} |\slashed \nabla \phi|^2$ is dominated since $\alpha' < \tfrac\alpha r$, and the coefficients for $|\phi|^2$ are related by 
+		\[
+			-\frac12 (\Delta \partial_j) \left( \frac{x^j}{r} \alpha \right) = -\frac12 \Delta \beta - \frac{d - 1}2 \Delta \left( \frac{\alpha}{r} \right),
+		\]
+	so it suffices to show that $\Delta \tfrac{\alpha}{r} < 0$. Indeed, 
+		\[
+			\Delta \left( \frac{\alpha}{r} \right) = \frac{- (d - 3) r - (d - 1) N}{r (r + N)^3}. 
+		\]	
+	This shows that sign is not an issue. Furthermore, $\beta$ has the correct size on the dyadic annulus $A_N$, 
+		\[
+			\beta \sim N^{-1}, \qquad \text{when $r \sim N$}.
+		\]	
+	The non-negativity allows us to restrict our attention to the dyadic annulus, in which case we can bound from below
+		\[
+			\langle \beta \partial_t \phi, \partial_t \phi \rangle + \frac12 \langle [X, \Delta ] \phi, \phi \rangle + \langle \beta \phi, \Delta \phi \rangle \gtrsim ||r^{-\frac12} \partial_t \phi ||_{L^2_x (A_N)}^2. 
+		\]	
+	This estimate is uniform in $N$, taking the supremum over $N$ recovers the local energy norm of $\partial_t \phi$.
+\end{proof}
+	
+
+\begin{proof}[Proof of $L^2$-bounds \eqref{boundl2} and $\LE_{t, x}$-bounds \eqref{boundle} and concluding \eqref{iled}]
+	To control the terms $X\phi$ and $\beta \phi$, observe that the pointwise bounds on $\alpha$ and $\alpha'$ imply 
+		\[
+			|X\phi| + |\beta \phi| \lesssim |\nabla_x \phi| + \frac1r |\phi|. 
+		\]
+	The $\LE_{t,x}$-bounds follow immediately by definition, 
+		\[
+			||X\phi||_{\LE_{t, x}} + ||\beta\phi||_{\LE_{t, x}} \lesssim ||\nabla_x \phi||_{\LE_{t, x}} + ||r^{-1} \phi||_{\LE_{t, x}},
+		\]	
+	while one needs an application of Hardy's inequality to conclude the $L^2$-bounds,
+		\[
+			||X\phi||_{L^2_x} + ||\beta \phi||_{L^2_x}\lesssim ||\nabla_x \phi||_{L^2_x} + ||r^{-1} \phi||_{L^2_x} \lesssim ||\nabla_x \phi||_{L^2_x}.
+		\]
+	Collecting all our bounds, this completes the proof of \eqref{iled}.	
+\end{proof}
+
+\begin{remark}
+	The integrated local energy decay estimate as stated in \eqref{iled} fails in dimensions $d = 1, 2$, though from our proof it is clear that one simply has to drop the Hardy term $||\langle r \rangle^{-1} \phi||_{\LE_{t, x}}$ to recover an admissible estimate. 
+\end{remark}
+
+\subsection{\eqref{iled} for small perturbations of $\Box$}\label{subsec:small}
+
+To illustrate the robustness of the integrated local energy decay estimates, we prove the analogous results for lower-order perturbations of the wave operator. In the case where the decay condition \eqref{decay} for sufficiently small $\kappa \ll 1$, these perturbations can be easily absorbed by the left-hand side of \eqref{iled} for $\Box$. 
+
+	
+\begin{theorem}[\eqref{iled} for $P$]
+	Let $L := - \Delta + b^j \partial_j + c$ be a lower-order perturbation of the Laplacian. Suppose the coefficients $b^j$ and $c$ satisfy the decay condition \eqref{decay} for sufficiently small $\kappa \ll 1$, i.e.
+	\[
+		\sum_{N \in 2^\N} \sup_{\R \times A_N} \langle r \rangle |b| + \langle r \rangle^2 |\partial_j b^j| + \langle r \rangle^2 |c| \leq \kappa \ll 1,
+	\]
+	then the wave operator $P := - \partial_t^2 - L$ satisfies \eqref{iled}.
+\end{theorem}
+
+\begin{proof}
+	We want to treat the lower-order terms perturbatively, so to that end we write $\Box \phi =: P\phi + B\phi$ and apply \eqref{iled} for $\Box$ along with the triangle inequality to obtain 
+		\begin{align*}
+			||\nabla_{t, x} \phi||_{\LE_{t, x} \cap L^\infty_t L^2_x} + ||\langle r \rangle^{-1} \phi||_{\LE_{t, x} \cap L^\infty_t L^2_x} 
+				&\lesssim ||\nabla_{t, x} \phi(0)||_{L^2_x} + ||P\phi||_{\LE^*_{t, x} + L^1_t L^2_x} + ||B \phi||_{\LE^*_{t, x}}.
+		\end{align*}	
+	It remains to show the $B\phi$ term can be absorbed into the left-hand side. Indeed, the triangle inequality, Holder's inequality and the decay \eqref{decay} respectively imply 
+		\begin{align*}
+			||B\phi||_{\LE^*_{t, x}} 
+				&\leq \sum_{N \in 2^\N} || \langle r \rangle^{\frac12} b^j \partial_j \phi||_{L^2_{t, x} (\R \times A_N)} + || \langle r \rangle^{\frac12} c \phi||_{L^2_{t, x} (\R \times A_N)} \\
+				&\leq \left( \sup_{N \in 2^\N} || \langle r \rangle^{-\frac12} \partial_j \phi ||_{L^2_{t, x} (\R \times A_N)} \right) \left( \sum_{N \in 2^\N} \sup_{\R \times A_N} \langle r \rangle |b| \right) \\
+				& \qquad + \left( \sup_{N \in 2^\N} || \langle r \rangle^{-\frac12} \langle r \rangle^{-1} \phi ||_{L^2_{t, x} (\R \times A_N)} \right) \left( \sum_{N \in 2^\N} \sup_{\R \times A_N} \langle r \rangle^2 |c| \right) \\
+				&\leq \kappa \left( ||\nabla_{t, x} \phi||_{\LE_{t, x}} + ||\langle r \rangle^{-1} \phi||_{\LE_{t, x}} \right).
+		\end{align*}
+	Choosing $\kappa$ smaller than the implicit constant in \eqref{iled} for $\Box$ completes the proof. 	
+\end{proof}	

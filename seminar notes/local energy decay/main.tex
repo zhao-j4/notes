@@ -1,0 +1,48 @@
+\documentclass[reqno]{amsart}
+
+\usepackage{External/takodachi}
+\usepackage{slashed}
+
+\theoremstyle{remark}
+\newtheorem*{acknowledgments}{Acknowledgments}
+
+% To show labels in the margin:
+
+\usepackage{slashed}
+\renewcommand{\emph}[1]{\textsc{#1}}
+\newcommand{\LE}{\mathsf{LE}}
+
+\title
+{
+	Integrated local energy decay for the wave equation
+} 
+\author{Jason Zhao}
+\date{\today}
+
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+	The integrated local energy decay estimates (ILED) are a class of inequalities which quantify the dispersive effects of wave equations. Roughly speaking, they capture the outgoing trajectory of wave packets under the flow of the equation. The goal of this note is three-fold. First, we aim to introduce (ILED) and its proof for the usual wave equation using the positive commutator method. Second, we give an application towards proving Strichartz estimates, the cornerstone of well-posedness theory for dispersive equations. Finally, we offer an alternative avenue for proving (ILED) via spectral methods. Our main reference is \cite{MetcalfeEtAl2020a}. 
+\end{abstract}
+
+\tableofcontents
+
+\section{Introduction}
+\input{internal/intro}
+
+\section{Integrated local energy decay}\label{sec:iled}
+\input{internal/iled}
+
+\section{Strichartz estimates}\label{sec:strichartz}
+\input{internal/strichartz}
+
+\section{A spectral characterisation}\label{sec:spectral}
+\input{internal/spectral}
+
+
+\bibliographystyle{alpha}
+\bibliography{external/biblio}
+
+\end{document}

@@ -1,0 +1,53 @@
+Consider the waves formed by a stone dropped into an infinite still ocean. In the idealised setting, the total energy of the system is conserved for all time, however the water near the initial splash calms as the wave travels further out, so the energy within that region decreases. More precisely, we can control the integral in time of the energy within any compact region by the initial energy times a factor of how long the wave stayed within the region. Such estimates go by the name of \textit{integrated local energy estimates}, and in the setting just described the estimate manifests in the form 
+	\[
+		\int_\R \int_{K} |\nabla_{t, x} \phi (t)|^2  \, dx dt \lesssim  R \int_{\R^d} |\nabla_{t, x} \phi (0)|^2 \, dx,
+	\]
+where $\phi: \R \times \R^d \to \R$ is a solution to the free wave equation $\Box \phi = 0$ and $K \subseteq \R^d$ is a compact region, for example a ball or annulus, of diameter $R > 0$. For a heuristic proof, if we start with spherically symmetric initial data localised near the origin, the the resulting wave radiates outwards with unit speed, and so the region only sees the bulk of the total energy $\int |\nabla \phi (0)|^2 \, dx$ for time at most equal to the diameter $t \lesssim R$. For large times $t \gg R$ the energy within the region is negligible $\int_K |\nabla \phi(t)|^2 \, dx \approx 0$, so the estimate immediately follows. 
+
+
+The integrated local energy estimates are a quantitative and robust measure of dispersion for linear wave equations. They are quantitative in the sense that they provide $L^2_t$-integrability for spatially-localised energy, and robust in that they continue to hold for a wide range of wave equations. In particular, we will consider lower-order perturbations of the Laplacian and thereby d'Alambertian, 
+	\begin{align*}
+		L
+			&:= - \Delta + b^j \partial_j + c, \\
+		P
+			&:= - \partial_t^2 - L,
+	\end{align*}
+where $b^j$ and $c$ are smooth variable coefficients satisfying the decay conditions 
+	\begin{equation}\label{eq:decay}\tag{D}
+		\sum_{N \in 2^\N} \sup_{\R \times A_N} \langle x \rangle |b(t, x)| + \langle x \rangle^2 |\partial_j b^j (t,x)| + \langle x \rangle^2 |c(t, x)| \leq \kappa.
+	\end{equation}
+Under suitable additional assumptions on $P$,  we can establish the \textit{integrated local energy decay} estimate,
+	\begin{equation}\tag{$\mathrm{ILED}$}\label{eq:iled}
+		||\nabla_{t, x} \phi||_{\LE_{t,x} \cap L^\infty_t L^2_x} + ||\langle r \rangle^{-1} \phi||_{\LE_{t, x}\cap L^\infty_t L^2_x} \lesssim ||\nabla_{t, x} \phi (0)||_{L^2_x} + ||P \phi ||_{\LE^*_{t, x} + L^1_t L^2_x},
+	\end{equation}
+where $\LE_{t, x}$ is the local energy norm, which, to first approximation, takes the form 
+	\[
+		||\psi||_{\LE_{t, x}} \approx ||\langle x \rangle^{-\frac12 -} \psi ||_{L^2_{t, x}},
+	\]	
+and $\LE_{t, x}^*$ denotes its dual norm. Observe the spatial weight $\langle x \rangle^{-1/2 - \epsilon}$ is consistent with our earlier heuristic discussion, corresponding to the duration a wave packet stays in any given compact region\footnote{The $\epsilon$-loss in the exponent comes from summing over disjoint regions $A_N$ covering space $\R^d$. Hence this version of the local energy norm does not quite give sharp estimates, though modifications can be made to avoid the $\epsilon$-loss, e.g. restricting to derivatives tangential to the light cone, $L$ and $\slashed \nabla$, or introducing a logarithmic weight in the time integration.}. 
+\begin{itemize}[leftmargin=6em]
+	\item[\hspace{4em}Section \ref{sec:iled}]  we introduce the positive commutator method to prove \eqref{iled} for $\Box$, and then establish \eqref{iled} for $P$ in a perturbative setting, namely when \eqref{decay} holds for $\kappa \ll 1$. 
+	
+	\item[Section \ref{sec:strichartz}] illustrates the philosophy that 
+		\[
+			\text{integrated local energy decay} \implies \text{Strichartz}
+		\]
+		This philosophy was first put forth in the context of Schrodinger equations by Tataru \cite{Tataru2008}, and later for wave equations by Metcalfe-Tataru \cite{MetcalfeTataru2012}. 
+		
+	\item[Section \ref{sec:spectral}] considers the setting of stationary self-adjoint $P$, where we characterise \eqref{iled} for the wave operator $P$ via resolvent bounds for the elliptic operator $L$,
+		\[
+			\text{integrated local energy decay} \iff \text{$\LE_x$-resolvent bounds}
+		\]
+		This observation goes back to Kato \cite{Kato1965}; we follow the formulation of \cite{Tataru2013}. 
+	
+\end{itemize}
+	
+\begin{remark}
+	One can also consider perturbations of the metric $P = \partial_\alpha a^{\alpha \beta} \partial_\beta + b^\alpha \partial_\alpha + c$ in the interest of studying decay of waves in general relativity. For simplicity we avoid this setting, since one has to introduce more microlocal ideas to handle the possibility of \textit{trapping}. We point the interested reader to, among many excellent references, \cite{MetcalfeTataru2012} and \cite{MetcalfeEtAl2020a}.
+\end{remark}	
+	
+\begin{acknowledgments}
+	These notes are heavily based on learning seminar notes written Ovidiu-Neculai Avadanei and Ning Tang; indeed, this is more of a light polishing than anything original. We credit the philosophical commentary to invaluable discussions with Sung-Jin Oh.  
+\end{acknowledgments}
+
+

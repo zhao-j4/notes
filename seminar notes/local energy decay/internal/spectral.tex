@@ -1,0 +1,231 @@
+
+We now turn to the problem of proving \eqref{iled} for lower-order yet large perturbations of the d'Alembertian. The setting we are interested in is as follows, 
+\begin{align*}
+		L
+			&:= - \Delta + b^j \partial_j + c, \\
+		P
+			&:= - \partial_t^2 - L,
+	\end{align*}
+where $b^j$ and $c$ are smooth variable coefficients which we now take to be \textit{stationary}, i.e. time-independent, and satisfy the usual decay conditions \eqref{decay},
+though in contrast to the setting in Section \ref{subsec:small} we allow for large $\kappa > 0$. Instead, we will rely on bounds on the resolvent, which formally is given by
+	\[
+		R_\omega := (\omega^2 - L)^{-1},
+	\]
+where $\omega \in \C$ is the spectral parameter. One can loosely relate the wave operator $P$ and the resolvent via the Fourier transform in time, which maps $\partial_t \mapsto i \omega$. We can define spatial local energy spaces by
+	\begin{align*}
+		||\psi||_{\LE_{x}}
+			&:= \sup_{N \in 2^\N} ||\langle r \rangle^{-\frac12} \psi||_{L^2_{x} (A_N)},\\
+		||g||_{\LE^*_{x}}
+			&:= \sum_{N \in 2^\N} || \langle r \rangle^{\frac12} g||_{L^2_{x} (A_N)}.	
+	\end{align*}
+Then, under suitable spectral assumptions on $L$, we can establish the \textit{$\LE_x$-resolvent bounds}
+	\begin{equation}\tag{$\mathrm{LER}$}\label{eq:resolvent}
+		|\omega| |R_\omega g||_{\LE_x} + ||\nabla_x R_\omega g||_{\LE_x} + ||\langle r \rangle^{-1} R_\omega g||_{\LE_x} \lesssim ||g||_{\LE^*_x}, \qquad \Im \omega < 0.
+	\end{equation}
+Our goal for this section is to show that in fact the resolvent bounds are equivalent to the integrated local energy decay. As a primer, we show equivalence of the classical $L^2_x$-energy estimates with the $L^2_x$-resolvent bounds, and then establish the resolvent bounds under self-adjointness and coercivity of $L$. 
+
+\begin{remark}
+	We omit discussion of how to prove $\LE_x$-resolvent bounds, but it essentially boils down to the existence of zero resonances/eigenvalues. One proceeds by contradiction, extracting from the failure of \eqref{resolvent} a non-trivial zero resonance. 
+\end{remark}
+	
+
+\subsection{Energy estimates and $L^2_x$-resolvent bounds}
+
+To connect the resolvent with the corresponding wave equation, we remark that the resolvent can be defined using the Fourier-Laplace transform of a solution to the wave equation. Precisely, consider the initial data problem
+	\begin{align*}
+		P\phi
+			&= 0, \\
+		\phi_{|t = 0}
+			&= 0, \\
+		\partial_t\phi_{|t = 0}
+			&= g.	
+	\end{align*}
+Then 
+	\[
+		R_\omega g = \int_0^\infty e^{- i t \omega} \phi (t) \, dt.
+	\]	
+Standard energy estimates, e.g. applying the energy identity and Gronwall's inequality, imply that $\phi$ obeys an exponential growth bound of the form 
+	\begin{equation}\label{eq:energyest}\tag{E}
+		||\nabla_{t, x} \phi (t)||_{L^2_x} \lesssim e^{\beta t} ||g||_{L^2_x}.
+	\end{equation}
+This implies that the resolvent is well-defined in the half-space $\Im(\omega) < - \beta$ with uniform bound
+	\begin{equation}\label{eq:resolventl2}\tag{LR}
+		|\omega| |R_\omega g||_{L^2_x} + ||\nabla_x R_\omega g||_{L^2_x} \lesssim |\Im(\omega) + \beta|^{-1} ||g||_{L^2_x}.
+	\end{equation}
+Conversely, one can invert the Fourier transform and express the wave evolution in terms of the resolvent, 
+	\[
+		\phi(t) = \frac{1}{2\pi} \int_{\Im(\omega) = \sigma} e^{i \omega t} R_\omega g \, d \omega
+	\]	
+for $\sigma < - \beta$. Thus we see that the energy bounds for the forward evolution are intimately connected with the resolvent bounds. In fact, we claim that uniform energy estimates \eqref{energyest}, i.e. with $\beta = 0$, are equivalent to $L^2_x$-resolvent bounds \eqref{resolventl2}, again with $\beta =0$. 
+
+\begin{theorem}\label{thm:energyresolvent1}
+	Let $L := - \Delta + b^j \partial_j + c$ be a lower order perturbation of the Laplacian such that the coefficients $b^j$ and $c$ are stationary. Then uniform $L^2_x$-energy estimates are equivalent to $L^2_x$-resolvent bounds. 
+\end{theorem}
+
+\begin{proof}
+	The forward follows from directly from the wave solution formulation of the resolvent as discussed earlier. For the converse, apply Plancharel's theorem to the resolvent bounds. 
+\end{proof}
+
+\begin{corollary}\label{cor:inspiration}
+	Let $L := - \Delta + b^j \partial_j + c$ be a lower order perturbation of the Laplacian such that the coefficients $b^j$ and $c$ are stationary. Furthermore, we require $L$ to satisfy
+		\begin{itemize}
+			\item self-adjointness; $b$ is imaginary and divergence-free, and $c$ is real, 
+			\item coercivity; 
+				\[
+					\langle L \phi, \phi \rangle \gtrsim ||\nabla_x \phi||_{L^2_x}.
+				\]
+		\end{itemize}
+	Then the $L^2_x$-energy estimates hold for the wave operator $P := -\partial_t^2 - L$. 
+\end{corollary}
+
+\begin{proof}
+	By Theorem \ref{thm:energyresolvent1}, it suffices to prove the $L^2_x$-resolvent bounds. We argue by spectral methods. Since $L$ is self-adjoint, the spectrum is located on the real axis $\sigma(L) \subseteq \R$. The coercivity estimate implies that the spectrum is in fact uniformly positive. Let
+		\[
+			(\omega^2 - L) \psi = g.
+		\]
+	Multiplying the equation by $\psi$ and taking the real part, we obtain
+		\begin{align*}
+			\Re \langle \psi, g \rangle
+				& = \Re \langle \psi, (|\Re (\omega)|^2 - |\Im (\omega)|^2) \psi + 2 i \Re (\omega) \Im(\omega) \psi - L \psi \rangle \\
+				&= |\Re (\omega)|^2 ||\psi||_{L^2_x}^2 - |\Im (\omega)|^2 ||\psi||_{L^2_x}^2 - \langle L\psi, \psi \rangle.
+		\end{align*}
+	Rearranging and applying Cauchy-Schwartz and Cauchy's inequality, 
+		\[
+			 \langle L\psi, \psi \rangle +  |\Im (\omega)|^2 ||\psi||_{L^2_x}^2 \leq |\Re(\omega)|^2 ||\psi||_{L^2_x}^2 + \frac12 |\Im (\omega)|^2||\psi||_{L^2_x} +  \frac{4}{|\Im (\omega)|^2}    ||g||_{L^2_x}.
+		\]	
+	We can absorb the second term on the right into the left-hand side. Thus, combined with the coercivity estimate, we conclude
+		\[
+			||\nabla_x \psi||_{L^2_x} + |\Im (\omega)| ||\psi||_{L^2_x} \lesssim |\Im (\omega)|^{-1} ||g||_{L^2_x}.
+		\]
+	It remains to control the $L^2_x$-norm of $\psi$ with weight $|\Re(\omega)|$. By the spectral theorem, keeping in mind that the spectrum is located in the real axis, 
+		\[
+			||R_\omega g||_{L^2_x} \lesssim \operatorname{dist} (\omega^2, \sigma(L))^{-1} ||g||_{L^2_x} \lesssim |\Re(\omega)|^{-1} |\Im (\omega)|^{-1} ||g||_{L^2_x}.
+		\]
+	Rearranging gives the result. This completes the proof. 	
+\end{proof}
+
+\subsection{\eqref{iled} and $\LE_x$-resolvent bounds}
+	
+Following the proof of Theorem \ref{thm:energyresolvent1}, we prove the equivalence of the integrated local energy decay and the $\LE_x$-resolvent bounds. Using Corollary \ref{cor:inspiration} as inspiration, this sets the stage for proving \eqref{iled} via the spectral properties of $L$. 
+	
+\begin{theorem}
+	Let $L := - \Delta + b^j \partial_j + c$ be a lower order perturbation of the Laplacian such that the coefficients $b^j$ and $c$ are stationary and satisfy the decay condition \eqref{decay}. Then \eqref{iled} holds for the wave operator $P := - \partial_t^2 - L$ if and only if \eqref{resolvent} holds for the resolvent $R_\omega := (\omega^2 - L)^{-1}$. 
+\end{theorem}
+
+\begin{proof}[Proof of \eqref{iled} $\implies$ \eqref{resolvent}]
+	Applying the integrated local energy decay estimate to solutions to the free wave equation
+		\[ 
+			P \phi = 0,
+		\]
+	gives the uniform energy estimate 
+		\[
+			||\nabla_{t, x} \phi||_{L^\infty_t L^2_x} \lesssim ||\nabla_{t, x} \phi (0)||_{L^2_x}.
+		\]
+	By Theorem \ref{thm:energyresolvent1}, the $L^2_x$-resolvent bounds follow from the above. Observe that by construction we have the embedding $L^2_x (\R^d)\hookrightarrow \LE_x (\R^d)$, so we can conclude the $\LE_x$-resolvent bounds from the $L^2_x$-resolvent bounds in the case $\Im(\omega) \leq -1$. Thus, we are left with proving the case $-1 < \Im(\omega) < 0$. Let $\psi \in \dot H^1_x (\R^d)$ and consider the equation
+		\[
+			(\omega^2 - L) \psi = g. 
+		\]
+	The corresponding inhomogeneous $P$ equation is given by 
+		\[
+			(- \partial_t^2 - L)(e^{i \omega t} \psi) = e^{i \omega t} g. 
+		\]
+	Inserting the above into the integrated local energy decay,
+		\[
+			|\omega| \, ||e^{i \omega t} \psi||_{\LE_{t, x}} + || e^{i \omega t} \nabla_x \psi||_{\LE_{t, x}} + ||  e^{i \omega t} \langle r \rangle^{-1}\psi ||_{\LE_{t, x}} \lesssim |\omega| \, ||e^{i \omega T}\psi||_{L^2_x} + || e^{i \omega T} \nabla_x \psi||_{L^2_x} + ||e^{i \omega t} g ||_{\LE_{t, x}^*},
+		\]
+	where we think of our solution to the wave equation as starting from $t = - T$ and we integrate on the interval $[-T, 0]$	rather than the entire real line\footnote{One can easily modify our proof to show that this version of \eqref{iled} holds.}. Taking $T \to \infty$, the initial data terms on the right vanish, while integrating out in time $t \mapsto e^{i \omega t}$ recovers the desired spatial $\LE_x$-norm on both sides.
+\end{proof}
+
+For the converse, the obvious approach would be to apply the Fourier transform in time to the wave equation 
+	\[
+		(- \partial_t^2 - L) \phi = f
+	\] 
+to obtain the elliptic equation 
+	\[
+		(\omega^2 - L) \widehat u = \widehat f,
+	\]
+apply the resolvent bounds, integrate in the spectral parameter, and conclude the integrated local energy decay via Plancharel's theorem. However, one must take care to justify the integration, thus we proceed by making two reductions. First, we claim that if the following integrated local energy decay holds
+	\begin{equation}\label{eq:filed}\tag{$\mathrm{FILED}$}
+		||\nabla_{t, x} \phi||_{\LE_{t, x}} + ||\langle r \rangle^{-1} \phi||_{\LE_{t, x}} \lesssim ||f||_{\LE^*_{t, x}}
+	\end{equation}	
+for forward solutions $\supp f \subseteq \{t \geq 0\}$, then \eqref{iled} holds. In this scenario, our solution has adequate time decay as $t \to - \infty$, however we still need to handle the time decay for $t \to + \infty$. Thus, we make a second reduction, claiming that if integrated local energy decay holds for damped forward solutions, 
+	\begin{equation}\label{eq:diled}\tag{$\mathrm{DILED}$}
+		|| e^{- \epsilon t} \nabla_{t, x} \phi||_{\LE_{t, x}} + ||e^{-\epsilon t} \langle r \rangle^{-1} \phi ||_{\LE_{t, x}} \lesssim ||e^{-\epsilon t} f ||_{\LE_{t, x}^*}
+	\end{equation}
+uniformly in $\epsilon > 0$, then the result holds for forward solutions \eqref{filed}. We conclude by showing \eqref{resolvent} implied the \eqref{filed}, completing the proof. 
+
+
+\begin{proof}[Proof of \eqref{filed} $\implies$ \eqref{iled}]
+	Our strategy will be to decompose $\phi$ into a solution to the classical wave equation and backwards/forwards solutions to the $P$ equation. Patching together the integrated local energy decay statements for $\Box$ and forward solutions for $P$, we can conclude \eqref{iled} for $P$. Let $\psi$ be the solution to the inhomogeneous classical wave equation with the same forcing and initial data, that is, 
+		\begin{align*}
+			(-\partial_t^2 + \Delta) \psi
+				&= f, \\
+			\psi[0]
+				&= \phi[0].
+		\end{align*}
+	The difference of $\phi$ and $\psi$ satisfies an inhomogeneous $P$ equation with zero initial data, 
+		\begin{align*}
+			(-\partial_t^2 - L) (\phi - \psi)
+				&= B\psi, \\
+			(\phi - \psi)[0]
+				&= 0,
+		\end{align*}
+	where as usual $B\psi$ denotes the lower order terms of $L$. Truncating the forcing term $B\psi$ forwards and backwards in time, we define the corresponding forward $\psi_+$ and backwards solutions $\psi_-$ with zero initial data by 
+		\begin{align*}
+			(-\partial_t^2 - L) \psi_\pm
+				&= \mathbb 1_{[0, \pm \infty)} B \psi,\\
+			\psi_\pm [0]	
+				&= 0,
+		\end{align*}
+	where we abused notation to write $(-\infty, 0] = [0, -\infty)$. By construction, $\phi - \psi - \psi_+ - \psi_-$ is a solution to a homogeneous wave equation with zero initial data, so standard theory implies that we have the decomposition 
+		\[
+			\phi = \psi + \psi_+ + \psi_-. 
+		\]
+	The integrated local energy decay holds for the classical wave equation, while we have assumed it holds for forward/backwards solutions, so we have
+		\begin{align*}
+			||\nabla_{t, x} \psi||_{\LE_{t, x}} + ||\langle r \rangle^{-1} \psi||_{\LE_{t, x}} 
+				&\lesssim ||\nabla_{t, x} \phi(0)||_{L^2_x} + ||f||_{\LE^*_{t, x}},\\
+			||\nabla_{t, x} \psi_\pm||_{\LE_{t, x}} + ||\langle r \rangle^{-1} \psi_\pm||_{\LE_{t, x}} 
+				&\lesssim ||\mathbb 1_{[0, \pm \infty)} B\psi||_{\LE^*_{t, x}} \lesssim || B\psi||_{\LE^*_{t, x}},
+		\end{align*}
+	The forcing term for the forward and backwards solution can be estimated by the decay assumption \eqref{decay} and \eqref{iled} for the classical wave equation,
+		\[
+			||B\psi||_{\LE^*_{t, x}} \lesssim ||\nabla_{t, x} \psi||_{\LE_{t, x}} + ||\langle r \rangle^{-1} \psi||_{\LE_{t, x}} \lesssim ||\nabla_{t, x} \phi (0)||_{L^2_x} + || f||_{\LE^*_{t, x}}.
+		\]
+	In view of the decomposition of $\phi$, we conclude its \eqref{iled} estimate via the triangle inequality. 	
+\end{proof}
+
+From here on, we assume the forcing term is supported forward in time $\supp f \subseteq \{t \geq 0\}$. 
+
+\begin{proof}[Proof of \eqref{diled} $\implies$ \eqref{filed}]
+	It suffices to prove the result on each dyadic annulus $A_N$. Fixing an annulus, the integrated local energy decay for damped forward solutions takes the form 
+		\[
+			|| \langle r \rangle^{-\frac12} e^{-\epsilon t} \nabla_{t, x} \phi||_{L^2_{t, x} (\R \times A_N)} + || \langle r \rangle^{-\frac12} e^{-\epsilon t} \langle r \rangle^{-1} \phi||_{L^2_{t, x} (\R \times A_N)} \lesssim ||e^{-\epsilon t} f||_{\LE^*_{t, x}}.
+		\]
+	Since $f$ is supported on $t \geq 0$, we can easily remove the damping. To remove the damping on the left-hand side, we restrict to the time interval $(- \infty, T]$. In this time interval,  we can naively bound the damping from below,
+		\[
+			e^{-\epsilon T} \left( || \langle r \rangle^{-\frac12} \nabla_{t, x} \phi||_{L^2_{t, x} (\R \times A_N)} + || \langle r \rangle^{-\frac12} \langle r \rangle^{-1} \phi||_{L^2_{t, x} (\R \times A_N)}\right) \lesssim ||f||_{\LE^*_{t, x}}.
+		\]
+	Taking $\epsilon \to 0$ and then $T \to + \infty$ proves the result. 	
+\end{proof}
+
+\begin{proof}[Proof of \eqref{resolvent} $\implies$ \eqref{diled} via Plancherel]
+	We are now ready to conclude \eqref{iled} by proxy of proving \eqref{diled}. We would like to apply Plancherel's theorem in the spectral parameter to recover the $\LE_{t, x}$-norm from the $\LE_x$-norms, however it is not the case that $\LE_{t, x} = L^2_t \LE_x$. Nevertheless, we can obtain a function space of this form by localising to a dyadic annulus. Fix a partition of unity
+		\[
+			1 \equiv \sum_{N \in 2^\N} \chi_N
+		\]
+	subordinate to the cover $\{A_N \cup A_{2N}\}_N$. 	Truncating our forcing term in space by $f_N := \chi_N f$, we obtain a decomposition of $\phi$ in terms of the corresponding forward solutions $\phi_N$ via
+		\[
+			\phi = \sum_{N \in 2^\N} \phi_N.
+		\]
+	Then we can conclude \eqref{diled} by the triangle inequality provided we can show
+		\[
+			|| \langle r \rangle^{-\frac12} e^{-\epsilon t} \nabla_{t, x} \phi_N||_{L^2_{t, x} (\R \times A_M)} + || \langle r \rangle^{-\frac12} e^{-\epsilon t} \langle r \rangle^{-1} \phi_N||_{L^2_{t, x} (\R \times A_M)} \lesssim || \langle r\rangle^{\frac12} e^{-\epsilon t} f_N||_{L^2_{t, x} (\R \times A_N)}
+		\]
+	for each $M, N \in 2^\N$. Indeed, in view of the $\ell^\infty$-structure of $\LE_{t, x}$ and $\ell^1$-structure of $\LE^*_{t, x}$, the bound above implies the full $\LE_{t, x}$-bound. By Plancherel's theorem, this is equivalent to 
+		\begin{align*}
+			&|\tau - i \epsilon| \, || \langle r \rangle^{-\frac12} \widehat \phi_N (\tau - i \epsilon)||_{L^2_{t, x} (\R \times A_M)} + || \langle r \rangle^{-\frac12} \nabla_x \widehat \phi_N (\tau - i \epsilon)||_{L^2_{t, x} (\R \times A_M)} \\
+				&\qquad+ || \langle r \rangle^{-\frac12} \langle r \rangle^{-1} \widehat\phi_N (\tau - i \epsilon)||_{L^2_{\tau, x} (\R \times A_M)} \lesssim || \langle r\rangle^{\frac12} \widehat f_N (\tau - i \epsilon)||_{L^2_{\tau, x} (\R \times A_N)}.
+		\end{align*}
+	Noting $\widehat \phi_N = R_{\tau - i \epsilon} \widehat f_N$, this is precisely the $\LE_x$-resolvent bound after taking the $L^2_\tau$-norm. 
+\end{proof}

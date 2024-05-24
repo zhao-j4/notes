@@ -1,0 +1,53 @@
+In the study of non-linear wave equations, we are interested in the low regularity well-posedness and long-time dynamics of solutions. The classical approach using the energy method, while robust, e.g. the work of Kato \cite{Kato1975} on quasi-linear equations, often fails to obtain optimal results as it does not fully take into account the linear dispersive effects of the equation. Thus one is led to introduce another quantitative measure of dispersion, the Strichartz estimates,
+	\begin{equation}\tag{S}\label{eq:strichartz}
+		||\phi||_{L^q_t L^p_x} + ||\nabla_{t, x}\phi||_{L^q_t L^p_x}  \lesssim ||\nabla_{t, x} \phi(0)||_{L^2_x} + ||P \phi||_{L^1_t L^2_x + \LE^*_{t, x}}
+	\end{equation}
+where $2 \leq p, q \leq \infty$ are wave-admissible
+	\[
+		\frac1q + \frac{d - 1}{2p} \leq \frac{d - 1}{4}
+	\]	
+and obey the scaling condition 
+	\[
+		\frac1q + \frac{d}{p} = \frac{d}{2}.
+	\]	
+The classic Strichartz estimate for $\Box$ is proved using a $TT^*$-argument, however this is often difficult to adapt in the setting of more general wave operators $P$. Instead, our strategy will be to assume integrated local energy decay \eqref{iled} holds for $P$, and show that Strichartz for $P$ follows as a corollary of Strichartz for $\Box$. 
+	
+\begin{lemma}[Strichartz for $\Box$]
+	The Strichartz estimates \eqref{strichartz} hold for $P = \Box$. 
+\end{lemma}
+	
+\begin{proof}
+	Standard references include \cite{ShatahStruwe2000} and \cite{Sogge1995}. 
+\end{proof}	
+	
+\begin{theorem}[Strichartz for $P$]
+	Let $L := - \Delta + b^j \partial_j + c$ be a lower-order perturbation of the Laplacian such that the coefficients $b^j$ and $c$ satisfy the decay condition \eqref{decay}. Then \eqref{iled} implies \eqref{strichartz} for the wave operator $P = - \partial_t^2 - L$. 
+\end{theorem}	
+
+\begin{proof}
+	The decay of the coefficients and integrated local energy decay assumption allow us to control the lower order terms $\Box \phi =: P\phi + B\phi$ by the right-hand side of Strichartz. Indeed, applying \eqref{strichartz} for $\Box$ and the triangle inequality gives us 
+		\[
+			||\phi||_{L^q_t L^p_x} + ||\nabla_{t, x}\phi||_{L^q_t L^p_x}  \lesssim ||\nabla_{t, x}\phi(0)||_{L^2_x} + ||P \phi||_{L^1_t L^2_x + \LE^*_{t, x}} +  ||B \phi||_{\LE^*_{t, x}}.
+		\]
+	The decay of the coefficients and \eqref{iled} respectively give the inequalities 
+		\[
+			||B\phi||_{\LE^*_{t, x}} \lesssim ||\nabla_{t, x} \phi ||_{\LE_{t, x}} + ||\langle r \rangle^{-1} \phi||_{\LE_{t, x}} \lesssim ||\nabla_{t, x} \phi(0)||_{L^2_x} + ||P\phi||_{\LE^*_{t, x} + L^1_t L^2_x}.
+		\]	
+	This completes the proof. 
+\end{proof}
+
+\begin{remark}
+	For $\Box$, one actually has a wider range of exponents for the $L^{q'}_t L^{p'}_x$-norm on the right-hand side of \eqref{strichartz}. The full statement of Strichartz estimates for the wave equation is 
+	\[
+		||\phi||_{L^q_t L^p_x} + ||\nabla_{t, x}\phi||_{L^q_t L^p_x}  \lesssim ||\nabla_{t, x} \phi(0)||_{L^2_x} + ||P \phi||_{L^{q'}_t L^{p'}_x + \LE^*_{t, x}}
+	\]
+where $(q, p)$ and $(q', p')$ are wave-admissible and obey the scaling condition 
+	\[
+		\frac1q + \frac{d}{p} = \frac{d}{2} = \frac{1}{q'} + \frac{d}{p'} - 2.
+	\]	
+	To prove the more general estimate for $P$, one needs \eqref{iled} on the dual problem. 
+\end{remark}
+
+\begin{remark}
+	The decay condition \eqref{decay} is crucial; in the case of inverse square potential $L = - \Delta + \tfrac{\alpha}{r^2}$, the wave admissible pairs for which Strichartz holds depends on the coefficient $\alpha$; see \cite{BurqEtAl2004}. 
+\end{remark}
