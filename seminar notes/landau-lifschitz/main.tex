@@ -1,0 +1,57 @@
+\documentclass[reqno]{amsart}
+
+\usepackage{external/takodachi}
+
+
+% To show labels in the margin:
+\usepackage[notref, notcite]{showkeys}
+
+% kill subsections in ToC
+%\setcounter{tocdepth}{1} 
+
+\title
+{
+	Asymptotic stability of harmonic maps for the Landau-Lifshitz equation
+} 
+\author{Jason Zhao}
+%\address{Department of Mathematics, University of California, Berkeley, 94720}
+%\email{zhao.j@berkeley.edu}
+\date{\today}
+
+
+\begin{document}
+
+\begin{abstract}
+	Following \cite{GustafsonEtAl2010}, we exposit the proof of asymptotic stability for harmonic maps under the Schr\"odinger maps equation in $m$-equivariant symmetry for $m \geq 3$. 
+\end{abstract}
+\maketitle
+
+\tableofcontents
+
+\section{Introduction}
+\input{internal/intro}
+
+\section{Geometric preliminaries}
+\input{internal/prelim}
+
+\section{Generalised Hasimoto transformation}
+\input{internal/hasimoto}
+
+\section{Elliptic estimates}
+\input{internal/elliptic}
+
+\section{Dispersive estimates}
+\input{internal/dispersive}
+
+\section{Modulation theory}
+\input{internal/modulation}
+
+\appendix
+
+\section{}
+\input{internal/appendix}
+
+\bibliographystyle{alpha}
+\bibliography{external/biblio}
+
+\end{document}

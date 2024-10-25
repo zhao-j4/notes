@@ -1,0 +1,78 @@
+\subsection{Generalised Hasimoto transform}\label{appendix:hasimoto}
+
+It is convenient to write the Schr\"odinger maps equation \eqref{schrodinger} in geometric formulation, 
+    \[
+        \partial_t u 
+            = \bfJ (\bfD_1 \partial_1 u + \bfD_2 \partial_2 u). 
+    \]  
+Then 
+    \begin{align*}
+        \bfJ \bfD_z \partial_{\overline z} u 
+            &= \bfJ (\bfD_1 + \bfJ \bfD_2) (\partial_1 u - \bfJ \partial_2 u) \\
+            &= \bfJ (\bfD_1 \partial_1 u - \bfJ \bfJ \bfD_2 \partial_2 u) + \bfJ\bfJ (\bfD_1 \partial_2 u - \bfD_2 \partial_1u)\\
+            &= \bfJ (\bfD_1 \partial_1 u + \bfD_2 \partial_2 u).
+    \end{align*}
+
+
+\subsection{Bogomoln'yi identity}\label{appendix:bogo}
+
+We compute
+    \begin{align*}
+        |\partial_1 u - u \times \partial_2 u |^2 
+            &= (\partial_1 u - u \times \partial_2 u) \cdot (\partial_1 u - u \times \partial_2 u)\\
+            &= |\partial_1 u|^2 + |u \times \partial_2 u|^2 - 2 (\partial_1 u) \cdot (u \times \partial_2 u) .
+    \end{align*}
+In the last line, the first two terms are exactly the Dirichlet energy density, while the last term is the pull-back of the volume form on $\SS^2$ to $\R^2$ under $u$. Indeed, since the almost complex structure acts isometrically on the tangent space,    
+    \[
+        |\partial_1 u|^2 + |u \times \partial_2 u|^2 = |\partial_1 u|^2 + |\partial_2 u|^2. 
+    \]
+To see the pull-back of the volume form, recall that 
+    \[
+        d\operatorname{Vol}_{\SS^2}
+            := u^1 du^2 \wedge du^3 - u^2 du^1 \wedge du^3 + u^3 du^1 \wedge du^2.
+    \]
+Then, pulling back by $u : \R^2 \to \SS^2$, we obtain 
+    \begin{align*}
+        u^* d \operatorname{Vol}_{\SS^2}
+            &= u^1 (\partial_1 u^2 dx^1 + \partial_2 u^2 dx^2) \wedge  (\partial_1 u^3 dx^1 + \partial_2 u^3 dx^2) \\
+            &\qquad - u^2 (\partial_1 u^1 dx^1 + \partial_2 u^1 dx^2)  \wedge (\partial_1 u^3 dx^1 + \partial_2 u^3 dx^2)  \\
+            &\qquad + u^3 (\partial_1 u^1 dx^1 + \partial_2 u^1 dx^2)  \wedge  (\partial_1 u^2 dx^1 + \partial_2 u^2 dx^2) \\
+            &= u \cdot (\partial_1 u \times \partial_2 u) \, dx^1 \wedge dx^2\\
+            &=  (\partial_1 u) \cdot (u \times \partial_2 u) \, dx^1 \wedge dx^2, 
+    \end{align*}
+where the last line we have used the scalar triple product identity. By the degree theorem, 
+    \begin{align*}
+        \int_{\R^2} (\partial_1 u) \cdot (u \times \partial_2 u) \, dx
+            &= \int_{\R^2} u^* d\operatorname{Vol} = \deg(u) \int_{\SS^2} d\operatorname{Vol} = 4\pi  \deg(u)
+    \end{align*}
+This completes the proof of the Bogomoln'yi identity \eqref{B}. 
+
+
+\subsection{Harmonic maps from \eqref{LL}}
+
+Here we show that 
+    \[
+        \partial_t u 
+            = \alpha( \Delta u + |\nabla u|^2 u) + \beta (u \times \Delta u)
+    \]
+is equivalent to 
+    \[
+        \partial_t u 
+            = -\alpha (u \times (u \times \Delta u)) + \beta (u \times \Delta u ).
+    \]
+Consider the vector cross product formula 
+    \[
+        a \times (b \times c) = (a \cdot c) b - (a \cdot b) c. 
+    \]
+Then 
+    \[
+        u \times (u \times \Delta u) = (u \cdot \Delta u) u - |u|^2 \Delta u. 
+    \]
+Observe that 
+    \[
+        u \cdot \nabla u = 0. 
+    \]
+Thus 
+    \[
+        u \cdot \Delta u = - |\nabla u|^2. 
+    \]

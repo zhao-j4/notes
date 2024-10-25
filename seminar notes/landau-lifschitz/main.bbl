@@ -1,0 +1,67 @@
+\begin{thebibliography}{GGKT08}
+
+\bibitem[BPT24]{bejenaru2024near}
+Ioan Bejenaru, Mohandas Pillai, and Daniel Tataru.
+\newblock Near soliton evolution for $2 $-equivariant schr$\backslash$" odinger
+  maps in two space dimensions.
+\newblock {\em arXiv preprint arXiv:2408.16973}, 2024.
+
+\bibitem[BT14]{BejenaruTataru2014}
+Ioan Bejenaru and Daniel Tataru.
+\newblock {\em Near {{Soliton Evolution}} for {{Equivariant Schrodinger Maps}}
+  in {{Two Spatial Dimensions}}}.
+\newblock American Mathematical Soc., March 2014.
+
+\bibitem[GGKT08]{MR2528734}
+Meijiao Guan, Stephen Gustafson, Kyungkeun Kang, and Tai-Peng Tsai.
+\newblock Global questions for map evolution equations.
+\newblock In {\em Singularities in {PDE} and the calculus of variations},
+  volume~44 of {\em CRM Proc. Lecture Notes}, pages 61--74. Amer. Math. Soc.,
+  Providence, RI, 2008.
+
+\bibitem[GKT07]{gustafson2007schrodinger}
+Stephen Gustafson, Kyungkeun Kang, and Tai-Peng Tsai.
+\newblock Schr{\"o}dinger flow near harmonic maps.
+\newblock {\em Communications on Pure and Applied Mathematics: A Journal Issued
+  by the Courant Institute of Mathematical Sciences}, 60(4):463--499, 2007.
+
+\bibitem[GNT10]{GustafsonEtAl2010}
+Stephen Gustafson, Kenji Nakanishi, and Tai-Peng Tsai.
+\newblock Asymptotic {{Stability}}, {{Concentration}}, and {{Oscillation}} in
+  {{Harmonic Map Heat-Flow}}, {{Landau-Lifshitz}}, and {{Schr{\"o}dinger Maps}}
+  on \$\$\{{\textbackslash}mathbb
+  \vphantom\}{{R}}{\textasciicircum}2\vphantom\{\}\$\$.
+\newblock {\em Communications in Mathematical Physics}, 300(1):205--242,
+  November 2010.
+
+\bibitem[KTV14]{KochEtAl2014}
+Herbert Koch, Daniel Tataru, and Monica Vi{\c s}an.
+\newblock {\em Dispersive {{Equations}} and {{Nonlinear Waves}}: {{Generalized
+  Korteweg}}--de {{Vries}}, {{Nonlinear Schr{\"o}dinger}}, {{Wave}} and
+  {{Schr{\"o}dinger Maps}}}, volume~45 of {\em Oberwolfach {{Seminars}}}.
+\newblock Springer, Basel, 2014.
+
+\bibitem[LL35]{Landau:1935qbc}
+Lev~Davidovich Landau and E.~Lifstatz.
+\newblock {On the Theory of the Dispersion of Magnetic Permeability in
+  Ferromagnetic Bodies}.
+\newblock {\em Phys. Z. Sowjetunion}, 8, 1935.
+
+\bibitem[MRR11]{merle2011blow}
+Frank Merle, Pierre Rapha{\"e}l, and Igor Rodnianski.
+\newblock Blow up dynamics for smooth equivariant solutions to the energy
+  critical schr{\"o}dinger map.
+\newblock {\em Comptes Rendus Math{\'e}matique}, 349(5-6):279--283, 2011.
+
+\bibitem[Per14]{perelman2014blow}
+Galina Perelman.
+\newblock Blow up dynamics for equivariant critical schr{\"o}dinger maps.
+\newblock {\em Communications in Mathematical Physics}, 330:69--105, 2014.
+
+\bibitem[Tao06]{Tao2006}
+Terence Tao.
+\newblock {\em Nonlinear {{Dispersive Equations}}: {{Local}} and {{Global
+  Analysis}}}.
+\newblock {American Mathematical Soc.}, 2006.
+
+\end{thebibliography}
