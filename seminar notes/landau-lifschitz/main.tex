@@ -6,12 +6,13 @@
 % To show labels in the margin:
 \usepackage[notref, notcite]{showkeys}
 
+\renewcommand\thefigure{\thesection.\arabic{figure}}   
 % kill subsections in ToC
 %\setcounter{tocdepth}{1} 
 
 \title
 {
-	Asymptotic stability of harmonic maps for the Landau-Lifshitz equation
+	Asymptotic stability of harmonic maps for the Schr\"odinger maps equation in equivariant symmetry
 } 
 \author{Jason Zhao}
 %\address{Department of Mathematics, University of California, Berkeley, 94720}
@@ -26,16 +27,18 @@
 \end{abstract}
 \maketitle
 
+\setcounter{tocdepth}{1}
 \tableofcontents
 
 \section{Introduction}
 \input{internal/intro}
 
-\section{Geometric preliminaries}
+\section{Preliminaries}
 \input{internal/prelim}
 
-\section{Generalised Hasimoto transformation}
-\input{internal/hasimoto}
+
+\section{Outline of the proof}
+\input{internal/decomposition}
 
 \section{Elliptic estimates}
 \input{internal/elliptic}
@@ -44,7 +47,7 @@
 \input{internal/dispersive}
 
 \section{Modulation theory}
-\input{internal/modulation}
+\input{internal/ode}
 
 \appendix
 

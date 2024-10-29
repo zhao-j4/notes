@@ -1,5 +1,12 @@
 \begin{thebibliography}{GGKT08}
 
+\bibitem[BPST04]{BurqEtAl2004}
+Nicolas Burq, Fabrice Planchon, John~G. Stalker, and A.~Shadi
+  {Tahvildar-Zadeh}.
+\newblock Strichartz {{Estimates}} for the {{Wave}} and {{Schr{\"o}dinger
+  Equations}} with {{Potentials}} of {{Critical Decay}}.
+\newblock {\em Indiana University Mathematics Journal}, 53(6):1665--1680, 2004.
+
 \bibitem[BPT24]{bejenaru2024near}
 Ioan Bejenaru, Mohandas Pillai, and Daniel Tataru.
 \newblock Near soliton evolution for $2 $-equivariant schr$\backslash$" odinger
@@ -11,6 +18,12 @@ Ioan Bejenaru and Daniel Tataru.
 \newblock {\em Near {{Soliton Evolution}} for {{Equivariant Schrodinger Maps}}
   in {{Two Spatial Dimensions}}}.
 \newblock American Mathematical Soc., March 2014.
+
+\bibitem[CSU00]{ChangEtAl2000}
+Nai-Heng Chang, Jalal Shatah, and Karen Uhlenbeck.
+\newblock {Schr{\"o}dinger maps}.
+\newblock {\em Communications on Pure and Applied Mathematics}, 53(5):590--602,
+  2000.
 
 \bibitem[GGKT08]{MR2528734}
 Meijiao Guan, Stephen Gustafson, Kyungkeun Kang, and Tai-Peng Tsai.
@@ -47,6 +60,11 @@ Lev~Davidovich Landau and E.~Lifstatz.
   Ferromagnetic Bodies}.
 \newblock {\em Phys. Z. Sowjetunion}, 8, 1935.
 
+\bibitem[MB02]{MajdaBertozzi2002}
+Andrew~J. Majda and Andrea~L. Bertozzi.
+\newblock {\em Vorticity and {{Incompressible Flow}}}.
+\newblock Cambridge University Press, 2002.
+
 \bibitem[MRR11]{merle2011blow}
 Frank Merle, Pierre Rapha{\"e}l, and Igor Rodnianski.
 \newblock Blow up dynamics for smooth equivariant solutions to the energy
@@ -57,6 +75,13 @@ Frank Merle, Pierre Rapha{\"e}l, and Igor Rodnianski.
 Galina Perelman.
 \newblock Blow up dynamics for equivariant critical schr{\"o}dinger maps.
 \newblock {\em Communications in Mathematical Physics}, 330:69--105, 2014.
+
+\bibitem[Tao00]{tao2000spherically}
+Terence Tao.
+\newblock Spherically averaged endpoint strichartz estimates for the
+  twodimensional schr{\"o}dinger equation.
+\newblock {\em Communications in Partial Differential Equations},
+  25(7-8):1471--1485, 2000.
 
 \bibitem[Tao06]{Tao2006}
 Terence Tao.

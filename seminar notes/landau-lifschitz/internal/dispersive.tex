@@ -1,18 +1,216 @@
-Denote the evolution of $\epsilon_1$ by 
-    \begin{equation}
-        (i \partial_t + {\mathsf H}_{\bfQ}) \epsilon_1 
-            = N_1 + N_2.
-    \end{equation}
-We want to derive Strichartz estimates for the linearised operator and treat the right-hand side perturbatively. 
 
-\begin{proposition}[Endpoint Strichartz for ${\mathsf H}_{\bfQ_{\alpha, \lambda}}$] 
-    Let $m \geq 2$, then 
+To prove dispersive bounds for the differentiated field $\epsilon'$, we fix a gauge to write \eqref{hasimoto2} as a cubic non-linear Schr\"odinger equation with potential. Using standard arguments, one can prove Strichartz estimates for the linearised equation, and, in view of the small data assumption, the non-linearity is perturbative. Again, the equation we consider is 
+    \begin{equation}\label{eq:hasimotodisp}
+        \bfD_t \epsilon' 
+            = \bfD_z \bfD_{\overline z} \epsilon'. 
+    \end{equation}
+
+\subsection{Linearised equation}
+
+To reveal the Schr\"odinger structure of the equation, we work in coordinates, fixing an $m$-equivariant frame $\{\vec v, \vec w\} \subseteq u^* T\SS^2$. Using this frame, we can identify the differentiated field $\epsilon' : I \times \R^2 \to u^* T\SS^2$ with the complex scalar field $\psi: I \times \R^2 \to \C$ via 
+    \begin{align*}
+        \psi 
+            &:= \big\langle \epsilon', \vec v \big\rangle + i \big\langle \epsilon', \vec w \rangle.
+    \end{align*}
+The connection coefficients are given by
+    \begin{align*}
+        A_t 
+            &= \big\langle \partial_t \vec v, \vec w \big\rangle, \\
+        A_r 
+            &= \big\langle \partial_r \vec v, \vec w \big\rangle, \\
+        A_r 
+            &= \big\langle \partial_\theta \vec v, \vec w \big\rangle.
+    \end{align*}
+
+
+
+\begin{proposition}[Hasimoto transform in Coulomb gauge]
+    Let $u : I \times \R^2 \to \SS^2$ be a solution to Schr\"odinger maps \eqref{schrodinger}, and denote $\{\vec v, \vec w\} \subseteq u^* T\SS^2$ the frame satisfying the Coulomb gauge condition 
         \begin{equation}
             \begin{split}
-                || e^{- i {\mathsf H}_{\bfQ_{\alpha, \lambda}} t} \phi ||_{L^\infty_t L^2_x \cap L^2_t L^\infty_2} 
-                    &\lesssim ||\phi||_{L^2_x}, \\
-                \Big|\Big| \int_{-\infty}^t e^{-i {\mathsf H}_{\bfQ_{\alpha, \lambda}}} f(t') dt' \Big| \Big|_{L^\infty_t L^2_x \cap L^2_t L^\infty_2} 
-                    &\lesssim ||f||_{L^1_t L^2_ + L^2_t + L^1_2}.
+                \partial_1 A_1 + \partial_2 A_ 2 
+                    &= 0.
             \end{split}
         \end{equation}
+    Then the connection coefficients are given by  
+        \begin{align}
+            A_r [u] 
+                &= 0,\\
+            A_\theta [u]
+                &= m u_3,\\
+            A_t [u]
+                &=A_t [u] 
+                = \left( \frac12|\epsilon'|^2 + \frac{m}{r} \epsilon_3'\right) + \int_r^\infty 2 \left( \frac12|\epsilon'|^2 + \frac{m}{r'} \epsilon_3' \right) \frac{dr'}{r'}.
+        \end{align}
 \end{proposition}
+
+\begin{proof}
+\leavevmode
+    \begin{enumerate}
+        \item In polar coordinates, the Coulomb gauge condition reads 
+            \[
+                \partial_r A_r + \frac{1}{r^2} \partial_\theta A_\theta = 0. 
+            \]
+        Since the connection coefficients are radial and satisfy appropriate boundary conditions at infinity, we immediately conclude $A_r = 0$. 
+
+        \item Since $\vec v$ and $\vec w$ are equivariant and $\{u, \vec v, \vec w\} \subseteq \R^3$ are orthonormal vectors, 
+            \begin{align*}
+                A_\theta    
+                    &= \partial_\theta \vec v \cdot \vec w \\\
+                    &= (m\vec k \times \vec v) \cdot \vec w \\
+                    &= m \vec k \cdot (\vec v \times \vec w) = m\vec k \cdot \vec u = m u_3. 
+            \end{align*}
+        \item Exercise. 
+    \end{enumerate}
+\end{proof}
+
+The equation takes the form  
+\begin{equation}
+    (\partial_t + i A_t[u]) \psi 
+        = -i \mathsf L_u \mathsf L^*_u \psi. 
+\end{equation}
+Expanding, and regarding the modulation as slow and thus the differences in some terms in the potential as perturbative, we can write 
+\begin{equation}\label{eq:hasimotoS}
+    \begin{split}
+        (i \partial_t - \widetilde{\mathsf H}_Q) \psi 
+            &= \cN_1 + \cN_2 + \cN_3,
+    \end{split}
+    \end{equation}
+where the main linear part is given by 
+\begin{align*}
+    \widetilde{\mathsf H}_Q 
+        &:= - \Delta + \widetilde{V}_Q,\\
+    \widetilde{V}_Q (r)
+        &:= \frac{2m(1 - h_3(r))}{r^2} = \frac{4m}{r^2 (r^2 + 1)}
+\end{align*}
+and the pertubrative part is given by 
+\begin{align*}
+        \cN_1 
+            &:=  i A_t[u] \psi,\\
+        \cN_2
+            &:= - 2i m \frac{h_3 - h_3^\lambda }{r^2} \psi \\
+        \cN_3 
+            &:= - 2i m \frac{\epsilon_3}{r^2} \psi - i m \frac{\epsilon_3'}{r}\psi.
+    \end{align*}
+We can estimate the perturbative terms in the dual Strichartz space 
+    \begin{align}
+        ||\cN_1||_{L^2_t (\ell^2 L^1)_x}
+            &\lesssim  ||\psi||_{L^2_t (\ell^2 L^\infty)_x}^2,\\
+        ||\cN_2||_{L^2_t (\ell^2 L^1)_x}
+            &\lesssim \left|\left|h_3 \big(\tfrac{\lambda(t)}{\lambda(0)}\big)\right|\right|_{L^\infty_t}  ||\psi||_{L^2_t (\ell^2 L^\infty)_x}\\
+            ||\cN_3||_{L^2_t (\ell^2 L^1)_x}
+            &\lesssim ||\psi||_{L^2_t (\ell^2 L^\infty)_x}^2.
+    \end{align}
+In the case of the linear term $\cN_2$ we assume $\lambda$ is slowly varying to regard this term as perturbative; this is the main goal of the modulation theory. 
+
+\subsection{Strichartz estimates}
+
+We want to prove a Strichartz estimate for a Schr\"odinger equation with potential. More generally, one can regard this is a variable-coefficient Schr\"odinger equation. Let us begin with some generalities; consider a self-adjoint Schr\"odinger operator $\mathsf H$, and its corresponding linear flow 
+    \begin{equation}\label{eq:generic}
+        \begin{split}
+            (i \partial_t - \mathsf H) \psi 
+                &= f,\\
+            \psi_{|t = 0}
+                &= \psi_0.  
+        \end{split}
+    \end{equation}
+We say that $\mathsf H$ satisfies the \textit{(double) endpoint Strichartz estimate} if 
+    \begin{equation}\label{eq:strichartz}\tag{S}
+        ||\psi||_{L^2_t (\ell^2 L^\infty)_x}    
+            \lesssim ||\psi_0||_{L^2_r} + ||f||_{L^2_t (\ell^2 L^1)_x}.
+    \end{equation}
+In view of the bounds on the non-linearity in the dual space and assuming the scaling parameter is slowly moving $|\log(\lambda/\lambda_0)|\ll 1$, the right-hand side can be regarded as perturbative and we conclude the dispersive estimate 
+    \begin{equation}\label{eq:dispersive}
+        ||\psi||_{L^\infty_t L^2_x \cap {L^2_t (L^\infty_2)_x}} 
+            \ll 1. 
+    \end{equation}
+
+The standard proof of the Strichartz estimate for the Laplacian $\mathsf H = -\Delta$ relies on the explicit kernel for the linear propagator $e^{it \Delta}$ and the method of stationary phase. This method is unfortunately not very robust, as classical Fourier analysis is ill-suited for variable-coefficient operators. Instead, we will rely on a weaker form of dispersion as a stepping stone for proving \eqref{strichartz}; we say $\mathsf H$ satisfies \textit{integrated local energy decay} (also known as the \textit{local smoothing estimate}) if 
+    \begin{equation}\label{eq:ILED}\tag{ILED}
+        ||r^{-1} \psi||_{L^2_{t, x}}
+            \lesssim ||\psi_0||_{L^2_x} + ||r f||_{L^2_{t, x}}.
+    \end{equation}
+The heuristic is as follows; given a wave packet $\psi$ localised to frequency $|\xi| \approx N$, the packet travels under a homogeneous Schr\"odinger-type flow with group velocity $|v| \approx N$. Thus for a compact region $K \subseteq \R^2$ of radius $R$, the bulk of the mass only remains in the region for time scale $T \approx R/N$, so integrating-in-time the mass in the fixed region gives
+    \[
+        \int_\R \int_K |\psi|^2 \, dx dt 
+            \lesssim \frac{R}{N} \int_{\R^2} |\psi|^2 \, dx. 
+    \]
+This represents a \textit{gain} of $\tfrac12$-derivatives on the left-hand side after localising-in-space and averaging-in-time. The proof is more robust, using little more than integration-by-parts (in the form of the \textit{positive commutator method}). Furthermore, in the time-independent case $\mathsf H(t) \equiv \mathsf H$, the problem can be further reduced to studying the spectral properties of the operator. 
+
+Our strategy can then be summarised as follows:
+    \[
+       \text{\eqref{strichartz} for $\Delta$} +\text{\eqref{ILED} for $\mathsf H_Q$} \implies \text{\eqref{strichartz} for $\mathsf H_Q$}
+    \]
+
+
+\begin{lemma}[Endpoint Strichartz for $m$-equivariant Laplacian]
+    The endpoint Strichartz estimate \eqref{strichartz} holds for $\mathsf H = - \Delta$ upon restricting to the class of $m$-equivariant functions for $m \geq 1$. 
+\end{lemma}
+
+\begin{proof}
+    C.f. \cite[Theorem 10.1]{GustafsonEtAl2010}.
+\end{proof}
+
+\begin{remark}
+    In the case of radial functions $m = 0$, the homogeneous Strichartz estimate holds for the Laplacian, however, the inhomogeneous estimate fails, c.f. the classical paper of Tao \cite{tao2000spherically}. 
+\end{remark}
+
+\begin{lemma}[ILED implies Strichartz]
+    Let $\mathsf H_0$ be a self-adjoint operator for which the endpoint Strichartz estimate \eqref{strichartz} holds, and consider the Schr\"odinger operator with potential $\mathsf H := \mathsf H_0 + V$. If $V(x)$ is a real-valued potential satisfying the growth condition 
+        \begin{equation}\label{eq:growth}
+            \sup_{x \in \R^2} |x|^2 |V(x)|
+                < \infty, 
+        \end{equation}
+    and integrated local energy decay \eqref{ILED} holds for $\mathsf H$, then the endpoint Strichartz estimate \eqref{strichartz} also holds for $\mathsf H$. 
+\end{lemma}
+
+\begin{proof}
+    We can rewrite the equation for the operator with potential as 
+        \begin{align*}
+            (i \partial_t - \mathsf H_0)\psi
+                &= f + V \psi,\\
+            \psi_{|t = 0}
+                &= \psi_0. 
+        \end{align*} 
+    Applying Strichartz for $\mathsf H_0$, the growth condition \eqref{growth}, and integrated local energy decay \eqref{ILED}, and the embedding 
+        \begin{align*}
+            ||\psi||_{L^2_t (\ell^2 L^\infty)_x}
+                &\lesssim ||\psi_0||_{L^2_x} + ||f||_{L^2_t (\ell^2 L^1)_x} + ||V\psi||_{L^2_t (\ell^2 L^1)_x}\\
+                &\lesssim ||\psi_0||_{L^2_x}  + ||f||_{L^2_t (\ell^2 L^1)_x} + \big|\big| r^2 V\big|\big|_{L^\infty_x} \big|\big| r^{-1}\psi\big|\big|_{L^2_{t, x}}\\
+                &\lesssim  ||\psi_0||_{L^2_x}  + \big|\big| r f\big|\big|_{L^2_{t, x}} .
+        \end{align*}
+    By duality, 
+        \[
+            || r^{-1}\psi||_{L^2_{t, x}} 
+                \lesssim ||\psi_0||_{L^2_x} +  ||f||_{L^2_t (\ell^2 L^1)_x.}.
+        \]
+    Feeding this into the second line of the previous inequality finishes the proof. 
+\end{proof}
+
+\begin{proposition}
+    Let $V \in C^1_r (0, \infty)$ be a radial real-valued potential satisfying the growth condition \eqref{growth} along with the conditions
+        \begin{align}
+            \inf_{r > 0} r^2 V(r) 
+                &> 0,\\
+            \inf_{r > 0} - r^2 \partial_r (r V(r)) 
+                &> 0.
+        \end{align}
+    Then the Laplacian with potential $\mathsf H := - \Delta + V$ satisfies both integrated local energy decay \eqref{ILED} and the endpoint Strichartz estimate \eqref{strichartz} in the class of $m$-equivariant functions. 
+\end{proposition}
+
+\begin{proof}
+    See Burq-Planchon-Stalker-Tahvildar-Zadeh \cite{BurqEtAl2004}. The proof boils down to proving the resolvent satisfies the uniform bounds
+        \begin{equation}
+            \sup_{\lambda \neq 0}  
+                ||(\mathsf H - \lambda)^{-1} f||_{\mathsf{LE}_{x}} 
+                    \lesssim ||f||_{\mathsf{LE}^*_x}.
+        \end{equation}
+    To see how this is sufficient, we point the interested reader to \href{https://github.com/zhao-j4/notes/blob/main/seminar%20notes/local%20energy%20decay/main.pdf}{our notes on the wave case}. 
+\end{proof}
+
+\subsection{Dispersive decay}
+
+Use the Fraunhofer formula, dispersive bounds \eqref{dispersive} and the elliptic bounds \eqref{ellipticenergy}-\eqref{ellipticuniform}, we can prove 
+    \begin{equation}
+        ||\phi||_{L^\infty_x} \overset{t \to \infty}{\longrightarrow} 0 . 
+    \end{equation}

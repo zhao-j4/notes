@@ -1,0 +1,33 @@
+
+It remains to show that the modulation parameters converge $(\lambda(t), \alpha(t)) \to (\lambda_\infty, \alpha_\infty)$. Our strategy will be to show suitable $L^1_t$-bounds for the perturbative part of the equation for the derivatives $(\dot{\lambda}, \dot{\alpha})$, and rewrite the non-perturbative part as a total derivative. To derive the modulation equations, recall that the Schrodinger maps equation can be written using the decomposition as 
+    \begin{equation}\label{eq:schromod}
+        \partial_t \epsilon 
+            = \partial_t u - \partial_t Q_{\alpha(t), \lambda(t)} = -\bfD_z \epsilon' - h_1^\lambda (\vec v_Q + \vec w_Q) \dot{\mu}. 
+    \end{equation}
+Then, writing in coordinates, and then integrating against $\widetilde{h_1}$, using the orthogonality condition \eqref{orthogonal1} to kill the left-hand side, we obtain the modulation equation 
+    \begin{equation}\label{eq:modulate1}
+        \dot{\mu} 
+            = - i \big\langle \mathsf L_u^* \psi, \tfrac{1}{\lambda^2} \widetilde{h_1}^\lambda \big\rangle_{L^2_x} + \text{higher order terms}.
+    \end{equation}
+If we had $h_1$ instead of $\widetilde{h_1}$, then the linear term would vanish up to terms which are higher order. Unfortunately, we must contend with this term if we want to pass good $L^\infty_x$ estimates from $\epsilon'$ onto $\epsilon$. Let us disregard the higher order terms, one has 
+    \[
+        ||\text{higher order} ||_{L^1_t} \lesssim ||\psi||_{L^2_t L^\infty_x}^2.
+    \]
+Since $h_1$ is in the kernel of $\mathsf L_Q$, we can test the equation \eqref{schromod} against $h_1$, and compare against what we obtained for the modulation equation \eqref{modulate1}. 
+    \[
+        \dot{\mu} 
+            =- i \big\langle \mathsf L_u^* \psi, \tfrac{1}{\lambda^2} (\widetilde{h_1}^\lambda - c h_1^\lambda) \big\rangle_{L^2_x} + \text{higher order terms}
+    \]
+The difference between testing against $\widetilde{h_1}$ and $h_1$ is as follows; let $c = ||h_1||_{L^2}^{-2}$, then 
+    \[
+        \langle \widetilde{h_1} - c h_1, h_1 \rangle = 1 - c ||h_1||_{L^2}^2 = 0. 
+    \]
+This tells us that $\widetilde{h_1} - c h_1 \perp \ker \mathsf L_Q$, so it follows that one can write 
+    \[
+        \widetilde{h_1} - c h_1 = L^*_Q R^*_{\widetilde{h_1}} (\widetilde{h_1} - c h_1) =: L_Q^* g . 
+    \]
+Thus we can rewrite the linear term, using the equation \eqref{hasimotodisp},
+    \[
+        \big\langle \mathsf L_u^* \psi, \tfrac{1}{\lambda^2} (\widetilde{h_1}^\lambda - c h_1^\lambda) \big\rangle_{L^2_x} = \big\langle \mathsf L_u^* \psi, \tfrac{1}{\lambda} L_Q^* g \big\rangle_{L^2_x} = \big\langle \partial_t \psi, \tfrac{1}{\lambda} g \big\rangle_{L^2_x} + \text{higher order}. 
+    \]
+Now we can differentiate by parts in time to recover a full derivative, plus some terms which are higher-order. For the remainder of the proof, see \cite[Section 7, 8]{GustafsonEtAl2010}.

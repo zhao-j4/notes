@@ -1,5 +1,6 @@
 
-\subsection{Geometric structure}
+
+\subsection{Frame method}
 
 We begin with some geometric generalities; for more details, see the monograph of Tao \cite[Chapter 6.2]{Tao2006} and the notes of Tataru \cite[Geometric Dispersive Equations]{KochEtAl2014}.  Given a map $u : I \times \R^2 \to \SS^2$, we will use $\bfD_j$ to denote the pullback of the connection on the sphere, and $\bfJ$ the complex structure given by $\tfrac\pi2$-rotation. Using this notation, the equation \eqref{schrodinger} takes the form
 \begin{equation}\label{eq:geoschrod}
@@ -44,10 +45,10 @@ which, upon differentiating the curvature relation \eqref{curvature} and inverti
         A_\alpha [\psi] 
             = -\frac12 \Delta^{-1} \partial^\beta \Im(\psi_\alpha \overline{\psi_\beta}). 
     \end{equation}
-In general, this has unfavourable high $\times$ high $\to$ low interactions, as schematically the right-hand side takes the form $D^{-1} (\psi \overline \psi)$, though in our setting of equivariant symmetry, the situation is much better. In any case, thinking of the connection coefficients as quadratic terms, we can rewrite the Hasimoto-transformed system \eqref{hasimoto} in these coordinates as the cubic-type non-linear Schr\"odinger equation 
+In general, this has unfavourable high $\times$ high $\to$ low interactions, as schematically the right-hand side takes the form $D^{-1} (\psi \overline \psi)$, though in our setting of equivariant symmetry, the situation is much better. In any case, thinking of the connection coefficients as quadratic terms, we can rewrite the Hasimoto-transformed system in these coordinates as the cubic-type non-linear Schr\"odinger equation 
     \begin{equation}
-        i\partial_t \psi_{\overline z} - \Delta \psi_{\overline z} 
-            = A_t [\psi] \psi_{\overline z} + i \partial_{\overline z} A_z[\psi] \psi_{\overline z} + i A_z [\psi] \partial_{\overline z} \psi_{\overline z} + i A_{\overline z} [\psi] \partial_z \psi_{\overline z} - A_z [\psi] A_{\overline z}[\psi] \psi_{\overline z}. 
+        i\partial_t \psi- \Delta \psi
+            = A_t [\psi] \psi+ i \partial_{\overline z} A_z[\psi] \psi+ i A_z [\psi] \partial_{\overline z} \psi+ i A_{\overline z} [\psi] \partial_z \psi- A_z [\psi] A_{\overline z}[\psi] \psi_{\overline z}. 
     \end{equation}
 
 
@@ -62,43 +63,10 @@ In general, this has unfavourable high $\times$ high $\to$ low interactions, as 
     \end{center}
 \end{figure}
 
+\subsection{Notation}
 
-
-\begin{proposition}[Schr\"odinger maps in Coulomb gauge]
-    Let $m \in \N$ and $\bfm$ be a solution to Landau-Lifshitz. Then the equation in Coulomb gauge     
-\end{proposition}
-
-
-\subsection{Splitting and orthogonality}
-
-To identify our enemies, let us detail the derivation of the linearised equation \eqref{linearised}. Starting from decomposition of the solution into soliton profile and error \eqref{decomp2}, we further decompose the error into a component perpindicular to the soliton (i.e. in the tangent space $T_Q \SS^2$) and a component parallel to the soliton,
-    \begin{equation}
-        \begin{split}
-            u(t, r) 
-                &=  \underbrace{Q(r)}_{\text{soliton profile}} + \underbrace{\epsilon(t, r)}_{\text{perturbation}} \\
-                &= \underbrace{Q(r)}_{\text{soliton profile}} + \underbrace{u_{\mathrm{lin}} (t, r)}_{\text{perpindicular perturbation}} + \underbrace{\gamma(t, r) Q(r)}_{\text{parallel perturbation}}
-        \end{split}
-    \end{equation}
-For small perturbation $|\epsilon| \ll 1$, the main term is the perpindicular component in view of the constraint $|u| \equiv |Q| \equiv 1$; indeed one can compute that the parallel component is of quadratic order, 
+We denote a logarithmic refinement of $L^q$ by 
     \[
-        \gamma = \sqrt{1 - |u_{\mathrm{lin}}|^2} - 1 = O(|u_{\mathrm{lin}}|^2). 
-    \]
-
-
-\begin{figure}[h]
-    \begin{center}
-        \includegraphics[scale = 0.3]{graphics/coulombQ}
-        \caption{Decomposition of the solution 
-            \[u = Q + (u_{\mathrm{lin}} + \gamma),\] 
-        into a component parallel to the soliton $\gamma \in \operatorname{span} Q$ and a component in the tangent space $u_{\mathrm{lin}} \in T_Q \SS^2$. }
-    \end{center}
-\end{figure}
-
-The Coulomb frame 
-    \[
-        \vec v_Q (r) 
-            = \begin{pmatrix} h_3 (r) \\ 0 \\ - h_1 (r) \end{pmatrix},
-        \qquad
-        \vec w_Q (r) 
-            = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}. 
+        ||\psi||_{\ell^p L^q} 
+            := \Big|\Big| ||\psi||_{L^q_x (R \leq r \leq 2R)} \Big|\Big|_{\ell^p_R (2^\Z)}
     \]
