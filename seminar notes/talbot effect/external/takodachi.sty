@@ -1,0 +1,282 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{external/takodachi}
+
+
+%%%AMS PACKAGES%%%
+
+\RequirePackage{amsfonts,amsthm,amssymb,amsmath,amscd}
+
+%%%FORMATTING%%%
+
+%%% EQUATION NUMBERED ACCORDING TO SECTION %%%
+\numberwithin{equation}{section}
+
+%Math Palatino font
+\RequirePackage[sc]{mathpazo}
+
+%Margins
+\RequirePackage[margin = 2.6cm]{geometry}
+
+%Graphics
+\RequirePackage{graphicx}
+
+%sets numbering of enumerate to a, b, c, ...
+\RequirePackage{enumitem}
+\renewcommand{\theenumi}{\alph{enumi}}
+
+%%%CITATION MACROS%%%%
+\RequirePackage[colorlinks]{hyperref}
+\hypersetup{
+    citecolor=cyan,
+    linkcolor=red,
+    }
+
+\renewcommand{\eqref}[1]{(\ref{eq:#1})}
+\newcommand{\lemref}[1]{Lemma \ref{lem:#1}}
+\newcommand{\thmref}[1]{Theorem \ref{thm:#1}}
+\newcommand{\propref}[1]{Proposition \ref{prop:#1}}
+\newcommand{\corref}[1]{Corollary \ref{cor:#1}}
+
+%%%FONTS%%%
+
+%Blackboard Bold Characters
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\N}{\mathbb N}
+\newcommand{\HH}{\mathbb H}
+\renewcommand{\SS}{\mathbb S}
+\newcommand{\DD}{\mathbb D}
+\newcommand{\TT}{\mathbb T}
+\newcommand{\EE}{\mathbb E}
+\newcommand{\PP}{\mathbb P}
+
+%MathCal Characters
+\newcommand{\cA}{\mathcal A}
+\newcommand{\cB}{\mathcal B}
+\newcommand{\cC}{\mathcal C}
+\newcommand{\cD}{\mathcal D}
+\newcommand{\cE}{\mathcal E}
+\newcommand{\cF}{\mathcal F}
+\newcommand{\cG}{\mathcal G}
+\newcommand{\cH}{\mathcal H}
+\newcommand{\cI}{\mathcal I}
+\newcommand{\cJ}{\mathcal J}
+\newcommand{\cK}{\mathcal K}
+\newcommand{\cL}{\mathcal L}
+\newcommand{\cM}{\mathcal M}
+\newcommand{\cN}{\mathcal N}
+\newcommand{\cO}{\mathcal O}
+\newcommand{\cP}{\mathcal P}
+\newcommand{\cQ}{\mathcal Q}
+\newcommand{\cR}{\mathcal R}
+\newcommand{\cS}{\mathcal S}
+\newcommand{\cT}{\mathcal T}
+\newcommand{\cU}{\mathcal U}
+\newcommand{\cV}{\mathcal V}
+\newcommand{\cW}{\mathcal W}
+\newcommand{\cX}{\mathcal X}
+\newcommand{\cY}{\mathcal Y}
+\newcommand{\cZ}{\mathcal Z}
+
+%MathFrak Characters
+\newcommand{\frA}{\mathfrak A}
+\newcommand{\frB}{\mathfrak B}
+\newcommand{\frC}{\mathfrak C}
+\newcommand{\frD}{\mathfrak D}
+\newcommand{\frE}{\mathfrak E}
+\newcommand{\frF}{\mathfrak F}
+\newcommand{\frG}{\mathfrak G}
+\newcommand{\frH}{\mathfrak H}
+\newcommand{\frI}{\mathfrak I}
+\newcommand{\frJ}{\mathfrak J}
+\newcommand{\frK}{\mathfrak K}
+\newcommand{\frL}{\mathfrak L}
+\newcommand{\frM}{\mathfrak M}
+\newcommand{\frN}{\mathfrak N}
+\newcommand{\frO}{\mathfrak O}
+\newcommand{\frP}{\mathfrak P}
+\newcommand{\frQ}{\mathfrak Q}
+\newcommand{\frR}{\mathfrak R}
+\newcommand{\frS}{\mathfrak S}
+\newcommand{\frT}{\mathfrak T}
+\newcommand{\frU}{\mathfrak U}
+\newcommand{\frV}{\mathfrak V}
+\newcommand{\frW}{\mathfrak W}
+\newcommand{\frX}{\mathfrak X}
+\newcommand{\frY}{\mathfrak Y}
+\newcommand{\frZ}{\mathfrak Z}
+
+\newcommand{\fra}{\mathfrak a}
+\newcommand{\frb}{\mathfrak b}
+\newcommand{\frc}{\mathfrak c}
+\newcommand{\frd}{\mathfrak d}
+\newcommand{\fre}{\mathfrak e}
+\newcommand{\frf}{\mathfrak f}
+\newcommand{\frg}{\mathfrak g}
+\newcommand{\frh}{\mathfrak h}
+\newcommand{\fri}{\mathfrak i}
+\newcommand{\frj}{\mathfrak j}
+\newcommand{\frk}{\mathfrak k}
+\newcommand{\frl}{\mathfrak l}
+\newcommand{\frm}{\mathfrak m}
+\newcommand{\frn}{\mathfrak n}
+\newcommand{\fro}{\mathfrak o}
+\newcommand{\frp}{\mathfrak p}
+\newcommand{\frq}{\mathfrak q}
+\newcommand{\frr}{\mathfrak r}
+\newcommand{\frs}{\mathfrak s}
+\newcommand{\frt}{\mathfrak t}
+\newcommand{\fru}{\mathfrak u}
+\newcommand{\frv}{\mathfrak v}
+\newcommand{\frw}{\mathfrak w}
+\newcommand{\frx}{\mathfrak x}
+\newcommand{\fry}{\mathfrak y}
+\newcommand{\frz}{\mathfrak z}
+
+%Bold Characters
+\let\vec\mathbf
+
+\newcommand{\bfa}{{\bf a}}
+\newcommand{\bfb}{{\bf b}}
+\newcommand{\bfc}{{\bf c}}
+\newcommand{\bfd}{{\bf d}}
+\newcommand{\bfe}{{\bf e}}
+\newcommand{\bff}{{\bf f}}
+\newcommand{\bfg}{{\bf g}}
+\newcommand{\bfh}{{\bf h}}
+\newcommand{\bfi}{{\bf i}}
+\newcommand{\bfj}{{\bf j}}
+\newcommand{\bfk}{{\bf k}}
+\newcommand{\bfl}{{\bf l}}
+\newcommand{\bfm}{{\bf m}}
+\newcommand{\bfn}{{\bf n}}
+\newcommand{\bfo}{{\bf o}}
+\newcommand{\bfp}{{\bf p}}
+\newcommand{\bfq}{{\bf q}}
+\newcommand{\bfr}{{\bf r}}
+\newcommand{\bfs}{{\bf s}}
+\newcommand{\bft}{{\bf t}}
+\newcommand{\bfu}{{\bf u}}
+\newcommand{\bfv}{{\bf v}}
+\newcommand{\bfw}{{\bf w}}
+\newcommand{\bfx}{{\bf x}}
+\newcommand{\bfy}{{\bf y}}
+\newcommand{\bfz}{{\bf z}}
+
+\newcommand{\bfA}{{\bf A}}
+\newcommand{\bfB}{{\bf B}}
+\newcommand{\bfC}{{\bf C}}
+\newcommand{\bfD}{{\bf D}}
+\newcommand{\bfE}{{\bf E}}
+\newcommand{\bfF}{{\bf F}}
+\newcommand{\bfG}{{\bf G}}
+\newcommand{\bfH}{{\bf H}}
+\newcommand{\bfI}{{\bf I}}
+\newcommand{\bfJ}{{\bf J}}
+\newcommand{\bfK}{{\bf K}}
+\newcommand{\bfL}{{\bf L}}
+\newcommand{\bfM}{{\bf M}}
+\newcommand{\bfN}{{\bf N}}
+\newcommand{\bfO}{{\bf O}}
+\newcommand{\bfP}{{\bf P}}
+\newcommand{\bfQ}{{\bf Q}}
+\newcommand{\bfR}{{\bf R}}
+\newcommand{\bfS}{{\bf S}}
+\newcommand{\bfT}{{\bf T}}
+\newcommand{\bfU}{{\bf U}}
+\newcommand{\bfV}{{\bf V}}
+\newcommand{\bfW}{{\bf W}}
+\newcommand{\bfX}{{\bf X}}
+\newcommand{\bfY}{{\bf Y}}
+\newcommand{\bfZ}{{\bf Z}}
+
+\newcommand{\bfalpha}{\boldsymbol{\alpha}}
+\newcommand{\bfbeta}{\boldsymbol{\beta}}
+\newcommand{\bfgamma}{\boldsymbol{\gamma}}
+\newcommand{\bfGamma}{\boldsymbol{\Gamma}}
+\newcommand{\bfdelta}{\boldsymbol{\delta}}
+\newcommand{\bfDelta}{\boldsymbol{\Delta}}
+\newcommand{\bfvepsilon}{\boldsymbol{\varepsilon}}
+\newcommand{\bfzeta}{\boldsymbol{\zeta}}
+\newcommand{\bfZeta}{\boldsymbol{\Zeta}}
+\newcommand{\bfeta}{\boldsymbol{\eta}}
+\newcommand{\bftheta}{\boldsymbol{\theta}}
+\newcommand{\bfTheta}{\boldsymbol{\Theta}}
+\newcommand{\bfiota}{\boldsymbol{\iota}}
+\newcommand{\bfkappa}{\boldsymbol{\kappa}}
+\newcommand{\bflambda}{\boldsymbol{\lambda}}
+\newcommand{\bfLambda}{\boldsymbol{\Lambda}}
+\newcommand{\bfmu}{\boldsymbol{\mu}}
+\newcommand{\bfnu}{\boldsymbol{\nu}}
+\newcommand{\bfxi}{\boldsymbol{\xi}}
+\newcommand{\bfXi}{\boldsymbol{\Xi}}
+\newcommand{\bfpi}{\boldsymbol{\pi}}
+\newcommand{\bfPi}{\boldsymbol{\Pi}}
+\newcommand{\bfvpi}{\boldsymbol{\varpi}}
+\newcommand{\bfrho}{\boldsymbol{\rho}}
+\newcommand{\bfvrho}{\boldsymbol{\varrho}}
+\newcommand{\bfsigma}{\boldsymbol{\sigma}}
+\newcommand{\bfSigma}{\boldsymbol{\Sigma}}
+\newcommand{\bftau}{\boldsymbol{\tau}}
+\newcommand{\bfphi}{\boldsymbol{\phi}}
+\newcommand{\bfPhi}{\boldsymbol{\Phi}}
+\newcommand{\bfvphi}{\boldsymbol{\varphi}}
+\newcommand{\bfchi}{\boldsymbol{\chi}}
+\newcommand{\bfpsi}{\boldsymbol{\psi}}
+\newcommand{\bfPsi}{\boldsymbol{\Psi}}
+\newcommand{\bfomega}{\boldsymbol{\omega}}
+\newcommand{\bfOmega}{\boldsymbol{\Omega}}
+
+%%%SYMBOLS%%%
+
+%\Box
+\RequirePackage{latexsym}
+
+%inverse Fourier transform widecheck
+\DeclareFontFamily{U}{mathx}{\hyphenchar\font45}
+\DeclareFontShape{U}{mathx}{m}{n}{
+      <5> <6> <7> <8> <9> <10>
+      <10.95> <12> <14.4> <17.28> <20.74> <24.88>
+      mathx10
+      }{}
+\DeclareSymbolFont{mathx}{U}{mathx}{m}{n}
+\DeclareFontSubstitution{U}{mathx}{m}{n}
+\DeclareMathAccent{\widecheck}{0}{mathx}{"71}
+
+%\varepsilon is superior to \epsilon
+\renewcommand{\epsilon}{\varepsilon}
+
+%Arrows
+\newcommand{\weakto}{\rightharpoonup}
+\newcommand{\embed}{\righthookarrow}
+
+%Operators
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\tr}{tr}
+\newcommand{\loc}{\mathrm{loc}}
+
+\let\Re\relax
+\DeclareMathOperator{\Re}{Re}
+\let\Im\relax
+\DeclareMathOperator{\Im}{Im}
+
+%%%THEOREMS%%%
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem*{claim}{Claim}
+\newtheorem*{acknowledgements}{Acknowledgements}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{notation}{Notation}
+\newtheorem*{example}{Example}
+

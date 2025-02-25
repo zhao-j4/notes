@@ -1,0 +1,49 @@
+
+\subsection{Littlewood-Paley theory}
+
+
+
+\subsection{Fourier restriction norm}
+
+Denoting the space-time Fourier transform of $u: \R \times \TT \to \R$ by $\widetilde u(\tau, k)$, the \textit{Fourier restriction norm} for the Airy flow is defined by 
+    \[
+        ||u ||_{X^{s, b}}
+            := || \langle k \rangle^s \langle \tau - k^3\rangle^b \widetilde u(\tau, k)||_{L^2_{\tau, k}}. 
+    \]
+The index $s \in \R$ simply captures the spatial Sobolev regularity, while the index $b> -\tfrac12$ measures the degree to which $u$ fails to solve the linear Airy equation \eqref{Airy}, since solutions to the equation necessarily have Fourier support on the cubic $\tau = k^3$. We also define the local-in-time norm 
+    \[
+        ||u||_{X^{s, b}(I)}
+            := \inf_{U(t)\equiv u(t) \text{ for $t \in I$}} ||U||_{X^{s, b}}
+    \]
+
+
+\begin{lemma}[Local-in-time inhomogeneous $X^{s,b}$-estimate]
+    Let $-\tfrac12 < b' \leq 0$ and $0 \leq b \leq b' + 1$, then for any time interval $I \subseteq \R$, 
+        \begin{equation}\label{eq:Xsbsmooth}
+            \left|\left| \int_0^t e^{- (t - t') \partial_x^3} f(t') \, dt' \right|\right|_{X^{s, b} (I) } 
+                \lesssim |I|^{1 - b + b'} ||f||_{X^{s, b} (I)}.
+        \end{equation}
+\end{lemma}
+
+\subsection{Local well-posedness theory}
+
+\cite{CollianderEtAl2003}
+
+\begin{theorem}
+    For $s \geq -\tfrac12$, \eqref{KdV} is globally well-posed in $H^s (\TT)$, and satisfies, 
+    \begin{enumerate}
+        \item the local-in-time bound
+            \begin{align}\label{eq:LWP}
+                ||u||_{X^{s, \frac12} (I)} 
+                    \lesssim ||u_0||_{H^s}, 
+            \end{align}
+            on time-scale 
+                \[|I| = \frac{1}{ ||u_0||_{H^s}^{O_s(1)}.}\]
+
+        \item the polynomial-growth bound 
+            \begin{align}\label{eq:high}
+                ||u||_{H^s} 
+                    \leq C(||u_0||_{H^s}) \langle t \rangle^{O_s(1)}. 
+            \end{align}
+    \end{enumerate}
+\end{theorem}

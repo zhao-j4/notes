@@ -1,0 +1,289 @@
+
+The first and foremost enemy to defeat when studying the KdV equation is the derivative in the non-linearity. On the real line, one can avoid this loss of derivative in the estimates by leveraging the local smoothing effect from the linear flow, see \cite[Chapter 4.1]{Tao2006} for a survey of this literature. This manifestation of dispersion relies on high frequency portions of the solution moving to spatial infinity, and thus fails in the setting of the torus. Nonetheless, there is a \textit{non-linear} smoothing effect via exploiting time-averaging of the non-resonant interactions, see \cite{Bourgain1993}, \cite{KenigEtAl1996a}, \cite{CollianderEtAl2003}, \cite{BabinEtAl2011}. 
+
+The particular smoothing effect which we want to show is that the difference between the non-linear flow \eqref{KdV} and the linear flow \eqref{Airy} is smoother than either of the two. We can already see this at the level of the Duhamel formula, 
+    \begin{equation}
+        u(t) - e^{-t \partial_x^3} u_0
+            =  6 \int_0^t e^{-(t - t') \partial_x^3} \Big(u(t')\partial_x u(t') \Big) \, dt'.
+    \end{equation}
+Solving the equation by Picard iteration, we compute the $k$-th Fourier mode of the difference between the first iterate and the linear flow, 
+    \begin{align*}
+        \widehat{\left(6 \int_0^t e^{-(t - t') \partial_x^3} \Big(e^{-t' \partial_x^3}u_0 \partial_x e^{-t' \partial_x^3} u_0 \Big) \, dt'\right)} (k) 
+            &=  3e^{i t k^3} \sum_{\substack{k_1, k_2 \in \Z \\ k_1 + k_2 = k}}  \int_0^t e^{it' (-k^3 + k_1^3 + k_2^3)}  \widehat{u_0} (k_1) \cdot i k_2 \widehat{u_0} (k_2) dt' \\
+            &= \frac{e^{i t k^3}}{k} \sum_{\substack{k_1, k_2 \in \Z \\ k_1 + k_2 = k}} \frac{\widehat{u_0}(k_1) \widehat{u_0} (k_2)}{k_1} \left(  1 - e^{-3i k_1 k_2 k t}\right),
+    \end{align*}
+where we use the following identity to perform the integration in time, allowing us to ameliorate the derivative in the non-linearity, 
+    \begin{equation}\label{eq:identity}
+        (k_1 + k_2)^3 - k_1^3 - k_2^3 = 3(k_1 + k_2) k_1 k_2.
+    \end{equation}
+Suppose, for example, $u_0 \in L^2 (\TT)$, then, from either an application of Young's convolution inequality in frequency space or Holder's inequality in physical space, we see that the difference between the first Picard iterate and the linear flow is a full derivative smoother,
+    \begin{align*}
+        ||u^{(1)} (t) - e^{-t \partial_x^3} u_0||_{H^1}
+            &\lesssim || u_0 \partial_x^{-1} u_0 ||_{L^2} \\
+            &\lesssim || u_0||_{L^2} ||\partial_x^{-1} u_0||_{L^\infty_x} \lesssim ||u_0||_{L^2_x}^2. 
+    \end{align*}
+
+The gain in regularity follows from exploiting the non-resonant interactions in the non-linearity. With this motivating example at hand, we are ready to state the main result of \cite{ErdoganTzirakis2013};
+
+\begin{theorem}[Non-linear smoothing for KdV]
+    Let $s > -\tfrac12$ and $\sigma < \min (3s + 1, s + 1)$. Given initial data $u_0 \in H^s (\TT)$ with zero mean, suppose the solution to \eqref{KdV} satisfies the polynomial-growth bound,
+        \begin{equation}
+            ||u(t)||_{H^s}
+                \leq C(||u_0||_{H^s}) \langle t \rangle^{O(1)},
+        \end{equation}
+    then the difference between the non-linear flow and linear flows satisfies the smoothing estimate 
+        \begin{equation}
+            ||u(t) - e^{-t \partial_x^3} u_0 ||_{H^\sigma}
+                \leq C(s, \sigma, ||u_0||_{H^s})  \langle t \rangle^{O(1)}. 
+        \end{equation}    
+\end{theorem}
+
+\begin{remark}
+    In fact, the difference of the flows 
+        \[
+            t \mapsto u(t) - e^{-t \partial_x^3} u_0
+        \]
+    is continuous with respect to the $H^\sigma$-topology. We leave this as an exercise. 
+\end{remark}
+
+In particular, the difference between the non-linear flow and linear flow is \textit{continuous}, in view of Sobolev embedding, for $s > -\tfrac16$. Since $\mathrm{BV} (\TT) \subseteq \dot W^{1, 1} (\TT) \subseteq L^2 (\TT)$, it follows that the qualitative properties of the linear flow for bounded variation data, Theorem \ref{thm:talbot}, persist for the non-linear flow,
+
+\begin{corollary}[Non-linear Talbot effect]
+    Let $u_0 \in \mathrm{BV} (\TT)$ be a $2\pi$-periodic function of bounded variation. Then the global \eqref{KdV} evolution $u \in C^0_t L^2_x (\R \times \TT)$ satisfies the following properties: 
+    \begin{enumerate}
+        \item The uniform bound 
+            \[
+                ||u||_{L^\infty_{t, x}} 
+                    \lesssim C(s, \sigma, ||u_0||_{L^2_x}) \langle t \rangle^{O(1)} + ||u_0||_{\mathrm{BV}},
+            \]
+        \item For each $t$ such that $\tfrac{t}{2\pi} = \tfrac{p}{q}$ for $p, q \in \Z$ coprime, $u$ has $Nq$-many discontinuities in $x$, where $N \in \overline \N$ is the number of discontinuities of $u_0$. 
+        
+        \item For each $t$ such that $\tfrac{t}{2\pi}$ is irrational, $u$ is a continuous function of $x$.
+    \end{enumerate}
+    In particular, if $u_0$ is a continuous function, then $u \in C^0_{t, \loc} C^0_x (\R \times \TT)$. 
+\end{corollary}
+
+
+\subsection{Normal form transformation}
+
+
+We appeal to the normal form approach of Babin-Ilyin-Titi \cite{BabinEtAl2011}, which, in a nutshell, boils down to integration-by-parts and Cauchy-Schwartz. 
+
+Our derivation of the transformation is primarily physical space-based\footnote{This argument is due to Sung-Jin Oh.}; for the integration-by-parts approach starting from frequency space, the interested reader may find a textbook treatment in \cite[Chapter 3.4, Chapter 4.1.2]{ErdoganTzirakis2016}. The non-linearity has the structure of a symmetric bilinear form, so we introduce such a form $\cB(f, g)$, to be chosen later, and make the following \textit{ansatz} for the change of variables, 
+    \begin{equation}\label{eq:normalform}
+        e^{-t \partial_x^3} w 
+            := u + \cB(u, u).
+    \end{equation}
+Then, using the KdV equation \eqref{KdV} for $u: I \times \TT \to \R$, symmetry and bilinearity of $\cB(f, g)$, the evolution equation for $w: I \times \TT \to \R$ takes the form 
+    \begin{align*}
+        \partial_t w
+            &= e^{t \partial_x^3} \left( \partial_t u + \partial_x^3 u + 2 \cB(\partial_t u, u) + \partial_x^3 \cB(u, u)  \right)\\
+            &= e^{t\partial_x^3} \left( - 6 u \partial_x u + 2 \cB(-\partial_x^3 u + 6u \partial_x u, u) + 2 \cB(\partial_x^3 u, u) + 6 \cB(\partial_x^2 u, \partial_x u) \right)\\
+            &= e^{t \partial_x^3} \left( -6 u \partial_x u + 6\cB( \partial_x (u^2), u ) + 6 \cB(\partial_x^2 u, \partial_x u) \right). 
+    \end{align*}
+We can kill the first and third terms on the last line by taking 
+    \[
+        \cB (f, g) 
+            := \partial_x^{-1} f \cdot \partial_x^{-1} g,
+    \]
+which furnishes the evolution equation for the renormalised variable 
+    \begin{equation}\label{eq:renorm}
+        \partial_t w 
+            = 6\cT(u, u, u),
+    \end{equation}
+where the trilinear term on the right-hand side is given by 
+    \[
+        \cT(f, g, h) 
+            := e^{t \partial_x^3} \left(f \cdot g \cdot \partial_x^{-1} h\right). 
+    \]
+Thus, we have eliminated the derivative in the non-linearity at the cost of increasing the order of the non-linearity from quadratic to cubic and performing a non-linear transformation in the unknowns. 
+
+To estimate the non-linearity on the right-hand side of \eqref{renorm}, we separate the resonant and non-resonant terms. For the non-resonant terms, we can leverage time-oscillation to prove a trilinear smoothing estimate after averaging-in-time. The resonant terms then are the main enemy after the normal form reductions, though since the KdV non-linearity is a total derivative, it does not admit any zero modes, so we can exploit a cancellation in the resonant interactions.  Towards this resonant/non-resonant decomposition, we write equation \eqref{renorm} in frequency space, 
+\begin{align}\label{eq:fourier}
+    \partial_t \widehat w(k)
+        &= 6 \sum_{\substack{k_1, k_2, k_3 \in \Z\\ k_1 + k_2 + k_3 = k\\ k_1 + k_2 \neq 0}} \frac{e^{-3it(k_1 + k_2)(k_2 + k_3)(k_3 + k_1)}}{k_3}\widehat{v} (k_1) \widehat v (k_2) \widehat v (k_3).
+\end{align}
+where 
+    \[
+        v = e^{t \partial_x^3} u,
+    \]
+owing to the identity 
+    \[
+        (k_1 + k_2 + k_3)^3 = 3(k_1 + k_2)(k_2 + k_3)(k_3 + k_1) + k_1^2 + k_2^2 + k_3^3. 
+    \]
+We decompose the right-hand side of \eqref{fourier} into resonant and non-resonant interactions, 
+    \begin{align*}
+        \widehat{\cR(f, g, h)} (k)
+            &:= \sum_{\substack{k_1 + k_2 + k_3 = k \\|k_1| = |k_2| = |k_3| = |k|}} + \sum_{\substack{k_1 + k_2 + k_3 = k \\ k_n + k_m = 0 \text{ for distinct $n, m \in \{1,2, 3\}$}}} \frac{1}{k_3}\widehat{f} (k_1) \widehat g (k_2) \widehat h (k_3),\\
+        \widehat{\cN(f, g, h)} (k)
+            &:= \sum_{\substack{k_1 + k_2 + k_3 = k \\ (k_1 + k_2)(k_1 + k_3) (k_2 + k_3) \neq 0}}  \frac{e^{-3it(k_1 + k_2)(k_2 + k_3)(k_3 + k_1)}}{k_3}\widehat{f} (k_1) \widehat g (k_2) \widehat h (k_3).
+    \end{align*}
+Observe however that off-diagonal terms in the resonant sum cancel out, owing to preservation of reality. Indeed, since for real-valued $f: \TT \to \R$ the Fourier coefficients satisfy $\widehat{f}(k) = \overline{\widehat f(-k)}$, we see that 
+    \begin{align*}
+        \widehat{\cR_{\text{off}}(v, v, v)} (k)
+            &= \overline{\widehat \cR_{\text{off}}(v, v, v)} (-k) \\
+            &= \sum_{\substack{k_1 + k_2 + k_3 = -k \\ k_n + k_m = 0 \text{ for distinct $n, m \in \{1,2, 3\}$}}} \frac{1}{k_3}\overline{\widehat{v} (k_1) \widehat v (k_2) \widehat v (k_3)} \\
+            &= \sum_{\substack{k_1 + k_2 + k_3 = k \\ k_n + k_m = 0 \text{ for distinct $n, m \in \{1,2, 3\}$}}} \frac{1}{-k_3}\overline{\widehat{v} (-k_1) \widehat v (-k_2) \widehat v (-k_3)} \\
+            &= \sum_{\substack{k_1 + k_2 + k_3 = k \\ k_n + k_m = 0 \text{ for distinct $n, m \in \{1,2, 3\}$}}} \frac{1}{-k_3} \widehat{v} (k_1) \widehat v(k_2) \widehat v(k_3) = -  \widehat{\cR_{\text{off}}(v, v, v)} (k),
+    \end{align*}
+using the change of variables $k_n \mapsto -k_n$ in the third line. Thus we conclude 
+    \begin{align}\label{eq:nonres}
+        \partial_t w 
+            = 6 \cN(v, v, v) + 12 \cR_{\text{diag}} (v, v, v),
+    \end{align}
+where 
+    \[
+        \widehat{\cR_{\text{diag}}(f, g, h)} (k)
+            := \frac1k \widehat f(k) \overline{\widehat{g}(k)} \widehat h(k). 
+    \]
+Integrating \eqref{nonres} in time and inverting the normal form transformation \eqref{normalform}, we obtain the following equation for the difference between the non-linear and linear flows, 
+    \begin{equation}\label{eq:integral}
+        \begin{split}
+        u(t) - e^{-t \partial_x^3} u_0 
+            &= e^{-t \partial_x^3} \cB(u_0, u_0) - \cB(u(t), u(t)) + 6 \int_0^t e^{-(t - t')\partial_x^3} \cN(u(t'), u(t'), u(t')) \, dt'.\\
+            &\qquad + 12 \int_0^t e^{-(t - t')\partial_x^3} \cR_{\mathrm{diag}}(u(t'), u(t'), u(t')) \, dt'
+        \end{split}
+    \end{equation}
+Taking $H^\sigma$-norms on both sides, we have reduces the problem to controlling the $H^\sigma$-norm of the right-hand side using the $H^s$-norm of the initial data. 
+
+\subsection{Bilinear and trilinear estimates}
+
+The bilinear estimates are a straightforward application of Cauchy-Schwartz in frequency space, 
+
+\begin{proposition}[Bilinear estimates]
+    Let $s > -\tfrac12$ and $\sigma \leq s + 1$, then the following bilinear estimate holds
+        \begin{equation}\label{eq:bilinear}
+            ||\cB(f, g)||_{H^\sigma} 
+                \lesssim ||f||_{H^s} ||g||_{H^s},
+        \end{equation}
+    whenever $f, g \in H^s (\TT)$ are mean zero, $\widehat f(0) = \widehat g(0) = 0$. 
+\end{proposition}
+
+\begin{proof}
+    The Fourier modes of the bilinear form are 
+        \[
+            \widehat{\cB(f, g)} (k)
+                = \sum_{\substack{k_1, k_2 \in \Z \\ k_1 + k_2 = k}} \frac{\widehat f(k_1) \widehat g(k_2)}{k_1 k_2}.
+        \]
+    By symmetry, it suffices to estimate the terms in the upper diagonal $|k_1| \leq |k_2|$, in which case $|k| \leq 2 |k_2|$. Using the triangle inequality, 
+        \begin{align*}
+            |\widehat{\cB(f, g)} (k)|
+                &\leq \sum_{\substack{k_1, k_2 \in \Z \\ k_1 + k_2 = k}} \frac{|\widehat f(k_1)| \cdot |\widehat g(k_2)|}{|k_1| \cdot |k_2|}\\
+                &\leq \sum_{\substack{k_1, k_2 \in \Z \\ k_1 + k_2 = k}} \Big( |k_1|^s |\widehat f(k_1)| \Big) \Big(  |k_2|^s |\widehat g(k_2)| \Big) \frac{1}{|k_1|^{s + 1} |k_2|^{s + 1}} \\
+                &\leq \frac{2^\sigma}{|k|^{\sigma}} \sum_{\substack{k_1, k_2 \in \Z \\ k_1 + k_2 = k}} \Big( |k_1|^s |\widehat f(k_1)| \Big) \Big(  |k_2|^s |\widehat g(k_2)| \Big) \frac{1}{|k_1|^{s + 1}} .
+        \end{align*}
+    Multiplying by $|k|^\sigma$, summing in $\ell^2_k$, and applying Young's convolution inequality and Cauchy-Schwartz concludes the proof, 
+        \[
+            ||\cB(f, g)||_{H^\sigma}
+                \lesssim \left|\left| \frac{|k_1|^s}{|k_1|^{s + 1}} \widehat f(k_1) \right|\right|_{\ell^1} \cdot || |k_2|^s \widehat g(k_2)||_{\ell^2} \lesssim ||f||_{H^s} ||g||_{H^s}.
+        \]
+\end{proof}
+
+The resonant interactions can be handled by a simple energy estimate; 
+
+\begin{proposition}[Resonance estimate]
+    Let $s > -\tfrac12$ and suppose $s < \sigma < 3s + 1$, then 
+        \begin{equation}\label{eq:resonantest}
+            || \cR_{\operatorname{diag}}(f, g, h) ||_{H^\sigma}
+                \leq ||f||_{H^s} ||g||_{H^s} ||h||_{H^s}. 
+        \end{equation}
+\end{proposition}
+
+\begin{proof}
+    In frequency space, 
+        \begin{align*}
+            || \langle k \rangle^{\sigma} \widehat{\cR_{\operatorname{diag}}(f, g, h)} (k) ||_{\ell^2_k}
+                &\leq  \left|\left| \langle k \rangle^s \widehat f(k) \cdot \langle k \rangle^s \widehat g(k) \cdot \langle k \rangle^s \widehat h(k) \cdot \langle k\rangle^{\sigma - 3s - 1}\right|\right|_{\ell^2k}\\ 
+                &\leq ||f||_{H^s} ||g||_{H^s} ||h||_{H^s},
+        \end{align*}
+    estimating two of the terms pointwise, and the weight $\langle k \rangle^{\sigma - 3s - 1} \leq 1$ for $s < \sigma < 3s + 1$.  
+\end{proof}
+
+The main technical piece to estimate is the trilinear non-resonant interactions. It is here where we need to rely on some linear smoothing effects rather than naive energy arguments. To estimate in the $L^\infty_t H^\sigma (I \times \TT)$-norm, Sobolev embedding in time allows us to control this term in $X^{\sigma, b} (I \times \TT)$-norm at the cost of losing derivatives $b > \tfrac12$. To gain a derivative back, we use the smoothing estimate \eqref{Xsbsmooth},
+    \begin{align*}
+        \left|\left| \int_0^t e^{- (t - t') \partial_x^3} \cN(u(t'), u(t'), u(t')) dt'\right|\right|_{L^\infty_t H^\sigma}
+            &\lesssim      \left|\left| \int_0^t e^{- (t - t') \partial_x^3} \cN(u(t'), u(t'), u(t')) dt'\right|\right|_{X^{s, \frac12+}} \\
+            &\lesssim ||\cN(u, u, u)||_{X^{s, -\frac12 +}}. 
+    \end{align*}
+It remains then to prove the following trilinear estimate, 
+
+\begin{proposition}[Trilinear estimate]
+    Let $s > -\tfrac12$, and suppose $\sigma < \min (s + 1, 3s + 1)$. Then 
+        \begin{equation}\label{eq:trilinear}
+            ||\cR(f, g, h) ||_{X^{\sigma, - \frac12 +}} 
+                \lesssim ||f||_{X^{s, \frac12}} ||g||_{X^{s, \frac12}} ||h||_{X^{s, \frac12}}. 
+        \end{equation}
+\end{proposition}
+
+\begin{proof}
+    Let $\phi \in X^{-\sigma, \frac12-} (I \times \TT)$, by duality it suffices to prove 
+        \[
+            \left| \int_{\R} \int_\TT  \cR(f, g, h) \, \phi dx dt\right| \lesssim ||f||_{X^{s, \frac12}} ||g||_{X^{s, \frac12}} ||h||_{X^{s, \frac12}} ||\phi||_{X^{-\sigma, \frac12-}}. 
+        \]
+    Passing to frequency space, we write 
+        \begin{align*}
+            F (\tau, k)
+                &= |\widehat f(\tau, k)| \cdot |k|^s \langle \tau - k^3 \rangle^{1/2}, \\
+            G (\tau, k)
+                &= |\widehat g(\tau, k)| \cdot |k|^s \langle \tau - k^3 \rangle^{1/2}, \\
+            H (\tau, k) 
+                &= |\widehat h(\tau, k)| \cdot |k|^s \langle \tau - k^3 \rangle^{1/2},\\
+            \Phi (\tau, k)
+                &= |\widehat \phi(\tau, k)| \cdot |k|^{-\sigma} \langle \tau - k^3 \rangle^{1/2 - \epsilon},
+        \end{align*}
+    Then we need to prove 
+        \begin{align*}
+            &\sum_{\substack{k_1 + k_2 + k_3 + k_4 = 0 \\ (k_2 + k_3)(k_1 + k_2) (k_1 + k_3) \neq 0}} \int_{\tau_1 + \tau_2 + \tau_3 + \tau_4 = 0} K(\vec\tau, \vec k) F(\tau_1, k_1) G(\tau_2, k_2) H(\tau_3, k_3) \Phi(\tau_4, k_4) \\ 
+                &\qquad \lesssim ||F||_{L^2_\tau \ell^2_k}  ||G||_{L^2_\tau \ell^2_k}   ||H||_{L^2_\tau \ell^2_k}   ||\Phi||_{L^2_\tau \ell^2_k} 
+        \end{align*}
+    with kernel 
+        \[
+            K(\vec\tau, \vec k) := \frac{|k_1 k_2 k_3|^{-s} |k_4|^\sigma}{|k_1| \langle \tau_1 - k_1^3 \rangle^{1/2 -} \langle \tau_2 - k_2^3 \rangle^{1/2 -} \langle \tau_3 - k_3^3 \rangle^{1/2 -} \langle \tau_4 - k_4^3 \rangle^{1/2 -}} 
+        \]
+    We have the dispersive estimate 
+        \begin{align}
+            \left|\left| \widecheck{\left( \frac{|k|^{-\epsilon}}{\langle \tau - k^3 \rangle^{\frac12 + \epsilon}} \right) F } \right| \right|_{L^6_{t, x} (\R \times \TT)}
+                \lesssim ||F||_{\ell^2_k}.
+        \end{align}
+    We also have that, for $\tau_1 + \tau_2 + \tau_3 + \tau_4 = k_1 + k_2 + k_3 + k_4 = 0$, 
+        \begin{equation}
+            (\tau_1 - k_1^3) + (\tau_2 - k_2^3) + (\tau_3 - k_3^3) + (\tau_4 - k_4^3) = 3(k_1 + k_2) (k_1 + k_2)(k_2 + k_3). 
+        \end{equation}
+    Therefore, by pigeonholing, 
+        \begin{equation}
+            \max_{i = 1, 2, 3, 4} \langle \tau_i - k_i^3 \rangle \gtrsim |k_1 + k_2| \cdot |k_1 + k_3| \cdot |k_2 + k_3| \gtrsim |k_i|.
+        \end{equation}
+    By careful analysis,     
+        \[
+            \frac{|k_1 k_2 k_3|^{-s} |k_4|^{-\sigma} }{|k_1| \cdot (|k_1 + k_2| \cdot |k_1 + k_3| \cdot |k_2 + k_3|)^{1/2 - 7\epsilon}} 
+                \lesssim |k_1 k_2 k_3 k_4|^{-\epsilon}
+        \]
+    Collecting these inequalities gives the result. 
+   \end{proof}
+
+
+
+
+
+
+\subsection{Conclusion of the proof}
+
+Continuing from the identity \eqref{integral} obtained from inverting the normal form transformation \eqref{normalform}, the difference between the non-linear flow \eqref{KdV} and the linear flow \eqref{Airy} satisfies 
+    \[
+        ||u(t) - e^{- t \partial_x^3} u_0||_{H^\sigma}
+            \leq || \cB(u_0, u_0)||_{H^\sigma} + ||\cB(u(t), u(t))||_{H^\sigma} + 6 \left|\left| \int_0^t e^{-(t - t') \partial_x^3} \cM(u(t'), u(t'), u(t')) \, dt' \right|\right|_{H^\sigma}. 
+    \]
+The first two terms can be handled by a simple application of the bilinear estimates \eqref{bilinear}, 
+    \[
+        || \cB(u_0, u_0)||_{H^\sigma} + ||\cB(u(t), u(t))||_{H^\sigma}
+            \lesssim \langle t \rangle^{O(1)} ||u_0||_{H^s}^2. 
+    \]
+The last term can be controlled by Sobolev embedding in $t$, the smoothing estimate \eqref{Xsbsmooth}, and the trilinear estimate \eqref{trilinear}, and local well-posedness \eqref{LWP}
+    \begin{align*}
+        \left|\left| \int_0^t e^{-(t - t') \partial_x^3} \cR(u(t'), u(t'), u(t')) \, dt' \right|\right|_{L^\infty_t H^\sigma_x (I)}
+            &\lesssim  \left|\left| \int_0^t e^{-(t - t') \partial_x^3} \cR(u(t'), u(t'), u(t')) \, dt' \right|\right|_{X^{\sigma, \frac12+} (I)}\\
+            &\lesssim |I|^{0+} ||\cR(u(t), u(t), u(t))||_{X^{\sigma, -\frac12+} (I)} \\
+            &\lesssim  |I|^{0+} ||u||_{X^{s, \frac12} (I)}^3\\
+            &\lesssim |I|^{0+} ||u_0||_{H^s}^3.
+    \end{align*}
+Iterating the polynomial bounds from the local well-posedness theory, we conclude the result. 

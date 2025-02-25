@@ -1,0 +1,189 @@
+\begin{flushright}
+    \begin{quote}
+        {\hfill\it Kids these days don't do any experiments.}\\
+        \hfill ---Maciej Zworski
+    \end{quote}    
+\end{flushright}
+
+The non-linear smoothing effect gives credence to numerical simulations of \eqref{KdV} which seem to demonstrate the Talbot effect, see for example \cite{ChenOlver2013}. However, typically one needs to start with smooth data to be confident that the numerics are accurately telling the story, as most schemes rely on \textit{a priori} bounds at high regularity to guarantee convergence, ruling out convergence for data such as square waves. Nevertheless, in the same vein as the local well-posedness theory, we can exploit non-linear smoothing to construct numerical schemes well-adapted to \eqref{KdV} and dispersive estimates to handle convergence for low regularity data. 
+
+We will present the resonance-based scheme of \cite{HofmanovaSchratz2017} and the proof of convergence for $H^{0+}$-data from \cite{RoussetSchratz2022}. Discretisation time by introducing a \textit{time step} $\timestep \ll 1$ and setting $t_n := n \timestep$, we can use the Duhamel formula for the variable $v = e^{t \partial_x^3} u$ to write the difference between the flow at time $t = t_n$ and $t = t_{n + 1}$ as 
+    \begin{equation}
+        v(t_{n + 1}) 
+            = v(t_n) - 3 \int_0^{\timestep} e^{(\timestep + s) \partial_x^3} \partial_x \left( e^{-(t_n + s) \partial_x^3} v(t_n + s) \right)^2 \, ds.
+    \end{equation}
+Approximating $v(t_n + s)$ by $v(t_n)$, we expand the non-linear forcing term and use the identity \eqref{identity},
+    \begin{align*}
+        -3\int_0^\timestep e^{(t_n + s) \partial_x^3} \partial_x \left( e^{-(t_n + s) \partial_x^3} v(t_n) \right)^2 \, ds
+            &= - 3 \sum_{k_1, k_2 \in \Z} \int_0^\timestep e^{-3i (t_n + s)(k_1 + k_2) k_1 k_2} i(k_1 + k_2) \\
+            &\qquad\qquad \qquad \times \widehat v(t_n, k_1) \widehat v(t_n, k_2) e^{i (k_1 + k_2)x} ds \\
+            &=  \sum_{k_1, k_2 \in \Z} \left( e^{-3i (k_1 + k_2)k_1k_2 t_{n + 1}} - e^{-3i (k_1 + k_2)k_1k_2 t_{n}} \right) \\ 
+            &\qquad\qquad\qquad\times\frac{\widehat v(t_n, k_1) \widehat v(t_n, k_2)}{k_1 k_2} e^{i(k_1 + k_2)x} \\
+            &= e^{t_{n + 1}\partial_x^3} \left( e^{-t_{n + 1} \partial_x^3} \partial_x^{-1} v(t_n) \right)^2 - e^{t_{n + 1}\partial_x^3} \left( e^{-t_{n} \partial_x^3} \partial_x^{-1} v(t_n) \right)^2.
+    \end{align*}
+Returning to the original variable $u$, the Duhamel formula suggests the following numerical scheme 
+    \begin{equation}\label{eq:numerical}
+        \mathtt{u_{n  +1}} 
+            := e^{- \timestep \partial_x^3} \mathtt{u_n} - \left(e^{-\timestep \partial_x^3} \partial_x^{-1} \mathtt{u_n}\right)^2 - e^{-\timestep \partial_x^3} \left(\partial_x^{-1} \mathtt{u_n}\right)^2.
+    \end{equation}
+
+\begin{remark}
+    The numerical scheme is essentially a time-discretised version of the normal form transformation \eqref{integral} which omits the cubic terms. Interestingly, the authors of \cite{HofmanovaSchratz2017} appeared to be unaware of this at the time. 
+\end{remark}
+
+Following \cite{RoussetSchratz2022}, we introduce a filtered version of the numerical scheme which models the Galerkin approximate equation. Truncating to frequencies below $N = \timestep^{-1/3}$, we define 
+\begin{equation}\label{eq:numerical2}
+    \mathtt{u_{n  +1}} 
+        := e^{- \timestep \partial_x^3} P_{\leq N} \mathtt{u^{(n)}} - P_{\leq N} \left(e^{-\timestep \partial_x^3} \partial_x^{-1} P_{\leq N} \mathtt{u_n}\right)^2 - e^{-\timestep \partial_x^3} \left(\partial_x^{-1} P_{\leq N} \mathtt{u_n}\right)^2.
+\end{equation}
+
+    \begin{theorem}[Convergence of numerical scheme]
+        Let $s > 0$ and fix initial data $u_0 \in H^s (\TT)$ with zero mean. Given a time $T > 0$ and a time step $\timestep \ll 1$, the error between the non-linear flow \eqref{KdV} and the numerical scheme \eqref{numerical2} satisfies the bound 
+            \begin{equation}
+                ||\mathtt{u_n} - u(t_n)||_{L^2} \lesssim_T \max \left((\timestep)^{\frac{s}{3}}, \timestep \right),
+            \end{equation}
+        for $t_n \leq T$. 
+    \end{theorem}
+
+We will deviate from the original proof from \cite{RoussetSchratz2022}, which is more robust in the sense that it handles several different schemes, but more technical as it relies on time-discrete analogues of the Fourier restriction norm estimates developed in \cite{CollianderEtAl2003}. Our presentation instead draws from the observations of \cite{BabinEtAl2011} concerning the normal form transformation. 
+
+\subsection{Galerkin method}
+
+The filtered numerical scheme for \eqref{KdV} can be viewed as the unfiltered numerical scheme for the Galerkin approximation of the equation. Fix a frequency $N > 0$, then we denote the approximate solution by $u^{(N)} : \R \times \TT \to \R$, which solves
+    \begin{equation}\label{eq:galerkin}
+        \begin{split}
+        \partial_t u^{(N)} + \partial_x^3 u^{(N)} + 3 P_{\leq N} \partial_x \left(  {(u^{(N)})}_{\leq N}\right)^2 
+            &= 0, \\
+        {u^{(N)}}_{|t = 0}
+            &= (u_0)_{\leq N}. 
+        \end{split}
+    \end{equation}
+Observe that in frequency space, this reduces to a $2N$-dimensional ODE for the Fourier modes up to frequency $|k| \leq N$. The solutions to \eqref{galerkin} may be regarded as low frequency approximate solutions to the full non-linear flow \eqref{KdV}. Indeed, this follows from the following folklore result; 
+
+\begin{proposition}[Convergence of Galerkin approximates]
+    Let $s \geq 0$, and fix initial data $u_0 \in H^s (\TT)$ with zero mean. Given a time $T > 0$, the error between the full \eqref{KdV} flow and the Galerkin approximate flow \eqref{galerkin} satisfies the bound 
+        \begin{equation}
+            ||u - u^{(N)} ||_{L^2_x} 
+                \lesssim_T N^{-s},
+        \end{equation}
+    for all $t \in [0, T]$. 
+\end{proposition}
+
+In a nutshell, we can define the 
+    \begin{equation}\label{eq:normalformG}
+        e^{-t \partial_x^3} w^{(N)}
+            := u^{(N)} + \cB^{(N)} (u^{(N)}, u^{(N)}),
+    \end{equation}
+where, in the same spirit as our derivation of the normal form transformation \eqref{normalform} for \eqref{KdV}, we should make the following judicious choice of bilinear form,
+    \[
+        \cB^{(N)} (f, g) 
+            := P_{\leq N} \left( \partial_x^{-1} f_{\leq N}\cdot \partial_x^{-1} g_{\leq N} \right). 
+    \]
+It follows that the approximate solution satisfies the functional equation
+    \begin{equation}\label{eq:integral2}
+        \begin{split}
+        u^{(N)}(t) - e^{-t \partial_x^3} (u_0)_{\leq N}
+            &= e^{-t \partial_x^3} \cB^{(N)} (u_0, u_0) - \cB^{(N)} (u^{(N)} (t), u^{(N)}(t)) \\
+            &\qquad+ 6 \int_0^t e^{-(t - t') \partial_x^3} \cT^{(N)} (u^{(N)}(t'), u^{(N)}(t'), u^{(N)}(t'))\, dt' ,
+        \end{split}
+    \end{equation}
+where the trilinear form in the non-linear forcing is 
+    \[
+        \cT^{(N)}( f, g, h) 
+            := P_{\leq N} \left( f_{\leq N} \cdot g_{\leq N} \cdot \partial_x^{-1} h_{\leq N} \right) . 
+    \]
+
+To prove the error bound, we consider the equation for the difference of the flows $\phi := u - u^{(N)}$. Subtracting \eqref{integral2} from \eqref{integral}, we write 
+    \begin{equation}
+        \phi (t)
+            = \text{I} + \text{II} + \text{III}, 
+    \end{equation}
+where we distinguish the linear, bilinear, and trilinear terms, 
+    \begin{align*}
+        \text{I} 
+            &:= e^{-t \partial_x^3} \phi_0 \\
+        \text{II}
+            &:= e^{-t \partial_x^3} \Big( \cB(u_0, u_0) - \cB^{(N)} (u_0, u_0) \Big) \\
+            &\qquad - \Big(  \cB (u, u)  -  \cB^{(N)} (u^{(N)}, u^{(N)}) \Big)\\
+            &=  e^{-t \partial_x^3} \Big( P_{> N} \cB(u_0, u_0) + P_{\leq N}\left( \cB((u_0)_{> N}, (u_0)_{> N}) + 2 \cB((u_0)_{> N}, (u_0)_{\leq N})\right) + \cB^{(N)} (\phi_0, (u_0) + (u_0)^{(N)})\Big)\\
+            &\qquad - \Big( P_{> N} \cB(u, u) + P_{\leq N}\left( \cB(u_{> N}, u_{> N}) + 2 \cB(u_{> N}, u_{\leq N})\right) + \cB^{(N)} (\phi, u + u^{(N)}) \Big)\\
+            &=: \text{II}_{\text{high}} + \text{II}_{\text{low}}\phi\\
+        \text{III}
+            &:=  6\int_0^t e^{-(t - t') \partial_x^3} \Big(\cT (u^{(N)}(t'), u^{(N)}(t'), u^{(N)}(t')) -  \cT^{(N)} (u(t'), u(t'), u^(t')) \Big) dt'.
+    \end{align*}
+By the $H^s$-well-posedness theory, high frequencies decay a l\'a \eqref{high}, so we can estimate these terms via Bernstein's inequality. For example, the linear term obeys
+    \[
+        ||\mathrm{I} ||_{L^2_x} 
+            \lesssim || (u_0)_{>N}||_{L^2_x} \lesssim N^{-s} ||u_0||_{H^s_x}. 
+    \]
+Clearly the bilinear estimate \eqref{bilinear} for $\cB(f, g)$ also holds for $\cB^{(N)} (f, g)$. A similar application of Bernstein gives the bound for the terms with high frequencies, while for low frequencies 
+    \[
+        ||\mathrm{II}_{\text{high}}||_{L^2_x} 
+            \lesssim N^{-s} \langle T \rangle^{O(1)} ||u_0||_{H^s_x}^2,
+    \]
+while for 
+    \[
+        ||\mathrm{II}_{\text{low}}||_{L^2_x}
+            \lesssim N^{-s} ||P_N (u - u^(N))
+    \]
+
+
+\subsection{Discrete Fourier restriction spaces}
+
+The convergence of the numerical scheme to the Galerkin approximate solutions follows the same lines as previous proof. The only modification will be the trilinear estimates \eqref{trilinear}, for which we need a time-discrete analogue. Denoting by $\vec u := (\mathtt{u^{(n)}})_n$ a sequence of functions on $\TT$, which heuristically we view as snapshots of our flow at various timesteps, 
+    \[
+        u(t_n, x) \approx \mathtt{u^{(n)}} (x), 
+    \]
+define the spacetime Fourier transform with respect to time step $\timestep$ by 
+    \[
+        \widetilde{\vec u} (\tau, k) 
+            := \timestep \sum_{n \in \Z} \widehat{\mathtt{u^{(n)}}} (k) e^{i n \timestep \tau}.  
+    \]
+Then the time-discretised Fourier restriction norm is given by 
+    \[
+        ||\vec u||_{X^{s, b}_\timestep} 
+            := || \langle k \rangle^s \langle d_\tau ( \tau + k^3) \rangle^b \widetilde{\vec u} (\tau, k)  ||_{L^2_\tau \ell^2_k}
+    \]
+where 
+    \[
+        d_{\timestep} (\sigma) 
+            := \frac{e^{i \timestep \sigma} - 1}{\timestep}. 
+    \]
+Observe that in the physical variables this corresponds to the finite-difference 
+    \[
+        D_{\timestep} (\vec u) 
+            := \left\{ \frac{u_{n - 1} - u_n}{\tau} \right\}_n. 
+    \]
+The weight $d_\timestep (\tau + k^3)$ vanishes if $\timestep(\tau + k^3) = 2\pi m$ for $m \in \Z$. For data localised to frequencies $|k| \lesssim \timestep^{-\frac13}$. this will behave like the continuous case with only a cancellation at $\tau + k^3 = 0$. For larger frequencies there are additional cancelations which cause problems with the product estimates. 
+
+\begin{lemma}[Discretised trilinear estimate]
+    Let $s \geq 0$, then for every $\vec u, \vec v \in Y^s_{\timestep} (\TT)$, 
+        \begin{equation}
+            \left|\left|\partial_x P_{N} \left(P_{N} \vec u P_{N} \vec v\right) \right|\right|_{Y^s_\timestep} 
+                \lesssim ||\vec u||_{X^{s, \frac12}_\timestep} || \vec v||_{X^{s, \frac13}_\timestep} +  ||\vec v||_{X^{s, \frac12}_\timestep} || \vec u||_{X^{s, \frac13}_\timestep},
+        \end{equation}
+    where $N \sim \timestep^{-\frac13}$ is the semi-classical timescale. 
+\end{lemma}
+
+\begin{lemma}
+    Let $s > -\tfrac12$ and suppose $\sigma < \min(s + 1, 3s + 1)$. Then 
+        \begin{equation}
+            ||\cN (P_{\leq N} f, P_{\leq N} g, P_{\leq N} h)||_{X^{\sigma, -\frac12+}_\timestep} 
+                \lesssim ||f||_{X^{\sigma, \frac12}_\timestep}  ||g||_{X^{\sigma, \frac12}_\timestep}  ||h||_{X^{\sigma, \frac12}_\timestep} 
+        \end{equation}
+    for $N \sim \timestep^{-\frac13}$. 
+\end{lemma}
+
+\subsection{Difference equations}
+
+By the Duhamel formula, 
+
+
+    \begin{align}
+        u^{(N)} (t_{n + 1}) 
+            &=  e^{-\timestep \partial_x^3}  P_{\leq N} u^{(N)}(t_n) + e^{-\timestep \partial_x^3} \cB^{(N)} (u^{(N)}(t_n), u^{(N)} (t_n)) - \cB^{(N)} (u^{(N)} (t_{n + 1}), u^{(N)}(t_{n + 1})) \\
+            &\qquad+ 6 \int_0^{\timestep} e^{-(\timestep - t') \partial_x^3} \cT^{(N)} (u^{(N)}(t'), u^{(N)}(t'), u^{(N)}(t'))\, dt' ,  \\
+        \mathtt{u_{n  +1}} 
+            &:= e^{- \timestep \partial_x^3} P_{\leq N} \mathtt{u^{(n)}} + e^{-\timestep \partial_x^3} \cB^{(N)} (e^{-\timestep \partial_x^3} \mathtt{u_n}, e^{-\timestep \partial_x^3} \mathtt{u_n}) - \cB^{(N)} (\mathtt{u_n},\mathtt{u_n})
+    \end{align}
+

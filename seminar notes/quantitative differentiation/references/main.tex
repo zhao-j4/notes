@@ -1,0 +1,93 @@
+\documentclass[reqno]{amsart}
+
+\usepackage{amsfonts,latexsym,amsthm,amssymb,amsmath,amscd,euscript,bm}
+\usepackage[sc]{mathpazo}
+\usepackage[margin = 2cm]{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+% sets numbering of enumerate to a, b, c, ...
+\renewcommand{\theenumi}{\alph{enumi}}
+
+% Theorems, propositions, etc.
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem*{claim}{Claim}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{notation}{Notation}
+
+\usepackage{tikz-cd}
+
+
+% Math blackboard font
+\newcommand{\nc}{\newcommand}
+\nc{\on}[1]{\operatorname{#1}}
+
+\nc{\R}{\mathbb R}
+\nc{\C}{\mathbb C}
+\nc{\Q}{\mathbb Q}
+\nc{\Z}{\mathbb Z}
+\nc{\N}{\mathbb N}
+\nc{\HH}{\mathbb H}
+\nc{\DD}{\mathbb D}
+\nc{\TT}{\mathbb T}
+\nc{\EE}{\mathbb E}
+\nc{\PP}{\mathbb P}
+
+\nc{\cT}{\mathcal T}
+\nc{\cA}{\mathcal A}
+\nc{\cM}{\mathcal M}
+\nc{\cR}{\mathcal R}
+\nc{\cB}{\mathcal B}
+\nc{\cG}{\mathcal G}
+\nc{\cD}{\mathcal D}
+\nc{\cS}{\mathcal S}
+\nc{\cF}{\mathcal F}
+\nc{\cL}{\mathcal L}
+\nc{\cE}{\mathcal E}
+
+\nc{\diam}{\operatorname{diam}}
+\nc{\osc}{\operatorname{osc}}
+\nc{\supp}{\operatorname{supp}}
+\nc{\loc}{\text{loc}}
+\nc{\BlowUp}{\mathsf{BlowUp}}
+\nc{\Deviation}{\mathsf{Deviation}}
+\nc{\Defect}{\mathsf{Defect}}
+
+% Why the f*** would you ever use \epsilon
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\emph}{\textsc}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+
+\let\vec\mathbf
+
+% Title: change problem set number as needed
+\title
+{
+	Quantitative differentiation
+} 
+
+\author{Jason Zhao}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+
+\tableofcontents
+
+\section{Lipschitz maps on $\R$}
+
+\input{lipschitz}
+
+
+
+
+\end{document}

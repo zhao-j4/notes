@@ -1,0 +1,47 @@
+\documentclass[reqno]{amsart}
+
+\usepackage{external/takodachi}
+
+% To show labels in the margin:
+\usepackage[notref, notcite]{showkeys}
+
+% kill subsections in ToC
+\setcounter{tocdepth}{1} 
+\newcommand{\timestep}{\mathtt{dt}}
+
+\title
+{
+	Dispersive quantisation in KdV
+} 
+\author{Jason Zhao}
+%\address{Department of Mathematics, University of California, Berkeley, 94720}
+%\email{zhao.j@berkeley.edu}
+\date{\today}
+
+
+\begin{document}
+
+\begin{abstract}
+	It has been observed both experimentally and mathematically that solutions to linear dispersive equations, such as the Schr\"odinger and Airy equations, posed on the torus exhibit dramatically different behaviors between rational and irrational times. For example, the evolution of piecewise constant data remains so at rational times, while it becomes continuous and fractalised at irrational times. A natural question to ask is whether this \textit{Talbot effect}, as it broadly known, persists under non-linear dispersive flows. Focusing on the KdV equation, we will present two perspectives, each drawing from the Fourier restriction norm estimates due to
+	\cite{Bourgain1993} and the normal form transformation of \cite{BabinEtAl2011}: the first is the non-linear smoothing effect observed by \cite{ErdoganTzirakis2013}, and the second is the numerical work of \cite{HofmanovaSchratz2017,RoussetSchratz2022}. 
+\end{abstract}
+\maketitle
+
+\tableofcontents
+
+\section{Introduction}
+\input{internal/intro}
+
+\section{Preliminaries}
+\input{internal/bourgain}
+
+\section{Non-linear smoothing effect}\label{sec:smooth}
+\input{internal/smooth}
+
+\section{Convergence of numerical schemes}\label{sec:numerics}
+\input{internal/numerics}
+
+\bibliographystyle{alpha}
+\bibliography{external/biblio}
+
+\end{document}

@@ -1,0 +1,94 @@
+\newcommand{\etalchar}[1]{$^{#1}$}
+\begin{thebibliography}{CKS{\etalchar{+}}03}
+
+\bibitem[BIT11]{BabinEtAl2011}
+Anatoli~V. Babin, Alexei~A. Ilyin, and Edriss~S. Titi.
+\newblock On the regularization mechanism for the periodic {{Korteweg}}--de
+  {{Vries}} equation.
+\newblock {\em Communications on Pure and Applied Mathematics}, 64(5):591--648,
+  2011.
+
+\bibitem[Bou93]{Bourgain1993}
+J.~Bourgain.
+\newblock {Fourier Transform Restriction Phenomena for Certain Lattice Subsets
+  and Applications to Nonlinear Evolution Equations, Part II: The KDV
+  Equation.}
+\newblock {\em Geometric and functional analysis}, 3(3):209--262, 1993.
+
+\bibitem[CKS{\etalchar{+}}03]{CollianderEtAl2003}
+J.~Colliander, M.~Keel, G.~Staffilani, H.~Takaoka, and T.~Tao.
+\newblock Sharp global well-posedness for {{KdV}} and modified {{KdV}} on
+  {{$\mathbb{R}$}} and {$\mathbb{T}$}.
+\newblock {\em Journal of the American Mathematical Society}, 16(3):705--749,
+  July 2003.
+
+\bibitem[CO13]{ChenOlver2013}
+Gong Chen and Peter~J. Olver.
+\newblock Numerical simulation of nonlinear dispersive quantization.
+\newblock {\em Discrete and Continuous Dynamical Systems}, 34(3):991--1008, Thu
+  Aug 01 00:00:00 UTC 2013.
+
+\bibitem[ET13]{ErdoganTzirakis2013}
+Mehmet~Burak Erdo{\u g}an and Nikolaos Tzirakis.
+\newblock Global {{Smoothing}} for the {{Periodic KdV Evolution}}.
+\newblock {\em International Mathematics Research Notices},
+  2013(20):4589--4614, January 2013.
+
+\bibitem[ET16]{ErdoganTzirakis2016}
+M.~Burak Erdogan and Nikolaos Tzirakis.
+\newblock {\em Dispersive Partial Differential Equations: Wellposedness and
+  Applications}.
+\newblock Number~86 in London Mathematical Society Student Texts. Cambridge
+  University Press, Cambridge, United Kingdom, 2016.
+
+\bibitem[GS92]{GoncharSaff1992}
+A.~A. Gonchar and E.~B. Saff, editors.
+\newblock {\em Progress in {{Approximation Theory}}: {{An International
+  Perspective}}}, volume~19 of {\em Springer {{Series}} in {{Computational
+  Mathematics}}}.
+\newblock Springer New York, New York, NY, 1992.
+
+\bibitem[HS17]{HofmanovaSchratz2017}
+Martina Hofmanov{\'a} and Katharina Schratz.
+\newblock An exponential-type integrator for the {{KdV}} equation.
+\newblock {\em Numerische Mathematik}, 136(4):1117--1137, August 2017.
+
+\bibitem[KPV96]{KenigEtAl1996a}
+Carlos~E. Kenig, Gustavo Ponce, and Luis Vega.
+\newblock A {{Bilinear Estimate}} with {{Applications}} to the {{KdV
+  Equation}}.
+\newblock {\em Journal of the American Mathematical Society}, 9(2):573--603,
+  1996.
+
+\bibitem[KR99]{KapitanskiRodnianski1999}
+Lev Kapitanski and Igor Rodnianski.
+\newblock Does a {{Quantum Particle Know}} the {{Time}}?
+\newblock In Dennis~A. Hejhal, Joel Friedman, Martin~C. Gutzwiller, and
+  Andrew~M. Odlyzko, editors, {\em Emerging {{Applications}} of {{Number
+  Theory}}}, pages 355--371. Springer, New York, NY, 1999.
+
+\bibitem[Olv10]{Olver2010}
+Peter~J. Olver.
+\newblock Dispersive {{Quantization}}.
+\newblock {\em The American Mathematical Monthly}, 117(7):599--610, August
+  2010.
+
+\bibitem[RS22]{RoussetSchratz2022}
+Fr{\'e}d{\'e}ric Rousset and Katharina Schratz.
+\newblock Convergence error estimates at low regularity for time
+  discretizations of {{KdV}}.
+\newblock {\em Pure and Applied Analysis}, 4(1):127--152, April 2022.
+
+\bibitem[Tal36]{Talbot1836}
+H.F. Talbot.
+\newblock Facts relating to optical science.
+\newblock {\em The London, Edinburgh, and Dublin Philosophical Magazine and
+  Journal of Science}, 9(56):401--407, December 1836.
+
+\bibitem[Tao06]{Tao2006}
+Terence Tao.
+\newblock {\em Nonlinear {{Dispersive Equations}}: {{Local}} and {{Global
+  Analysis}}}.
+\newblock {American Mathematical Soc.}, 2006.
+
+\end{thebibliography}

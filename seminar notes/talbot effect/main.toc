@@ -1,0 +1,14 @@
+\contentsline {section}{\tocsection {}{1}{Introduction}}{1}{section.1}%
+\contentsline {section}{\tocsection {}{2}{Preliminaries}}{3}{section.2}%
+\contentsline {subsection}{\tocsubsection {}{2.1}{Littlewood-Paley theory}}{3}{subsection.2.1}%
+\contentsline {subsection}{\tocsubsection {}{2.2}{Fourier restriction norm}}{3}{subsection.2.2}%
+\contentsline {subsection}{\tocsubsection {}{2.3}{Local well-posedness theory}}{4}{subsection.2.3}%
+\contentsline {section}{\tocsection {}{3}{Non-linear smoothing effect}}{4}{section.3}%
+\contentsline {subsection}{\tocsubsection {}{3.1}{Normal form transformation}}{5}{subsection.3.1}%
+\contentsline {subsection}{\tocsubsection {}{3.2}{Bilinear and trilinear estimates}}{7}{subsection.3.2}%
+\contentsline {subsection}{\tocsubsection {}{3.3}{Conclusion of the proof}}{8}{subsection.3.3}%
+\contentsline {section}{\tocsection {}{4}{Convergence of numerical schemes}}{9}{section.4}%
+\contentsline {subsection}{\tocsubsection {}{4.1}{Galerkin method}}{10}{subsection.4.1}%
+\contentsline {subsection}{\tocsubsection {}{4.2}{Discrete Fourier restriction spaces}}{11}{subsection.4.2}%
+\contentsline {subsection}{\tocsubsection {}{4.3}{Difference equations}}{11}{subsection.4.3}%
+\contentsline {section}{\tocsection {}{}{References}}{12}{section*.6}%

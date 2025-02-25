@@ -1,0 +1,87 @@
+
+For any reasonable physical model of \textit{wave propagation}, an individual should be able to predict the evolution of prescribed regular initial conditions on small time scales. In the language of partial differential equations, this is the problem of \textit{well-posedness} of the \textit{initial data problem}. To fix a concrete problem, we consider the evolution of scalar fields $\phi : [0, T] \times \R^d \to \R$ under non-linear wave equations of the form
+\begin{equation}\label{eq:NLW}\tag{NLW}
+	\begin{split}
+		\Box_{g(\phi, \partial \phi)} \phi 
+			&= \mathcal N(\phi, \partial\phi), 
+	\end{split}
+\end{equation}
+where the Lorentzian metric $\bfg(\phi, \partial\phi)$ is a perturbation of the Minkowski metric $\bfm := \operatorname{diag} (-, +, \dots, +)$ and $\cN(\phi, \partial\phi)$ is a smooth non-linearity, posed with initial data in the $L^2$-based Sobolev spaces
+	\[
+		(\phi, \partial_t \phi)_{|t = 0} 
+			= (\phi_0, \phi_1) \in (H^s_x \times H^{s - 1}_x) (\R^d).
+	\]
+
+\begin{example}
+	\leavevmode
+\begin{enumerate}
+	\item \emph{Maxwell's equations}: the simplest model for electromagnetic fields $\vec E, \vec B: \R^{1 + 3} \to \R^3$, this is a linear system of equations consisting of Ampere's law, Faraday's law, and Gauss's laws,
+		\begin{equation}\label{eq:maxwell}\tag{M}
+			\begin{split}
+				\partial_t \vec E 
+					&= \nabla \times \vec B, \\
+				\partial_t \vec B 
+					&= - \nabla \times \vec E, \\
+				\nabla \cdot \vec E
+					&= 0,\\
+				\nabla \cdot \vec B 
+					&= 0. 
+			\end{split}
+		\end{equation}
+	While this may not look like the linear wave equation, after differentiating the first and second equations in time, and using the third and fourth equations, we obtain 
+		\begin{align}\label{eq:maxwell2}\tag{M$*$}
+			\begin{split}
+			\Box \bfE
+				&= 0,\\
+			\Box \bfB 
+				&= 0.
+			\end{split}
+		\end{align}
+	The two systems \eqref{maxwell} and \eqref{maxwell2} are equivalent after imposing suitable constraints on the initial data for the latter. 
+
+	\item \emph{Wave maps}: a wave map into the sphere, viewed as a Riemannian sub-manifold of Euclidean space $\SS^m \hookrightarrow \R^{m + 1}$, is a field $\phi: I \times \R^d \to \SS^m$ evolving under the semi-linear wave equation
+		\begin{equation}\tag{WM}\label{eq:wavemaps}
+			\Box \phi 
+				= - \phi ( \partial^\alpha \phi \cdot \partial_\alpha \phi)
+		\end{equation}
+	This equation arises in physics as one of the simplest non-trivial models of quantum field theory, often referred to in the literature as a non-linear $\sigma$-model. 
+		
+	
+	\item \emph{Einstein vacuum equations}: in the absence of matter, the propagation of gravitational waves, represented by a Lorentzian manifold $(\cM, \bfg)$, is modeled by the equation
+		\begin{equation}\tag{EVE}\label{eq:einstein}
+			\mathbf{Ric}_{\bfg} = 0. 
+		\end{equation}
+	After fixing an appropriate choice of coordinates, the Einstein equations reduce to a system of quasi-linear wave equations of the form \eqref{NLW} for the metric $\bfg$. 
+
+\end{enumerate}
+\end{example}
+
+On a philosophical note, we argue that it is possible \textit{mathematically} test the physical relevance of the initial data problem for an evolutionary equation. Following Hadamard \cite{hadamard}, for an equation such as \eqref{NLW} to reasonably model physical reality, the initial data problem must satisfy the following three standards for well-posedness: 
+\begin{itemize}
+	\item \textit{Existence}: If a physical phenomenon is governed by \eqref{NLW}, then for every choice of initial conditions, the propagation of the conditions should correspond to a solution to the equation. 
+	
+	\item \textit{Uniqueness}: In classical physics, physical reality is understood to be deterministic, so each initial data should uniquely determine a solution to \eqref{NLW}.
+
+	\item \textit{Continuous dependence on initial data}: Propagation of waves in physical reality is stable under perturbations, so the data to solution map should be continuous. 
+\end{itemize}
+We say \eqref{NLW} is $(H^s_x \times H^{s - 1}_x)$-wellposed if there exists a well-defined continuous data-to-solution map, 
+\begin{align*}
+	H^s_x \times H^{s - 1}_x
+		&\longrightarrow C_t H^s_x \cap C^1_t H^{s  -1}_x\\
+	(\phi_0, \phi_1)
+		&\longmapsto \phi.
+\end{align*}
+
+
+\begin{theorem}[Energy estimate]
+	We prove 
+	\begin{equation}
+		||(\phi, \partial_t \phi)||_{C^0_t (H^s_x \times H^{s - 1}_x) [0, T]}^2
+			\lesssim \exp \Big( \int_0^T ||\nabla_x \phi||_{L^\infty_x}\, dt \Big) ||(\phi_0,  \phi_1)||_{H^s_x \times H^{s - 1}_x}^2.
+	\end{equation}
+\end{theorem}
+
+
+\begin{theorem}[Classical local well-posedness]
+	The quasi-linear wave equation \eqref{NLW} is locally well-posed in $(H^s_x \times H^{s - 1}_x)(\R^d)$ for $s > \tfrac{d}2 + 1$.
+\end{theorem}
