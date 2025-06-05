@@ -1,0 +1,163 @@
+
+
+\subsection{Degenerate energy monotonicity formula}
+
+Using the Killing vector field $T$, we can obtain an exact conservation law for linear waves. Indeed, using Stokes' theorem and the divergence identity \eqref{div} on the region $\cR_{[0, \tau]}$, we obtain 
+    \begin{equation}
+        \int_{\Sigma_\tau} {^{(T)} J_\mu [\phi]} n^\mu_{\Sigma_\tau} + \int_{\cH^+} {^{(T)} J_\mu[\phi]} n^\mu_{\cH^+}
+            = \int_{\Sigma_0} {^{(T)} J_\mu [\phi]} n^\mu_{\Sigma_0}.
+    \end{equation}
+Since $T$ and $n^\mu_{\cH^+}$ are null, the second boundary term on the left is non-negative. In fact, one may compute ${^{(T)} J_\mu [\phi]} n^\mu_{\cH^+} = |\partial_v \phi|^2$ on the event horizon. This yields the following monotonicity formula,
+
+    \begin{proposition}[Boundedness of $T$-energy]
+        Let $\phi$ be a solution to the wave equation \eqref{LW} on the extremal Reissner-Nordström background, then 
+            \begin{equation}
+                \int_{\Sigma_\tau} {^{(T)} J_\mu [\phi]} n^\mu_{\Sigma_\tau} 
+                    \leq \int_{\Sigma_0} {^{(T)} J_\mu [\phi]} n^\mu_{\Sigma_0}.
+            \end{equation}  
+    \end{proposition}
+
+However, since $T$ degenerates to null approaching the horizon, and in fact $\bfg (T, T) = - \tfrac12 D$ which vanishes to second-order at the horizon, the $T$-energy along the foliation takes the form 
+    \[
+        {^{(T)} J_\mu [\phi]} n^\mu_{\Sigma_\tau}  \sim |\partial_v \phi|^2 + D \cdot |\partial_r \phi|^2 .
+    \]
+In particular, the control over the ingoing null derivative $\partial_v \phi$ degenerates along the horizon. 
+
+\subsection{Degeneracy of redshift}
+
+To handle the degeneracy near the horizon, it is standard to use the redshift vector field $N$ introduced by Dafermos-Rodnianski \cite{DafermosRodnianski2009}. The basic strategy is to choose $N$ to be a time-like vector field, to first approximation taking in double null coordinates $(u, v)$ the form 
+    \[
+        N \approx \frac{\partial_u}{-(\partial_u r)}
+    \]
+satisfying 
+    \[
+        ^{(N) J_\mu [\phi]} n^\mu_{\Sigma_\tau}  \sim {^{(N)} K[\phi]}.
+    \]
+In particular, the bulk term ${^{(N)}K[\phi]}$ is non-negative. This construction relies crucially on the positivity of \textit{surface gravity} $\kappa$, which measures the strength of the redshift effect. Precisely, since $T$ is null, Killing, and tangential along the horizon, the surface gravity is defined by 
+    \[
+        \nabla_T T = \kappa T. 
+    \]
+Assuming $\kappa > 0$, one can show both non-degenerate energy boundedness and integrated local energy decay, 
+\begin{equation}
+    \int_{\Sigma_\tau} {^{(N)} J_\mu [\phi]} n^\mu_{\Sigma_\tau} + \int_\cA {^{(N)} J_\mu [\phi]} n^\mu 
+        \lesssim \int_{\Sigma_0} {^{(N)} J_\mu [\phi]} n^\mu_{\Sigma_0}
+\end{equation}
+see \cite{DafermosRodnianski2009} and also the lecture notes \cite[Lectures on black holes and linear waves]{EllwoodEtAl2013}. 
+
+In the extremal setting, the surface gravity vanishes, in which case one cannot choose $N$ such that the bulk term is non-negative on the horizon. Indeed, taking the ansatz $N = N^v \partial_v + N^r \partial_r$ we compute 
+\[
+    ^{(N)} K [\phi] 
+        = F_{vv} \cdot |\partial_v \phi|^2 + F_{rr} \cdot |\partial_r \phi|^2 + F_{vr} \cdot (\partial_v \phi \partial_r \phi)
+\]
+where the coefficients are given by 
+\begin{align*}
+    F_{vv} 
+        &= \partial_r N^v, \\
+    F_{rr}
+        &= D \cdot \left( \frac{\partial_r N^r}{2} - \frac{N^r}{r}  \right) - \frac{N^r D'}{2},\\
+    F_{vr}
+        &= D \cdot \partial_r N^v - \frac{2N^r}{r}.
+\end{align*}
+Since $N$ is necessarily time-like, we need $N^r (M) \neq 0$ since $\bfg(N, N) = - D \cdot |N^v|^2 + 2 N^v N^r$. It follows that $F_{rr} (M) = 0$, wherease the sign-indefinite coefficient $F_{vr}$ is non-zero. It follows that the bulk term is linear in $\partial_r \phi$ on the horizon and manifestly sign indefinite. 
+
+\subsection{Generalised currents}
+
+To rectify this issue, we introduce an extra Lagrangian term $w \cdot \phi \nabla_\mu \phi$ in the current; this corresponds to multiplying the wave equation by $w\phi$. Define the generalised currents by 
+\begin{align*}
+    ^{(N, w)} J_\mu [\phi] 
+        &:= {^{(N)} J_\mu [\phi]} + w \cdot \psi \nabla_\mu \phi, \\ 
+    ^{(N, w)} K[\phi]
+        &:= {^{(N)} K}[\phi] + \nabla^\mu w \cdot \phi \nabla_\mu \phi + w \cdot \nabla^\alpha \phi \nabla_\alpha \phi.
+\end{align*}
+Then for solutions to the wave equation, we have the divergence identity
+\begin{equation}\label{eq:div2}
+    \nabla^\mu \left( ^{(N, w)} J_\mu [\phi]  \right) = ^{(N, w)} K[\phi].
+\end{equation}
+Taking 
+    \[
+        w = \frac{N^r(M)}{M} = - \frac12, \qquad N = 16 r \partial_v + \left( \frac32 r + M \right) \partial_r, 
+    \]
+we obtain 
+
+\begin{proposition}[Coercivity of $N$-bulk term]
+    Let $\phi$ be a solution to the wave equation \eqref{LW} on the extremal Reissner-Nordström background, then 
+        \begin{equation}
+            ^{(N, -\frac12)} K[\phi] 
+                \gtrsim |\partial_v \phi|^2 + \sqrt D \cdot |\partial_r \phi|^2 
+        \end{equation}
+    in a neighborhood of the event horizon $\cA = \{ M \leq r \leq \tfrac98 M\}$
+\end{proposition}
+
+\begin{proof}
+    We compute 
+        \begin{align*}
+            {^{N, w}} K[\phi]
+                &= F_{vv} \cdot |\partial_v \phi|^2+ (F_{rr} + w D) \cdot |\partial_r \phi|^2 + (F_{vr} + 2w) \cdot (\partial_v \phi \partial_r\phi) .
+        \end{align*}
+    Then 
+        \begin{align*}
+            F_{vv}
+                &= 16, \\
+            F_{rr} + wD
+                &= F_{rr} -\frac12 D,\\
+            F_{vr} -1
+                &= 16 D + 2 \sqrt D.
+        \end{align*}
+    Note the second coefficient is positive since the leading term $D'$ has a positive coefficient. Suitable application of Cauchy-Schwarz implies that the sign-indefinite term $F_{vr}$ can be controlled by the sign-definite terms. 
+\end{proof}
+
+\subsection{Cut-off generalised currents}
+
+Since the bulk term ${^{(N, -\frac12)} K[\phi]}$ cannot be chosen to be non-negative far away from the horizon, we simply modify the current by choosing appropriate cut-offs. To this end, we extend the redshift vector field by 
+    \begin{align*}
+        N^v = 1, \qquad r \geq \tfrac87 M, \\
+        N^r = 0, \qquad r \geq \tfrac87M. 
+    \end{align*}
+Then $N$ is future-directed time-like, and we define the cut-off currents by 
+    \begin{align*}
+        ^{(N, \delta, -\frac12)} J_\mu [\phi] 
+            &:= {^{(N)} J_\mu [\phi]} - \frac12 \delta \phi \nabla_\mu \phi, \\
+        ^{(N, \delta, -\frac12)} K[\phi]
+            &:= \nabla^\mu \left( {^{(N, \delta, - \frac12)} J_\mu [\phi]}\right)
+    \end{align*}
+where $\delta$ is a cut-off satisfying $\delta \equiv 1$ for $M \leq r \leq \tfrac98 M$ and $\delta \equiv 0$ for $\tfrac87 M < r < \infty$. We arrive at the divergence identity, 
+    \begin{equation}\label{eq:div3}
+        ^{(N, \delta, -\frac12)} K[\phi] = \nabla^\mu \left( ^{(N, \delta, -\frac12)} J_\mu [\phi]  \right) 
+    \end{equation}
+By Hardy's inequality, one can verify 
+
+\begin{lemma}[Comparable $N$-energies]
+    For sufficiently regular $\phi$, we have 
+        \begin{equation}
+            \int_{\Sigma_\tau} {^{(N, \delta, -\frac12)} J_\mu [\phi]} n^\mu
+                \sim \int_{\Sigma_\tau} {^{(N)} J_\mu [\phi]} n^\mu_{\Sigma_\tau} .
+        \end{equation}
+\end{lemma}
+
+
+\begin{proposition}[Uniform boundedness of $N$-energy]
+    Let $\phi$ be a solution to the wave equation \eqref{LW} on the extremal Reissner-Nordström background, then 
+        \begin{equation}\label{eq:Nbound}
+            \int_{\Sigma_\tau} {^{(N)} J_\mu [\phi]} n^\mu_{\Sigma_\tau} 
+                \lesssim \int_{\Sigma_0} {^{(N)} J_\mu [\phi]} n^\mu_{\Sigma_0}.
+        \end{equation}
+\end{proposition}
+
+\begin{proof}
+    By Stokes' theorem \eqref{stokes} and the divergence identity \eqref{div3}, we have 
+        \begin{align*}
+            \int_{\Sigma_\tau} {^{(N, \delta, - \frac12)} J_\mu [\phi]} n^\mu + \int_{\cR} {^{(N, \delta, - \frac12)} K[\phi]} + \int_{\cH^+} {^{(N, \delta, - \frac12)} J_\mu[\phi]} n^\mu  
+                &= \int_{\Sigma_0} {^{(N, \delta, - \frac12)} J_\mu [\phi]} n^\mu .
+        \end{align*}
+   The space-time integral has the correct sign close to the horizon, vanishes away from the horizon, while the intermediate region can be handled by a degenerate integrated local energy decay \eqref{iled}. The boundary term on the horizon has the correct sign. 
+\end{proof}
+
+\begin{proposition}[Integrated local energy decay]
+    Let $\phi$ be a solution to the wave equation \eqref{LW} on the extremal Reissner-Nordström background, then for any $\tau_1 < \tau_2$, we have
+        \begin{equation}
+            \int_{\tau_1}^{\tau_2} \int_{\Sigma_\tau} {^{(N, - \frac12)} K[\phi]}
+                \lesssim \int_{\Sigma_{\tau_1}} {^{(N)} J_\mu [\phi]} n^\mu_{\Sigma_{\tau_1}}
+        \end{equation}
+\end{proposition}
+
+

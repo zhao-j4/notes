@@ -1,0 +1,85 @@
+Obtaining pointwise boundedness and decay estimates from the energy boundedness and decay estimates follow from standard applications of Sobolev embedding. That is, we can write $\phi$ using the fundamental theorem of calculus on the interval $[r, \infty)$ and applying Cauchy-Schwartz to obtain the estimate
+    \begin{align} \label{eq:sobolev}
+        |\phi(r)|^2
+            &\leq \frac{1}{r}  \int_{r}^\infty |\partial_\rho \phi|^2 \, \rho^2 d \rho. 
+    \end{align}
+Far away from the horizon $r \geq R_0$, we have $|\partial_\rho \phi|^2 \lesssim {^{(T)} J_\mu [\phi]} n^\mu_{\widetilde{\Sigma}_\tau}$, so applying decay of the $T$-energy far away from the horizon furnishes 
+
+\begin{proposition}[Decay away from the horizon]
+    Let $\phi$ be a spherically-symmetric solution to the linear wave equation \eqref{LW} on an extremal Reissner-Nordstr\"om background, then 
+        \begin{equation}
+            |\phi(r)|^2 \lesssim \frac{1}{\tau^2}
+        \end{equation}
+    away from the horizon. 
+\end{proposition}
+
+\begin{proof}
+    We have
+    \begin{align*}
+        |\phi(r)|^2
+            &\lesssim \frac1r \int_{\widetilde{\Sigma}_\tau} {^{(T)} J_\mu [\phi]} n^\mu_{\widetilde{\Sigma}_\tau}.
+    \end{align*}\
+    Using decay of the $T$-energy \eqref{energydecay} completes the proof. 
+\end{proof}
+
+This completes the proof of the pointwise decay away from the horizon \eqref{pointwisedecay} from Theorem \ref{thm:stability}.
+
+Close to the horizon $M \leq r \leq R_0$, the control over the transverse derivatives in the $T$-energy degenerates, so we are left with instead 
+
+\begin{lemma}[Degenerate decay near horizon]
+    Let $\phi$ be a spherically-symmetric solution to the linear wave equation \eqref{LW} on an extremal Reissner-Nordstr\"om background, then 
+        \begin{equation}\label{eq:degenerate}
+            |\phi (r)|^2
+                \lesssim \frac{1}{(r - M)^2} \frac{1}{\tau^2}. 
+        \end{equation}
+\end{lemma}
+
+\begin{proof}
+    By Sobolev embedding \eqref{sobolev} and pointwise coercivity, we have
+        \begin{align*}
+            |\phi(r)|^2 
+                &\lesssim \frac1r \int_{\Sigma_\tau \cap \{ r' \geq r\}} {^{(N)}J_\mu [\phi]} n^\mu \\
+                &\lesssim \frac{1}{r D(r)} \int_{\Sigma_\tau} {^{(T)}J_\mu [\phi]} n^\mu.
+        \end{align*}
+    The result follows then from decay of the $T$-energy \eqref{energydecay}.
+\end{proof}
+
+Nonetheless, we can interpolate between the degenerate pointwise decay \textit{near} the horizon and integrated decay \textit{up to} the horizon to obtain decay \textit{at} the horizon. That is, using the fundamental theorem of calculus on the interval $[r_0, r_0 + \tau^{-\alpha}]$, see Figure \ref{fig:interpolate}, for $\alpha$ to be chosen later, we have
+
+\begin{lemma}[Interpolation]
+    Let $\phi$ be spherically-symmetric, then   
+    \begin{align}\label{eq:interpolation}
+        |\phi(r)|^2 
+            \lesssim |\phi(r + \tau^{-\alpha})|^2 +2 \int_{\Sigma_\tau \cap \{ r_0 \leq r \leq r_0 + \tau^{-\alpha}\}} \phi \partial_\rho \phi .
+    \end{align}
+\end{lemma}
+
+\begin{figure}[h]\label{fig:interpolate}
+    \begin{center}
+        \includegraphics[scale = 0.7]{graphics/foliation3.PNG}
+    \end{center}
+    \caption{Interpolation between the degenerate decay near the horizon and the integrated decay up to the horizon by using the fundamental theorem of calculus.}
+\end{figure}
+
+The first term on the right has favourable decay as it concerns a region away from the horizon, while the second term is favourable since $\partial_\rho \phi$ is uniformly bounded, $\phi$ decays in an integrated sense, and the region of integration decays. 
+
+\begin{proposition}[Pointwise decay near the horizon]   
+    Let $\phi$ be a spherically-symmetric solution to the linear wave equation \eqref{LW} on an extremal Reissner-Nordstr\"om background, then 
+        \begin{equation}
+            |\phi(r)|^2 \lesssim \frac{1}{\tau^{6/5}}
+        \end{equation}
+    near the horizon. 
+\end{proposition}
+
+\begin{proof}
+    Continuing from \eqref{interpolation}, we estimate the first term on the right using the degenerate decay \eqref{degenerate}, and the second term on the right by placing $\partial_\rho \phi$ in $L^\infty$ and $\phi$ in $L^2$. Controlling the latter using Hardy's inequality and $T$-energy decay \eqref{energydecay}, we obtain
+        \[
+            |\phi(r)|^2 \lesssim \tau^{-2 + 2\alpha} + \tau^{-\frac\alpha2 - 1} .
+        \]
+    Optimising by taking $\alpha = \frac25$ furnishes the desired decay rate. 
+\end{proof}
+
+This completes the proof of the pointwise decay \eqref{pointwisedecay} near the horizon from Theorem \ref{thm:stability}.
+
+
+

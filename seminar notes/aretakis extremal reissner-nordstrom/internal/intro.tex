@@ -1,0 +1,117 @@
+
+The \emph{Reissner-Nordstr\"om} space-times arise as an explicit family of solutions to the Einstein-Maxwell equations describing general relativity coupled with electromagnetism. In the Schwarzchild coordinates $(t, r)$, the metrics take the form 
+	\[
+		\bfg_{M,e}  
+			:= - \left( 1 - \frac{2M}r + \frac{e^2}{r^2} \right) dt^2 + \left( 1 - \frac{2M}r + \frac{e^2}{r^2} \right)^{-1} dr^2 + r^2 \cancel\bfg,
+	\]
+where $M > 0$ is a positive parameter known as the \emph{mass} and $e \in \R$ is a real parameter known as the \emph{charge}. Under the evolution of the Einstein-Maxwell equations, 
+	\begin{equation}\tag{E-M}\label{eq:EinsteinMaxwell}
+		\begin{split}
+			R_{\mu\nu} - \frac12 R g_{\mu\nu}   
+				&= 2 F_{\mu \alpha} F\indices{^\alpha_\nu} - \frac12 g_{\mu\nu} F_{\alpha\beta} F^{\alpha\beta}, \\
+			\nabla_\mu F^{\mu\nu} 
+				&= 0.
+		\end{split}
+	\end{equation}
+the \textit{sub-extremal} sub-family $|e| < M$ is expected to be stable under the \textit{black hole stability conjecture}, while members of the \textit{super-extremal} sub-family $|e| > M$, in view of their naked singularities, are expected to be unstable under the \textit{weak cosmic censorship conjecture}. At the boundary between these two lie the \textit{extremal} members $|e| = M$, 
+	\[
+		\bfg  
+			:= - \left( 1- \frac{M}{r} \right)^2 dt^2 + \left( 1 - \frac{M}{r} \right)^{-2} dr^2 + r^2 \cancel\bfg,
+	\]
+which are expected to share aspects of both stability and instability of their non-extremal neighbors in the Reissner-Nordstr\"om family. 
+
+In this note, we aim to give a primary exposition into the study of the extremal Reissner-Nordstr\"om space-times, which, in view of spherical-symmetry, are the simplest examples within the general class of extremal black holes. For a survey of the broader subject, we refer the interested reader to the brief by Aretakis \cite{Aretakis2018} and the recent essay by Dafermos \cite{Dafermos2025}. Keeping the end goal of studying non-linear stability of extremal black holes in mind, we begin by telling an even simpler story -- that of the linear wave equation on an extremal Reissner-Nordstr\"om exterior background, 
+	\begin{equation}\tag{W}\label{eq:LW}
+		\Box_\bfg \phi = 0.
+	\end{equation}
+In particular, we will follow the seminal series of papers by Aretakis \cite{Aretakis2011a, Aretakis2011} concerning the stability and instability of these linear scalar perturbations $\phi$ of extremal Reissner-Nordstr\"om $\bfg$. To emphasise the central ideas and minimise the minor technicalities, we restrict our exposition to the spherically-symmetric setting, in which case the main results may be stated as follows,
+
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics{graphics/ingoing.PNG}
+    \end{center}
+    \caption{Penrose diagram of extremal Reissner-Nordstr\"om space-time and the ingoing Eddington-Finkelstein coordinates $(v, r)$ \cite{Aretakis2018}. We denote $T := \partial_v$ the Killing vector field and $Y := \partial_r$ the ingoing null vector field. }
+\end{figure}
+
+
+\begin{theorem}[Weak stability of extremal Reissner-Nordstr\"om]\label{thm:stability}
+	For solutions $\phi$ to the linear wave equation \eqref{LW} on an extremal Reissner-Nordstr\"om background, we have the energy decay,
+		\begin{equation}
+			\int_{\Sigma_\tau} |T\phi|^2 + D \cdot |Y \phi|^2 
+				\lesssim \tau^{-2}, \label{eq:energydecay}
+		\end{equation}
+	and the pointwise decay, 
+		\begin{equation}\label{eq:pointwisedecay}
+			|\phi| \lesssim 
+				\begin{cases}
+					{\tau^{-3/5}}, 	&\text{near the horizon}, \\
+					\tau^{-1}, 		&\text{far from the horizon},
+				\end{cases}	
+		\end{equation}
+
+\end{theorem}
+
+\begin{theorem}[Aretakis instability in extremal Reissner-Nordstr\"om]
+	For generic solutions $\phi$ to the linear wave equation \eqref{LW} on an extremal Reissner-Nordstr\"om background, ingoing null derivatives of $\phi$ do not decay on the event horizon $\cH^+$. More precisely, we have
+		\begin{equation}
+			Y^{m + 1} T^m \phi \longrightarrow C \cdot H_0 [\phi] \qquad \text{as $\tau \to \infty$}
+		\end{equation}	
+	for some constant $C \neq 0$, and, for $k \geq 2$,   
+		\begin{equation}
+			\left|Y^{m + k} T^m \phi\right| \gtrsim |H_0 [\phi]| \, \tau^{k - 1} \qquad \text{as $\tau \to \infty$}.
+		\end{equation}
+\end{theorem}
+
+ 
+
+\subsection{Outline of the strategy}
+
+
+As a basic caricature of the instability mechanism, rewriting the linear wave equation \eqref{LW} in ingoing Eddington-Finkelstein coordinates $(v, r)$ for spherically-symmetric solutions yields the following equation on the horizon, 
+	\begin{equation*}
+		\partial_v \left( \partial_r \phi + \frac1M \phi \right)_{|\cH^+} = 0, 
+	\end{equation*}
+i.e. the (zero-th) \textit{Aretakis charge}, 
+	\[	
+		H_0 [\phi] 
+			:= \partial_r \phi + \frac1M \phi,
+	\]
+is conserved along the event horizon $\cH^+$. On the one hand, the weak stability of extremal Reissner-Nordstr\"om tells us that the lower-order term $\phi$ decays along the horizon, while on the other hand, $H_0 [\phi] \neq 0$ for generic solutions to the wave equation. It follows then from the conservation law that the ingoing null derivative $\partial_r \phi$ \textit{does not decay} along the horizon. By commuting the wave equation with $\partial_r$, we can likewise derive an evolution equation for $\partial_r^2 \psi$ along the horizon
+	\begin{equation}
+		\partial_v \left( \partial_r^2 \phi \right)_{|\cH^+} 
+			= - 2M^{-2} H_0 [\phi] + \text{decaying}
+	\end{equation}
+so upon integrating in $v$ we conclude linear growth in $v$. In fact we can show in general 
+	\[
+		|Y^k \psi| \gtrsim |H_0 [\phi]| v^{k - 1}
+	\]
+on the horizon for any $k \geq 1$ and $v$ large
+
+To prove decay estimates, we resort to the $r^p$-method of Dafermos-Rodnianski \cite{DafermosRodnianski2010}, which combines a hierarchy of weighted integrated energy decay estimates, namely, drawing from the later work of Angelopoulos-Aretakis-Gajic \cite{AngelopoulosEtAl2018}, 
+	\begin{align}
+		\int_{\tau_1}^{\tau_2} \int_{C_\tau} r^{p - 1} |\partial_v \psi|^2 
+			&\lesssim \int_{C_{\tau_1}} r^p |\partial_v \psi|^2 + \text{lower order},\label{eq:rpfar}\\ 
+		\int_{\tau_1}^{\tau_2} \int_{\underline{C}_\tau} (r - M)^{3 - p} \frac{|\partial_u \psi|^2}{- \partial_u r} 
+			&\lesssim \int_{\underline{C}_{\tau_1}} (r - M)^{2 - p} \frac{|\partial_u \psi|^2}{- \partial_u r}+ \text{lower order}\label{eq:rpnear}
+	\end{align}
+with a dyadic pigeonholing argument to prove energy decay. One can pass these energy decay arguments to pointwise decay estimates via Sobolev embedding. 
+
+\begin{figure}[h]\label{fig:AAG}
+    \begin{center}
+        \includegraphics[scale = 0.75]{graphics/foliation4.PNG}
+    \end{center}
+    \caption{Spacelike-null foliation $\Sigma_\tau$ used in \cite{AngelopoulosEtAl2018} which is invariant under the Couch-Torrence conformal symmetry $(u, v) \mapsto (v, u)$. The initial hypersurface $\Sigma_0$ consists of $t = 0$ in a region away from both $\cH^+$ and $\cI^+$ and null hypersurfaces $u = u_0$ and $v = v_0$ in the regions near $\cH^+$ and $\cI^+$ respectively.}
+\end{figure}
+
+The $r^p$-hierarchy \eqref{rpfar} near null infinity $\cI^+$ is standard; the novel observation of \cite{Aretakis2011} was that a version of the similar hierarchy \eqref{rpnear} holds near the horizon $\cH^+$. Indeed, this can be expected in view of the Couch-Torrence inversion, which is a discrete conformal symmetry of extremal Reissner-Nordstr\"om space-times which ``inverts'' the domain of outer communication, exchanging $\cH^+$ with $\cI^+$, given in double null coordinates as 
+\[
+	\Phi(u, v) = (v, u).
+\]
+We only mention this correspondence as motivation for the $r^p$-hierarchy near the horizon, which is necessary for decay estimate due to the degeneracy of redshift. See \cite[Chapter 2.1.4]{Aretakis2018} and \cite{AngelopoulosEtAl2018} for further discussion on this perspective. 
+
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[scale = 0.7]{graphics/couch.PNG}
+	\end{center}
+	\caption{The Couch-Torrence inversion is a discrete conformal symmetry of extremal Reissner-Nordstr\"om which ``inverts'' the domain of outer communication, exchanging $\cH^+$ with $\cI+$. }	\label{fig:CT}
+\end{figure}

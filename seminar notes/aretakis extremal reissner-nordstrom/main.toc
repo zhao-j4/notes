@@ -1,0 +1,18 @@
+\contentsline {section}{\tocsection {}{1}{Introduction}}{1}{section.1}%
+\contentsline {subsection}{\tocsubsection {}{1.1}{Outline of the strategy}}{3}{subsection.1.1}%
+\contentsline {section}{\tocsection {}{2}{Preliminaries}}{4}{section.2}%
+\contentsline {subsection}{\tocsubsection {}{2.1}{Geometry of extremal Reissner-Nordstr\"om spacetime}}{4}{subsection.2.1}%
+\contentsline {subsection}{\tocsubsection {}{2.2}{The energy-momentum tensor}}{6}{subsection.2.2}%
+\contentsline {subsection}{\tocsubsection {}{2.3}{Hardy inequalities}}{6}{subsection.2.3}%
+\contentsline {section}{\tocsection {}{3}{Conservation laws on the event horizon}}{6}{section.3}%
+\contentsline {section}{\tocsection {}{4}{Integrated local energy decay}}{8}{section.4}%
+\contentsline {section}{\tocsection {}{5}{Energy estimates}}{8}{section.5}%
+\contentsline {subsection}{\tocsubsection {}{5.1}{Degenerate energy monotonicity formula}}{8}{subsection.5.1}%
+\contentsline {subsection}{\tocsubsection {}{5.2}{Degeneracy of redshift}}{9}{subsection.5.2}%
+\contentsline {subsection}{\tocsubsection {}{5.3}{Generalised currents}}{10}{subsection.5.3}%
+\contentsline {subsection}{\tocsubsection {}{5.4}{Cut-off generalised currents}}{10}{subsection.5.4}%
+\contentsline {section}{\tocsection {}{6}{Energy decay via $r^p$method}}{11}{section.6}%
+\contentsline {subsection}{\tocsubsection {}{6.1}{$T$-$P$-$N$-hierarchy in a neighborhood of $\mathcal H^+$}}{12}{subsection.6.1}%
+\contentsline {subsection}{\tocsubsection {}{6.2}{Energy decay via dyadic pigeonholing}}{14}{subsection.6.2}%
+\contentsline {section}{\tocsection {}{7}{Pointwise estimates}}{14}{section.7}%
+\contentsline {section}{\tocsection {}{}{References}}{16}{section*.5}%

@@ -1,0 +1,61 @@
+\documentclass[reqno]{amsart}
+
+\usepackage{external/takodachi}
+
+\usepackage{cancel}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{tensor}
+
+% To show labels in the margin:
+\usepackage[notref, notcite]{showkeys}
+
+% kill subsections in ToC
+\setcounter{tocdepth}{1} 
+
+\title[Linear waves on extremal Reissner-Nordström spacetimes]
+{
+	Linear waves on extremal Reissner-Nordström spacetimes \\
+	(in spherical symmetry)
+} 
+\author{Jason Zhao}
+%\address{Department of Mathematics, University of California, Berkeley, 94720}
+%\email{zhao.j@berkeley.edu}
+\date{\today}
+
+
+\begin{document}
+
+\begin{abstract}
+	In the series of works \cite{Aretakis2011a, Aretakis2011}, Aretakis showed that, for generic linear waves evolving on an extremal Reissner-Nordstr\"om background, ingoing null derivatives {do not decay} on the event horizon, or may even {grow polynomially}. The seed of the \textit{Aretakis instability} stems from the conservation of the \textit{Aretakis charges} along the event horizon. To pass to a growth mechanism, one must complement the conservation laws with a \textit{weak stability} in the form of suitable energy estimates and decay estimates. We provide a simplified account of these results by restricting to the spherically-symmetric setting. 
+\end{abstract}
+\maketitle
+
+\tableofcontents
+
+\section{Introduction}
+\input{internal/intro}
+
+\section{Preliminaries}
+\input{internal/prelim}
+
+\section{Conservation laws on the event horizon}
+\input{internal/conserve}
+
+\section{Integrated local energy decay}
+\input{internal/iled}
+
+\section{Energy estimates}\label{sec:redshift}
+\input{internal/energy}
+
+\section{Energy decay via \texorpdfstring{$r^p$}-method}
+\input{internal/rp}
+
+\section{Pointwise estimates}
+\input{internal/pointwise}
+
+\bibliographystyle{alpha}
+\bibliography{external/biblio}
+
+\end{document}

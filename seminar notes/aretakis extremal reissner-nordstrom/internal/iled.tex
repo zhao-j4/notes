@@ -1,0 +1,53 @@
+
+It will be convenient to introduce various integrated local energy decay estimates to handle various space-time integrals which emerge when correcting the energy fluxes. The strategy will be to correct the fluxes judiciously \textit{near} the horizon and \textit{away} from the horizon, and handle the ensuing error terms in the transition region via the integrated local energy decay. 
+
+
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics[scale = 0.8]{graphics/foliation.PNG}
+    \end{center}
+    \caption{Fix a space-like hypersurface $\Sigma_0$, we obtain a folation $\Sigma_\tau$ of the space-time by flowing with respect to the vector field $T$. }
+\end{figure}
+
+We work in tortoise coordinates $(t, r^*)$, making the ansatz $X = f(r^*) \partial_{r^*}$. Then 
+    \[
+        ^{(X)} K [\phi]
+            = F_{tt} \cdot |\partial_t \phi|^2 + F_{r^* r^*} \cdot |\partial_{r^*} \phi|^2,
+    \]
+where 
+    \begin{align*}
+        F_{tt}
+            &= \frac{f'}{2D} + \frac{f}{r},\\
+        F_{r_* r_*}
+            &= \frac{f'}{2D} - \frac{f}{r} .
+    \end{align*}
+
+\begin{proposition}[Morawetz multiplier in spherical symmetry]
+    Let $\phi$ be a spherically symmetric solution to the wave equation \eqref{LW} on the extremal Reissner-Nordström background, then the Morawetz multiplier $X = - \tfrac{1}{r^3} \partial_{r^*}$ gives 
+    \begin{equation}
+        ^{(X)} K 
+            = \frac{1}{r^4} |\partial_t \phi|^2 + \frac{5}{r^4} |\partial_{r_*} \phi|^2 .
+    \end{equation}
+\end{proposition}
+
+\begin{lemma}[Control of boundary terms]
+    Let $X = f \partial_{r^*}$ for $f$ bounded, and let $\Sigma$ be space-like or null, then 
+        \begin{equation}
+            \left| \int_\Sigma {^{(X)} J_\mu[\phi]} n^\mu \right| \lesssim \int_\Sigma {^{(T)} J[\phi]} n^\mu.
+        \end{equation}
+\end{lemma}
+
+\begin{proof}
+    Compute and use the triangle inequality.
+\end{proof}
+
+
+\begin{theorem}[Integrated local energy decay in spherical symmetry]
+    Let $\phi$ be a spherically symmetric solution to the wave equation \eqref{LW} on the extremal Reissner-Nordström background, then for any $\tau_1 < \tau_2$, we have
+        \begin{equation}\label{eq:iled}
+            \int_{\cR_{[0, \tau]}} \frac{1}{r^4} |\partial_t \phi|^2 + \frac{1}{r^4} |\partial_{r_*} \phi|^2 
+                \lesssim \int_{\Sigma_0} {^{(T)} J_\mu [\phi]} n^\mu_{\Sigma_0}
+        \end{equation}
+\end{theorem}
+
+

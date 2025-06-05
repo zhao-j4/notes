@@ -1,0 +1,177 @@
+
+To obtain energy decay estimates, we employ the $r^p$-method of Dafermos-Rodnianski \cite{DafermosRodnianski2010} in neighborhoods of future null infinity $\cI^+$ \textit{and} the event horizon $\cH^+$. As the argument near $\cI^+$ is standard, applying to a larger class of spacetimes, we will only give a brief account as a primer for the argument near $\cH^+$, which is a novelty of the extremal Reissner-Nordstr\"om background. 
+
+
+\begin{figure}[h]\label{fig:spacenull}
+    \begin{center}
+        \includegraphics[scale = 0.7]{graphics/klainerman.PNG}
+        \caption{Spacelike-null folation of Minkowski space, taken from \cite{Klainerman2011a}; on the left is $\R^{1 + 3}$ and on the right is the compactified Penrose diagram. }
+    \end{center}
+\end{figure}
+
+To capture the late-time asymptotics of linear waves, it is convenient to work with a spacelike-null foliation of spacetime, see Figures \ref{fig:spacenull} and \ref{fig:spacelikenull2}, rather than a spacelike foliation. As an extreme example, for compactly supported initial data in 3 spatial dimensions, the strong Huygen's principle implies that the solution remains supported within the \textit{wave zone}. A space-like foliation $\Sigma_\tau$ will intersect the wave zone for all $\tau$ and thus cannot decay, while the space-like null foliation $\widetilde{\Sigma}_\tau$ does not see the solution at all for large $\tau$. Working in double null coordinates $(u, v)$, the multiplier $V = r^p \partial_v$ yields the following hierarchy of integrated energy estimates for the radiation field $\psi := r \phi$, 
+
+\begin{proposition}[$\cI^+$-localised $r^p$-hierarchy]
+    For $p< 3$, the spherically-symmetric solutions $\phi$ to the wave equation \eqref{LW} on the extremal Reissner-Nordstr\"om background satisfy the following $r^p$-weighted estimates, 
+        \begin{equation}
+            \int_{\widetilde{\cN}_{\tau_2}} r^p \frac{|\partial_v \psi|^2}{r^2} + \int_{\widetilde{\cD}_{[\tau_1, \tau_2]}} r^{p - 1} (p + 2) \frac{|\partial_v \psi|^2}{r^2} 
+                \lesssim \int_{\widetilde{\Sigma}_{\tau_1}} {^{(T)} J_\mu [\psi]} n^\mu_{\widetilde{\Sigma}_{\tau_1}} + \int_{\widetilde{\cN}_{\tau_1}} r^p \frac{|\partial_v \psi|^2}{r^2}. \label{eq:rp1}
+        \end{equation}
+\end{proposition}
+
+
+
+\begin{figure}[h]\label{fig:spacelikenull2}
+    \begin{center}
+        \includegraphics[scale = 0.75]{graphics/foliation2.PNG}
+    \end{center}
+    \caption{The spacelike-null foliation $\widetilde{\Sigma}_\tau$ in \cite{Aretakis2011a} of extremal Reissner-Nordstr\"om, which is used to derive the $r^p$-hierarchy of integrated energy estimates.}
+\end{figure}
+
+Given an energy which is uniformly bounded, $\cE[\phi[\tau]] \lesssim \cE[\phi[0]]$, to prove decay it suffices to estimate the energy on a \textit{discrete} sequence of dyadic times $\tau_n \sim C^n$. And indeed, using the pigeonhole principle or a variant of the mean value theorem, one can leverage the hierarchy of integrated energy estimates \eqref{rp1} along with uniform boundedness of the $r^p$-weighted energies to obtain such a sequence such that 
+    \[
+    \int_{\widetilde{\cN}_{\tau_n}} r^{p - 2}\frac{|\partial_v \psi|^2}{r^2} \lesssim \frac1{\tau_{n - 1}} \int_{\widetilde{\cN}_{\tau_{n - 1}}} r^{p - 1} \frac{|\partial_v \psi|^2}{r^2} \lesssim \frac1{\tau_{n - 1}} \frac{1}{\tau_{n - 2}} \int_{\widetilde{\cN}_{0}} r^{p} \frac{|\partial_v \psi|^2}{r^2}.
+    \]
+As the sequence of times was chosen dyadically, this two-fold appliation of the hierarchy immediately implies a $\tau^{-2}$ decay rate. For more details, see \cite[Section 5]{Aretakis2011a}, while for the general scheme, see the original paper of Dafermos-Rodnianski \cite{DafermosRodnianski2010} or the lecture notes of Klainerman \cite[Section 9]{Klainerman2011a}.
+
+\subsection{$T$-$P$-$N$-hierarchy in a neighborhood of $\cH^+$}
+
+In view of the Couch-Torrence correspondence between $\cI^+$ and $\cH^+$ (see Figure \ref{fig:CT} and the discussion therein), one might expect that the $r^p$-hierarchy near future null infinity corresponds to an analogous $(r - M)^{-p}$-hierarchy near the event horizon. We will not explicitly adopt this perspective, as it is technically unnecessary for our purposes, however we point the interested reader to \cite{AngelopoulosEtAl2018} which studied precise late-time asymptotics using a Couch-Torrence invariant spacelike-null foliation as depicted in Figure \ref{fig:AAG}.
+
+
+Recall that in Section \ref{sec:redshift}, the stationary vector field $T$, which is null on the horizon and thus does not see any of the redshift effect, yielded a \textit{degenerate} energy, while the redshift vector field $N$ yielded a \textit{non-degenerate} energy. The key idea of Aretakis \cite[Section 5.4]{Aretakis2011} was to introduce a vector field $P$ which captures less of the degenerate redshift effect near the horizon $N$ but more when compared to $T$, in the sense that we have the following hierarchy of energies,
+    \begin{align*}
+        ^{(T)} J_\mu [\phi] n^\mu_{\Sigma_\tau}
+            &\sim |\partial_v \phi|^2 + D \cdot |\partial_r \phi|^2, \\
+        ^{(P)} J_\mu [\phi] n^\mu_{\Sigma_\tau}
+            &\sim |\partial_v \phi|^2 + \sqrt D \cdot |\partial_r \phi|^2 , \\
+        ^{(N)} J_\mu [\phi] n^\mu_{\Sigma_\tau}
+            &\sim |\partial_v \phi|^2 + |\partial_r \phi|^2.
+    \end{align*}
+To first approximation, one should think of the $P$-vector field as time-like in the domain of outer communication and degenerating to null in a linear fashion as one approaches the event horizon, 
+    \[
+        P \approx T - \sqrt{D} \cdot Y
+    \]
+
+
+\begin{proposition}[Microscopic $T$-$P$-$N$-hierarchy]
+        There exists a $T$-invariant time-like vector field $P$ such that 
+            \begin{align}\label{eq:TPmicro}
+                {^{(T)}J_\mu [\phi]} n^\mu_\Sigma 
+                    \lesssim {^{(P)} K[\phi]},
+            \end{align}
+        and 
+            \begin{align}\label{eq:PNmicro}
+                {^{(P)}J_\mu [\phi]} n^\mu_\Sigma 
+                    \lesssim {^{(N, \delta, -\frac12)} K[\phi]},
+            \end{align}
+        in an appropriate neighborhood $\cA$ of the horizon. 
+    \end{proposition}
+
+\begin{proof}
+Let us now turn to the derivation of the $P$-vector field, taking the ansatz $P = P^v \partial_v + P^r \partial_r$ for coefficients $P^v$ and $P^r$ to be determined later. Fix radii $r_0$ and $r_1$ between the horizon and photon sphere $M < r_0 < r_1 < 2M$, we divide our analysis between the region near the horizon $r \leq r_0$ and the region far from the horizon $r \geq r_1$, and smoothly interpolate between the two. Away from the horizon, we only care for causality, so we take $P^v = 1$ and $P^r = 0$. It remains to choose $P$ near the horizon to satisfy \eqref{TPmicro}-\eqref{PNmicro}. 
+
+We would like the vector field $P$ to be time-like and to capture the redshift effect in a sense between $T$ and $N$. To that end, we take $P^r := -\sqrt D$, in which case the $0$-current takes the form 
+\[
+    ^{(P)} K [\phi] 
+        = F_{vv} \cdot |\partial_v \phi|^2 + F_{rr} \cdot |\partial_r \phi|^2 + F_{vr} \cdot (\partial_v \phi \partial_r \phi)
+\]
+where the coefficients of the sign-definite terms are 
+\begin{align*}
+    F_{vv} 
+        &= \partial_r P^v, \\
+    F_{rr} 
+        &= D \cdot \left( \frac{M}{2r^2} + \frac{\sqrt D}{r}\right),
+\end{align*}
+and the coefficient of the sign-indefinite term is
+    \[
+        F_{vr}
+            = \sqrt D \left(  \sqrt D \cdot \partial_r P^v + \frac2r \right). 
+    \]
+
+We need the former to control the latter. Using Cauchy's inequality on $F_{vr}$ yields
+\[
+    F_{vr} \leq \epsilon D + \frac{1}{\epsilon} \left( \sqrt D \cdot \partial_r P^v + \frac2r \right)^2.
+\]
+From our computation we see that $F_{rr} \sim D$ near the horizon, so choosing $\epsilon \ll 1$ this term in the $0$-current is favourable for controlling the first term on the right. On the other hand, in view of the degeneracy $\sqrt{D(M)} = 0$ at the horizon, we can choose the coefficient $P^v$ such that $F_{vv}$ dominates the second term on the right, i.e. $\tfrac1\epsilon (\sqrt D \cdot \partial_r P^v + \frac2r )^2 < \partial_r P^v$.\footnote{We leave this as an exercise.} Collecting these judicious choices of coefficients and parameters, we see that the $0$-current of $P$ is comparable to the $T$-energy, 
+\[
+    ^{(P)} K [\phi] 
+        \sim |\partial_v \phi|^2 + D \cdot |\partial_r \phi|^2 \sim {^{(T)}} J_\mu [\phi] n^\mu_{\Sigma_\tau},
+\]
+furnishing \eqref{TPmicro}. 
+
+Near the horizon, we compute $- \bfg(P, P) \sim \sqrt D$, so the $P$-energy takes the form 
+    \[
+        {^{(P)}} J_\mu [\phi] n^\mu_{\Sigma_\tau} 
+            \sim |\partial_v \phi|^2 + \sqrt D \cdot |\partial_r \phi|^2 \sim {^{(N, \delta, -\frac12)}} K [\phi],
+    \]  
+which proves \eqref{PNmicro}. 
+\end{proof}
+
+With these at hand, we are now ready to establish the integrated $T$-$P$-$N$-hierarchy. Let us recall boundedness of $T$-energy and $N$-energy; we also have boundedness of the $P$-energy, 
+
+\begin{proposition}[Uniform boundedness of $P$-energy]
+    Let $\phi$ be a solution to the wave equation \eqref{LW} on the extremal Reissner-Nordstr\"om background, then 
+        \begin{equation}\label{eq:boundP}
+            \int_{\widetilde{\Sigma}_\tau} {^{(P)} J_\mu [\phi]} n^\mu_{\widetilde{\Sigma}_\tau} 
+                \lesssim \int_{\widetilde{\Sigma}_0} {^{(P)} J_\mu [\phi]} n^\mu_{\widetilde{\Sigma}_0}.
+        \end{equation}
+\end{proposition}
+
+\begin{proof}
+    By Stokes' theorem \eqref{stokes} and the divergence identity \eqref{currents}, we have
+        \[
+            \int_{\widetilde{\Sigma}_\tau} {^{(P)} J_\mu [\phi]} n^\mu +  \int_{\cH^+} {^{(P)} J_\mu [\phi]} n^\mu +  \int_{\cI^+} {^{(P)} J_\mu} [\phi] n^\mu + \int_{\cR} {^{(P)}} K  
+                = \int_{\widetilde{\Sigma}_0} {^{(P)} J_\mu [\phi]} n^\mu.
+        \]
+    Since $P$ is time-like, the boundary integrals over $\cH^+$ and $\cI^+$ are non-negative. For the space-time integral, \eqref{TPmicro} implies ${^{(P)}K}$ is non-negative near the horizon $r \leq r_0$, while by construction of $P$ it vanishes far away from the horizon $r \geq r_1$. In the intermediate region $r_0 \leq r \leq r_1$, we can estimate it by the right-hand side using integrated local energy decay \eqref{iled}. 
+\end{proof}
+
+\begin{proposition}[$\cH^+$-localised $T$-$P$-$N$-hierarchy]
+    Let $\phi$ be a spherically-symmetric solution to the wave equation \eqref{LW} on the extremal Reissner-Nordstr\"om background, then 
+    \begin{equation}\label{eq:TP}
+        \int_{\tau_1}^{\tau_2} \left(\int_{\widetilde{\Sigma}_\tau \cap \{ M \leq r \leq r_0 \}} {^{(T)} J_\mu [\phi]} n^\mu_{\Sigma_\tau} \right) d \tau
+            \lesssim \int_{\widetilde{\Sigma}_{{\tau_1}}} {^{(P)} J_\mu [\phi]} n^\mu_{\widetilde{\Sigma}_{\tau_1}}
+    \end{equation}
+and 
+    \begin{equation}\label{eq:PN}
+        \int_{\tau_1}^{\tau_2} \left(\int_{\widetilde{\Sigma}_\tau \cap \{ M \leq r \leq r_0 \}} {^{(P)} J_\mu [\phi]} n^\mu_{\Sigma_\tau} \right) d \tau
+            \lesssim \int_{\widetilde{\Sigma}_{{\tau_1}}} {^{(N)} J_\mu [\phi]} n^\mu_{\widetilde{\Sigma}_{\tau_1}}
+    \end{equation}
+in an appropriate neighborhood $\cA$ of the horizon. 
+\end{proposition}
+
+\begin{proof}
+    Using Stokes' theorem \eqref{stokes} on the divergence identity \eqref{currents} and using boundedness \eqref{boundP} to handle the boundary terms, we have 
+        \[
+            \int_{\cA} {^{(P)} K} 
+                \lesssim \int_{\Sigma_{\tau_1}} {^{(P)} J_\mu [\phi]} n^\mu_{\Sigma_{0}}.
+        \]
+    Then integral inequality \eqref{TP} follows from the microscopic inequality \eqref{TPmicro}. Similarly, the integral inequality \eqref{PN} follows from the divergence identity for the modified $N$-current ${^{(N, \delta, -\frac12)}} J_\mu [\phi]$, boundedness of the $N$-energy, and the microscopic inequality \eqref{PNmicro}. 
+\end{proof}
+
+
+
+
+\subsection{Energy decay via dyadic pigeonholing}
+
+With the $T$-$P$-$N$-hierarchy of estimates localised near the horizon, we are ready to establish energy decay. Using the $P$-$N$ estimate \eqref{PN}, boundedness of the $P$-energy \eqref{boundP}, and the pigeonhole principle, we have a dyadic sequence $\tau_n$ such that 
+    \begin{equation}
+        \int_{\Sigma_{\tau_n} \cap \cA}  {^{(P)} J_\mu [\phi]} n^\mu_{\Sigma_{\tau_n}} 
+            \lesssim \frac{1}{\tau_n} \int_{\Sigma_0 \cap \cA}  {^{(N)} J_\mu [\phi]} n^\mu_{\Sigma_{\tau_n}} 
+    \end{equation}
+By the mean value theorem, we can find $\tau_* \in [\tau_n, \tau_{n + 1}]$ such that 
+    \begin{equation}
+        \int_{\Sigma_{\tau_*} \cap \cA}  {^{(T)} J_\mu [\phi]} n^\mu_{\Sigma_{\tau_*}}
+            = \frac{1}{\tau_{n + 1} - \tau_n} \int_{\tau_n}^{\tau_{n + 1}} \int_{\Sigma_{\tau} \cap \cA}  {^{(T)} J_\mu [\phi]} n^\mu_{\Sigma_{\tau}}.
+    \end{equation}
+By the $T$-$P$ estimate, 
+    \begin{equation}
+        \int_{\tau_n}^{\tau_{n + 1}} \int_{\Sigma_{\tau} \cap \cA}  {^{(T)} J_\mu [\phi]} n^\mu_{\Sigma_{\tau}} \lesssim \int_{\Sigma_{\tau_n} \cap \cA}  {^{(P)} J_\mu [\phi]} n^\mu_{\Sigma_{\tau_n}} . 
+    \end{equation}
+Collecting the inequalities and using the dyadic property $\tau_n \sim \tau_{n + 1} \sim \tau_{n + 1} - \tau_n$, we conclude decay of the $T$-energy, 
+\begin{equation}
+        \int_{\Sigma_{\tau_{n + 1}} \cap \cA}  {^{(T)} J_\mu [\phi]} n^\mu_{\Sigma_{\tau_{n + 1}}} 
+            \lesssim \frac{1}{\tau_{n + 1}^2}. 
+\end{equation}
+This completes the proof of the energy decay statement \eqref{energydecay} of Theorem \ref{thm:stability}.

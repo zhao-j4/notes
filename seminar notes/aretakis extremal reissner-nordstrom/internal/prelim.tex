@@ -1,0 +1,136 @@
+
+\subsection{Geometry of extremal Reissner-Nordstr\"om spacetime}
+
+The Reissner-Nordstr\"om metric with mass $M \geq 0$ and charge $e \in \R$ is wrriten in Schwarzchild coordinates $(t, r)$ as
+    \[
+        \bfg_{M, e} 
+            = D (r) \, dt^2 + D (r)^{-1} \, dr^2 + r^2 \cancel\bfg,
+    \]  
+where $\cancel \bfg$ is the standard metric on the unit sphere $\mathbb S^2$ and the function $D(r)$ is given by 
+    \[
+        D (r) 
+            := 1 - \frac{2M}{r} + \frac{e^2}{r^2},
+    \]
+admitting two distinct roots at $r_\pm = M \pm \sqrt{M^2 - e^2}$. We say $\bfg_{M, e}$ is \textit{sub-extremal} if $|e| < M$, \textit{super-extremal} if $|e| > M$, and \textit{extremal} if $|e| = M$. In this last case, the function $D(r)$ factors as 
+    \[
+        D(r) 
+            = \left( 1 - \frac{M}{r} \right)^2,
+    \]
+admitting a single double root at $r_\pm = M$.
+
+\begin{figure}[h]
+    \centering
+    \begin{tabular}{cc}
+    % First plot: M=1, E=0.5
+    \begin{tikzpicture}
+    \begin{axis}[
+        width=7cm,
+        height=6cm,
+        xlabel={$r$},
+        xlabel style={at={(axis description cs:1.05,0)}, anchor=west}
+        ylabel={$D$},
+        ylabel style={at={(axis description cs:0.5,1.05)}, anchor=south},
+        domain=0.1:4,
+        samples=200,
+        ymin=-1, ymax=1,
+        axis lines=middle,
+        enlargelimits
+    ]
+    \addplot[blue, thick] {1 - (2*1)/x + (0.8^2)/x^2};
+    \end{axis}
+    \end{tikzpicture}
+    &
+    % Second plot: M=1, E=1
+    \begin{tikzpicture}
+    \begin{axis}[
+        width=7cm,
+        height=6cm,
+        xlabel={$r$},
+        xlabel style={at={(axis description cs:1.05,0)}, anchor=west}
+        ylabel={$D$},
+        ylabel style={at={(axis description cs:0.5,1.05)}, anchor=south},
+        domain=0.1:4,
+        samples=200,
+        ymin=-1, ymax=1,
+        axis lines=middle,
+        enlargelimits
+    ]
+    \addplot[red, thick] {1 - (2*1)/x + (1^2)/x^2};
+    \end{axis}
+    \end{tikzpicture}
+    \end{tabular}
+    \caption{Comparison of $D(r) = 1 - \frac{2M}{r} + \frac{e^2}{r^2}$ with mass $M = 1$ between sub-extremal charge $e = \tfrac{7}{10}$ on the left and extremal charge $e = 1$ on the right. The former admits two distinct roots $r = r_\pm$, while the latter has a double root at $r = M$}
+    \end{figure}
+
+
+    \begin{figure}[h]
+        \begin{center}
+            \includegraphics[scale = 0.6]{graphics/extremal.PNG}
+            \caption{The maximal extension of extremal Reissner-Nordstr\"om space-time as depicted in Hawking-Ellis \cite{HawkingEllis2023}.}
+        \end{center}
+    \end{figure}
+
+This metric is spherically-symmetric in the sense that $\mathsf{SO} (3)$ acts by isometry. When $|e| \leq M$, the metric may be analytically extended to describe a black hole space-time of which these coordinates cover the domain of outer communication for $(t, r) \in \R \times (r_+, \infty)$, where $r = r_+$ is the event horizon $\cH^+$. To pass to coordinates which cover the event horizon $\cH^+$, we introduce the \emph{tortoise coordinate} $r_*$ which arises as the solution to the ODE $\partial_r r^* = \tfrac1D$. Note that in the extremal case $|e| = M$, the tortoise coordinate is inverse linear as opposed to logarithmic in the non-extremal case $|e| < M$. The metric with respect to the coordinates $(t, r^*)$ takes the form 
+\[
+    \bfg_{M, e} 
+        = -D (r) \, dt^2 + D(r) \ (dr^*)^2+ r^2 \cancel\bfg.
+\]  
+To extend beyond the event horizon, we introduce the advanced time coordinate $v = t + r^*$. In these \textit{ingoing Eddington-Finkelstein coordinates} $(v, r)$, the metric takes the form 
+\[
+    \bfg   
+        := - D \, dv^2 + 2dv dr + r^2 \cancel\bfg. 
+\]
+In these coordinates, $T = \partial_v$ is time-translation Killing vector field, which takes the form $T = \partial_t$ in Schwarschild coordinates. In the extremal setting, it is time-like away from the horizon, and null at the horizon, while in the sub-extremal setting, it is space-like within the black hole region. The vector field $Y = \partial_r$ is past-directed null, transverse to $\cH^+$, and translation invariant in the sense that $\cL_T Y = 0$. 
+
+
+\subsection{The energy-momentum tensor}
+
+Given a vector field $V$, we define its deformation tensor to be the Lie derivative of the metric with respect to $V$, i.e.
+    \[
+        ^{(V)} \pi_{\mu\nu} 
+            := (\cL_V \bfg)^{\mu\nu}.
+    \]
+The Lagrangian structure of the wave equation gives rise to the energy-momentum tensor,
+    \[
+        \bfT_{\mu\nu} [\phi] 
+            := \partial_\mu \phi \partial_\nu \phi - \frac12 \bfg_{\mu\nu} \partial^\alpha \phi \partial_\alpha \phi,
+    \]
+which is a symmetric $2$-tensor. For general functions, the divergence satisfies  
+    \begin{equation} \label{eq:div}
+        \nabla^\mu \bfT_{\mu\nu} [\phi] = (\Box_\bfg \phi) \, \partial_\nu \phi,
+    \end{equation}
+so in particular it is divergence-free when $\phi$ is a solution to the wave equation \eqref{LW}. A convenient method for obtaining energy identities is to contract the energy-momentum tensor with well-chosen vector fields, integrate over suitable domains and apply Stokes' theorem, which for a general $(0, 1)$-current $P_\mu$ and region in space-time $\cR$ states 
+    \begin{equation}\label{eq:stokes}
+        \int_{\partial \cR} P_\mu n^\mu_{\Sigma_0} = \int_{\cR} \nabla^\mu P_\mu.
+    \end{equation}
+
+Given the vector field $V$, define the associated $1$- and $0$-currents
+    \begin{align*}
+        ^{(V)} J_\mu [\phi] 
+           &:= \bfT_{\mu\nu} [\phi] V^\nu,\\
+        ^{(V)} K[\phi] 
+            &:= \bfT_{\mu\nu} [\phi] \, ^{(V)} \pi^{\mu\nu},\\
+        ^{(V)} E[\phi]
+            &:= \left(\nabla^\mu \bfT_{\mu\nu} [\phi]\right) V^\nu =  (\Box_\bfg \phi)(V \phi),
+    \end{align*}
+which are related in view of the divergence identity \eqref{div} by 
+    \begin{equation}\label{eq:currents}
+        \nabla^\mu \left( {^{(V)}} J_\mu [\phi] \right)
+            = {^{(V)}} K[\phi] + {^{(V)} E[\phi]}.
+    \end{equation}
+As a particular use of \eqref{currents}, the term ${^{(V)} E[\phi]}$ vanishes for solutions $\phi$ to the linear wave equation \eqref{LW}, while the term $^{(V)} K[\phi]$ vanishes for Killing vector fields $V$, giving rise to exact conservation laws for solutions to the wave equation. This is an instance of the well-known Noether's theorem. 
+
+
+\subsection{Hardy inequalities}
+
+\begin{proposition}[First Hardy inequality]
+    For any sufficiently regular $\phi$, we have 
+        \begin{equation}
+            \int_{\Sigma_\tau} \frac1{r^2} |\phi|^2 
+                \lesssim \int_{\Sigma_\tau} D \cdot \left( |\partial_v \phi|^2 + |\partial_r \phi|^2  \right)
+        \end{equation}
+\end{proposition}
+
+\begin{proof}
+    The usual proof of Hardy's inequality a l\'a completing the square and integrating-by-parts carries through.
+\end{proof}

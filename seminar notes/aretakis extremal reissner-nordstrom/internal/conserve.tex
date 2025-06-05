@@ -1,0 +1,74 @@
+
+To set expectations on which types of energy estimates and decay estimates are admissible up to the event horizon, let us discuss the conservation laws along the horizon which arise in the extremal setting. Throughout this section we work in ingoing Eddington-Finkelstein coordinates $(v, r)$, in which case the wave operator on the extremal Reissner-Nordstr\"om background takes the form 
+    \[
+        \Box_\bfg 
+            = D \cdot \partial_r^2  + 2 \partial_v \partial_r + \frac{2}{r} \cdot \partial_v  + R \cdot \partial_r \phi,
+    \]
+where the coefficients $D$ and $R$ are given by 
+    \begin{align*}
+        D(r)
+            &= \left( 1 - \frac{M}{r} \right)^2, \\
+        R(r)
+            &= D'(r) +  \frac{2D(r)}{r} .
+    \end{align*}
+Observe that $D(M) = D'(M) = 0$, so in particular both coefficients vanish on the event horizon $\cH^+$. 
+
+
+
+Furthermore, the vector field $\partial_v$ is tangential to the event horizon $r = M$, so the wave equation \eqref{LW} on the horizon reduces to
+    \[
+        \partial_v \left( \partial_r \phi + \frac1M \phi \right)_{|\cH^+} = 0,
+    \]
+i.e. the zero-th Aretakis charge is conserved along the event horizon, 
+
+\begin{proposition}[Conservation of the zero-th Aretakis charge]
+    Let $\phi$ be a spherically-symmetric solution to the linear wave equation \eqref{LW} on the extremal Reissner-Nordström background. Then the quantity 
+        \[
+            H_0 [\phi] 
+                := \partial_r \phi + \frac1M \phi
+        \]
+    is conserved along the event horizon $\cH^+$. 
+\end{proposition}
+
+It follows that, for generic spherically-symmetric initial data in the sense that $H_0 [\phi[0]] \neq 0$ at the horizon, we \textit{cannot} prove decay estimates for \textit{both} $\phi$ and $\partial_r \phi$ up to the event horizon. For higher-order derivatives, we can likewise derive suitable identities by commuting into the wave equation \eqref{LW}. As a primer, let us derive an identity for the second-order ingoing null derivative $\partial_r^2 \phi$. Differentiating the wave equation \eqref{LW} with respect to $\partial_r$ gives 
+    \begin{align*}
+        \partial_r \Box_\bfg \phi 
+            &= \partial_r \left(D \cdot \partial_r^2  \phi+ 2 \partial_v \partial_r\phi + \frac{2}{r} \cdot \partial_v \phi  + R \cdot \partial_r \phi\right) \\
+            &= D \cdot \partial_r^3 \phi + D' \cdot \partial_r^2 \phi + 2 \partial_r^2 \partial_v \phi + \frac{2}{r} \cdot \partial_r \partial_v \phi - \frac2{r^2} \partial_v \phi + R \cdot \partial_r^2 \phi + R' \cdot \partial_r \phi \\
+            &= 2 \partial_r^2 \partial_v \phi + \frac2M \cdot \partial_r \partial_v \phi - \frac2{M^2} \partial_v \phi + \frac2{M^2} \partial_r \phi \qquad \text{evaluated on the horizon $\cH^+$.}
+    \end{align*}
+Rearranging, we obtain the following identity 
+    \[
+        \partial_v \left( \partial_r^2 \phi + \frac1M \partial_r \phi + \frac1{M^2} \phi  \right) 
+            = - \frac1{M^2} H_0 [\phi] + M^2 \phi
+    \]
+
+
+
+On the other hand, writing instead the wave equation \eqref{LW} as 
+    \[
+        H_0[\partial_v \phi] = \left( \partial_r + \frac1r \right) \partial_v \phi {\big|_{\cH^+}} = 0,
+    \]
+and also commuting the tangential $\partial_v$-derivatives into the equation, we see that the zero-th order Aretakis charge vanishes for all tangential derivatives $H_0[\partial_v^k \phi] = 0$ for $k \geq 1$. 
+
+\begin{proposition}[Identities along the horizon]
+    
+        \begin{equation}
+            \partial_r^{m + 1} \partial_v^m \phi 
+                + \sum_{j = 0}^m \lambda_j \cdot \partial_v^j \phi = C \cdot H_0[\phi]
+        \end{equation}
+\end{proposition}
+
+\begin{proof}
+It follows from the product rule that 
+    \begin{align*}
+        \partial_r^k \Box_\bfg \phi 
+            &= \partial_r^k \left( D \cdot \partial_r^2 \phi + 2 \partial_v \partial_r \phi + \frac{2}{r} \cdot \partial_v \phi + R \cdot \partial_r \phi \right) \\
+            &= D \cdot \partial_r^{k + 2} \phi + 2 \partial_r^{k + 1} \partial_v \phi + \frac{2}{r} \cdot \partial_r^k \partial_v \phi + R \cdot \partial_r^{k +1} \phi \\
+            &\qquad + \sum_{i = 1}^k \binom{k}{i} \partial_r^i D \cdot \partial_r^{k - i + 2} \psi + \sum_{i = 1}^k \binom{k}{i} \partial_r^i \frac2r \cdot \partial_r^{k  - i} \partial_v \phi \\ 
+            &\qquad + \sum_{i = 1}^k \binom{k}{i} \partial_r^i R \cdot \partial_r^{k - i + 1} \phi.
+    \end{align*}
+    Observe that in the $k = 0$ case we could rewrite $\partial_r \partial_v \phi$ in terms of $\partial_v \phi$. Proceeding inductively gives the result. 
+\end{proof}
+
+Thus we can rewrite $Y^{m + 1} T^m \phi$ in terms of $H_0 [\phi]$ and lower-order terms which we aim to prove decay along the horizon. 
