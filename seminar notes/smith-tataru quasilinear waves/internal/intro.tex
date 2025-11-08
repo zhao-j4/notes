@@ -1,0 +1,176 @@
+
+In this note, we consider the local well-posedness of \textit{quasilinear wave equations} of the form
+	\begin{equation}\tag{QNLW} \label{eq:QNLW}
+	\begin{alignedat}{2}
+		\Box_{\bfg(\phi)} \phi 
+			&= \cN(\phi) (\partial \phi, \partial \phi), 
+			&& \qquad \text{on $[0, T] \times \R^n$},\\
+		(\phi, \partial_t \phi) 
+			&= (\phi_0, \phi_1),
+			&& \qquad\text{on $t = 0$},
+	\end{alignedat}
+	\end{equation}
+where $\bfg_{\mu\nu} (\phi)$ is a symmetric matrix with signature $(-, +, \dots +)$, using the convention\footnote{One can equivalently consider the divergence form of the equation, i.e. using $\partial_\mu \bfg^{\mu\nu} \partial_\nu$ instead of $\bfg^{\mu\nu} \partial_\mu \partial_\nu$ on the left-hand side, as the lower-order terms are encapsulated by the right-hand side.} $\Box_{\bfg} := \bfg^{\mu\nu} \partial_\mu \partial_\nu$ for its associated wave operator, and $\cN(\phi)(\partial \phi, \partial \phi) := \cN^{\alpha\beta} (\phi) \partial_\alpha \phi \partial_\beta \phi$ is a bilinear form. Without loss of generality, we can take $t = \text{const}$ to be space-like hypersurfaces by reducing to metrics of the form 
+	\[\bfg_{\mu\nu} dx^\mu dx^\nu = - dt^2 + \bfg_{ij} dx^i dx^j.\]
+We shall also assume sufficient smoothness and boundedness of the metric $\bfg^{\mu\nu}(\phi)$, its inverse $\bfg_{\mu\nu}(\phi)$, and of the bilinear form $\cN^{\alpha\beta} (\phi)$ as functions of $\phi$. 
+
+\begin{example}
+The following can be recast in the form \eqref{QNLW}, 
+	\begin{itemize}
+		\item the Einstein vacuum equations in wave coordinates,
+		\item the irrotational compressible Euler equations.
+	\end{itemize}
+For the former, this was observed by Choquet-Bruhat \cite{Foures-Bruhat1952}, while the later is due to Hughes-Kato-Marsden \cite{HughesEtAl1977}. The reader may find the lecture notes \cite{Luk} as a more modern reference. 
+\end{example}
+
+Following the standards set by Hadamard and Kato, we say that the initial data problem for the quasi-linear wave equation \eqref{QNLW} is \textit{locally well-posed} in $(H^s_x \times H^{s - 1}_x) (\R^n)$ if the following hold: 
+	\begin{enumerate}
+		\item \textit{Existence}: for each initial data $\phi[0] \in (H^s_x \times H^{s - 1}_x) (\R^n)$, there exists a time $T > 0$ and a solution $\phi[t] \in C^0_t (H^s_x \times H^{s - 1}_x) ([0, T] \times \R^n)$ to \eqref{QNLW}. 
+		
+		\item \textit{(Unconditional) uniqueness}: for each initial data $\phi[0] \in (H^s_x \times H^{s - 1}_x) (\R^n)$, the solution $\phi[t]$ to \eqref{QNLW} is unique in the space $C^0_t (H^s_x \times H^{s - 1}_x) ([0, T] \times \R^n)$.
+		
+		\myitem{(c)}\label{item:cty}\textit{Continuity of data-to-solution map}: if $\{\phi_k[0]\}_k$ is a sequence of data converging in the $(H^s_x \times H^{s - 1}_x)$-topology to $\phi[0]$, then there exists a common time of existence\footnote{To be more precise, one can introduce the notion of the \textit{maximal lifespan} $T \equiv T(\phi[0])$ of a solution, and require it to be lower semi-continuous as a function of initial data $\phi[0] \in (H^s_x \times H^{s - 1}_x)(\R^n)$.} on which the corresponding sequence of solutions $\{\phi_k[t]\}_k$ to \eqref{QNLW} converges to $\phi[t]$ in the $L^\infty_t (H^s_x \times H^{s - 1}_x)$-topology,
+			\begin{align*}
+				\phi_k[0] 
+					&\overset{k \to \infty}{\longrightarrow} \phi[0] \qquad \text{in $H^s_x \times H^{s - 1}_x$} \\
+				\text{implies} \qquad 
+				\phi_k [t] 
+					&\overset{k \to \infty}{\longrightarrow} \phi[t] \qquad \, \text{in $L^\infty_t (H^s_x \times H^{s - 1}_x)$}.
+			\end{align*}
+	\end{enumerate}
+For the working definition, we will need to slightly modify the existence and uniqueness statements, strengthening the former while weakening the latter, and require an additional property of the data-to-solution map:
+	\begin{enumerate}
+		\myitem{(a')} \label{item:exist}\textit{(Sub-critical) existence}: the time of existence can be taken to depend only on the size of the data 
+			\[
+				T \equiv T(\|\phi[0]\|_{H^s_x \times H^{s - 1}_x}).
+			\]
+	
+		\myitem{(b')}\label{item:unique} \textit{(Conditional) uniqueness}: uniqueness holds only in the smaller Strichartz space, 
+			\[ 
+				\left\{ \phi[0] \in C^0_t (H^s_x \times H^{s - 1}_x) : \partial \phi \in L^2_t L^\infty_x  \right\}.
+			\]
+
+		\myitem{(c+)}\label{item:lipschitz} \textit{Weak Lipschitz continuity of data-to-solution map}: there exists a regularity $s_{\text{Lip}} < s$ such that the data-to-solution map is Lipschitz continuous on bounded sets in $(H^s \times H^{s - 1})_x(\R^n)$ with respect to the weaker $(H^{s_{\text{Lip}}} \times H^{s_{\text{Lip}} - 1})_x(\R^n)$-topology, i.e. for solutions $\phi[t], \psi[t] \in C^0_t (H^s_x \times H^{s - 1}_x)([0, T] \times \R^n)$ to \eqref{QNLW} satisfying 
+			\begin{align*}
+				\| \phi[0] \|_{H^s \times H^{s - 1}} , \, \| \psi[0] \|_{H^s \times H^{s - 1}} 
+					&\leq R,
+			\end{align*}
+		the following stability estimate holds:
+			\begin{align*}
+				\| \phi[t] - \psi[t] \|_{L^\infty_t (H^{s_{\text{Lip}}} \times H^{s_{\text{Lip}} - 1})_x}
+					&\leq C(R) \cdot  \| \phi[0] - \psi[0] \|_{(H^{s_{\text{Lip}}} \times H^{s_{\text{Lip}} - 1})_x}.
+			\end{align*}
+	\end{enumerate}
+
+In sum, we say that the initial data problem for the quasi-linear wave equation \eqref{QNLW} is \textit{locally well-posed} in $(H^s_x \times H^{s - 1}_x)(\R^n)$ if \ref{item:exist}, \ref{item:unique}, \ref{item:cty}, \ref{item:lipschitz} hold. This leads us to the following natural question
+\begin{quote}
+	\it For which values of $s \in \R$ is the initial data problem for the quasi-linear wave equation \eqref{QNLW} locally well-posed in $(H^s_x \times H^{s - 1}_x)(\R^n)$?
+\end{quote}
+
+
+Scaling 
+	\[
+		\phi(x^\mu) \mapsto \phi(\tfrac{x^\mu}{\lambda})
+	\]
+This leads to the scaling critical Sobolev exponent $s_{\text{crit}} := \tfrac{d}{2}$. The main result: half a derivative above scaling. 
+	\begin{equation}\tag{LW} \label{eq:LW}
+	\begin{alignedat}{2}
+		\Box_{\bfg} \phi 
+			&= 0, 
+			&& \qquad \text{on $[0, T] \times \R^n$},\\
+		(\phi, \partial_t \phi) 
+			&= (\phi_0, \phi_1),
+			&& \qquad\text{on $t = 0$},
+	\end{alignedat}
+	\end{equation}
+
+
+\begin{theorem}[Smith-Tataru \cite{SmithTataru2005}]
+	The initial data problem for the quasi-linear wave equation \eqref{QNLW} is locally well-posed in $(H^s_x \times H^{s - 1}_x)(\R^n)$, provided that 
+		\begin{alignat*}{2}
+			s 
+				&> \frac{n}{2} + \frac12 + \frac14
+				&&\qquad \text{if $n = 2$}, \\
+			s 
+				&> \frac{n}{2} + \frac12 
+				&&\qquad \text{if $n = 3, 4, 5$.}
+		\end{alignat*}
+	Furthermore, given a solution $\phi[t] \in C^0_t (H^s_x \times H^{s - 1}_x) ([0, T] \times \R^n)$ to \eqref{QNLW}, it satisfies the following: 
+		\begin{enumerate}
+		\item \textit{Energy estimate and dispersive estimate}: the solution satisfies the estimate
+			\[
+				\| \partial \phi \|_{L^\infty_t H^{s - 1}_x} + \| \partial \phi \|_{L^2_t L^\infty_x} 
+					\lesssim \|\phi[0]\|_{H^s_x \times H^{s - 1}_x}.
+			\]
+		\item \textit{Well-posedness of the linearised equation}: for $1 \leq \sigma \leq s + 1$ and each $t_0 \in [0, T]$, the initial data problem for the linearisation of \eqref{QNLW} about the solution $\phi$, 
+			\begin{equation}\tag{LW}\label{eq:linearised}
+				\begin{alignedat}{2}
+					\Box_{\bfg(\phi)} \psi 
+						&= 0, 
+						&& \qquad \text{on $[0, T] \times \R^n$},\\
+					(\psi, \partial_t \psi) 
+						&= (\psi_0, \psi_1),
+						&& \qquad\text{on $t = t_0$},
+				\end{alignedat}
+			\end{equation}
+		is well-posed in $(H^\sigma_x \times H^{\sigma - 1}_x)(\R^n)$, i.e. for each initial data $\psi[t_0] \in (H^\sigma_x \times H^{\sigma - 1}_x)(\R^n)$, there exists a unique solution $\psi[t] \in C^0_t (H^\sigma_x \times H^{\sigma - 1}_x)([0, T] \times \R^n)$ to \eqref{linearised}. Furthermore, the solutions to \eqref{linearised} satisfy the energy estimate, 
+			\begin{equation}
+				\| \psi \|_{L^\infty_t H^\sigma_x} + \|\partial_t \psi \|_{L^\infty_t H^{\sigma - 1}_x} 
+					\lesssim \| \psi[t_0] \|_{H^\sigma_x \times H^{\sigma - 1}_x},
+			\end{equation}
+		and the Strichartz estimate, 
+			\begin{equation}
+				\| \langle \nabla_x \rangle^\rho \psi \|_{L^2_t L^\infty_x} 
+					\lesssim \| \psi[t_0] \|_{H^\sigma_x \times H^{\sigma - 1}_x},
+			\end{equation}
+		for $\rho < \sigma - \tfrac{d - 1}{2}$.
+	\end{enumerate}
+\end{theorem}
+
+\begin{remark}
+	The proof breaks down in higher dimensions $n \geq 6$ due to a technical failure in the orthogonality argument for the wave packet decomposition. 
+\end{remark}
+
+\begin{table}[ht]
+	\centering
+	\renewcommand{\arraystretch}{1.4}
+	{%
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		 & \bf Linear equation & \bf Strichartz & \bf Regularity \\
+		\hline 
+		Hughes-Kato-Marsden \cite{HughesEtAl1977} & generic \eqref{LW} & N/A & $s > \tfrac{n}{2} + 1$\\
+		\hline 
+		Bahouri-Chemin \cite{BahouriChemin1999} & generic \eqref{LW} & $\tfrac14$ loss & $s > \tfrac{n}{2} + \tfrac12 + \tfrac14$ \\
+		\hline
+		Tataru \cite{Tataru2001c,Tataru2001d} & generic \eqref{LW} & sharp $\tfrac16$ loss & $s > \tfrac{n}{2} + \tfrac12 + \tfrac16$ \\
+		\hline 
+		Klainerman-Rodnianski \cite{KlainermanRodnianski2003} & linearised \eqref{QNLW} & $\tfrac{2 - \sqrt 3}{2}$ loss & $s > \tfrac{n}{2} + \tfrac12 + \tfrac{2 - \sqrt 3}{2}$ \\
+		\hline 
+		Smith-Tataru \cite{SmithTataru2005} & linearised \eqref{QNLW} & lossless & $s > \tfrac{n}{2} + \tfrac12$ \\
+		\hline
+	\end{tabular}
+	}
+\vspace{1em}
+
+    \caption{A non-exhaustive historical overview of the local well-posedness of quasi-linear wave equations for $n \geq 3$, though one can find results concerning $n = 2$ among the references, and the result of Klainerman-Rodnianski \cite{KlainermanRodnianski2003} works only with $n = 3$.  }\label{table:history}
+\end{table}
+
+
+\begin{theorem}[Energy estimate \cite{HughesEtAl1977}]
+	Let $s \geq 0$, then there exists $C \gg 1$ such that any smooth solution $\phi$ to \eqref{QNLW} obeys the a priori estimate
+		\begin{equation}
+			\| \partial \phi \|_{L^\infty_t H^{s - 1}_x} 
+				\lesssim \exp \left( C \int_0^T \| \partial \phi \|_{L^\infty_x} \, dt \right) \|\partial \phi (0)\|_{H^{s - 1}_x}.
+		\end{equation}
+	In particular, $\phi[t]$ may be continued as a smooth solution as long as $\|\partial \phi\|_{L^1_t L^\infty_x} < \infty$. 
+\end{theorem}
+
+\begin{remark}
+	The dimension of the $L^p_t L^\infty_x$-norm of $\partial \phi$ under the scaling symmetry reads
+		\begin{align*}
+			\|\partial \phi\|_{L^p_t L^\infty_x} 
+				&\approx [t]^{\frac1p} [x]^{-1} \approx [\partial]^{1 - \frac1p}.
+		\end{align*}
+	Thus, the continuation criterion $L^1_t L^\infty_x$ is scale-invariant, controlling  $L^\infty_{t, x}$ via Sobolev embedding incurs a full derivative difference from scaling $1 - \tfrac1\infty = 1$, while control of $L^2_t L^\infty_x$ in $n \geq 3$ via Strichartz leads to half-derivative from scaling $1 - \tfrac12 = \tfrac12$, and similarly $L^4_t L^\infty_x$ in $n = 2$ leads to three-quarters $1 - \tfrac14 = \tfrac12 + \tfrac14$. 
+\end{remark}

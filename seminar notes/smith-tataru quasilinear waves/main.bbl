@@ -1,0 +1,50 @@
+\begin{thebibliography}{{Fou}52}
+
+\bibitem[BC99]{BahouriChemin1999}
+Hajer Bahouri and Jean-Yves Chemin.
+\newblock \'equations d'ondes quasilin\'eaires et estimations de
+  {{Strichartz}}.
+\newblock {\em American Journal of Mathematics}, 121(6):1337--1377, 1999.
+
+\bibitem[{Fou}52]{Foures-Bruhat1952}
+Y.~{Four{\`e}s-Bruhat}.
+\newblock Th\'eor\`eme d'existence pour certains syst\`emes d'\'equations aux
+  d\'eriv\'ees partielles non lin\'eaires.
+\newblock {\em Acta Mathematica}, 88(none):141--225, January 1952.
+
+\bibitem[HKM77]{HughesEtAl1977}
+Thomas J.~R. Hughes, Tosio Kato, and Jerrold~E. Marsden.
+\newblock Well-posed quasi-linear second-order hyperbolic systems with
+  applications to nonlinear elastodynamics and general relativity.
+\newblock {\em Archive for Rational Mechanics and Analysis}, 63(3):273--294,
+  September 1977.
+
+\bibitem[KR03]{KlainermanRodnianski2003}
+S.~Klainerman and I.~Rodnianski.
+\newblock Improved local well-posedness for quasilinear wave equations in
+  dimension three.
+\newblock {\em Duke Mathematical Journal}, 117(1):1--124, March 2003.
+
+\bibitem[Luk]{Luk}
+Jonathan Luk.
+\newblock {{Introduction to nonlinear wave equations}}.
+
+\bibitem[ST05]{SmithTataru2005}
+Hart Smith and Daniel Tataru.
+\newblock Sharp local well-posedness results for the nonlinear wave equation.
+\newblock {\em Annals of Mathematics}, 162(1):291--366, July 2005.
+
+\bibitem[Tat01a]{Tataru2001c}
+Daniel Tataru.
+\newblock Strichartz estimates for second order hyperbolic operators with
+  nonsmooth coefficients, {{II}}.
+\newblock {\em American Journal of Mathematics}, 123(3):385--423, 2001.
+
+\bibitem[Tat01b]{Tataru2001d}
+Daniel Tataru.
+\newblock Strichartz estimates for second order hyperbolic operators with
+  nonsmooth coefficients {{III}}.
+\newblock {\em Journal of the American Mathematical Society}, 15(2):419--442,
+  December 2001.
+
+\end{thebibliography}

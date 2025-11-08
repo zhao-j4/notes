@@ -1,0 +1,123 @@
+
+
+    \[
+        \mathfrak w
+            := (\epsilon_0 \lambda)^{\frac12\frac{n - 1}{2}} \lambda^{-\frac12 + 1} \sfT_{< \lambda} \left( w \, \mathrm{dS}_{\Sigma_{\theta, u}} \right) 
+    \]
+where 
+    \[
+        w = w_0 \big( (\epsilon_0 \lambda)^{\frac12} (x_\theta' - \gamma_\theta' (t)) \big)
+    \]
+
+
+\begin{proposition}[Existence of wave packet parametrix]
+    Let $n = 2, 3,4, 5$ then there exists a superposition of wave packets 
+
+        \[
+            \phi 
+                := \sum_{\theta, j} a_{\theta, j}  \, \mathfrak w^{\theta, j}
+        \]
+    which is an approximate solution to the paralinearised equation in the sense that 
+    \begin{enumerate}
+        \item matches the initial data with 
+            \begin{equation}
+                \Bigl(\sum_{\theta, j} |a_{\theta, j}|^2 \Bigr)^\frac12
+                \lesssim \| \phi[0] \|_{(H^1 \times L^2)_x}.
+            \end{equation}
+        \item the energy estimate 
+            \begin{equation}
+                \| \partial \phi_\lambda \|_{L^\infty_t L^2_x}
+                \lesssim \Bigl( \sum_{\theta, j} |a_{\theta, j}|^2 \Bigr)^\frac12
+        \end{equation}
+            
+        \item error estimate 
+             \begin{equation}
+                \| \Box_{\bfg_{< \lambda}} \phi_\lambda||_{L^1_t L^2_x} 
+                \lesssim \epsilon_0 \, \Bigl( \sum_{\theta, j} |a_{\theta, j}|^2 \Bigr)^\frac12. 
+            \end{equation}
+    \end{enumerate}
+
+    
+\end{proposition}
+
+
+\subsection{Wave packets as approximate solutions}
+
+
+    \begin{lemma}[Energy estimate for $\mathfrak w$]
+        Wave packets have $O(1)$-energy, 
+            \begin{equation}\label{eq:WPenergy}
+                \| \partial \sfP_\lambda \mathfrak w \|_{L^\infty_t L^2_x} 
+                    \lesssim 1. 
+            \end{equation}
+    \end{lemma}
+
+    \begin{proof}
+        Obvious. 
+    \end{proof}
+
+    \begin{lemma}[Error estimate for $\mathfrak w$]
+        Each wave packet has small error, 
+            \begin{align}
+                \| \Box_{\bfg_{< \lambda}} \sfP_\lambda \mathfrak w \|_{L^1_t L^2_x} 
+                    &\lesssim \epsilon_0,\label{eq:L1error}\\
+                \| \Box_{\bfg_{< \lambda}} \sfP_\lambda \mathfrak w \|_{L^2_{t, x}} 
+                    &\lesssim \epsilon_0.\label{eq:L2error}
+            \end{align}
+    \end{lemma}
+Obviously \eqref{L2error} is stronger than \eqref{L1error}, so we focus on proving an $L^2_{t, x}$-error estimate. We write 
+    \begin{align*}
+        \Box_{\bfg_{< \lambda}} \mathsf P_\lambda \mathfrak w 
+            &= (\epsilon_0 \lambda)^{\frac12 \frac{n - 1}{2}} \lambda^{-\frac12 + 1} \Bigl( [\Box_{\bfg_{< \lambda}}, \sfP_\lambda \sfT_{<\lambda}] + \sfP_{\lambda} \sfT_{< \lambda} \Box_{\bfg_{<\lambda}} \Bigr) w \, \dS_{\Sigma} \\
+            &= (\epsilon_0 \lambda)^{\frac12 \frac{n - 1}{2}} \lambda^{-\frac12 + 1}  [\Box_{\bfg_{< \lambda}}, \sfP_\lambda \sfT_{<\lambda}] w \, \dS_{\Sigma_{\theta, u}} \\
+            &\qquad + (\epsilon_0 \lambda)^{\frac12 \frac{n - 1}{2}} \lambda^{-\frac12 + 1}\sfP_{\lambda} \sfT_{< \lambda} \left( \Box_{\bfg_{<\lambda}} w \cdot \dS_\Sigma + 2 \bfg_{< \lambda}^{\alpha \beta} \partial_\alpha w \cdot \partial_\beta \dS_{\Sigma} + w \cdot \, \Box_{\bfg_{< \lambda}} \dS_{\Sigma}\right)\\ 
+            &=: \mathrm{I} + \mathrm{II} + \mathrm{III} + \mathrm{IV},
+    \end{align*}
+commuting $\Box$ with the frequency projections and then applying the product rule. 
+
+\begin{proof}[Estimating the term $\mathrm{I}$]
+    Since the metric is cut-off to frequencies much lower than $\lambda$, the commutator clearly projects to frequencies $|\xi| \sim \lambda$. Thus, one can harmlessly insert fattened projections $\widetilde \sfP_{\lambda} \widetilde \sfT_{< \lambda}$ in front of the commutator. Furthermore, while two derivatives fall on the wave packet, standard commutator arguments\footnote{In a word, the principal symbol of the commutator is given by the Poisson bracket, so one can, to leading order, write $[\bfg(x), \chi(\nabla/\lambda)] \approx \{ \bfg(x), \chi(\xi/\lambda) \} \approx \partial_x \bfg \cdot \partial_\xi \chi(\xi/\lambda) \approx \tfrac1\lambda \partial_x \bfg$.} allow us to move one derivative onto the metric. In total, we can rewrite
+        \[
+            \mathrm{I} = [\bfg_{< \lambda}^{\alpha \beta}, \sfP_{\lambda} \sfT_{< \lambda}]\partial_\alpha \partial_\beta \widetilde{\mathfrak w} = \mathcal L (\partial \bfg, \partial \widetilde{\mathfrak w})
+        \]
+    for another wave packet $\widetilde{\mathfrak w}$ and some translation-invariant bilinear operator $\mathcal L(-, -)$ with finite-measure kernel. To estimate in $L^2_{t, x}$, we place $\partial \bfg$ in $L^2_t L^\infty_x$, gaining smallness from our bootstrap assumption, and $\partial \widetilde{\mathfrak w}$ in $L^\infty_t L^2_x$, in which it is unit size by construction \eqref{WPenergy}, yielding
+        \[
+            \| \mathrm I \|_{L^2_{t, x}}
+                \lesssim \| \partial \bfg \|_{L^2_t L^\infty_x} \| \partial \widetilde{\mathfrak w} \|_{L^\infty_t L^2_x} \lesssim \epsilon_2. 
+        \]
+    Taking $\epsilon_2 \leq \epsilon_0$ is an acceptable contribution towards \eqref{L2error}. 
+\end{proof}
+
+\begin{proof}[Estimating the term $\mathrm{II}$]
+    We are left to compute two derivatives of the bump function on $\R^{n - 1}$ localised to the null geodesic $\gamma$, 
+        \begin{align*}
+            \partial_\alpha \partial_\beta w
+                = 
+                \begin{cases}
+                    O(\epsilon_0 \lambda) 
+                        &\text{if two spatial derivatives},\\
+                    O((\epsilon_0 \lambda)^{\frac12} \ddot \gamma)
+                        &\text{if two time derivatives}, \\
+                    O(\epsilon_0 \lambda \dot \gamma)
+                        &
+                \end{cases}
+        \end{align*}
+    Since $\|\ddot \gamma\|_{L^2_t} \lesssim \epsilon_1$ this is acceptable.
+\end{proof}
+
+\begin{proof}[Estimating the term $\mathrm{III}$]
+
+\end{proof}
+
+\begin{proof}[Estimating the term $\mathrm{IV}$]
+    Surface measure is an approximate solution. 
+\end{proof}
+
+
+
+
+\subsection{Almost orthogonality of wave packets}
+
+
+
+\subsection{Matching the initial data}

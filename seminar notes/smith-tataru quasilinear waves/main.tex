@@ -1,0 +1,64 @@
+\documentclass[reqno]{amsart}
+
+\usepackage{external/takodachi}
+
+% To show labels in the margin:
+\usepackage[notref, notcite]{showkeys}
+
+\newcommand{\dS}{\mathrm{dS}}
+
+% Custom tag item reference
+\makeatletter
+\newcommand{\myitem}[1]{%
+\item[#1]\protected@edef\@currentlabel{#1}%
+}
+\makeatother
+
+% kill subsections in ToC
+\setcounter{tocdepth}{1} 
+
+\title[Local well-posedness for quasilinear wave equations]
+{
+	Local well-posedness for quasilinear wave equations \\
+	(d'apr\'es Smith-Tataru)
+} 
+\author{Jason Zhao}
+%\address{Department of Mathematics, University of California, Berkeley, 94720}
+%\email{zhao.j@berkeley.edu}
+\date{\today}
+
+
+\begin{document}
+
+\begin{abstract}
+	In this note, we outline the work by Smith-Tataru \cite{SmithTataru2005} concerning the sharp local well-posedness for generic quasi-linear wave equations. That is, given sufficiently regular Lorentzian metrics $\bfg_{\mu\nu} (\phi)$ and semi-linear terms $\cN(\phi)(\partial \phi, \partial \phi)$, we prove that the initial data problem 
+		\begin{equation*}
+			\begin{split}
+				\Box_{\bfg(\phi)} \phi &= \cN(\phi)(\partial \phi, \partial \phi),\\
+				(\phi, \partial_t \phi)_{|t = 0} 
+					&= (\phi_0, \phi_1), 
+			\end{split}
+		\end{equation*}
+	is locally well-posed in $H^s_x \times H^{s - 1}_x(\R^n)$ for $s > \frac{n}{2} + \frac12$ when $n = 3, 4, 5$, and for $s > \frac{n}{2} + \frac14 + \frac12$ when $n = 2$. 
+\end{abstract}
+\maketitle
+
+\tableofcontents
+
+\section{Introduction}
+\input{internal/intro}
+
+\section{Paradifferential decomposition}
+\input{internal/paradifferential}
+
+\section{Wave packet parametrix}
+\input{internal/parametrix}
+
+\section{Strichartz estimates}
+\input{internal/strichartz}
+
+
+\bibliographystyle{alpha}
+\bibliography{external/biblio}
+
+\end{document}
