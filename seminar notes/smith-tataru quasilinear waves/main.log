@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.8.9)  7 NOV 2025 21:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.8.9)  10 NOV 2025 10:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -434,63 +434,48 @@ LaTeX Font Info:    Font shape `U/msb/m/n' will be
 pdfTeX warning (ext4): destination with the same identifier (name{equation.1.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.76 	\begin{equation}
-                      \tag{LW} \label{eq:LW}
+l.89 			\begin{equation}
+                        \tag{LW}\label{eq:linearised}
 pdfTeX warning (ext4): destination with the same identifier (name{equation.1.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.76 	\begin{equation}
-                      \tag{LW} \label{eq:LW}
+l.89 			\begin{equation}
+                        \tag{LW}\label{eq:linearised}
 pdfTeX warning (ext4): destination with the same identifier (name{equation.1.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.76 	\begin{equation}
-                      \tag{LW} \label{eq:LW}
+l.89 			\begin{equation}
+                        \tag{LW}\label{eq:linearised}
 pdfTeX warning (ext4): destination with the same identifier (name{equation.1.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.76 	\begin{equation}
-                      \tag{LW} \label{eq:LW}
+l.89 			\begin{equation}
+                        \tag{LW}\label{eq:linearised}
 pdfTeX warning (ext4): destination with the same identifier (name{equation.1.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.106 			\begin{equation}
-                         \tag{LW}\label{eq:linearised}
-pdfTeX warning (ext4): destination with the same identifier (name{equation.1.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.106 			\begin{equation}
-                         \tag{LW}\label{eq:linearised}
-pdfTeX warning (ext4): destination with the same identifier (name{equation.1.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.106 			\begin{equation}
-                         \tag{LW}\label{eq:linearised}
-pdfTeX warning (ext4): destination with the same identifier (name{equation.1.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.106 			\begin{equation}
-                         \tag{LW}\label{eq:linearised} [2]
-pdfTeX warning (ext4): destination with the same identifier (name{equation.1.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.117 			\begin{equation}
+l.100 			\begin{equation}
                          
 pdfTeX warning (ext4): destination with the same identifier (name{equation.1.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.117 			\begin{equation}
+l.100 			\begin{equation}
                          
 pdfTeX warning (ext4): destination with the same identifier (name{equation.1.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.117 			\begin{equation}
+l.100 			\begin{equation}
                          
 pdfTeX warning (ext4): destination with the same identifier (name{equation.1.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.117 			\begin{equation}
-                         ) (internal/paradifferential.tex) (internal/parametrix.tex [3] [4]) (internal/strichartz.tex) (main.bbl [5]) [6] (main.aux)
+l.100 			\begin{equation}
+                          [2] [3
+pdfTeX warning (ext4): destination with the same identifier (name{equation.1.3}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.191 \end{remark}
+                  ]) (internal/paradifferential.tex) (internal/parametrix.tex [4] [5]) (internal/strichartz.tex [6] [7]) (main.bbl [8]) [9] (main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
@@ -501,20 +486,20 @@ LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.43996pt have occurred.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: B6DFCC7666FD31BA634EF722334ABF06;770.
+(rerunfilecheck)             Checksum: E4BC09B6904FC6AC67706EB62A72E8A0;770.
  ) 
 Here is how much of TeX's memory you used:
- 11843 strings out of 474486
- 181169 string characters out of 5743756
- 1950542 words of memory out of 5000000
- 33660 multiletter control sequences out of 15000+600000
- 606800 words of font info for 175 fonts, out of 8000000 for 9000
+ 11882 strings out of 474486
+ 181629 string characters out of 5743756
+ 1951542 words of memory out of 5000000
+ 33675 multiletter control sequences out of 15000+600000
+ 609432 words of font info for 183 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
- 90i,17n,93p,900b,784s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt9.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/euler/eufm10.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/mathpazo/fplmbb.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/mathpazo/fplmr.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/mathpazo/fplmri.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/fpl/fplrc8a.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/latxfont/lasy10.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/latxfont/lasy8.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplb8a.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplr8a.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (6 pages, 242005 bytes).
+ 90i,20n,93p,900b,784s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt8.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt9.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/euler/eufm10.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/mathpazo/fplmbb.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/mathpazo/fplmr.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/mathpazo/fplmri.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/fpl/fplrc8a.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/latxfont/lasy10.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/latxfont/lasy8.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplb8a.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplr8a.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplri8a.pfb>
+Output written on main.pdf (9 pages, 277753 bytes).
 PDF statistics:
- 246 PDF objects out of 1000 (max. 8388607)
- 60 named destinations out of 1000 (max. 500000)
+ 301 PDF objects out of 1000 (max. 8388607)
+ 78 named destinations out of 1000 (max. 500000)
  41 words of extra memory for PDF output out of 10000 (max. 10000000)
 

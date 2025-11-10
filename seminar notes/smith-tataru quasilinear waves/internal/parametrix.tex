@@ -1,36 +1,49 @@
 
 
+Let $\gamma \equiv \gamma(t)$ be a null geodesic, and let $\Sigma_{\theta, u}$ be the null surface containing $\gamma$,
+    \[
+        \Sigma_{\theta, u} 
+            := \{ (t, x) \in [-2, 2] \times \R^n : x_\theta - \tau_{\theta, u} (t, x'_\theta) = 0  \}.
+    \]
+
     \[
         \mathfrak w
-            := (\epsilon_0 \lambda)^{\frac12\frac{n - 1}{2}} \lambda^{-\frac12 + 1} \sfT_{< \lambda} \left( w \, \mathrm{dS}_{\Sigma_{\theta, u}} \right) 
+            := (\epsilon_0 \lambda)^{\frac12\frac{n - 1}{2}} \lambda^{\frac12 - 1} \sfT_{< \lambda} \left( w \, \mathrm{dS}_{\Sigma_{\theta, u}} \right) 
     \]
-where 
+where $w$ is a smooth bump function on $\Sigma_{\theta, u}$ localised at scale $(\epsilon_0 \lambda)^{-\frac12}$ about the null geodesic $\gamma$, i.e.  
     \[
         w = w_0 \big( (\epsilon_0 \lambda)^{\frac12} (x_\theta' - \gamma_\theta' (t)) \big)
     \]
+for some $w_0 \in C^\infty_c (|x'| \leq 1)$. 
 
+The direction $\theta \in \SS^{n - 1}$ varies over maximal collection of approximately $\epsilon_0^{\frac{n - 1}{2}} \lambda^{\frac{n - 1}{2}}$ unit vectors separated by at least $\epsilon_0^{\frac12} \lambda^{-\frac12}$
 
-\begin{proposition}[Existence of wave packet parametrix]
-    Let $n = 2, 3,4, 5$ then there exists a superposition of wave packets 
+Decompose $\R^n$ into parallel tiling of rectangles, length $\lambda^{-1}$ in parallel $x_\theta$ and $(\epsilon_0 \lambda)^{-\frac12}$ in the remainin $x'_\theta$ directions. 
 
+\begin{proposition}[Existence of wave packet parametrix]\label{prop:parametrix}
+    Let $(\phi_0, \phi_1) \in (H^1 \times L^2)_x (\R^n)$ be initial data. Then, in dimensions $n= 2, 3, 4, 5$, there exists a superposition of wave packets 
         \[
             \phi 
                 := \sum_{\theta, j} a_{\theta, j}  \, \mathfrak w^{\theta, j}
         \]
-    which is an approximate solution to the paralinearised equation in the sense that 
+    which is an approximate solution to the paralinearised initial data problem in the sense that 
     \begin{enumerate}
-        \item matches the initial data with 
+        \item \label{item:WPdata}it matches the initial data at $t = -2$, 
+            \begin{equation}
+                \sfP_\lambda \phi[-2] = (\phi_0, \phi_1)
+            \end{equation}
+        \item \label{item:WPsize}the size of the coefficients is comparable to the size of the initial data, 
             \begin{equation}
                 \Bigl(\sum_{\theta, j} |a_{\theta, j}|^2 \Bigr)^\frac12
                 \lesssim \| \phi[0] \|_{(H^1 \times L^2)_x}.
             \end{equation}
-        \item the energy estimate 
+        \item \label{item:WPenergy}the energy estimate holds, 
             \begin{equation}
-                \| \partial \phi_\lambda \|_{L^\infty_t L^2_x}
+                \| \partial \sfP_\lambda \phi \|_{L^\infty_t L^2_x}
                 \lesssim \Bigl( \sum_{\theta, j} |a_{\theta, j}|^2 \Bigr)^\frac12
         \end{equation}
             
-        \item error estimate 
+        \item \label{item:WPerror}the error on the right-hand side is small, 
              \begin{equation}
                 \| \Box_{\bfg_{< \lambda}} \phi_\lambda||_{L^1_t L^2_x} 
                 \lesssim \epsilon_0 \, \Bigl( \sum_{\theta, j} |a_{\theta, j}|^2 \Bigr)^\frac12. 
@@ -44,6 +57,10 @@ where
 \subsection{Wave packets as approximate solutions}
 
 
+    \begin{lemma}[Wave packet error decomposition]
+        
+    \end{lemma}
+
     \begin{lemma}[Energy estimate for $\mathfrak w$]
         Wave packets have $O(1)$-energy, 
             \begin{equation}\label{eq:WPenergy}
@@ -53,7 +70,11 @@ where
     \end{lemma}
 
     \begin{proof}
-        Obvious. 
+        By construction, the wave packet has amplitude 
+            \[
+                \| \partial \sfP_\lambda \mathfrak w \|_{L^\infty_t L^2_x} 
+                    \lesssim \lambda \cdot |\text{amplitude}| \cdot |\text{support}|^{\frac12} \lesssim 1 
+            \]
     \end{proof}
 
     \begin{lemma}[Error estimate for $\mathfrak w$]
@@ -70,10 +91,10 @@ Obviously \eqref{L2error} is stronger than \eqref{L1error}, so we focus on provi
         \Box_{\bfg_{< \lambda}} \mathsf P_\lambda \mathfrak w 
             &= (\epsilon_0 \lambda)^{\frac12 \frac{n - 1}{2}} \lambda^{-\frac12 + 1} \Bigl( [\Box_{\bfg_{< \lambda}}, \sfP_\lambda \sfT_{<\lambda}] + \sfP_{\lambda} \sfT_{< \lambda} \Box_{\bfg_{<\lambda}} \Bigr) w \, \dS_{\Sigma} \\
             &= (\epsilon_0 \lambda)^{\frac12 \frac{n - 1}{2}} \lambda^{-\frac12 + 1}  [\Box_{\bfg_{< \lambda}}, \sfP_\lambda \sfT_{<\lambda}] w \, \dS_{\Sigma_{\theta, u}} \\
-            &\qquad + (\epsilon_0 \lambda)^{\frac12 \frac{n - 1}{2}} \lambda^{-\frac12 + 1}\sfP_{\lambda} \sfT_{< \lambda} \left( \Box_{\bfg_{<\lambda}} w \cdot \dS_\Sigma + 2 \bfg_{< \lambda}^{\alpha \beta} \partial_\alpha w \cdot \partial_\beta \dS_{\Sigma} + w \cdot \, \Box_{\bfg_{< \lambda}} \dS_{\Sigma}\right)\\ 
+            &\qquad + (\epsilon_0 \lambda)^{\frac12 \frac{n - 1}{2}} \lambda^{-\frac12 + 1}\sfP_{\lambda} \sfT_{< \lambda} \left( \Box_{\bfg_{<\lambda}} w \cdot \dS_\Sigma + 2\overline{\bfg}_{< \lambda}^{\alpha \beta} \partial_\alpha w \cdot \partial_\beta \dS_{\Sigma} + w \cdot \, \Box_{\bfg_{< \lambda}} \dS_{\Sigma}\right)\\ 
             &=: \mathrm{I} + \mathrm{II} + \mathrm{III} + \mathrm{IV},
     \end{align*}
-commuting $\Box$ with the frequency projections and then applying the product rule. 
+commuting $\Box$ with the frequency projections and then applying the product rule. Here we have denoted $\overline \bfg^{\alpha \beta}_{< \lambda} = \tfrac12 (\bfg^{\alpha \beta}_{< \lambda} + \bfg^{\beta \alpha}_{< \lambda})$. 
 
 \begin{proof}[Estimating the term $\mathrm{I}$]
     Since the metric is cut-off to frequencies much lower than $\lambda$, the commutator clearly projects to frequencies $|\xi| \sim \lambda$. Thus, one can harmlessly insert fattened projections $\widetilde \sfP_{\lambda} \widetilde \sfT_{< \lambda}$ in front of the commutator. Furthermore, while two derivatives fall on the wave packet, standard commutator arguments\footnote{In a word, the principal symbol of the commutator is given by the Poisson bracket, so one can, to leading order, write $[\bfg(x), \chi(\nabla/\lambda)] \approx \{ \bfg(x), \chi(\xi/\lambda) \} \approx \partial_x \bfg \cdot \partial_\xi \chi(\xi/\lambda) \approx \tfrac1\lambda \partial_x \bfg$.} allow us to move one derivative onto the metric. In total, we can rewrite
@@ -111,6 +132,14 @@ commuting $\Box$ with the frequency projections and then applying the product ru
 
 \begin{proof}[Estimating the term $\mathrm{IV}$]
     Surface measure is an approximate solution. 
+        \begin{align*}
+            \langle \Box_{\bfg_{< \lambda}} \dS_{\Sigma}, \varphi \rangle 
+                &= \int_\Sigma \partial_\alpha \partial_\beta \left(\bfg_{< \lambda}^{\alpha \beta} \cdot \varphi\right) \mathrm{dS}_\Sigma \\
+                &= \int_\Sigma \partial_\alpha \partial_\beta \bfg^{\alpha\beta}_{< \lambda} \cdot \varphi + \left(\partial_\alpha \bfg^{\alpha\beta}_{< \lambda} \cdot \partial_\beta \varphi + \partial_\beta \bfg^{\alpha \beta}_{< \lambda} \cdot \partial_\alpha \varphi\right) + \bfg^{\alpha \beta}_{< \lambda} \cdot \partial_\alpha \partial_\beta \varphi \, \dS_\Sigma\\
+                &= \int_\Sigma \left(\bfg - \bfg_{> \lambda}\right)^{\alpha \beta} \partial_\alpha \partial_\beta \varphi \, \dS_\Sigma\\
+                &= \int_{\R^n} \bfg_{< \lambda}^{\alpha \beta} \partial_\alpha \partial_\beta \varphi \, \sqrt{1 + \partial^\bfa \partial_\bfa \tau} \, dx' dt
+        \end{align*}
+    $(t, x') \mapsto (t, x', \tau(t, x'))$
 \end{proof}
 
 
@@ -119,5 +148,55 @@ commuting $\Box$ with the frequency projections and then applying the product ru
 \subsection{Almost orthogonality of wave packets}
 
 
+    \begin{equation}
+        \| \partial \sfP_\lambda \phi \|_{L^2_{t, x}} 
+            \lesssim \Big( \sum_{\theta, j} |a_{\theta, j}|^2 \Big)^{\frac12}. 
+    \end{equation}
 
-\subsection{Matching the initial data}
+    \begin{lemma}[Orthogonality at ``good" $t$]
+        
+            \begin{equation}
+                \| \phi(t) \|_{L^2_x}^2
+                    \lesssim \sum_{\theta, j} \| \psi^{\theta, j}  \|_{H^{\frac{n - 1}{2} +} (\R^{n - 1})}^2
+            \end{equation}
+    \end{lemma}
+
+    \begin{lemma}[Orthogonality at ``bad'' $t$]
+        
+            \begin{equation}
+                \| \Phi(t) \|_{L^2_x}^2 
+                    \lesssim \Big( \frac{1}{\epsilon_0} \| \partial \bfg (t)\|_{C^{0, \delta}_x} \Big)^{\frac{n - 1}{2}} \sum_{\theta, j} \| \psi^{\theta, j} \|_{H^{\frac{n - 1}{2} +} (\R^{n - 1})}^2
+            \end{equation}
+    \end{lemma}
+
+    It would follow that 
+        \begin{align*}
+            \| \partial_x \sfP_\lambda \phi (t) \|_{L^2_x}^2 
+                &\lesssim \Big( 1 + \Big( \frac1{\epsilon_0} \| \bfg(t)\|_{C^{0, \delta}_x} \Big)^{\frac{n - 1}{2}}  \Big) \sum_{\theta, j} |a_{\theta, j}|^2 \\
+        \end{align*}
+     
+
+\subsection{Matching wave packets to initial data}
+
+It remains to show Proposition \ref{prop:parametrix} (\ref{item:WPdata})-(\ref{item:WPsize}); put loosely, any initial data $(\phi_0, \phi_1) \in (H^1 \times L^2)_x (\R^n)$ can be matched at time $t = -2$ to a superposition of wave packets. 
+
+\subsubsection*{Approximate solution for $\Box$}
+
+Maximal collection of $\theta$. We decompose 
+    \[
+        \phi[0] 
+            = \sum_{\theta \in \Omega} \phi^\theta [0], 
+    \]
+where 
+    \[
+        \phi^\theta 
+            := \frac12 \left( \phi_0^\theta (x + t \theta) + u_0 \right)
+    \]
+
+\subsubsection*{Approximate solution for $\Box_{\bfg_{< \lambda}}$}
+
+Fourier transform trick, $u_0^\omega$ compact support in frequency, take Fourier transform in $x_\theta$, then extend periodically the Fourier transform with period $\lambda \theta$, 
+    \[
+        \widehat{\phi^\theta} 
+            = \sum_{k \in \Z} 
+    \]

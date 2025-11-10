@@ -23,7 +23,7 @@ The following can be recast in the form \eqref{QNLW},
 For the former, this was observed by Choquet-Bruhat \cite{Foures-Bruhat1952}, while the later is due to Hughes-Kato-Marsden \cite{HughesEtAl1977}. The reader may find the lecture notes \cite{Luk} as a more modern reference. 
 \end{example}
 
-Following the standards set by Hadamard and Kato, we say that the initial data problem for the quasi-linear wave equation \eqref{QNLW} is \textit{locally well-posed} in $(H^s_x \times H^{s - 1}_x) (\R^n)$ if the following hold: 
+Following the standards set by Hadamard, we say that the initial data problem for the quasi-linear wave equation \eqref{QNLW} is \textit{locally well-posed} in $(H^s_x \times H^{s - 1}_x) (\R^n)$ if the following hold: 
 	\begin{enumerate}
 		\item \textit{Existence}: for each initial data $\phi[0] \in (H^s_x \times H^{s - 1}_x) (\R^n)$, there exists a time $T > 0$ and a solution $\phi[t] \in C^0_t (H^s_x \times H^{s - 1}_x) ([0, T] \times \R^n)$ to \eqref{QNLW}. 
 		
@@ -40,12 +40,12 @@ Following the standards set by Hadamard and Kato, we say that the initial data p
 	\end{enumerate}
 For the working definition, we will need to slightly modify the existence and uniqueness statements, strengthening the former while weakening the latter, and require an additional property of the data-to-solution map:
 	\begin{enumerate}
-		\myitem{(a')} \label{item:exist}\textit{(Sub-critical) existence}: the time of existence can be taken to depend only on the size of the data 
+		\myitem{(a+)} \label{item:exist}\textit{(Sub-critical) existence}: the time of existence can be taken to depend only on the size of the data 
 			\[
 				T \equiv T(\|\phi[0]\|_{H^s_x \times H^{s - 1}_x}).
 			\]
 	
-		\myitem{(b')}\label{item:unique} \textit{(Conditional) uniqueness}: uniqueness holds only in the smaller Strichartz space, 
+		\myitem{(b-)}\label{item:unique} \textit{(Conditional) uniqueness}: uniqueness holds only in the smaller Strichartz space, 
 			\[ 
 				\left\{ \phi[0] \in C^0_t (H^s_x \times H^{s - 1}_x) : \partial \phi \in L^2_t L^\infty_x  \right\}.
 			\]
@@ -68,24 +68,7 @@ In sum, we say that the initial data problem for the quasi-linear wave equation 
 \end{quote}
 
 
-Scaling 
-	\[
-		\phi(x^\mu) \mapsto \phi(\tfrac{x^\mu}{\lambda})
-	\]
-This leads to the scaling critical Sobolev exponent $s_{\text{crit}} := \tfrac{d}{2}$. The main result: half a derivative above scaling. 
-	\begin{equation}\tag{LW} \label{eq:LW}
-	\begin{alignedat}{2}
-		\Box_{\bfg} \phi 
-			&= 0, 
-			&& \qquad \text{on $[0, T] \times \R^n$},\\
-		(\phi, \partial_t \phi) 
-			&= (\phi_0, \phi_1),
-			&& \qquad\text{on $t = 0$},
-	\end{alignedat}
-	\end{equation}
-
-
-\begin{theorem}[Smith-Tataru \cite{SmithTataru2005}]
+\begin{theorem}[Sharp local well-posedness for \eqref{QNLW} \cite{SmithTataru2005}]\label{thm:main}
 	The initial data problem for the quasi-linear wave equation \eqref{QNLW} is locally well-posed in $(H^s_x \times H^{s - 1}_x)(\R^n)$, provided that 
 		\begin{alignat*}{2}
 			s 
@@ -128,8 +111,40 @@ This leads to the scaling critical Sobolev exponent $s_{\text{crit}} := \tfrac{d
 \end{theorem}
 
 \begin{remark}
-	The proof breaks down in higher dimensions $n \geq 6$ due to a technical failure in the orthogonality argument for the wave packet decomposition. 
+	The equation \eqref{QNLW} is invariant under the scaling symmetry
+	\[
+		\phi(x^\mu) \mapsto \phi(\tfrac{x^\mu}{\lambda})
+	\]
+	which also preserves the homogeneous Sobolev norm $\dot H^{s_{\text{crit}}}_x \times \dot H^{s_{\text{crit}} - 1}_x(\R^n)$, where $s_{\text{crit}} := \tfrac{n}{2}$. Below scaling $s < s_{\text{crit}}$, the common expectation is ill-posedness, leading us to ask the more refined question:
+		\begin{quote}
+			\it How close can one push the local well-posedness of \eqref{QNLW} towards the scaling critical regularity? 
+		\end{quote}
+	Theorem \ref{thm:main} is sharp for generic \eqref{QNLW} in dimensions $n = 2, 3$ due to counterexamples of Lindblad \cite{Lindblad1993,Lindblad1996a}. On the other hand, it is not difficult to show that the \textit{Nirenberg example}
+		\[
+			\Box \phi = \partial^\alpha \phi \partial_\alpha \phi ,
+		\]
+	is locally well-posed for $s > s_{\text{crit}}$, thanks to the \textit{null structure} of the non-linearity. 
 \end{remark}
+
+\begin{remark}
+	The proof contained in \cite{SmithTataru2005} breaks down in higher dimensions $n \geq 6$ due to a technical failure in the orthogonality argument for the wave packet decomposition. 
+\end{remark}
+
+
+
+
+The main result: half a derivative above scaling. 
+	\begin{equation}\tag{LW} \label{eq:LW}
+	\begin{alignedat}{2}
+		\Box_{\bfg} \phi 
+			&= 0, 
+			&& \qquad \text{on $[0, T] \times \R^n$},\\
+		(\phi, \partial_t \phi) 
+			&= (\phi_0, \phi_1),
+			&& \qquad\text{on $t = 0$},
+	\end{alignedat}
+	\end{equation}
+
 
 \begin{table}[ht]
 	\centering
@@ -157,7 +172,7 @@ This leads to the scaling critical Sobolev exponent $s_{\text{crit}} := \tfrac{d
 \end{table}
 
 
-\begin{theorem}[Energy estimate \cite{HughesEtAl1977}]
+\begin{theorem}[Local well-posedness for \eqref{QNLW} with smooth data \cite{HughesEtAl1977}]
 	Let $s \geq 0$, then there exists $C \gg 1$ such that any smooth solution $\phi$ to \eqref{QNLW} obeys the a priori estimate
 		\begin{equation}
 			\| \partial \phi \|_{L^\infty_t H^{s - 1}_x} 

@@ -1,6 +1,66 @@
 
 The analysis in the previous sections tell us that the geometry of slabs is approximately that of Minkowski space. Thus, one can expect that the same harmonic analysis counting arguments used to prove Strichartz estimate (or, alternatively, Fourier restriction estimates) hold in this setting. 
 
+
+\subsection{Dispersive decay}
+
+
+    \[
+        \dist(x_2, C_{P_1}^t) 
+            = \inf_{\theta \in \SS^{n - 1}} |x_2 - \gamma_\theta (t_2)| 
+    \]
+
+    \[
+        \delta u (P_1, P_2) 
+            := \sup_{\theta \in \SS^{n - 1}} |u_\theta (P_2) - u_\theta (P_1)| 
+    \]
+
+\begin{lemma}[Properties of $\delta u$]
+    The parameter $\delta u$ is negative if $P_2$ is inside the cone, positive in the exterior. Furthermore, $\delta u \approx \dist(x_2, C_1^t)$
+\end{lemma}
+
+    Let 
+        \[
+            \#_\lambda (\mathtt P_1, \mathtt P_2) 
+                := \text{$\#$ of slabs at scale $\lambda$ containing $\mathtt P_1$ and $\mathtt P_2$.}
+        \]
+
+\begin{proposition}[Dispersive decay, I]
+    The number of slabs at scale $\lambda$ containing a pair of points $\mathtt P_1 = (t_1, x_1)$ and $\mathtt P_2 = (t_2, x_2)$ is 
+        \begin{equation}
+            \#_\lambda (\mathtt P_1, \mathtt P_2) 
+                \lesssim 
+                \begin{cases} 
+                    \left( \frac{\lambda}{\epsilon_0} \right)^{\frac{n - 1}{2}} \left(1 + \lambda \dist(x_2, C_1^{t_2})\right)^{\frac{n - 3}{2}} \left( 1 + \lambda |t_1 - t_2|\right)^{-\frac{n - 1}{2}}
+                        & \text{if $m \in I_1$},\\
+                    \left( \frac{\lambda}{\epsilon_0} \right)^{\frac{n - 1}{2}} \left(1 + \lambda \dist(x_2, C_1^{t_2})\right)^{-1} 
+                        & \text{if $m \in I_2$},\\
+                    0 
+                        & \text{otherwise},
+                \end{cases}
+        \end{equation}
+    where 
+        \begin{align*}
+            I_1 
+                &:= \left\{   -4 \lambda^{-1} \leq \delta u(\mathtt P_1, \mathtt P_2) \leq \min (2 |t_1 - t_2| , C (\lambda\epsilon_0)^{-1} |t_1 - t_2|^{-1}) \right\}  \\
+            I_2
+                &:= \left\{ 2 |t_1 - t_2| \leq \delta u (\mathtt P_1, \mathtt P_2) \leq C (\epsilon_0 \lambda)^{-\frac12} \right\}. 
+        \end{align*}
+\end{proposition}
+
+In actuality we will only need the worst case, i.e. $\delta u \in I_2$. 
+
+\begin{corollary}[Dispersive decay, II]
+    For all pairs of points $P_1, P_2$ in space-time, the number of slabs at scale $\lambda$ containing both is 
+        \begin{equation}
+            \#_\lambda (P_1, P_2) 
+                \lesssim \left(\frac{\lambda}{\epsilon_0} \right)^{\frac{n - 1}{2}} \big(\lambda |t_1 - t_2|\big)^{-1}
+        \end{equation}
+\end{corollary}
+
+\subsection{Strichartz estimates}
+
+
 \begin{proposition}
     Let 
         \[
@@ -14,35 +74,48 @@ The analysis in the previous sections tell us that the geometry of slabs is appr
         \end{equation}
 \end{proposition}
 
+We proceed by discretising the problem. Dividing $[0, 1]$ into $O(\lambda)$-many sub-intervals $I_j$ of length $2\lambda^{-1}$, we can find points $\mathtt P_j = (t_j, x_j)$ nearly maximising $|\phi|$ on each space-time region $I_j \times \R^n$. It follows that
+    \begin{align*}
+        \| \phi \|_{L^2_t L^\infty_x}
+            &\lesssim \Big( \sum_j \int_{I_j} \|\phi(t) \|_{L^\infty_x}^2 \, dt \Big)^{\frac12} \lesssim \Big(\sum_j \lambda^{-1} |\phi(t_j, x_j)|^2 \Big)^{\frac12} \lesssim \lambda^{-\frac12}\sum_{T \in \cT} \Big( \sum_j |a_{\mathtt T}|^2 \cdot |\mathbb 1_{\mathtt T} (t_j, x_j)|^2 \Big)^{\frac12}.
+    \end{align*}
+After passing to an $O(\lambda)$ subset of points, we can choose $t_j$ to be $\lambda^{-1}$-separated and the inequality above continues to hold. Next, we dyadically decompose the sum over slabs $\mathtt T$ with respect to the size $N^{-\frac12}$ of the coefficients $a_T$, and similarly the sum over points $\mathtt P_j$ with respect to $L$ the number of slabs containing them; we denote the number of such points by $m(L)$. It follows that
+    \begin{align*}
+        \|\phi \|_{L^2_t L^\infty_x}
+            &\lesssim \lambda^{-\frac12} \sum_{\substack{\substack{N \in 2^{\N} \\ N \lesssim (\frac{\lambda}{\epsilon_0})^{\frac{n - 1}2}} }} \quad \sum_{\substack{\mathtt T \in \cT \\ |a_{\mathtt T}| \sim N^{-\frac12}}}\Big(\sum_{\substack{L \in 2^\N \\ L \lesssim (\frac{\lambda}{\epsilon_0})^{\frac{n - 1}2}}}\quad \sum_{\substack{j \\ \text{$\# \{ \mathtt T \in \cT : \mathtt P_j \in \mathtt T \} \sim L$}}}  |a_{\mathtt T}|^2 \cdot |\mathbb 1_{\mathtt T} (t_j, x_j)|^2 \Big)^{\frac12} \\
+            &\lesssim \lambda^{-\frac12}\Big(\sum_{L \lesssim (\frac{\lambda}{\epsilon_0})^{\frac{n - 1}2}}  m(L) \Big| \sum_{\substack{N \lesssim (\frac{\lambda}{\epsilon_0})^{\frac{n - 1}2} }} N^{-\frac12} \cdot L  \Big|^2\Big)^{\frac12} \\
+            &\lesssim \lambda^{-\frac12} \sum_{N \lesssim (\frac{\lambda}{\epsilon_0})^{\frac{n - 1}2}} \Big(\sum_{L \lesssim (\frac{\lambda}{\epsilon_0})^{\frac{n - 1}2}} m(L)^2 N^{-1} L^2\Big)^{\frac12}
+    \end{align*}
+In the above, we needed only to sum over a finite range of scales, since each point lies in $O((\tfrac{\lambda}{\epsilon_0})^{\frac{n - 1}{2}})$-many slabs. This restricts us to a finite range of scales for $L$, and allows us to regard the contribution of slabs with small coefficients $|a_T| \lesssim (\tfrac{\epsilon_0}\lambda)^{\frac{n - 1}{2}}$ as $O(1)$. 
 
-\begin{proposition}[Dispersive decay, I]
-    For all pairs of points $P_1, P_2$ in space-time, the number of slabs at scale $\lambda$ containing both is 
-        \begin{equation}
-            \#_\lambda (P_1, P_2) 
-                \lesssim 
-                \begin{cases} 
-                    \epsilon_0 
-                        & \text{if $m \in I_1$},\\
-                    \epsilon_0 
-                        & \text{if $m \in I_2$},\\
-                    0 
-                        & \text{otherwise},
-                \end{cases}
-        \end{equation}
-    where 
-        \begin{align*}
-            I_1 
-                &:= \\
-            I_2
-                &:=
-        \end{align*}
-\end{proposition}
+We conclude with a counting argument. To summarise notation and introduce new ones, 
+    \begin{align*}
+        N 
+            &:= \text{size of coefficient},\\
+        L 
+            &:= \text{$\#$ of slabs},\\
+        m(L)
+            &:= \text{$\#$ of points intersecting $L$-many slabs},\\
+        K
+            &:= \text{$\#$ of pairs $(i,j)$ for which $\mathtt P_i, \mathtt P_j$ lie in a common slab w/ multiplicity},\\
+        n(\mathtt T)
+            &:= \text{$\#$ of points in slab $\mathtt T$}.
+    \end{align*}
+Observe that 
+    \begin{align*}
+        \sum_{\substack{\mathtt T \in \cT_N \\ n(\mathtt T) \geq 2}} |n(\mathtt T)|^2
+            &\sim K,\\
+        \sum_{\substack{\mathtt T \in \cT_N}} n(\mathtt T)
+            &\sim m(L) \cdot L.
+    \end{align*}
+and Cauchy-Schwartz, assuming $|\cT_N| \sim N$, This is because $\sum |a_T|^2 \sim \sum_N \sum_{T \in \cT_N} N^{-1} \sim 1$ 
+    \[
+        \sum_{\substack{\mathtt T \in \cT_N \\ n(\mathtt T) \geq 2}} |n(\mathtt T)|^2 \gtrsim N^{-1} \Big(\sum_{\substack{\mathtt T \in \cT_N \\ n(\mathtt T) \geq 2}} n(\mathtt T) \Big)^2
+    \]
 
 
-\begin{corollary}[Dispersive decay, II]
-    For all pairs of points $P_1, P_2$ in space-time, the number of slabs at scale $\lambda$ containing both is 
-        \begin{equation}
-            \#_\lambda (P_1, P_2) 
-                \lesssim \epsilon_0^{-\frac{n - 1}{2}} \lambda^{\frac{n - 3}{2}} |t_1 - t_2|^{-1}
-        \end{equation}
-\end{corollary}
+    \[
+        K   
+            \lesssim \sum_{i ,j } \#_\lambda (\mathtt P_i, \mathtt P_j)
+            \lesssim \left(\frac{\lambda}{\epsilon_0} \right)^{\frac{n - 1}{2}} \sum_{1 \leq i  < j \leq M} |t_i - t_j|^{-1} \lesssim m(L)  \left(\frac{\lambda}{\epsilon_0} \right)^{\frac{n - 1}{2}} \log \lambda
+    \]
