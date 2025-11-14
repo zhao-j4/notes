@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex main"] 1762797850.53095 "main.aux" "main.bbl" "main" 1762799612.76582 0
+["bibtex main"] 1763150287.60733 "main.aux" "main.bbl" "main" 1763155615.55607 0
   "./external/biblio.bib" 1762589119 9929 96dffd37268d1be07f219c4f76867c89 ""
   "C:/Users/reave/AppData/Local/Programs/MiKTeX/bibtex/bst/bibtex/alpha.bst" 1291864736 23907 a5f93555796fb564b924339521f10a7c ""
-  "main.aux" 1762799612 4648 bc1058a4343d687b1980c98ae6f74d48 "pdflatex"
+  "main.aux" 1763155614 8071 db98a2793f19370a05ac365d167ff3ec "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1762799611.12983 "c:/Users/reave/Documents/GitHub/notes/seminar notes/smith-tataru quasilinear waves/main.tex" "main.pdf" "main" 1762799612.76648 0
+["pdflatex"] 1763155613.42054 "c:/Users/reave/Documents/GitHub/notes/seminar notes/smith-tataru quasilinear waves/main.tex" "main.pdf" "main" 1763155615.55676 0
   "C:/Users/reave/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1762586130 82507 a9eef8696c92627b87e9975edea03b2a ""
   "C:/Users/reave/AppData/Local/MiKTeX/fonts/tfm/public/mathabx/mathx10.tfm" 1754790001 1520 88530e4e46ef1e4a7103f014512c50d2 ""
   "C:/Users/reave/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1754789923 24225045 9e31ca60e7deec8be21c2b371e4faf02 ""
@@ -149,17 +149,21 @@
   "C:/Users/reave/AppData/Local/Programs/MiKTeX/tex/latex/rerunfilecheck/rerunfilecheck.sty" 1751104012 9684 a33a14b82ce60d6e77cb9be689d79ee6 ""
   "C:/Users/reave/AppData/Local/Programs/MiKTeX/tex/latex/tools/showkeys.sty" 1700599895 8814 ab32133c32be0159a86537b98e5f5001 ""
   "C:/Users/reave/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
-  "c:/Users/reave/Documents/GitHub/notes/seminar notes/smith-tataru quasilinear waves/main.tex" 1762744832 1763 7e967e923ac50fa8f4470bd2b8af9eda ""
+  "c:/Users/reave/Documents/GitHub/notes/seminar notes/smith-tataru quasilinear waves/main.tex" 1763016741 1852 a8930cdbf129710ed14d4aa755aa7031 ""
   "external/takodachi.sty" 1762553826 8778 797eb5cbe82f17aa6b835f60e7979e6a ""
-  "internal/intro.tex" 1762799427 12051 140af213a052627f3f6c5d50c14635d8 ""
-  "internal/paradifferential.tex" 1762545472 248 d6da91b090de08944f01e6d6d271d22b ""
-  "internal/parametrix.tex" 1762735734 11147 f8bae2673e41e5e932681619ca6dcf20 ""
-  "internal/strichartz.tex" 1762799610 7037 251719da61cef28f6df48536b3717bf6 ""
-  "main.aux" 1762799612 4648 bc1058a4343d687b1980c98ae6f74d48 "pdflatex"
-  "main.bbl" 1762797850 2357 d0fff71c2e6c457b4d0b1e03b98bca31 "bibtex main"
-  "main.out" 1762799612 770 e4bc09b6904fc6ac67706eb62a72e8a0 "pdflatex"
-  "main.tex" 1762744832 1763 7e967e923ac50fa8f4470bd2b8af9eda ""
-  "main.toc" 1762799612 1136 8059fb3d4400cb8bfe7d8b1a68d008df "pdflatex"
+  "graphics/WP.jpg" 1762906327 99611 65c15a7a1b9134fc9ddf9f184d4bbaaf ""
+  "graphics/fourier.jpg" 1762906469 71729 99147e34146c6dcaa1d6360363b5c392 ""
+  "graphics/superWP.jpg" 1762906353 164337 e97006437c90b105d4c40efda574aa4a ""
+  "internal/geometry.tex" 1763006387 545 f1ed2a8a0c23e99b017408210217e8ac ""
+  "internal/intro.tex" 1763155612 13428 9c6abf7669bc6fc8cf843c6bf44da1d2 ""
+  "internal/parametrix.tex" 1763150570 24819 bccff6266c215f942807b91e500066ac ""
+  "internal/setup.tex" 1762834951 3317 aa0898aa1ebe49625fc65e6886eeba55 ""
+  "internal/strichartz.tex" 1762907552 7980 ae173d09898097d73f95211163a10b49 ""
+  "main.aux" 1763155614 8071 db98a2793f19370a05ac365d167ff3ec "pdflatex"
+  "main.bbl" 1763150287 2846 74c6661c7c8ae90e999f03a89c08bd5d "bibtex main"
+  "main.out" 1763155614 1035 6238c946aa2ae7f5b03d410467f18e44 "pdflatex"
+  "main.tex" 1763016741 1852 a8930cdbf129710ed14d4aa755aa7031 ""
+  "main.toc" 1763155614 1534 18aa7c4a1c6781e71ec8272c01dfbacb "pdflatex"
   (generated)
   "main.aux"
   "main.log"

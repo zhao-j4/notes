@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.8.9)  10 NOV 2025 10:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.8.9)  14 NOV 2025 13:26
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -430,52 +430,66 @@ LaTeX Font Info:    Font shape `U/msb/m/n' will be
 (Font)              scaled to size 10.42007pt on input line 3.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
 (Font)              scaled to size 7.91925pt on input line 3.
- [1{C:/Users/reave/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}]
+ [1{C:/Users/reave/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}] [2]
 pdfTeX warning (ext4): destination with the same identifier (name{equation.1.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.89 			\begin{equation}
-                        \tag{LW}\label{eq:linearised}
+l.96 		\begin{equation}
+                       
 pdfTeX warning (ext4): destination with the same identifier (name{equation.1.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.89 			\begin{equation}
-                        \tag{LW}\label{eq:linearised}
+l.96 		\begin{equation}
+                       
 pdfTeX warning (ext4): destination with the same identifier (name{equation.1.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.89 			\begin{equation}
-                        \tag{LW}\label{eq:linearised}
+l.96 		\begin{equation}
+                       
 pdfTeX warning (ext4): destination with the same identifier (name{equation.1.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.89 			\begin{equation}
-                        \tag{LW}\label{eq:linearised}
-pdfTeX warning (ext4): destination with the same identifier (name{equation.1.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.100 			\begin{equation}
-                         
-pdfTeX warning (ext4): destination with the same identifier (name{equation.1.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.100 			\begin{equation}
-                         
-pdfTeX warning (ext4): destination with the same identifier (name{equation.1.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.100 			\begin{equation}
-                         
-pdfTeX warning (ext4): destination with the same identifier (name{equation.1.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.100 			\begin{equation}
-                          [2] [3
-pdfTeX warning (ext4): destination with the same identifier (name{equation.1.3}) has been already used, duplicate ignored
+l.96 		\begin{equation}
+                       ) (internal/setup.tex [3
+pdfTeX warning (ext4): destination with the same identifier (name{equation.1.2}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.191 \end{remark}
-                  ]) (internal/paradifferential.tex) (internal/parametrix.tex [4] [5]) (internal/strichartz.tex [6] [7]) (main.bbl [8]) [9] (main.aux)
+l.8     \end{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.1.2}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.8     \end{equation}
+                      ]) (internal/geometry.tex [4]) (internal/parametrix.tex
+<graphics/WP.jpg, id=186, 1128.215pt x 967.615pt>
+File: graphics/WP.jpg Graphic file (type jpg)
+<use graphics/WP.jpg>
+Package pdftex.def Info: graphics/WP.jpg  used on input line 22.
+(pdftex.def)             Requested size: 225.63899pt x 193.51958pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<graphics/superWP.jpg, id=187, 1279.78125pt x 1253.68375pt>
+File: graphics/superWP.jpg Graphic file (type jpg)
+<use graphics/superWP.jpg>
+Package pdftex.def Info: graphics/superWP.jpg  used on input line 45.
+(pdftex.def)             Requested size: 255.95172pt x 250.7323pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<graphics/fourier.jpg, id=188, 1295.84125pt x 700.6175pt>
+File: graphics/fourier.jpg Graphic file (type jpg)
+<use graphics/fourier.jpg>
+Package pdftex.def Info: graphics/fourier.jpg  used on input line 52.
+(pdftex.def)             Requested size: 259.16365pt x 140.12102pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[5] [6 <./graphics/WP.jpg> <./graphics/superWP.jpg>] [7 <./graphics/fourier.jpg>]
+Overfull \vbox (2.38063pt too high) has occurred while \output is active []
+
+ [8] [9]) (internal/strichartz.tex [10] [11] [12]) (main.bbl) [13] (main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
@@ -486,20 +500,20 @@ LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.43996pt have occurred.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: E4BC09B6904FC6AC67706EB62A72E8A0;770.
+(rerunfilecheck)             Checksum: 6238C946AA2AE7F5B03D410467F18E44;1035.
  ) 
 Here is how much of TeX's memory you used:
- 11882 strings out of 474486
- 181629 string characters out of 5743756
- 1951542 words of memory out of 5000000
- 33675 multiletter control sequences out of 15000+600000
+ 11955 strings out of 474486
+ 182894 string characters out of 5743756
+ 1952542 words of memory out of 5000000
+ 33716 multiletter control sequences out of 15000+600000
  609432 words of font info for 183 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
- 90i,20n,93p,900b,784s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,20n,93p,947b,724s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt8.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt9.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/euler/eufm10.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/mathpazo/fplmbb.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/mathpazo/fplmr.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/mathpazo/fplmri.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/fpl/fplrc8a.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/latxfont/lasy10.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/latxfont/lasy8.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplb8a.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplr8a.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (9 pages, 277753 bytes).
+Output written on main.pdf (13 pages, 653982 bytes).
 PDF statistics:
- 301 PDF objects out of 1000 (max. 8388607)
- 78 named destinations out of 1000 (max. 500000)
- 41 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 416 PDF objects out of 1000 (max. 8388607)
+ 109 named destinations out of 1000 (max. 500000)
+ 64 words of extra memory for PDF output out of 10000 (max. 10000000)
 

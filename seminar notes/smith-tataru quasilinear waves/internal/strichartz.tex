@@ -2,6 +2,8 @@
 The analysis in the previous sections tell us that the geometry of slabs is approximately that of Minkowski space. Thus, one can expect that the same harmonic analysis counting arguments used to prove Strichartz estimate (or, alternatively, Fourier restriction estimates) hold in this setting. 
 
 
+
+
 \subsection{Dispersive decay}
 
 
@@ -26,15 +28,15 @@ The analysis in the previous sections tell us that the geometry of slabs is appr
         \]
 
 \begin{proposition}[Dispersive decay, I]
-    The number of slabs at scale $\lambda$ containing a pair of points $\mathtt P_1 = (t_1, x_1)$ and $\mathtt P_2 = (t_2, x_2)$ is 
+    The number of slabs at scale $\lambda$ containing a pair of points $\mathtt P_1 = (t_1, x_1)$ and $\mathtt P_2 = (t_2, x_2)$ is bounded by 
         \begin{equation}
             \#_\lambda (\mathtt P_1, \mathtt P_2) 
                 \lesssim 
                 \begin{cases} 
                     \left( \frac{\lambda}{\epsilon_0} \right)^{\frac{n - 1}{2}} \left(1 + \lambda \dist(x_2, C_1^{t_2})\right)^{\frac{n - 3}{2}} \left( 1 + \lambda |t_1 - t_2|\right)^{-\frac{n - 1}{2}}
-                        & \text{if $m \in I_1$},\\
+                        & \text{if $\delta u \in I_1$},\\
                     \left( \frac{\lambda}{\epsilon_0} \right)^{\frac{n - 1}{2}} \left(1 + \lambda \dist(x_2, C_1^{t_2})\right)^{-1} 
-                        & \text{if $m \in I_2$},\\
+                        & \text{if $\delta u \in I_2$},\\
                     0 
                         & \text{otherwise},
                 \end{cases}
@@ -51,26 +53,54 @@ The analysis in the previous sections tell us that the geometry of slabs is appr
 In actuality we will only need the worst case, i.e. $\delta u \in I_2$. 
 
 \begin{corollary}[Dispersive decay, II]
-    For all pairs of points $P_1, P_2$ in space-time, the number of slabs at scale $\lambda$ containing both is 
+    The number of slabs at scale $\lambda$ containing a pair of points $\mathtt P_1$ and $\mathtt P_2$ is bounded by 
         \begin{equation}
             \#_\lambda (P_1, P_2) 
                 \lesssim \left(\frac{\lambda}{\epsilon_0} \right)^{\frac{n - 1}{2}} \big(\lambda |t_1 - t_2|\big)^{-1}
         \end{equation}
 \end{corollary}
 
+\begin{proof}[Proof for $\delta u < - 4 \lambda^{-1}$ case]
+    There are no such slabs, 
+        \[
+            \#_\lambda (\mathtt P_1, \mathtt P_2) 
+                = 0.
+        \]
+\end{proof}
+
+\begin{proof}[Proof for $|\delta u| \leq 4 \lambda^{-1}$ and $|t_1 - t_2| \leq 2 \lambda^{-1}$ case]
+    Here we use the trivial bound 
+        \[
+            \#_\lambda (\mathtt P_1, \mathtt P_2) 
+                \lesssim \left(\frac{\lambda}{\epsilon_0} \right)^{\frac{n - 1}{2}}
+        \]  
+\end{proof}
+
+\begin{proof}[Proof for $|\delta u| \leq 4 \lambda^{-1}$ and $|t_1 - t_2| > 2 \lambda^{-1}$ case]
+    
+\end{proof}
+
+\begin{proof}[Proof for $4 \lambda^{-1} < \delta u \leq 2|t_1 - t_2|$ case]
+
+\end{proof}
+
+
 \subsection{Strichartz estimates}
 
+
+
+Wave packets have size $(\epsilon_0 \lambda)^{\frac12\frac{n - 1}{2}} \lambda^{-\frac12}$
 
 \begin{proposition}
     Let 
         \[
             \phi 
-                := \sum_{T \in \cT} a_T \mathbb 1_{T}  
+                := \sum_{\mathtt T \in \cT} a_{\mathtt T} \mathbb 1_{\mathtt T}  
         \]
     then 
         \begin{equation}
             \| \phi \|_{L^2_t L^\infty_x} 
-                \lesssim (\epsilon_0 \lambda)^{- \frac12 \frac{n - 1}{2}} \lambda^{\frac12}
+                \lesssim (\epsilon_0 \lambda)^{- \frac12 \frac{n - 1}{2}} \lambda^{\frac12} \| a_{\mathtt T} \|_{\ell^2_{\mathtt T}}
         \end{equation}
 \end{proposition}
 
@@ -79,7 +109,7 @@ We proceed by discretising the problem. Dividing $[0, 1]$ into $O(\lambda)$-many
         \| \phi \|_{L^2_t L^\infty_x}
             &\lesssim \Big( \sum_j \int_{I_j} \|\phi(t) \|_{L^\infty_x}^2 \, dt \Big)^{\frac12} \lesssim \Big(\sum_j \lambda^{-1} |\phi(t_j, x_j)|^2 \Big)^{\frac12} \lesssim \lambda^{-\frac12}\sum_{T \in \cT} \Big( \sum_j |a_{\mathtt T}|^2 \cdot |\mathbb 1_{\mathtt T} (t_j, x_j)|^2 \Big)^{\frac12}.
     \end{align*}
-After passing to an $O(\lambda)$ subset of points, we can choose $t_j$ to be $\lambda^{-1}$-separated and the inequality above continues to hold. Next, we dyadically decompose the sum over slabs $\mathtt T$ with respect to the size $N^{-\frac12}$ of the coefficients $a_T$, and similarly the sum over points $\mathtt P_j$ with respect to $L$ the number of slabs containing them; we denote the number of such points by $m(L)$. It follows that
+After passing to an $O(\lambda)$ subset of points, we can choose $t_j$ to be $\lambda^{-1}$-separated and such that the inequality above continues to hold. Next, we dyadically decompose the sum over slabs $\mathtt T$ with respect to the size $N^{-\frac12}$ of the coefficients $a_T$, and similarly the sum over points $\mathtt P_j$ with respect to $L$ the number of slabs containing them; we denote the number of such points by $m(L)$. It follows that
     \begin{align*}
         \|\phi \|_{L^2_t L^\infty_x}
             &\lesssim \lambda^{-\frac12} \sum_{\substack{\substack{N \in 2^{\N} \\ N \lesssim (\frac{\lambda}{\epsilon_0})^{\frac{n - 1}2}} }} \quad \sum_{\substack{\mathtt T \in \cT \\ |a_{\mathtt T}| \sim N^{-\frac12}}}\Big(\sum_{\substack{L \in 2^\N \\ L \lesssim (\frac{\lambda}{\epsilon_0})^{\frac{n - 1}2}}}\quad \sum_{\substack{j \\ \text{$\# \{ \mathtt T \in \cT : \mathtt P_j \in \mathtt T \} \sim L$}}}  |a_{\mathtt T}|^2 \cdot |\mathbb 1_{\mathtt T} (t_j, x_j)|^2 \Big)^{\frac12} \\

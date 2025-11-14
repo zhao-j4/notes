@@ -1,18 +1,53 @@
 
-\cite{IfrimTataru2022}
+To simplify presentation, we shall only work in dimensions $n = 3, 4, 5$ for the remainder of this article. We shall also recast the original bootstrap argument of Smith-Tataru in more modern language, following the expository article of Ifrim-Tataru \cite{IfrimTataru2022} (see also \cite{AiEtAl2024a}). 
 
-\begin{theorem}
-    Let $\phi^{(\lambda)}$
+Let $s > \tfrac{n}{2} + \tfrac12$, and consider initial data $\phi[0] \in (H^s \times H^{s - 1})_x (\R^n)$ which is sufficiently small, i.e. 
+    \begin{equation}
+        \| \phi[0] \|_{(H^s \times H^{s - 1})_x} 
+                \leq \epsilon \ll 1.
+    \end{equation}
+For each $\lambda \in 2^\N$, define
+        \begin{align*}
+            \phi^{(\lambda)} 
+                &:= \text{solution to \eqref{QNLW} with $\phi^{(\lambda)} [0] := \sfP_{\leq \lambda} \phi[0]$,}\\ 
+            \psi^{(\lambda)} 
+                &:= \text{solution to \eqref{QNLW} with $\psi^{(\lambda)} [0] := \sfP_{\lambda} \phi[0]$.}
+        \end{align*}
+By persistence of regularity, these are smooth solutions. Furthermore, the initial data satisfy the bounds 
+    \begin{equation}
+    \begin{split}
+        \| \phi^{(\lambda)} [0] \|_{(H^s \times H^{s - 1})_x} 
+            &\lesssim \epsilon, \\
+        \| \psi^{(\lambda)} [0] \|_{(H^1 \times L^2)_x} 
+            &\lesssim \lambda^{1 - s} \epsilon. 
+    \end{split}
+    \end{equation}
+
+\begin{theorem}[Estimates for smooth solutions from regularised data]
+    The solutions $\phi^{(\lambda)}$ to \eqref{QNLW} satisfy the following properties:
         \begin{enumerate}
-            \item uniform bounds 
+            \item \textup{Uniform bounds:} the solutions exist up to unit time-scale $[0, 1]$, and satisfy the uniform bounds
                 \begin{equation}
                     \| \phi^{(\lambda)} [t]\|_{L^\infty_t (H^s \times H^{s -1 })_x} 
                         \lesssim \epsilon, 
                 \end{equation}
-            \item difference bounds 
+                and higher regularity bounds 
+                \begin{equation}
+                    \| \phi^{(\lambda)} [t]\|_{L^\infty_t (H^{s + 1} \times H^{s })_x} 
+                        \lesssim \lambda \epsilon.
+                \end{equation}
+            \item \textup{Difference bounds:} the linearised equations \eqref{LW} around $\phi^{(\lambda)}$ are well-posed in $(H^1 \times L^2)_x (\R^n)$, and satisfy the Strichartz estimates
+                \begin{equation}
+                    \| \partial \psi \|_{L^\infty_t L^2_x} + \| \partial\psi \|_{L^2_t L^\infty_x}
+                        \lesssim \| \partial \psi[0]\|_{L^2_x},
+                \end{equation}
+            uniformly in $\lambda \in 2^\N$. 
                 
         \end{enumerate}
 \end{theorem}
+
+
+
 
 Bootstrap assumptions, 
     \begin{enumerate}

@@ -1,5 +1,11 @@
 \begin{thebibliography}{{Fou}52}
 
+\bibitem[AIT24]{AiEtAl2024a}
+Albert Ai, Mihaela Ifrim, and Daniel Tataru.
+\newblock The time-like minimal surface equation in {{Minkowski}} space: Low
+  regularity solutions.
+\newblock {\em Inventiones mathematicae}, 235(3):745--891, March 2024.
+
 \bibitem[BC99]{BahouriChemin1999}
 Hajer Bahouri and Jean-Yves Chemin.
 \newblock \'equations d'ondes quasilin\'eaires et estimations de
@@ -18,6 +24,12 @@ Thomas J.~R. Hughes, Tosio Kato, and Jerrold~E. Marsden.
   applications to nonlinear elastodynamics and general relativity.
 \newblock {\em Archive for Rational Mechanics and Analysis}, 63(3):273--294,
   September 1977.
+
+\bibitem[IT22]{IfrimTataru2022}
+Mihaela Ifrim and Daniel Tataru.
+\newblock Local well-posedness for quasi-linear problems: {{A}} primer.
+\newblock {\em Bulletin of the American Mathematical Society}, 60(2):167--194,
+  July 2022.
 
 \bibitem[KR03]{KlainermanRodnianski2003}
 S.~Klainerman and I.~Rodnianski.
