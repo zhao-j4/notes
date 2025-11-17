@@ -62,7 +62,7 @@ We shall refer to the space-time regions $\mathtt T_{\theta, j}$ as \text{slabs}
             \phi 
                 := \sum_{\theta, j} a_{\theta, j}  \, \mathfrak w^{\theta, j}
         \]
-    which is an approximate solution to the paralinearised initial data problem in the sense that 
+    which is an approximate solution to the paralinearised initial data problem \eqref{paralinear} in the sense that 
     \begin{enumerate}
         \item \label{item:WPdata}it matches the initial data at $t = -2$, 
             \begin{equation}
@@ -159,9 +159,6 @@ We shall refer to the space-time regions $\mathtt T_{\theta, j}$ as \text{slabs}
     Roughly speaking, $s - 1 > \tfrac{n - 1}{2}$ under the assumptions of Theorem \ref{thm:main}, we can use Sobolev embedding on $\R^{n - 1}$ to read off the amplitude bounds using the scaled Sobolev estimate \eqref{errorcoeff}, while derivatives of the Dirac mass contribute amplitude $\lambda$. By dimensional analysis, we arrive at \eqref{L2error}. 
 \end{proof}
 
-\begin{remark}
-    Note that we used the Sobolev embedding for $s - 1 > \tfrac{n - 1}{2}$. 
-\end{remark}
 
 \begin{proof}[Proof of error decomposition \eqref{errordecomp}]
     Suppressing subscripts for clarity $u \equiv u_{\theta, r}$ and $\tau \equiv \tau_{\theta, r}$, we compute
@@ -173,6 +170,8 @@ We shall refer to the space-time regions $\mathtt T_{\theta, j}$ as \text{slabs}
             &=: \mathrm{I} + \mathrm{II} + \mathrm{III} + \mathrm{IV},
     \end{align*}
     commuting $\Box$ with the frequency projections and then applying the product rule. Here we have denoted $\overline \bfg^{\alpha \beta}_{< \lambda} = \tfrac12 (\bfg^{\alpha \beta}_{< \lambda} + \bfg^{\beta \alpha}_{< \lambda})$. 
+
+    We analyse each term. The main game one has the play is that derivatives of the metric $\partial \bfg_{< \lambda}$ are small thanks to the bootstrap assumption, while the low frequencies of the metric itself $\bfg_{< \lambda}$ is \textit{a priori} $O(1)$, but we can replace it by the high frequencies $\bfg_{> \lambda} \lessapprox \tfrac1\lambda \partial \bfg_{> \lambda}$ plus the metric itself $\bfg$, which will be contracted by terms such that there is favourable cancellation. 
 
     \subsubsection*{\underline{Term $\mathrm{I}$}} Since the metric is cut-off to frequencies much lower than $\lambda$, the commutator clearly projects to frequencies $|\xi| \sim \lambda$. Thus, one can harmlessly insert fattened projections $\widetilde \sfP_{\lambda} \widetilde \sfT_{< \lambda}$ in front of the commutator. Furthermore, while two derivatives fall on the wave packet, standard commutator arguments\footnote{In a word, the principal symbol of the commutator is given by the Poisson bracket, so one can, to leading order, write $[\bfg(x), \chi(\nabla/\lambda)] \approx \{ \bfg(x), \chi(\xi/\lambda) \} \approx \partial_x \bfg \cdot \partial_\xi \chi(\xi/\lambda) \approx \tfrac1\lambda \partial_x \bfg$.} allow us to move one derivative onto the metric. In total, we can rewrite
         \[
@@ -205,6 +204,20 @@ We shall refer to the space-time regions $\mathtt T_{\theta, j}$ as \text{slabs}
                     &= \overline{\bfg_{< \lambda}} \cdot \partial w \cdot \partial u \cdot \delta^{(1)} (u) \\
                     &= (\overline{\bfg}_{< \lambda})_{|\Sigma}\cdot \partial w \cdot \partial u \cdot \delta^{(1)} (u) + (\partial \overline{\bfg}_{< \lambda})_{|\Sigma}\cdot \partial w \cdot \partial u \cdot \delta (u).
             \end{align*}
+        Putting the coefficients then in their respective boxes, 
+            \begin{align*}
+                \psi_0 
+                    &:= \partial u \cdot \partial \overline{\bfg}_{< \lambda} \cdot \partial w, \\
+                \psi_1
+                    &:= \partial u \cdot \overline{\bfg}_{< \lambda} \cdot \partial w.
+            \end{align*}
+        It is easy to see that the first coefficient is acceptable for \eqref{errorcoeff}. To see that the second is also acceptable, we decompose 
+            \begin{align*}
+                \psi_1 = \overline{\bfg}_{< \lambda}^{\alpha \beta} \partial_\alpha u \partial_\beta w 
+                    &=  \overline{\bfg}^{\alpha \beta} \partial_\alpha u \partial_\beta w - \overline{\bfg}_{> \lambda}^{\alpha \beta} \partial_\alpha u \partial_\beta w \\
+                    &= \left(\overline{\bfg}^{\alpha \beta} - \overline{\bfg}^{\alpha\beta}_{|x'= \gamma(t)}\right) \partial_\alpha u \partial_\beta w - \overline{\bfg}_{> \lambda}^{\alpha \beta} \partial_\alpha u \partial_\beta w.
+            \end{align*}
+        The first line is obvious, for the second line, we use the fact that $\bfg \cdot \partial u \cdot \partial w = 0$ when restricted to the null geodesic $\gamma$, since $(1, \dot \gamma) \propto \bfg^{\alpha\beta} \partial_\alpha u$. These terms can then easily be estimated by $\partial \bfg$. 
         
 
     \subsubsection*{\underline{Term $\mathrm{IV}$}}
@@ -223,12 +236,22 @@ We shall refer to the space-time regions $\mathtt T_{\theta, j}$ as \text{slabs}
                 &\qquad + (\bfg_{> \lambda})_{|\Sigma} (\partial u)^2 \cdot \delta^{(2)} (x_\theta - \tau)
         \end{align*}
     Here, the derivatives on the metric are in the $\theta$-direction; observe that $\partial u$ depends only on $t$ and $x_\theta'$ so no $x^\theta$-derivatives fall on these terms. In the last line, we have freely replaced $\bfg_{< \lambda}(\partial u)^2$ by $\bfg_{> \lambda} (\partial u)^2$, since $u$ is optical, i.e. $\bfg^{\alpha\beta}\partial_\alpha u \partial_\beta u = 0$. 
-
+    
+    Putting the coefficients then in their respective boxes, 
+        \begin{align*}
+            \psi_0
+                &:= w \cdot \left( \partial\partial \bfg_{< \lambda} \cdot (\partial u)^2 + \partial \bfg_{< \lambda} \cdot \partial\partial \tau \right), \\
+            \psi_1 
+                &:= w \cdot \left(2 \partial \bfg_{< \lambda} \cdot (\partial u)^2 - \bfg_{< \lambda} \cdot \partial\partial \tau \right),\\
+            \psi_2 
+                &:= w \cdot  (\bfg_{> \lambda})_{|\Sigma} \cdot (\partial u)^2, 
+        \end{align*}
+    the error bound \eqref{errorcoeff} follow from characteristic energy estimates. 
     
 \end{proof}
 
 \begin{remark}
-    It is instructive to compare the computation above against the flat case. When $u$ is optical, 
+    It is instructive to compare the computation above against the flat case. Writing $u := x_\theta - t$ and $\underline u_\theta:= x_\theta + t$, we write in coordinates $\Box = -4 \partial \underline \partial + \Delta_{x'_\theta}$, so 
         \[
             \Box \delta(u) 
                 = \partial_\alpha u \partial^\alpha u \, \delta^{(2)} (u) + \Box u \, \delta^{(1)} (u) = 0. 
@@ -262,13 +285,22 @@ We prove \eqref{L2L2orthogonal} by showing a fixed-time $t = \text{const}$ ortho
     \end{itemize}
 Evidently these hold in the flat case, we want to show these persist for the variable background.     
 
-    \begin{lemma}
-         WE effectively need to show the reverse Sobolev trace theorem
-            \begin{equation}
+    \begin{lemma}[Sobolev trace extension-type estimate]
+         We effectively need to show the reverse Sobolev trace theorem
+            \begin{equation}\label{eq:trace}
                 \| \sfT_{< \lambda} \big( \psi^{\theta, j} \cdot \delta(u_{\theta, j}) \big) \|_{L^2 H^{\frac{n - 1}{2} +}} 
                     \lesssim \lambda^{\frac12} \| \psi^{\theta, j} \|_{H^{\frac{n - 1}{2} +} (\R^{n - 1})}.
             \end{equation}
     \end{lemma}
+
+    \begin{proof}
+        
+            \begin{align*}
+                \Big\| \sfT_{< \lambda} \Big(\psi(y') \, \delta(x_\theta - \tau(x'_\theta)) \Big) \Big\|_{L^2_{x_\theta} H^{\frac{n - 1}{2} + }_{x'_\theta} (\R^n)}
+                    &\lesssim \lambda^{\frac12} \| \psi  \|_{H^{\frac{n - 1}{2} +} (\R^{n - 1})}\\
+            \end{align*}
+
+    \end{proof}
 
 
     \begin{lemma}[Orthogonality at ``good" $t$]
@@ -278,7 +310,7 @@ Evidently these hold in the flat case, we want to show these persist for the var
                     := (\epsilon_0 \lambda)^{\frac12 \frac{n - 1}{2}} \lambda^{\frac12 - 1} \sfP_\lambda \sfT_{< \lambda} \sum_{\theta, j} \psi^{\theta, j} \, \delta(u_{\theta, j}).
             \]
         Suppose $t\in [-2, 2]$ is a time such that $\| \partial \bfg(t) \|_{C^{0, 0+}_x} \leq \epsilon_0$, then 
-            \begin{equation}
+            \begin{equation}\label{eq:goodorthogonal}
                 \| \Phi \|_{L^2_x}^2
                     \lesssim \sum_{\theta, j} \left\| \psi^{\theta, j} ((\epsilon_0 \lambda)^{-\frac12} x ) \right\|_{H^{\frac{n - 1}{2} +} (\R^{n - 1})}^2
             \end{equation}
@@ -294,13 +326,10 @@ Evidently these hold in the flat case, we want to show these persist for the var
                 \mathfrak v^{\theta, j} 
                     &:= (\epsilon_0 \lambda)^{\frac12 \frac{n - 1}{2}} \lambda^{\frac12 - 1} \sfT_{< \lambda} \big( \psi^{\theta, j} \delta(u_{\theta, j}) \big).
             \end{align*}
-
-        
-
-        It is easy to check 
+        Thanks to the finite-overlap property in physical space and the estimate \eqref{trace}, we have 
             \[
                 \| \Phi_\theta \|_{L^2_{y_\theta} H^{\frac{n - 1}{2} + }_{y'_\theta} (\R^n)}^2 
-                    \lesssim (\epsilon_0)^{\frac{n - 1}{2}} \sum_j \| \psi^{\theta, j} \|_{H^{\frac{n - 1}{2} +} (\R^{n - 1})}^2.
+                    \lesssim (\epsilon_0 \lambda)^{\frac{n - 1}{2}} \sum_j \| \psi^{\theta, j} ((\epsilon_0 \lambda)^{-\frac12} x'_\theta)\|_{H^{\frac{n - 1}{2} +} (\R^{n - 1})}^2.
             \]
         after rescaling. 
         
@@ -311,7 +340,6 @@ Evidently these hold in the flat case, we want to show these persist for the var
                     &\sim \int_{|\xi| \sim \lambda} \left| \sum_{\theta \in \Omega} \widehat{v_\theta} \right|^2  \, d\xi
             \end{align*}
 
-        Fourier transform of surface measure 
     \end{proof}
 
     \begin{lemma}[Orthogonality at ``bad'' $t$]
@@ -321,26 +349,64 @@ Evidently these hold in the flat case, we want to show these persist for the var
                     := (\epsilon_0 \lambda)^{\frac12 \frac{n - 1}{2}} \lambda^{\frac12 - 1} \sfP_\lambda \sfT_{< \lambda} \sum_{\theta, j} \psi^{\theta, j} \, \delta(u_{\theta, j}).
             \]
         Suppose $t\in [-2, 2]$ is a time such that $\| \partial \bfg(t) \|_{C^{0, 0+}_x} \geq \epsilon_0$. Then  
-            \begin{equation}
+            \begin{equation}\label{eq:badorthogonal}
                 \| \Phi(t) \|_{L^2_x}^2 
                     \lesssim \Big( \frac{1}{\epsilon_0} \| \partial \bfg (t)\|_{C^{0, 0+}_x} \Big)^{\frac{n - 1}{2}} \sum_{\theta, j} \| \psi^{\theta, j} \|_{H^{\frac{n - 1}{2} +} (\R^{n - 1})}^2.
             \end{equation}
     \end{lemma}
 
     \begin{proof}
-        
+        Suppose $\| \partial \bfg(t) \|_{C^{0, 0+}_x} \geq \lambda$, then the bound follows from Cauchy-Schwartz in $\theta$. Indeed, since there are $O((\frac{\lambda}{\epsilon_0})^{\frac{n - 1}{2}})$-many angles, 
+            \begin{align*}
+                 |\Phi|^2
+                    \lesssim (\epsilon_0 \lambda)^{\frac{n - 1}{2}}\lambda^{-1} \cdot \Big( \frac{\lambda}{\epsilon_0} \Big)^{\frac{n - 1}{2}}  \sum_\theta \Big|\sfP_\lambda \sum_j  \sfT_{< \lambda} \big( \psi^{\theta, j} \, \delta(u_{\theta, j}) \big) \Big|^2,
+            \end{align*}
+        then integrating and applying Bernstein, 
+            \begin{align*}
+                \| \Phi \|_{L^2_x (\R^n)}^2 
+                    &\lesssim  \sum_{\theta} \lambda^{-1} \Big\| \sfP_{\lambda} \sum_j  \sfT_{< \lambda} \big( \psi^{\theta, j} \, \delta(u_{\theta, j}) \big) \Big\|_{L^2_x (\R^n)}^2 \lesssim \sum_{\theta, j} \| \psi^{\theta, j} \|_{L^2_{x'_\theta} (\R^{n - 1})}^2
+            \end{align*}
     \end{proof}
 
-    \begin{proof}[Proof of Proposition \ref{prop:parametrix} (\ref{item:WPenergy})]
-        It would follow that 
+    \begin{proof}[Proof of Proposition \ref{prop:parametrix} (\ref{item:WPenergy}) (energy bounds)]
+        It immediately follows from the fixed-time orthogonality estimates \eqref{goodorthogonal}-\eqref{badorthogonal}  
         \begin{align*}
             \| \partial_x \sfP_\lambda \phi (t) \|_{L^2_x}^2 
-                &\lesssim \Big( 1 + \Big( \frac1{\epsilon_0} \| \bfg(t)\|_{C^{0, \delta}_x} \Big)^{\frac{n - 1}{2}}  \Big) \sum_{\theta, j} |a_{\theta, j}|^2 \\
+                &\lesssim \Big( 1 + \Big( \frac1{\epsilon_0} \| \partial \bfg(t)\|_{C^{0, 0+}_x} \Big)^{\frac{n - 1}{2}}  \Big) \sum_{\theta, j} |a_{\theta, j}|^2.
         \end{align*}
+        Integrating in time, we can control the right-hand side by the bootstrap $\| \partial \bfg \|_{L^2_t C^{0, 0+}_x} \lesssim \epsilon_0$ in dimensions $n = 3, 4, 5$, which yields the energy bound \eqref{parametrixenergy} for the spatial derivatives. We leave the time derivatives as an exercise. 
     \end{proof}
 
-     \begin{proof}[Proof of Proposition \ref{prop:parametrix} (\ref{item:WPerror})]
-        
+     \begin{proof}[Proof of Proposition \ref{prop:parametrix} (\ref{item:WPerror}) (error bounds)]
+        Summing the error decompositions \eqref{errordecomp} of each wave packet, 
+            \[
+                \Box_{\bfg_{< \lambda}} \sfP_\lambda \phi 
+                    = \mathcal L \big( \partial \bfg, \partial \widetilde{\sfP_\lambda} \widetilde \phi \big) + (\epsilon_0 \lambda)^{\frac12 \frac{n - 1}{2}} \lambda^{\frac12 - 1 - 1} \sfP_\lambda \sfT_{< \lambda} \sum_{\theta, j}  a_{\theta, j}\sum_{k = 0, 1, 2} \psi_k^{\theta, j} \delta^{(k)} (x_\theta - \tau_{\theta, j}),
+            \]
+        where $\widetilde \phi$ is another superposition of wave packets with the same coefficients. H\"older's inequality and the energy bound \eqref{parametrixenergy} tell us that the first term on the right is harmless, 
+            \[
+                \| \mathcal L (\partial \bfg, \partial \widetilde{\sfP_\lambda} \widetilde \phi) \|_{L^1_t L^2_x} 
+                    \lesssim \| \partial \bfg \|_{L^2_t L^\infty_x} \| \partial \widetilde \phi \|_{L^\infty_t L^2_x} 
+                    \lesssim \epsilon_0 \Big( \sum_{\theta, j} |a_{\theta, j}|^2 \Big)^{\frac12}.
+            \]
+        Applying the fixed-time orthogonality estimates \eqref{goodorthogonal}-\eqref{badorthogonal} to the remaining terms, setting 
+            \[
+                f(t) 
+                    := (\epsilon_0 \lambda)^{\frac12 \frac{n - 1}{2}} \lambda^{\frac12 - 1 - 1} \sfP_\lambda \sfT_{< \lambda} \sum_{\theta, j}  a_{\theta, j}\sum_{k = 0, 1, 2} \psi_k^{\theta, j} \delta^{(k)} (x_\theta - \tau_{\theta, j})
+            \]
+        then
+            \begin{align*}
+                \Big\| f(t) \Big\|_{L^2_x}^2
+                    \lesssim \Big( 1 + \Big( \frac1{\epsilon_0} \| \partial \bfg(t)\|_{C^{0, 0+}_x} \Big)^{\frac{n - 1}{2}}  \Big) \sum_{\theta, j} |a_{\theta, j}|^2 \sum_{k = 0, 1, 2} \lambda^{k - 1} \| \psi_k^{\theta, j} ((\epsilon_0 \lambda)^{-\frac12} x'_\theta) \|_{H^{\frac{n - 1}{2}+} (\R^{n - 1})}^2.
+            \end{align*}
+        Applying Cauchy-Schwartz in time, 
+            \begin{align*}
+                \| f\|_{L^1_{t} L^2_x}^2 
+                    &\lesssim \Big( \int_{-2}^2 1 + \Big( \frac1{\epsilon_0} \| \partial \bfg(t)\|_{C^{0, 0+}_x} \, \Big)^{\frac{n - 1}{2}} \,dt  \Big) \\
+                    &\qquad \times\left( \int_{-2}^2 \sum_{\theta, j} |a_{\theta, j}|^2 \sum_{k = 0, 1, 2} \lambda^{2(k - 1)}  \| \psi_k^{\theta, j} ((\epsilon_0 \lambda)^{-\frac12} x'_\theta) \|_{H^{\frac{n - 1}{2}+} (\R^{n - 1})}^2 \, dt \right)\\
+                    &\lesssim \epsilon_0 \sum_{\theta, j} |a_{\theta, j}|^2,
+            \end{align*}
+        again using the $L^2_t C^{0, 0+}$-smallness of the metric and the error bounds \eqref{errorcoeff}. 
     \end{proof}
     
 

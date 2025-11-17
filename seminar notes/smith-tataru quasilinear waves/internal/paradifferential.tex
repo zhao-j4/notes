@@ -1,4 +1,36 @@
 
+Decomposing the left-hand side via the Littlewood-Paley trichotomy, we schematically write the low-high, high-low, and high-high interactions of $\Box_{\bfg(\phi)}$ as 
+        \[
+                \Box_{\bfg(\phi)} \phi 
+                    \approx \Box_{\bfg(\phi)_{< \lambda}} \phi_\lambda
+                        +  \bfg(\phi)_\lambda \cdot \partial\partial \phi_{< \lambda}
+                        + \sum_{\mu \geq \lambda} \bfg(\phi)_\mu \cdot \partial\partial \phi_{\mu} .
+        \]
+Placing the latter two on the right-hand side, we obtain the paradiagonal formulation of the equation \eqref{QNLW}
+        \begin{equation}
+               \Box_{\bfg(\phi)_{< \lambda}} \phi_\lambda
+                   \approx \bfg(\phi)_\lambda \cdot \partial\partial \phi_{< \lambda}
+                        + \bfg(\phi)_\lambda \cdot \partial\partial \phi_{< \lambda} +  \sum_{\mu \geq \lambda} \bfg(\phi)_\mu \cdot \partial\partial \phi_{\mu} + \cN(\phi)(\partial \phi, \partial \phi)_\lambda.
+        \end{equation}
+
+	\begin{equation}\tag{LW} \label{eq:linearwave}
+	\begin{alignedat}{2}
+		\Box_{\bfg(\phi)} \psi 
+			&= 0,\\
+		(\psi, \partial_t \psi)_{|t = 0} 
+			&= (\psi_0, \psi_1),
+	\end{alignedat}
+	\end{equation}
+and its paradifferential counterpart 
+	\begin{equation}\tag{PLW} \label{eq:paralinear}
+	\begin{alignedat}{2}
+		\Box_{\bfg(\phi)_{< \lambda}} \sfP_\lambda \psi 
+			&= 0,\\
+		(\psi, \partial_t \psi)_{|t = 0}
+			&= (\sfP_{\lambda}\psi_0, \sfP_\lambda \psi_1),
+	\end{alignedat}
+	\end{equation} 
+
 
 \begin{proposition}
     

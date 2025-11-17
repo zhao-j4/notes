@@ -38,7 +38,7 @@ By persistence of regularity, these are smooth solutions. Furthermore, the initi
                 \end{equation}
             \item \textup{Difference bounds:} the linearised equations \eqref{LW} around $\phi^{(\lambda)}$ are well-posed in $(H^1 \times L^2)_x (\R^n)$, and satisfy the Strichartz estimates
                 \begin{equation}
-                    \| \partial \psi \|_{L^\infty_t L^2_x} + \| \partial\psi \|_{L^2_t L^\infty_x}
+                    \| \partial \psi \|_{L^\infty_t L^2_x} + \| \langle \nabla_x \rangle^{-\frac{n - 1}{2}-} \partial\psi \|_{L^2_t L^\infty_x}
                         \lesssim \| \partial \psi[0]\|_{L^2_x},
                 \end{equation}
             uniformly in $\lambda \in 2^\N$. 
@@ -54,16 +54,17 @@ Bootstrap assumptions,
         \item Uniform $(H^s \times H^{s - 1})_x$-bounds, 
             \begin{equation}
                 \| \phi^{(\lambda)} [t]\|_{L^\infty_t (H^s \times H^{s -1 })_x} 
-                    \leq 1, 
+                    \leq 2 \epsilon_2, 
             \end{equation}
         \item Difference bounds
             \begin{equation}
                 \| \psi^{(\lambda)} [t] \|_{L^\infty_t (H^1 \times L^2)_x} 
                     \leq N^{-s},
             \end{equation}
-    \end{enumerate}
 
-    \begin{equation}
-        \| (\phi^{(\lambda)} - \phi^{(\mu)}) [t] \|_{L^\infty_t (H^1 \times L^2)_x} 
-            \leq \epsilon c_\lambda
-    \end{equation}
+        \item Null geometry bounds, 
+            \begin{equation}
+                \sup_{\theta, r} \big\| \phi^{(\lambda)} \big\|_{L^2_t H^s_{x'_\theta} (\Sigma_{\theta, r})} + \big\| \partial_t \phi^{(\lambda)} \big\|_{L^2_t H^{s - 1}_{x'_\theta} (\Sigma_{\theta, r})}
+                    \leq 2 \epsilon_1.
+            \end{equation}
+    \end{enumerate}

@@ -38,7 +38,12 @@ Following the standard set by Hadamard, we say that the initial data problem for
 					&\overset{k \to \infty}{\longrightarrow} \phi[t] \qquad \, \text{in $L^\infty_t (H^s_x \times H^{s - 1}_x)$}.
 			\end{align*}
 	\end{enumerate}
-For the working definition, we will need to slightly modify the existence and uniqueness statements, strengthening the former while weakening the latter, and require an additional property of the data-to-solution map:
+This leads us to the following natural question
+\begin{quote}
+	\it For which values of $s \in \R$ is the initial data problem for the quasi-linear wave equation \eqref{QNLW} locally well-posed in $(H^s \times H^{s - 1})_x(\R^n)$?
+\end{quote}
+
+The sharp answer to this question is due to Smith-Tataru \cite{SmithTataru2005}, and will be the subject of this article. To simplify the presentation, we will only consider high spatial dimensions, i.e. $n \geq 3$; for $n = 2$, the dispersion of waves is weaker, though analogues of various statements made in this note continue to hold with suitable modifications. For the working definition, we will need to slightly modify the existence and uniqueness statements, strengthening the former while weakening the latter, and require an additional property of the data-to-solution map:
 	\begin{enumerate}
 		\myitem{(a+)} \label{item:exist}\textit{(Sub-critical) existence}: the time of existence can be taken to depend only on the size of the data 
 			\[
@@ -62,12 +67,7 @@ For the working definition, we will need to slightly modify the existence and un
 			\end{align*}
 	\end{enumerate}
 
-In sum, we say that the initial data problem for the quasi-linear wave equation \eqref{QNLW} is \textit{locally well-posed} in $(H^s_x \times H^{s - 1}_x)(\R^n)$ if \ref{item:exist1}, \ref{item:exist}, \ref{item:unique}, \ref{item:cty}, \ref{item:lipschitz} hold. This leads us to the following natural question
-\begin{quote}
-	\it For which values of $s \in \R$ is the initial data problem for the quasi-linear wave equation \eqref{QNLW} locally well-posed in $(H^s_x \times H^{s - 1}_x)(\R^n)$?
-\end{quote}
-
-To simplify the presentation, we will only consider high spatial dimensions, i.e. $n \geq 3$; in dimension $n = 2$, the dispersion of waves is weaker, though analogues of various statements made in this note continue to hold with suitable modifications. In this setting, the sharp result, due to Smith-Tataru, may be stated as follows, 
+ In this setting, the sharp result, due to Smith-Tataru, may be stated as follows, 
 
 \begin{theorem}[Sharp local well-posedness for \eqref{QNLW} \cite{SmithTataru2005}]\label{thm:main}
 	In dimensions $n = 3, 4, 5$, the initial data problem for the quasi-linear wave equation \eqref{QNLW} is locally well-posed in $(H^s \times H^{s - 1})_x(\R^n)$ for $s > \tfrac{n}{2} + \tfrac12$, with weak Lipschitz continuity of the data-to-solution map with respect to the $(H^1 \times L^2)_x$-topology. 
@@ -78,7 +78,7 @@ To simplify the presentation, we will only consider high spatial dimensions, i.e
 	\[
 		\phi(x^\mu) \mapsto \phi(\tfrac{x^\mu}{\lambda})
 	\]
-	which also preserves the homogeneous Sobolev norm $\dot H^{s_{\text{crit}}}_x \times \dot H^{s_{\text{crit}} - 1}_x(\R^n)$, where $s_{\text{crit}} := \tfrac{n}{2}$. It is natural to ask whether one can prove well-posedness up to the critical regularity. Unfortunately, Theorem \ref{thm:main} is sharp for generic \eqref{QNLW} in dimensions $n = 2, 3$ due to counterexamples of Lindblad \cite{Lindblad1993,Lindblad1996a}. On the other hand, it is not difficult to show that the \textit{Nirenberg example}
+	which also preserves the homogeneous Sobolev norm $(\dot H^{s_{\text{crit}}} \times \dot H^{s_{\text{crit}} - 1})_x(\R^n)$, where $s_{\text{crit}} := \tfrac{n}{2}$. It is natural to ask whether one can prove well-posedness up to the critical regularity. Unfortunately, Theorem \ref{thm:main} is sharp for generic \eqref{QNLW} in dimensions $n = 2, 3$ due to counterexamples of Lindblad \cite{Lindblad1993,Lindblad1996a}. On the other hand, it is not difficult to show that the \textit{Nirenberg example}
 		\[
 			\Box \phi = \partial^\alpha \phi \partial_\alpha \phi ,
 		\]
@@ -103,6 +103,15 @@ The basic starting point is the energy estimate, and local well-posedness result
 	See \cite{IfrimTataru2022} for a modern treatment. 
 \end{proof}
 
+\begin{remark}
+	The dimension of the $L^p_t L^\infty_x$-norm of $\partial \phi$ under the scaling symmetry reads
+		\begin{align*}
+			\|\partial \phi\|_{L^p_t L^\infty_x} 
+				&\approx [t]^{\frac1p} [x]^{-1} \approx [\partial]^{1 - \frac1p}.
+		\end{align*}
+	Thus, the continuation criterion $L^1_t L^\infty_x$ is scale-invariant, controlling  $L^\infty_{t, x}$ via Sobolev embedding incurs a full derivative difference from scaling $1 - \tfrac1\infty = 1$, while control of $L^2_t L^\infty_x$ in $n \geq 3$ via Strichartz leads to half-derivative from scaling $1 - \tfrac12 = \tfrac12$, and similarly $L^4_t L^\infty_x$ in $n = 2$ leads to three-quarters $1 - \tfrac14 = \tfrac12 + \tfrac14$. 
+\end{remark}
+
 To prove Theorem \ref{thm:main}, one essentially needs to close the energy estimate. This is accomplished by proving Strichartz estimates for the linearised equation\footnote{Strictly speaking, this is not quite the linearisation of \eqref{QNLW}, as there is an extra order-zero term $(\partial_\phi \bfg)^{\mu\nu}(\phi)\partial_\mu\partial_\nu \phi \, \psi$, however this can be easily treated as perturbative on short time-scales. }
 	\begin{equation}\tag{LW} \label{eq:LW}
 	\begin{alignedat}{2}
@@ -115,10 +124,10 @@ To prove Theorem \ref{thm:main}, one essentially needs to close the energy estim
 and its paradifferential counterpart 
 	\begin{equation}\tag{PLW} \label{eq:LWpara}
 	\begin{alignedat}{2}
-		\Box_{\bfg(\phi)_{< \lambda}} \psi_\lambda 
+		\Box_{\bfg(\phi)_{< \lambda}} \sfP_\lambda \psi 
 			&= 0,\\
 		(\psi, \partial_t \psi)_{|t = 0}
-			&= (\psi_0, \psi_1),
+			&= (\sfP_{\lambda}\psi_0, \sfP_\lambda \psi_1),
 	\end{alignedat}
 	\end{equation} 
 where $\phi$ is a solution to \eqref{QNLW}. For flat backgrounds $\bfg(\phi) \equiv \bfm$, i.e. when \eqref{LW} reduces to the classical linear wave equation, one has the classical Strichartz estimates 
@@ -126,7 +135,7 @@ where $\phi$ is a solution to \eqref{QNLW}. For flat backgrounds $\bfg(\phi) \eq
 		\| \partial \phi \|_{L^\infty_t H^{s - 1}_x} + \| \partial \phi \|_{L^2_t L^\infty_x} 
 					\lesssim \|\phi[0]\|_{H^s_x \times H^{s - 1}_x}, \qquad s > \tfrac{n}{2} + \tfrac12,
 	\end{align*}
-with the $L^2_t L^\infty_x$-control allowing us to close the argument. If one only assumes $\partial \bfg \in L^2_t L^\infty_x$ in \eqref{LW}, then the best one can do is to obtain the above Strichartz estimate but with a $\tfrac16$-derivative loss \cite{Tataru2001c,Tataru2001d}. The major breakthrough of Smith-Tataru was that actually there is no derivative-loss in Strichartz for \eqref{LW} when one uses that $\phi$ is a solution to \eqref{QNLW}, which in turn roughly implies $\Box_{\bfg(\phi)} \bfg(\phi) \approx 0$, 
+with the $L^2_t L^\infty_x$-control allowing us to close the argument. If one only assumes $\partial \bfg \in L^2_t L^\infty_x$ in \eqref{LW}, then the best one can do is to obtain the above Strichartz estimate but with a $\tfrac16$-derivative loss \cite{Tataru2001c,Tataru2001d}. The major breakthrough of Smith-Tataru was that actually there is no derivative-loss in Strichartz for \eqref{LW} when one uses that $\phi$ is a solution to \eqref{QNLW}, which in turn roughly implies $\Box_{\bfg(\phi)} \bfg(\phi) \approx 0$, see Table \ref{table:history} for a brief summary of this historical progression.
 
 \begin{theorem}[Loss-less Strichartz estimates for \eqref{QNLW} \cite{SmithTataru2005}] \label{thm:strichartz}
 	Let $\phi[t] \in C^0_t (H^s_x \times H^{s - 1}_x) ([0, T] \times \R^n)$ be a solution to \eqref{QNLW} as in Theorem \ref{thm:main}. Then 
@@ -144,29 +153,19 @@ with the $L^2_t L^\infty_x$-control allowing us to close the argument. If one on
 	\end{enumerate}
 \end{theorem}
 
-
-\begin{remark}
-	The dimension of the $L^p_t L^\infty_x$-norm of $\partial \phi$ under the scaling symmetry reads
-		\begin{align*}
-			\|\partial \phi\|_{L^p_t L^\infty_x} 
-				&\approx [t]^{\frac1p} [x]^{-1} \approx [\partial]^{1 - \frac1p}.
-		\end{align*}
-	Thus, the continuation criterion $L^1_t L^\infty_x$ is scale-invariant, controlling  $L^\infty_{t, x}$ via Sobolev embedding incurs a full derivative difference from scaling $1 - \tfrac1\infty = 1$, while control of $L^2_t L^\infty_x$ in $n \geq 3$ via Strichartz leads to half-derivative from scaling $1 - \tfrac12 = \tfrac12$, and similarly $L^4_t L^\infty_x$ in $n = 2$ leads to three-quarters $1 - \tfrac14 = \tfrac12 + \tfrac14$. 
-\end{remark}
-
 \begin{table}[ht]
 	\centering
 	\renewcommand{\arraystretch}{1.4}
 	{%
 	\begin{tabular}{|c|c|c|c|}
 		\hline
-		 & \bf $\bfg$ in \eqref{LW} & \bf Strichartz & \bf Regularity \\
+		 & \bf $\bfg$ in \eqref{LW} & \bf Strichartz & \bf Well-posedness \\
 		\hline 
 		Hughes-Kato-Marsden \cite{HughesEtAl1977} & $\partial\bfg \in L^\infty_{t,x}$ & N/A & $s > \tfrac{n}{2} + 1$\\
 		\hline 
 		Bahouri-Chemin \cite{BahouriChemin1999} & $\partial\bfg \in L^2_t L^\infty_x$ & $\tfrac14$ loss & $s > \tfrac{n}{2} + \tfrac12 + \tfrac14$ \\
 		\hline
-		Tataru \cite{Tataru2001c,Tataru2001d} & $\partial\bfg \in L^2_t L^\infty_x$ & sharp $\tfrac16$ loss & $s > \tfrac{n}{2} + \tfrac12 + \tfrac16$ \\
+		Tataru \cite{Tataru2001c,Tataru2001d} & $\partial\bfg \in L^2_t L^\infty_x$ & $\tfrac16$ loss & $s > \tfrac{n}{2} + \tfrac12 + \tfrac16$ \\
 		\hline 
 		Klainerman-Rodnianski \cite{KlainermanRodnianski2003} & $\Box_{\bfg} \bfg \approx 0$ & $\tfrac{2 - \sqrt 3}{2}$ loss & $s > \tfrac{n}{2} + \tfrac12 + \tfrac{2 - \sqrt 3}{2}$ \\
 		\hline 

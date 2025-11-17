@@ -8,11 +8,67 @@ Let $u_\theta$ be the solution the eikonal equation initialised at $t = -2$,
             &= \theta \cdot x + 2. 
         \end{split}
     \end{equation}
-By the implicit function theorem, we can write the level sets of $u_\theta$ as graphs, 
+We denote the level sets $u_\theta = r$, which are null hypersurfaces with respect to the metric $\bfg$, by $\Sigma_{\theta, r}$. Write $x_\theta := x \cdot \theta$ and let $x'_\theta$ be coordinates on the orthogonal complement $\theta^\perp$, so that $(x'_\theta, x_\theta)$ form an orthonormal coordinate system on $\R^n$. By the implicit function theorem, we can write these level sets as the graphs of functions $\tau_{\theta, r} \equiv \tau_{\theta, r} (t, x'_\theta)$. Thus we may parametrise $\Sigma_{\theta, r}$ by $(t, x'_\theta) \in [-2, 2] \times \R^{n - 1}$, and we can write 
     \[
-        \Sigma_{\theta, u} 
-            := \{ (t, x) \in [-2, 2] \times \R^n : x_\theta - \tau_{\theta, u} (t, x'_\theta) = 0 \}
+        \Sigma_{\theta, r} 
+            := \{ (t, x) \in [-2, 2] \times \R^n : x_\theta - \tau_{\theta, r} (t, x'_\theta) = 0 \}.
     \]
 
+\begin{example}
+    In the flat case $\bfg = \bfm$, we have the explicit solution 
+        \[
+            u_\theta (t, x) 
+                = x \cdot \theta - t,
+        \]
+    so that the null hypersurfaces are hyperplanes given by 
+        \[
+            \Sigma_{\theta, r} 
+                = \{ (t, x) : x_\theta - t = r \},
+        \]
+    where $r \in \R$ is a fixed constant (not radius! confusingly enough), and $\tau := t + r$. 
+\end{example}
 
+\subsection{Regularity of null hypersurfaces}
+
+\begin{proposition}[Characteristic energy estimates]
     
+        \begin{equation}
+            \|\bfg - \bfm \|_{(\Sigma_{\theta, r})}  + \| \partial \bfg_{< \lambda} \|_{(\Sigma_{\theta, r})} + \lambda^{-1} \| \partial_x \partial \bfg_{< \lambda} \|_{(\Sigma_{\theta, r})}
+                \lesssim \epsilon_2. 
+        \end{equation}
+\end{proposition}
+
+\begin{proposition}[]
+    
+        \begin{equation}
+            \| d \tau_{\theta, r} (t) - dt \|_{C^{1, 0+}_{x'_\theta}(\R^{n - 1})}
+                \lesssim \epsilon_2 + \| \partial \bfg (t) \|_{C^{0, 0+}_x(\R^n)}.
+        \end{equation}
+\end{proposition}
+
+\subsection{Geometry of light cones}
+
+\begin{proposition}[Angle of null generators]
+    Let $\theta, \omega \in \SS^{n - 1}$, then 
+        \begin{equation}
+            \bfL_\theta - \bfL_\omega 
+                = (\theta - \omega) + o(|\theta - \omega|).
+        \end{equation}
+    Also, 
+        \begin{equation}
+            \langle \bfL_\theta, \bfL_\omega \rangle_{\bfg}
+                = -\frac12|\theta - \omega|^2 + o(|\theta - \omega|^2).
+        \end{equation}
+\end{proposition}
+
+\begin{proposition}[Separation of null geodesics]
+    Let $\theta, \omega \in \SS^{n - 1}$, and fix $(t_1, x_1) \in [-2, 2] \times \R^n$. Denote $\gamma_\theta$ and $\gamma_\omega$ the null geodesics with data 
+        \[
+            \gamma_\theta(t_1) = \gamma_\omega(t_1) = x_1, \qquad \dot \gamma_\theta(t_1) \parallel \theta, \qquad \dot \gamma_\omega(t_1) \parallel \omega.
+        \]
+    Then 
+        \begin{equation}
+            \gamma_\theta (t) - \gamma_\omega(t) 
+                = (t - t_1) (\theta - \omega) + o(|t - t_1| \cdot |\theta - \omega|).
+        \end{equation}
+\end{proposition}
