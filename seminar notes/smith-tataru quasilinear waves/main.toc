@@ -11,13 +11,15 @@
 \contentsline {subsubsection}{\tocsubsubsection {}{}{\underline {Term $\mathrm {III}$}}}{10}{section*.9}%
 \contentsline {subsubsection}{\tocsubsubsection {}{}{\underline {Term $\mathrm {IV}$}}}{10}{section*.10}%
 \contentsline {subsection}{\tocsubsection {}{5.2}{Orthogonality of wave packets}}{11}{subsection.5.2}%
-\contentsline {subsection}{\tocsubsection {}{5.3}{Matching wave packets to initial data}}{13}{subsection.5.3}%
-\contentsline {subsubsection}{\tocsubsubsection {}{}{Approximate solution for $\Box _{{\bf g}_{< \lambda }}$}}{13}{section*.11}%
-\contentsline {section}{\tocsection {}{6}{Dispersive estimates}}{13}{section.6}%
+\contentsline {subsection}{\tocsubsection {}{5.3}{Matching wave packets to initial data}}{14}{subsection.5.3}%
+\contentsline {section}{\tocsection {}{6}{Dispersive estimates}}{14}{section.6}%
 \contentsline {subsection}{\tocsubsection {}{6.1}{Dispersive decay}}{14}{subsection.6.1}%
-\contentsline {subsection}{\tocsubsection {}{6.2}{Strichartz estimates}}{15}{subsection.6.2}%
-\contentsline {subsubsection}{\tocsubsubsection {}{}{Step 1: discretising the problem}}{15}{section*.12}%
-\contentsline {subsubsection}{\tocsubsubsection {}{}{Step 2: counting argument (or Fubini's theorem)}}{16}{section*.13}%
-\contentsline {subsubsection}{\tocsubsubsection {}{}{Step 3: establishing a dichotomy}}{16}{section*.14}%
-\contentsline {subsubsection}{\tocsubsubsection {}{}{Step 4: concluding the argument}}{17}{section*.15}%
-\contentsline {section}{\tocsection {}{}{References}}{17}{section*.16}%
+\contentsline {subsubsection}{\tocsubsubsection {}{}{Short-time case $|t_1 - t_2| < 2 \lambda ^{-1}$, Figure \ref {fig:smallltime}}}{16}{section*.11}%
+\contentsline {subsubsection}{\tocsubsubsection {}{}{Long-time $|t_1 - t_2| > 2 \lambda ^{-1}$ and close to cone case $|\delta u| \leq 4 \lambda ^{-1}$, Figure \ref {fig:closecone}}}{16}{section*.12}%
+\contentsline {subsubsection}{\tocsubsubsection {}{}{Long-time $|t_1 - t_2| > 2\lambda ^{-1}$ and far from cone case $|\delta u| > 4 \lambda ^{-1}$}}{16}{section*.13}%
+\contentsline {subsection}{\tocsubsection {}{6.2}{Strichartz estimates}}{16}{subsection.6.2}%
+\contentsline {subsubsection}{\tocsubsubsection {}{}{Step 1: discretising the problem}}{18}{section*.14}%
+\contentsline {subsubsection}{\tocsubsubsection {}{}{Step 2: counting argument (or Fubini's theorem)}}{18}{section*.15}%
+\contentsline {subsubsection}{\tocsubsubsection {}{}{Step 3: establishing a dichotomy}}{19}{section*.16}%
+\contentsline {subsubsection}{\tocsubsubsection {}{}{Step 4: concluding the argument}}{20}{section*.17}%
+\contentsline {section}{\tocsection {}{}{References}}{20}{section*.18}%

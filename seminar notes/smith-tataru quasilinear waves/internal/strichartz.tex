@@ -47,8 +47,14 @@ These two are related as follows,
 \end{proof}
 
 
+\begin{figure}[h]
+        \centering 
+        \includegraphics[scale = 0.2]{graphics/WPtzero}
+        \caption{At time $t = 0$, we consider the wave packets of all possible angles $\theta$ containing $\mathtt P_1$. One should imagine that, as time evolves, these wave packets should spread outwards along the direction of their angles, and in space-time should cover the light cone $\mathtt C_{\mathtt P_1}$.}\label{fig:WPtzero}
+    \end{figure}
+
 \begin{lemma}[Characterisation of slabs containing two points]
-    Define then the set of angles 
+    Define the set of angles 
     \[
             A_\lambda 
                 := \Big\{ \theta \in \SS^{n - 1} : |u_\theta (\mathtt P_2) - u_\theta (\mathtt P_1)| \leq \lambda^{-1} \text{ and } |\gamma_\theta(t_2) - x_2| \leq (\epsilon_0 \lambda)^{-\frac12} \Big\} ,
@@ -61,54 +67,94 @@ Then
 \end{lemma}
 
 \begin{proof}
-    Recall that if a slab at scale $\lambda$ in the direction $\theta$ contains both points $\mathtt P_1$ and $\mathtt P_2$, then the slab centered on $\gamma_\theta$ of scale $\lambda/4$ must also contain $\mathtt P_1$ and $\mathtt P_2$. The result follows. 
+    Recall that if a slab at scale $\lambda$ in the direction $\theta$ contains both points $\mathtt P_1$ and $\mathtt P_2$, then the thicker slab centered on $\gamma_\theta$ of scale $\lambda/4$ must also contain $\mathtt P_1$ and $\mathtt P_2$. The result follows from the $(\frac{\epsilon_0}{\lambda})^{\frac12}$-angular separation of slabs at scale $\lambda$.
 \end{proof}
 
 
-    \begin{equation}
-        u_\omega(t_2, q_2) - u_\omega(t_1, x_1) 
-            = - \frac12|t_1 - t_2| \cdot |\omega - \theta|^2 + (\omega - \theta) \cdot \overrightarrow{q_\theta q_2} + \text{error}.
-    \end{equation}
+We will need the following lemma, which essentially formalises the geometric intuition illustrated in Figures \ref{fig:closecone}-\ref{fig:interesting}. The game one plays here is that if one slab of angle $\theta$ contains both points $\mathtt P_1$ and $\mathtt P_2$, then we want to study whether slabs of nearby angles $\omega$ also contain both points.  
+
+\begin{lemma}[Making Figures \ref{fig:closecone}-\ref{fig:interesting} rigorous]
+    Let $\theta \in A_\lambda$, then we can find a point $(t_2, Q)$ on the hyperplane $u_\theta = u_\theta (\mathtt P_1)$, i.e. $u_\theta(t_2, Q) = u_\theta(t_1, x_1)$, such that $|Q - x_2| \leq 2 \lambda^{-1}$. Then 
+        \[
+            A_\lambda 
+                \subseteq \Big\{ \omega \in \SS^{n - 1} : |u_\omega(t_2, Q) - u_\omega (\mathtt P_1)| \leq 3\lambda^{-1} \text{ and } |\gamma_\omega (t_2) - Q_2| \leq 3 (\epsilon_0 \lambda)^{-\frac12}\Big\},
+        \]
+    and 
+        \begin{equation}
+            u_\omega(t_2, Q) - u_\omega (t_1, x_1)
+                = - \frac12|t_1 - t_2| \cdot |\omega - \theta|^2 + (\omega - \theta) \cdot \overrightarrow{\gamma_\theta(t_2) Q} + \text{error},
+        \end{equation}
+    where $\overrightarrow{\gamma_\theta(t_2) Q}$ is the projection of the straight-line from $\gamma_\theta(t_2)$ to $Q$ onto the surface $\Sigma^t_{\theta, u_\theta(\mathtt P_1)}$. 
+\end{lemma}
+
+\begin{proof}
+    The existence of such a $Q$ is immediate. Let $s \mapsto \mu_\theta(s)$ be the path in $\Sigma_{\theta}^t$ from $\gamma_\theta(t_2)$ to $Q$ obtained by projecting the straight line. Then 
+        \[
+            \dot{\mu_\theta} - \overrightarrow{\gamma_\theta(t_2) Q} = o(|\gamma_\theta(t_2) - Q|), \qquad \theta \cdot \overrightarrow{\gamma_\theta(t_2) Q} = o(|\gamma_\theta(t_2) - Q|).
+        \]
+    To measure then the distance between $u_\omega(t_2, Q)$ and $u_\omega(\mathtt P_1)$ for different angle $\omega$, we use the fundamental theorem of calculus along both the null geodesic $\gamma_\theta$ and the path $\mu_\theta$,
+        \[
+            u_\theta (t_2, Q) - u_\theta (\mathtt P_1) 
+                = \int_{t_1}^{t_2} \sigma_\omega (s, \gamma_\omega(s)) \langle \bfL_\omega, \bfL_\theta \rangle_{\bfg} \, ds + \int_0^1 \sigma_\omega (t_2, \mu_\theta(s)) \langle \bfL_\omega, \dot{\mu}_\theta \rangle_{\bfg} \, ds.
+        \]
+    Recall $\langle \bfL_\theta, \dot{\mu_\theta} \rangle = 0$ since $\dot{\mu}_\theta$ is tangent to $\Sigma_\theta$. Using our estimates on the null generators \eqref{differenceL}-\eqref{angleL}, we conclude the result. 
+\end{proof}
 
 We now turn to the proof of Proposition \ref{prop:dispersive-decay}.
 
-\begin{proof}[Proof of $|t_1 - t_2| \leq 2 \lambda^{-1}$ case]
-     In this case, the wave packets emanating from $\mathtt P_1$ have not had time to spread, so we are free to use the trivial bound
+
+\subsubsection*{Short-time case $|t_1 - t_2| < 2 \lambda^{-1}$, Figure \ref{fig:smallltime}}
+
+In this case, the wave packets emanating from $\mathtt P_1$ have not had time to spread, so we are free to use the trivial bound
         \[
             \#_\lambda (\mathtt P_1, \mathtt P_2) 
                 \lesssim \left(\frac{\lambda}{\epsilon_0} \right)^{\frac{n - 1}{2}} \lesssim \left(\frac{\lambda}{\epsilon_0} \right)^{\frac{n - 1}{2}} \big(\lambda |t_1 - t_2|\big)^{-1}.
         \]  
-\end{proof} 
 
-\begin{proof}[Proof of $\delta u < - 4 \lambda^{-1}$ case]
-    In this case, 
+\begin{figure}[h]
+        \centering 
+        \includegraphics[scale = 0.2]{graphics/WPtsmall}
+        \caption{On time scale $|t_1 - t_2| < 2 \lambda^{-1}$, the wave packets are still approximately maximally-overlapping, so we use the trivial bound. }\label{fig:smallltime}
+    \end{figure}
+
+\subsubsection*{Long-time $|t_1 - t_2| > 2 \lambda^{-1}$ and close to cone case $|\delta u| \leq 4 \lambda^{-1}$, Figure \ref{fig:closecone}}
+    In this case, if $\mathtt P_2$ is contained in one slab, then it is not difficult to rotate the slab along its long edge and continue to cover the point. The angle of aperture for such a cap of directions is approximately, as one learns in trigonometry, 
         \[
-             \#_\lambda (\mathtt P_1, \mathtt P_2)  = 0.
+            \text{angle} 
+                \lesssim \frac{\text{opposite}}{\text{hypotenuse}} \lesssim\frac{(\epsilon_0 \lambda)^{-\frac12}}{|t_1 - t_2|} \lesssim (\lambda|t_1 - t_2|)^{-\frac12}.
         \]
-\end{proof}
-
-\begin{proof}[Proof of $|\delta u| \leq 4 \lambda^{-1}$ and $|t_1 - t_2| > 2 \lambda^{-1}$ case]
-    
-    
+    Thus 
         \[
-             \# \text{ of $(\tfrac{\epsilon_0}{\lambda})^{\frac12}$-balls covering $A_\lambda$}
+            A_\lambda \subseteq \{ \omega \in \SS^{n - 1}  : |\omega - \omega_0| \lesssim (\lambda|t_1 - t_2|)^{-\frac12} \},
+        \]
+    which is a radius $(\lambda|t_1 - t_2|)^{-\frac12}$-cap on the unit sphere, so it can be covered by $O((\epsilon_0 |t_1 - t_2|)^{-\frac{n - 1}{2}})$-many balls of radius $(\frac{\epsilon_0}\lambda)^{\frac12}$. Thus, invoking \eqref{slabcounting}, we have
+        \[
+             \#_\lambda (\mathtt P_1, \mathtt P_2)
                 \lesssim ( \epsilon_0 |t_1 - t_2| )^{-\frac{n - 1}{2}},
         \]
-    which for $n \geq 3$ is stronger than the desired bound. The result follows from \eqref{slabcounting}. 
-\end{proof}
+    which for $n \geq 3$ is stronger than the desired bound. 
 
-\begin{proof}[Proof of $\delta u \geq 4 \lambda^{-1}$ and $|t_1 - t_2| > 2 \lambda^{-1}$ and $2|t_1 - t_2| \geq \delta u$ case]
-    
-    
-\end{proof}
+\begin{figure}[h]
+        \centering 
+        \includegraphics[scale = 0.2]{graphics/WPcone}
+        \caption{On time scale $|t_1 - t_2| > 2\lambda^{-1}$ and close to the cone $|\delta u| \leq 4 \lambda^{-1}$, it is easy to rotate a tube containing the point to obtain another tube containing the point.  }\label{fig:closecone}
+    \end{figure}
 
-\begin{proof}[Proof of $\delta u \geq 4 \lambda^{-1}$ and $|t_1 - t_2| > 2 \lambda^{-1}$ and $2|t_1 - t_2| \leq \delta u$ case]
-    
-    
-\end{proof}
+\subsubsection*{Long-time $|t_1 - t_2| > 2\lambda^{-1}$ and far from cone case $|\delta u| > 4 \lambda^{-1}$}
+
+In this case, the wave packets have had some time to decohere. If $\mathtt P_2$ is in the interior, i.e. $\delta u < -4 \lambda^{-1}$, then there can be no slabs containing both points by Huygen's principle, see Figure \ref{fig:interesting},
+    \[
+             \#_\lambda (\mathtt P_1, \mathtt P_2)  = 0.
+    \]
+We now turn to the interesting case $\delta u \geq 4 \lambda^{-1}$, where $\mathtt P_2$ is in the exterior of the cone. 
 
 
 
+\begin{figure}[h]
+        \centering 
+        \includegraphics[scale = 0.2]{graphics/WPinterest}
+        \caption{On time scale $\lambda^{-1}$, the wave packets are still approximately maximally-overlapping, so we use the trivial bound. }\label{fig:interesting}
+    \end{figure}
 
 \subsection{Strichartz estimates}
 

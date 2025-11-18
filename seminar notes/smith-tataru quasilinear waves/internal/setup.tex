@@ -1,12 +1,12 @@
 
 To simplify presentation, we shall only work in dimensions $n = 3, 4, 5$ for the remainder of this article. We shall also recast the original bootstrap argument of Smith-Tataru in more modern language, following the expository article of Ifrim-Tataru \cite{IfrimTataru2022} (see also \cite{AiEtAl2024a}). 
 
-Let $s > \tfrac{n}{2} + \tfrac12$, and consider initial data $\phi[0] \in (H^s \times H^{s - 1})_x (\R^n)$ which is sufficiently small, i.e. 
+Let $s > \tfrac{n}{2} + \tfrac12$, then by standard scaling and finite speed of propagation arguments, it is enough to consider initial data $\phi[0] \in (H^s \times H^{s - 1})_x (\R^n)$ which is sufficiently small, i.e. 
     \begin{equation}
         \| \phi[0] \|_{(H^s \times H^{s - 1})_x} 
-                \leq \epsilon \ll 1.
+                \leq \epsilon_3,
     \end{equation}
-For each $\lambda \in 2^\N$, define
+and prove local well-posedness for this class of data on unit time-scales $[0, 1]$. For each $\lambda \in 2^\N$, define
         \begin{align*}
             \phi^{(\lambda)} 
                 &:= \text{solution to \eqref{QNLW} with $\phi^{(\lambda)} [0] := \sfP_{\leq \lambda} \phi[0]$,}\\ 
@@ -26,16 +26,12 @@ By persistence of regularity, these are smooth solutions. Furthermore, the initi
 \begin{theorem}[Estimates for smooth solutions from regularised data]
     The solutions $\phi^{(\lambda)}$ to \eqref{QNLW} satisfy the following properties:
         \begin{enumerate}
-            \item \textup{Uniform bounds:} the solutions exist up to unit time-scale $[0, 1]$, and satisfy the uniform bounds
+            \item \textup{Uniform bounds:} the solutions exist up to unit time-scale $[-2, 2]$, and satisfy the uniform bounds
                 \begin{equation}
-                    \| \phi^{(\lambda)} [t]\|_{L^\infty_t (H^s \times H^{s -1 })_x} 
+                    \| \phi^{(\lambda)} [t]\|_{L^\infty_t (H^s \times H^{s -1 })_x} + \| \partial \phi^{(\lambda)} \|_{L^2_t C^{0, 0+}_x}
                         \lesssim \epsilon, 
                 \end{equation}
-                and higher regularity bounds 
-                \begin{equation}
-                    \| \phi^{(\lambda)} [t]\|_{L^\infty_t (H^{s + 1} \times H^{s })_x} 
-                        \lesssim \lambda \epsilon.
-                \end{equation}
+
             \item \textup{Difference bounds:} the linearised equations \eqref{LW} around $\phi^{(\lambda)}$ are well-posed in $(H^1 \times L^2)_x (\R^n)$, and satisfy the Strichartz estimates
                 \begin{equation}
                     \| \partial \psi \|_{L^\infty_t L^2_x} + \| \langle \nabla_x \rangle^{-\frac{n - 1}{2}-} \partial\psi \|_{L^2_t L^\infty_x}
@@ -45,11 +41,10 @@ By persistence of regularity, these are smooth solutions. Furthermore, the initi
                 
         \end{enumerate}
 \end{theorem}
+It is easy to see that the result holds for $\lambda = 1$, so to extend the range to all scales $\lambda$, we make the following bootstrap assumptions, 
 
+{\color{red}\it This needs some work and should not be taken literally.}
 
-
-
-Bootstrap assumptions, 
     \begin{enumerate}
         \item Uniform $(H^s \times H^{s - 1})_x$-bounds, 
             \begin{equation}
@@ -68,3 +63,4 @@ Bootstrap assumptions,
                     \leq 2 \epsilon_1.
             \end{equation}
     \end{enumerate}
+It is not difficult to see that, once one improves on the bootstrap, perturbation theory allows one to push $\lambda$ further and conclude the theorem. Then the scheme of Ifrim-Tataru \cite{IfrimTataru2022} would allow one to conclude the main local well-posedness theorem for \eqref{QNLW}. We leave these details to the interested reader. 

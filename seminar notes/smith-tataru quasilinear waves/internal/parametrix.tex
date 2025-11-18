@@ -66,7 +66,7 @@ We shall refer to the space-time regions $\mathtt T_{\theta, j}$ as \text{slabs}
     \begin{enumerate}
         \item \label{item:WPdata}it matches the initial data at $t = -2$, 
             \begin{equation}
-                \sfP_\lambda \phi[-2] = (\phi_0, \phi_1)
+                \sfP_\lambda \phi[-2] = (\sfP_\lambda \phi_0, \sfP_\lambda \phi_1)
             \end{equation}
         \item \label{item:WPsize}the size of the coefficients is comparable to the size of the initial data, 
             \begin{equation}
@@ -285,6 +285,13 @@ We prove \eqref{L2L2orthogonal} by showing a fixed-time $t = \text{const}$ ortho
     \end{itemize}
 Evidently these hold in the flat case, we want to show these persist for the variable background.     
 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale = 0.25]{graphics/WPbad.jpg}
+    \caption{On a ``bad'' time slice, the conormal direction $du_\theta$ to a single wave packet can vary by a large amount on the total support, so to ensure that we are looking at appropriately localised Fourier supports, we partition the support in physical space into smaller cubes of length $\ell$ where the conormal direction does not vary much. }
+\end{figure}
+
     \begin{lemma}[Sobolev trace extension-type estimate]
          We effectively need to show the reverse Sobolev trace theorem
             \begin{equation}\label{eq:trace}
@@ -359,13 +366,11 @@ Evidently these hold in the flat case, we want to show these persist for the var
         Suppose $\| \partial \bfg(t) \|_{C^{0, 0+}_x} \geq \lambda$, then the bound follows from Cauchy-Schwartz in $\theta$. Indeed, since there are $O((\frac{\lambda}{\epsilon_0})^{\frac{n - 1}{2}})$-many angles, 
             \begin{align*}
                  |\Phi|^2
-                    \lesssim (\epsilon_0 \lambda)^{\frac{n - 1}{2}}\lambda^{-1} \cdot \Big( \frac{\lambda}{\epsilon_0} \Big)^{\frac{n - 1}{2}}  \sum_\theta \Big|\sfP_\lambda \sum_j  \sfT_{< \lambda} \big( \psi^{\theta, j} \, \delta(u_{\theta, j}) \big) \Big|^2,
+                    \lesssim (\epsilon_0 \lambda)^{\frac{n - 1}{2}}\lambda^{-1} \cdot  \sum_\theta \Big|\lambda^{\frac{n - 1}{2} -\frac12} \sfP_\lambda \sum_j  \sfT_{< \lambda} \big( \psi^{\theta, j} \, \delta(u_{\theta, j}) \big) \Big|^2,
             \end{align*}
-        then integrating and applying Bernstein, 
-            \begin{align*}
-                \| \Phi \|_{L^2_x (\R^n)}^2 
-                    &\lesssim  \sum_{\theta} \lambda^{-1} \Big\| \sfP_{\lambda} \sum_j  \sfT_{< \lambda} \big( \psi^{\theta, j} \, \delta(u_{\theta, j}) \big) \Big\|_{L^2_x (\R^n)}^2 \lesssim \sum_{\theta, j} \| \psi^{\theta, j} \|_{L^2_{x'_\theta} (\R^{n - 1})}^2
-            \end{align*}
+        then integrating and applying Bernstein gives the result. 
+
+        Suppose then $\| \partial \bfg(t)\|_{C^{0, 0+}_x} \leq \lambda$. 
     \end{proof}
 
     \begin{proof}[Proof of Proposition \ref{prop:parametrix} (\ref{item:WPenergy}) (energy bounds)]
@@ -408,7 +413,10 @@ Evidently these hold in the flat case, we want to show these persist for the var
             \end{align*}
         again using the $L^2_t C^{0, 0+}$-smallness of the metric and the error bounds \eqref{errorcoeff}. 
     \end{proof}
-    
+
+    \begin{remark}
+        Note that we used $\tfrac{n - 1}{2} \leq 2$ for dimensions $n \leq 5$ to estimate the bad-time contribution. 
+    \end{remark}
 
 \subsection{Matching wave packets to initial data}
 
@@ -428,10 +436,14 @@ where
             := \frac12 \left( \phi_0^\theta (x + t \theta) + u_0 \right)
     \]
 
-\subsubsection*{Approximate solution for $\Box_{\bfg_{< \lambda}}$}
+
 
 Fourier transform trick, $u_0^\omega$ compact support in frequency, take Fourier transform in $x_\theta$, then extend periodically the Fourier transform with period $\lambda \theta$, 
     \[
         \widehat{\phi^\theta} 
             = \sum_{k \in \Z} 
     \]
+
+\begin{remark}
+    Here we did not need to use the restriction on dimenions $n \leq 5$. 
+\end{remark}
