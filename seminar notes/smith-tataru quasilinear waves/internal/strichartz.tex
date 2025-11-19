@@ -26,6 +26,10 @@ Fix two points $\mathtt P_1 = (t_1, x_1)$ and $\mathtt P_2 = (t_2, x_2)$ in $[-2
         \end{equation}
 \end{proposition}
 
+\begin{remark}
+    One can think of this as a dispersive estimate in the sense that, given a high frequency $\lambda$ bump localised in a $\lambda^{-1}$-ball at the origin, the corresponding approximate solution to the wave equation consists of wave packets spreading out along the light cone. The dispersive decay then is captured by how many of these packets overlap at any given point in space-time. 
+\end{remark}
+
 To this end, we introduce $C_{\mathtt P_1} \subseteq [-2, 2] \times \R^n$ the forward light cone starting from $\mathtt P_1$, and let $\gamma_\theta$ be the null geodesic contained in $\Sigma_\theta$ starting from $\gamma_\theta (t_1) = x_1$. Denote $q_\theta := \gamma_\theta (t_2)$. Define
     \[
         \dist(x_2, C_{\mathtt P_1}^{t_2}) 
@@ -80,7 +84,7 @@ We will need the following lemma, which essentially formalises the geometric int
                 \subseteq \Big\{ \omega \in \SS^{n - 1} : |u_\omega(t_2, Q) - u_\omega (\mathtt P_1)| \leq 3\lambda^{-1} \text{ and } |\gamma_\omega (t_2) - Q_2| \leq 3 (\epsilon_0 \lambda)^{-\frac12}\Big\},
         \]
     and 
-        \begin{equation}
+        \begin{equation}\label{eq:conedistance}
             u_\omega(t_2, Q) - u_\omega (t_1, x_1)
                 = - \frac12|t_1 - t_2| \cdot |\omega - \theta|^2 + (\omega - \theta) \cdot \overrightarrow{\gamma_\theta(t_2) Q} + \text{error},
         \end{equation}
@@ -137,7 +141,7 @@ In this case, the wave packets emanating from $\mathtt P_1$ have not had time to
 \begin{figure}[h]
         \centering 
         \includegraphics[scale = 0.2]{graphics/WPcone}
-        \caption{On time scale $|t_1 - t_2| > 2\lambda^{-1}$ and close to the cone $|\delta u| \leq 4 \lambda^{-1}$, it is easy to rotate a tube containing the point to obtain another tube containing the point.  }\label{fig:closecone}
+        \caption{On time scale $|t_1 - t_2| > 2\lambda^{-1}$ and close to the cone $|\delta u| \leq 4 \lambda^{-1}$, it is easy to rotate a tube containing the point to obtain another tube containing the point. This should form a set of angles which is like a cap of the sphere. }\label{fig:closecone}
     \end{figure}
 
 \subsubsection*{Long-time $|t_1 - t_2| > 2\lambda^{-1}$ and far from cone case $|\delta u| > 4 \lambda^{-1}$}
@@ -146,14 +150,33 @@ In this case, the wave packets have had some time to decohere. If $\mathtt P_2$ 
     \[
              \#_\lambda (\mathtt P_1, \mathtt P_2)  = 0.
     \]
-We now turn to the interesting case $\delta u \geq 4 \lambda^{-1}$, where $\mathtt P_2$ is in the exterior of the cone. 
 
+We now turn to the interesting case $\delta u \geq 4 \lambda^{-1}$, where $\mathtt P_2$ is in the exterior of the cone. For simplicity, let us assume $\mathtt P_1 = (0, 0)$, and $\mathtt P_2 = (t, P)$, and the angle of $P$ is $\theta$. Using the flat case as intuition, the angle $\omega$ needs to be uniformly far away from $\theta = 0$ so that the wave packet may focus at $P$. There is some freedom to slide the wave packets, so $A_\lambda$ should look like an annulus of angles. 
+
+To make this rigorous, we have by \eqref{conedistance}
+    \[
+        \delta u \lesssim |\gamma_\theta - Q|^2 |t|^{-1} \lesssim (\epsilon_0 \lambda |t|)^{-1},
+    \]
+where we assume there is some slab intersection, so $|\gamma_\theta - Q| \lesssim 2 (\epsilon_0 \lambda)^{-\frac12}$. Since the max occurs at some $\omega_0$, it follows that, for all $\theta \in A_\lambda$, 
+    \[
+        |\theta - \omega_0|^2 \approx |Q - \gamma_\theta (t)| \cdot |t|^{-1} \approx (\delta u)^{\frac12} |t|^{-\frac12}. 
+    \]
+This allows us to cover $A_\lambda$ by $O(1)$-many balls of radius $(\delta u)^{\frac12} |t|^{-\frac12}$. Thus we need to only consider $A_\lambda$ intersected with such a ball. Using \eqref{conedistance} with some facts about null geodesics and angles, 
+    \[
+        u_\omega(t, Q) - u_\theta (0, 0) = (\omega - \theta') \cdot \overrightarrow{\gamma_\theta(t) Q} + \text{error}.
+    \]
+Since $\gamma_\theta (t)$ and $P$ are in the same slab, $\gamma_\theta (t)$ is $(\epsilon_0 \lambda)^{-\frac12}$-close to $Q$, so the thickness of the annulus is controlled by $(\frac{\epsilon_0}{\lambda})^{\frac12}$. After being quite lossy, we cover $A_\lambda$ by 
+    \[
+        \#_\lambda (\mathtt P_1, \mathtt P_2) 
+            \lesssim \left(\frac\lambda{\epsilon_0}\right)^{\frac{n - 1}{2}} \left(\lambda|t_1 - t_2|\right)^{-1}
+    \]
+many balls of radius $(\frac{\epsilon_0}\lambda)^{\frac12}$. 
 
 
 \begin{figure}[h]
         \centering 
         \includegraphics[scale = 0.2]{graphics/WPinterest}
-        \caption{On time scale $\lambda^{-1}$, the wave packets are still approximately maximally-overlapping, so we use the trivial bound. }\label{fig:interesting}
+        \caption{On time scale $|t_1 - t_2| > 2\lambda^{-1}$ and far outside the cone $\delta u \geq 4 \lambda^{-1}$, for two tubes to intersect a point, the angles need to sufficiently far away so that the long sides have room to focus. The angles which do this should form an annulus. Inside the cone, the tubes do not focus at all, so the case $\delta u < - 4 \lambda^{-1}$ is trivial.}\label{fig:interesting}
     \end{figure}
 
 \subsection{Strichartz estimates}

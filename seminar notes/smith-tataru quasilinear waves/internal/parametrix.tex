@@ -37,7 +37,7 @@ Given a function restricted to frequency $\lambda$ for all $t$, we want to const
 We shall refer to the space-time regions $\mathtt T_{\theta, j}$ as \text{slabs}; by construction, wave packets are supported in slabs. These slabs satisfy a finite-overlap condition; indeed, those associated to different null hypersurfaces are disjoint, while those associated to the same null hypersurface have finite overlap in the $x_\theta'$-variable. Furthermore, we consider slabs with angles $\theta$ taken from 
     \[
         \Omega 
-            := \text{maximal collection of $\epsilon_0^{\frac{n - 1}{2}} \lambda^{\frac{n - 1}{2}}$-many unit vectors $\theta \in \SS^{n - 1}$ separated by at least $(\epsilon_0 \lambda)^{-\frac12}$}.
+            := \text{maximal collection of $\big(\tfrac{\lambda}{\epsilon_0}\big)^{\frac{n - 1}{2}}$-many unit vectors $\theta \in \SS^{n - 1}$ separated by at least $\big(\tfrac{\epsilon_0}{\lambda}\big)^{\frac{1}{2}}$}.
     \]
 
 \begin{figure}[h]
@@ -283,31 +283,61 @@ We prove \eqref{L2L2orthogonal} by showing a fixed-time $t = \text{const}$ ortho
         \item Parallel wave packets, i.e. fixing $\theta$, have finitely-overlapping supports $\mathtt T_{\theta, j}^t$ in physical space, see Figure \ref{fig:physicalWP}
         \item Non-parallel wave packets, i.e.  distinct $\theta, \omega \in \Omega$, at scale $\lambda$ are effectively localised in frequency space to the dual rectangles $(\mathtt T_{\theta, j}^t)^*$ and $(\mathtt T_{\omega, k}^t)^*$, which are contained in $(\epsilon_0 \lambda)^{\frac12}$-neighborhoods of $\theta$ and $\omega$ respectively. Since we have chosen angles separated by at least $(\frac{\epsilon_0}\lambda)^{\frac12}$, the supports are effectively disjoint on the dyadic shell $|\xi| \sim \lambda$, see Figure \ref{fig:frequencyWP}. 
     \end{itemize}
-Evidently these hold in the flat case, we want to show these persist for the variable background.     
+Evidently these hold in the flat case, we want to show these persist for the variable background. The picture one should keep in mind is as follows:   
 
 
 \begin{figure}[h]
     \centering
     \includegraphics[scale = 0.25]{graphics/WPbad.jpg}
-    \caption{On a ``bad'' time slice, the conormal direction $du_\theta$ to a single wave packet can vary by a large amount on the total support, so to ensure that we are looking at appropriately localised Fourier supports, we partition the support in physical space into smaller cubes of length $\ell$ where the conormal direction does not vary much. }
+    \caption{On a ``bad'' time slice, the conormal direction $du_\theta$ to a single wave packet can vary by a large amount on the total support, so to ensure that we are looking at appropriately localised Fourier supports, we partition the support in physical space into smaller cubes of length $\ell$ where the conormal direction does not vary much. }\label{fig:badtime}
 \end{figure}
 
-    \begin{lemma}[Sobolev trace extension-type estimate]
-         We effectively need to show the reverse Sobolev trace theorem
+    \begin{lemma}[Dual tube frequency localisation]
+         Let $n \leq 5$ and suppose $t\in [-2, 2]$ is a time such that $\| \partial \bfg(t) \|_{C^{0, 0+}_x} \leq \epsilon_0$, then there exists coordinates $(y_\theta, y'_\theta)$ such that 
             \begin{equation}\label{eq:trace}
-                \| \sfT_{< \lambda} \big( \psi^{\theta, j} \cdot \delta(u_{\theta, j}) \big) \|_{L^2 H^{\frac{n - 1}{2} +}} 
-                    \lesssim \lambda^{\frac12} \| \psi^{\theta, j} \|_{H^{\frac{n - 1}{2} +} (\R^{n - 1})}.
+                \| \sfT_{< \lambda} \big( \psi^{\theta, j} \cdot \delta(x_\theta - \tau_\theta) \big) \|_{L^2 H^{\frac{n - 1}{2}_{a, y'_\theta} +} (\R^n)} 
+                    \lesssim \lambda^{\frac12} \| \psi^{\theta, j} \|_{H^{\frac{n - 1}{2} +}_{a ,x'_\theta} (\R^{n - 1})}.
             \end{equation}
+        Here the subscript $a = (\epsilon_0 \lambda)^{-\frac12}$ denotes the scaled-Sobolev space 
+            \[
+                \| f (y) \|_{H^{s}_{a, y} (\R^{n - 1}) } 
+                    := \| f(ay) \|_{H^s_y (\R^{n - 1})}.
+            \]
     \end{lemma}
 
     \begin{proof}
-        
+        In the flat case, this is true by direct application of Bernstein's inequality in the $\theta$-direction, 
             \begin{align*}
-                \Big\| \sfT_{< \lambda} \Big(\psi(y') \, \delta(x_\theta - \tau(x'_\theta)) \Big) \Big\|_{L^2_{x_\theta} H^{\frac{n - 1}{2} + }_{x'_\theta} (\R^n)}
-                    &\lesssim \lambda^{\frac12} \| \psi  \|_{H^{\frac{n - 1}{2} +} (\R^{n - 1})}\\
+                \Big\| \sfT_{< \lambda} \Big(\psi(x'_\theta) \, \delta(x_\theta - t) \Big) \Big\|_{L^2_{x_\theta} H^{\frac{n - 1}{2} + }_{x'_\theta} (\R^n)}
+                    &\lesssim \lambda^{\frac12} \| \psi  \|_{H^{\frac{n - 1}{2} +} (\R^{n - 1})}. 
             \end{align*}
 
+        In the variable-coefficient case, since the derivative of the metric is $O(1)$, we know that the level hyper-surfaces are $C^2$-regular, and, roughly speaking, thanks to \eqref{nullregularity}, $x_\theta \approx \tau$, so the time $t$-sections of the tubes are contained in a rectangle of dimensions $(\epsilon_0 \lambda)^{-\frac12 \times (n - 1)} \times \lambda^{-1}$. In particular, 
+            \[
+                \supp \cF_x \sfT_{< \lambda} \Big(\psi(x'_\theta) \, \delta(x_\theta - \tau) \Big) \subseteq (\epsilon_0 \lambda)^{\frac12 \times (n - 1)} \times \lambda \text{ dual rectangle}.
+            \]
+        We can choose coordinates adapted to this rectangle, and take the Fourier transform in the $\lambda \mapsto \lambda^{-1}$-direction. By Plancharel's theorem and suitable rescaling, it will suffice to prove 
+            \[
+                \| \psi e^{i \eta \tau} \|_{H^{\frac{n - 1}{2}+} (\R^{n - 1})}
+                    \lesssim (1 + |\eta|)^{100000} \| \psi \|_{H^{\frac{n - 1}{2}+} (\R^{n - 1})},
+            \]
+        where, denoting $\eta$ the dual Fourier variable to $x_\theta$, we have used the standard identity
+            \[
+                e^{i \eta \tau} = \cF_{x_\theta} \left(  \delta(x_\theta - \tau) \right).
+            \]
+        When both derivatives fall on $\psi$, we are happy, however when both derivatives fall on the oscillation, we need to control 
+            \[
+                \| e^{i \eta \tau} \|_{C^{2, 0+}} \lesssim \| \tau \|_{C^{2, 0+}} \lesssim (1 + |\eta|)^{2 + }.
+            \]
+        This is acceptable since we have $C^{1, 0+}$-control of the metric. 
     \end{proof}
+
+    \begin{remark}
+        Here we used the famous inequality 
+            \[
+                \frac{n - 1}{2} \leq 2 \qquad \text{ if and only if } n \leq 5.
+            \]
+    \end{remark}
 
 
     \begin{lemma}[Orthogonality at ``good" $t$]
@@ -316,7 +346,7 @@ Evidently these hold in the flat case, we want to show these persist for the var
                 \Phi
                     := (\epsilon_0 \lambda)^{\frac12 \frac{n - 1}{2}} \lambda^{\frac12 - 1} \sfP_\lambda \sfT_{< \lambda} \sum_{\theta, j} \psi^{\theta, j} \, \delta(u_{\theta, j}).
             \]
-        Suppose $t\in [-2, 2]$ is a time such that $\| \partial \bfg(t) \|_{C^{0, 0+}_x} \leq \epsilon_0$, then 
+        Let $n \leq 5$, and suppose $t\in [-2, 2]$ is a time such that $\| \partial \bfg(t) \|_{C^{0, 0+}_x} \leq \epsilon_0$, then 
             \begin{equation}\label{eq:goodorthogonal}
                 \| \Phi \|_{L^2_x}^2
                     \lesssim \sum_{\theta, j} \left\| \psi^{\theta, j} ((\epsilon_0 \lambda)^{-\frac12} x ) \right\|_{H^{\frac{n - 1}{2} +} (\R^{n - 1})}^2
@@ -324,7 +354,7 @@ Evidently these hold in the flat case, we want to show these persist for the var
     \end{lemma}
 
     \begin{proof}
-        Decompose
+        Decompose into packets with the same angle, 
             \begin{align*}
                 \Phi
                     &:= \sum_{\theta \in \Omega} \Phi_\theta, \\
@@ -333,20 +363,12 @@ Evidently these hold in the flat case, we want to show these persist for the var
                 \mathfrak v^{\theta, j} 
                     &:= (\epsilon_0 \lambda)^{\frac12 \frac{n - 1}{2}} \lambda^{\frac12 - 1} \sfT_{< \lambda} \big( \psi^{\theta, j} \delta(u_{\theta, j}) \big).
             \end{align*}
-        Thanks to the finite-overlap property in physical space and the estimate \eqref{trace}, we have 
+        Thanks to the finite-overlap property in physical space and the estimate \eqref{trace}, we have that the packets with the same angle are essentially orthogonal,
             \[
                 \| \Phi_\theta \|_{L^2_{y_\theta} H^{\frac{n - 1}{2} + }_{y'_\theta} (\R^n)}^2 
                     \lesssim (\epsilon_0 \lambda)^{\frac{n - 1}{2}} \sum_j \| \psi^{\theta, j} ((\epsilon_0 \lambda)^{-\frac12} x'_\theta)\|_{H^{\frac{n - 1}{2} +} (\R^{n - 1})}^2.
             \]
-        after rescaling. 
-        
-
-        By Plancharel's theorem, 
-            \begin{align*}
-                \| \Phi(t) \|_{L^2_x}^2 
-                    &\sim \int_{|\xi| \sim \lambda} \left| \sum_{\theta \in \Omega} \widehat{v_\theta} \right|^2  \, d\xi
-            \end{align*}
-
+        after rescaling. By Plancherel's theorem and frequency localisation, super-positions of packets with different angles $\Phi_\theta$ are also effectively orthogonal, so we can conclude the result. 
     \end{proof}
 
     \begin{lemma}[Orthogonality at ``bad'' $t$]
@@ -363,14 +385,43 @@ Evidently these hold in the flat case, we want to show these persist for the var
     \end{lemma}
 
     \begin{proof}
-        Suppose $\| \partial \bfg(t) \|_{C^{0, 0+}_x} \geq \lambda$, then the bound follows from Cauchy-Schwartz in $\theta$. Indeed, since there are $O((\frac{\lambda}{\epsilon_0})^{\frac{n - 1}{2}})$-many angles, 
+        Suppose $\| \partial \bfg(t) \|_{C^{0, 0+}_x} \geq \lambda$, then the bound follows from Cauchy-Schwartz in $\theta$. Indeed, since there are $O((\frac{\lambda}{\epsilon_0})^{\frac{n - 1}{2}})$-many angles,
             \begin{align*}
                  |\Phi|^2
                     \lesssim (\epsilon_0 \lambda)^{\frac{n - 1}{2}}\lambda^{-1} \cdot  \sum_\theta \Big|\lambda^{\frac{n - 1}{2} -\frac12} \sfP_\lambda \sum_j  \sfT_{< \lambda} \big( \psi^{\theta, j} \, \delta(u_{\theta, j}) \big) \Big|^2,
             \end{align*}
-        then integrating and applying Bernstein gives the result. 
+        then integrating, using physical space separation, and applying Bernstein gives the result. Morally this should be the easy case, since the equation we are effectively studying is with the truncated metric $\bfg_{< \lambda}$, so contributions when the metric is larger than $\lambda$ should be negligible. 
 
-        Suppose then $\| \partial \bfg(t)\|_{C^{0, 0+}_x} \leq \lambda$. 
+        Suppose then $\| \partial \bfg(t)\|_{C^{0, 0+}_x} \leq \lambda$. At the end of the day, we want to use the fact that the metric at fixed $t$ can be ``bad'', but it is only bad on average. The issue with large metric is that the conormal direction $du_\theta$ can vary a lot on the total support of each wave packet. By the null regularity estimate \eqref{nullregularity}, we know that the derivative of the conormal vector satisfies $\| \partial_x du \|_{C^{0+}} \lesssim \| \partial \bfg \|_{C^{0+}}$, so this Lipschitz control implies 
+            \[
+                \text{variation of conormal on region diamater $\ell$} \lessapprox \| \partial \bfg \|_{C^{0+}} \cdot \ell .
+            \]  
+        Moving in $\ell$-units in physical space corresponds to $\ell^{-1}$-units in frequency space. On the other hand, the angle change can lead to frequencies curving in bad directions as one moves along the long direction in frequency space, see Figure \ref{fig:badtime}. To ensure consistency, we set 
+            \begin{align*}
+                \text{short length} 
+                    &\approx\text{long length} \cdot \text{angle} \approx \lambda \cdot \| \partial \bfg \|_{C^{0+}} \cdot \ell \\
+                    &\approx \ell^{-1}.
+            \end{align*}
+        This gives 
+            \[
+                \ell \approx \big( \lambda \| \partial \bfg \|_{C^{0+}} \big)^{-\frac12}
+            \]
+        as the optimal scale to partition the support of the wave packet in physical space such that the angle does not change as much. Accordingly, we form a partition of unity $\{\chi_m\}_m$ of $\Sigma^t_{\theta, j}$ adapted to cubes of length $\ell$, and decompose
+            \[
+                \psi^{\theta, j} 
+                    = \sum_m \chi_m \psi^{\theta, j}.
+            \]
+        Then the uncertainty principle analogous to \eqref{trace} yields
+            \begin{align}
+                \| \sfT_{< \lambda} \big( \chi_m \psi^{\theta, j} \cdot \delta(x_\theta - \tau) \big) \|_{L^2 H^{\frac{n - 1}{2}_{a, y'_\theta} +} (\R^n)} 
+                    &\lesssim \lambda^{\frac12} \| \psi^{\theta, j} \|_{H^{\frac{n - 1}{2} +}_{a ,x'_\theta} (\R^{n - 1})}, \label{eq:badtrace}
+            \end{align}
+        where, by construction, $\theta$ is such that 
+            \[
+                |\theta - du_\theta | \lesssim \| \partial \bfg \|_{C^{0+}} \cdot \ell \lesssim (\lambda \ell)^{-1} \qquad \text{uniformly on $\chi_m$}.
+            \]
+        
+        From here the proof proceeds similarly to the good time case, replacing $\epsilon_0$ with $\| \partial \bfg(t) \|_{C^{0, 0+}_x}$ in appropriate places. We leave this to the reader. 
     \end{proof}
 
     \begin{proof}[Proof of Proposition \ref{prop:parametrix} (\ref{item:WPenergy}) (energy bounds)]
@@ -415,7 +466,11 @@ Evidently these hold in the flat case, we want to show these persist for the var
     \end{proof}
 
     \begin{remark}
-        Note that we used $\tfrac{n - 1}{2} \leq 2$ for dimensions $n \leq 5$ to estimate the bad-time contribution. 
+        Again we needed to use
+            \[
+                \frac{n - 1}{2} \leq 2 \qquad \text{ if and only if } n \leq 5,
+            \]
+        to ensure that the ``bad'' times are good on average. 
     \end{remark}
 
 \subsection{Matching wave packets to initial data}

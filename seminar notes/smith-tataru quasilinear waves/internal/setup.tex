@@ -6,14 +6,14 @@ Let $s > \tfrac{n}{2} + \tfrac12$, then by standard scaling and finite speed of 
         \| \phi[0] \|_{(H^s \times H^{s - 1})_x} 
                 \leq \epsilon_3,
     \end{equation}
-and prove local well-posedness for this class of data on unit time-scales $[0, 1]$. For each $\lambda \in 2^\N$, define
+and prove local well-posedness for this class of data on unit time-scales $[0, 1]$. For each $\lambda > 0$, define
         \begin{align*}
             \phi^{(\lambda)} 
                 &:= \text{solution to \eqref{QNLW} with $\phi^{(\lambda)} [0] := \sfP_{\leq \lambda} \phi[0]$,}\\ 
             \psi^{(\lambda)} 
                 &:= \text{solution to \eqref{QNLW} with $\psi^{(\lambda)} [0] := \sfP_{\lambda} \phi[0]$.}
         \end{align*}
-By persistence of regularity, these are smooth solutions. Furthermore, the initial data satisfy the bounds 
+Here it is convenient to bootstrap on $\lambda$, and as such we use a continuous Littlewood-Paley decomposition rather than a discrete one. For the remainder of the article though, we will follow the Smith-Tataru convention of using the later, though all these ideas can probably be consistently put together without too much difficulty. By persistence of regularity, these are smooth solutions. Furthermore, the initial data satisfy the bounds 
     \begin{equation}
     \begin{split}
         \| \phi^{(\lambda)} [0] \|_{(H^s \times H^{s - 1})_x} 
@@ -26,7 +26,7 @@ By persistence of regularity, these are smooth solutions. Furthermore, the initi
 \begin{theorem}[Estimates for smooth solutions from regularised data]
     The solutions $\phi^{(\lambda)}$ to \eqref{QNLW} satisfy the following properties:
         \begin{enumerate}
-            \item \textup{Uniform bounds:} the solutions exist up to unit time-scale $[-2, 2]$, and satisfy the uniform bounds
+            \item \textup{Uniform bounds:} the solutions exist up to unit time-scale $[-1, 1]$, and satisfy the uniform bounds
                 \begin{equation}
                     \| \phi^{(\lambda)} [t]\|_{L^\infty_t (H^s \times H^{s -1 })_x} + \| \partial \phi^{(\lambda)} \|_{L^2_t C^{0, 0+}_x}
                         \lesssim \epsilon, 
@@ -37,11 +37,11 @@ By persistence of regularity, these are smooth solutions. Furthermore, the initi
                     \| \partial \psi \|_{L^\infty_t L^2_x} + \| \langle \nabla_x \rangle^{-\frac{n - 1}{2}-} \partial\psi \|_{L^2_t L^\infty_x}
                         \lesssim \| \partial \psi[0]\|_{L^2_x},
                 \end{equation}
-            uniformly in $\lambda \in 2^\N$. 
+            uniformly in $\lambda$. 
                 
         \end{enumerate}
 \end{theorem}
-It is easy to see that the result holds for $\lambda = 1$, so to extend the range to all scales $\lambda$, we make the following bootstrap assumptions, 
+It is easy to see that the result holds for $\lambda = 1$, where all norms, rough and smooth, are effectively the same and thus one can use Hughes-Kato-Marsden freely. To extend the range to all scales $\lambda$, we make the following bootstrap assumptions, 
 
 {\color{red}\it This needs some work and should not be taken literally.}
 
@@ -51,11 +51,7 @@ It is easy to see that the result holds for $\lambda = 1$, so to extend the rang
                 \| \phi^{(\lambda)} [t]\|_{L^\infty_t (H^s \times H^{s -1 })_x} 
                     \leq 2 \epsilon_2, 
             \end{equation}
-        \item Difference bounds
-            \begin{equation}
-                \| \psi^{(\lambda)} [t] \|_{L^\infty_t (H^1 \times L^2)_x} 
-                    \leq N^{-s},
-            \end{equation}
+        \item Strichartz holds for the linear equation. {\color{red} probably one can make this more precise and substitute this with difference bounds, i.e. those on $\psi^{(\lambda)}$.}
 
         \item Null geometry bounds, 
             \begin{equation}

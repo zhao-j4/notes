@@ -12,30 +12,82 @@ Placing the latter two on the right-hand side, we obtain the paradiagonal formul
                    \approx \bfg(\phi)_\lambda \cdot \partial\partial \phi_{< \lambda}
                         + \bfg(\phi)_\lambda \cdot \partial\partial \phi_{< \lambda} +  \sum_{\mu \geq \lambda} \bfg(\phi)_\mu \cdot \partial\partial \phi_{\mu} + \cN(\phi)(\partial \phi, \partial \phi)_\lambda.
         \end{equation}
-The right-hand side is perturbative, so 
+A similar decomposition can be made for the linear wave counterpart, 
 	\begin{equation}\tag{LW} \label{eq:linearwave}
 	\begin{alignedat}{2}
 		\Box_{\bfg(\phi)} \psi 
 			&= 0,\\
 		(\psi, \partial_t \psi)_{|t = 0} 
-			&= (\psi_0, \psi_1),
+			&= (\psi_0, \psi_1).
 	\end{alignedat}
 	\end{equation}
-and its paradifferential counterpart 
+Thus, the main non-perturbative part of the argument resides in analysing the linear paradifferential equation, 
 	\begin{equation}\tag{PLW} \label{eq:paralinear}
 	\begin{alignedat}{2}
 		\Box_{\bfg(\phi)_{< \lambda}} \sfP_\lambda \psi 
 			&= 0,\\
 		(\psi, \partial_t \psi)_{|t = 0}
-			&= (\sfP_{\lambda}\psi_0, \sfP_\lambda \psi_1),
+			&= (\sfP_{\lambda}\psi_0, \sfP_\lambda \psi_1).
 	\end{alignedat}
 	\end{equation} 
 
+Our strategy will consist of constructing a suitable approximate solution to this initial data problem, and proving dispersive estimates hold for the approximation. 
 
-\begin{proposition}
-    
-        \begin{equation}
-            \| \psi \|_{L^2_t L^\infty_x}   
-                \lesssim \epsilon_0^{-\frac12} \lambda^{\sigma - 1} \|\psi[-2]\|_{H^1_x \times L^2_x},
+\begin{proposition}[Existence of a parametrix]
+    Assuming the bootstrap, for each $\phi[0] \in (H^1 \times L^2)_x (\R^n)$, there exists a family of smooth functions $\psi^\lambda \in C^\infty ([-2, 2] \times \R^n)$ which satisfy 
+        \begin{enumerate}
+                \item frequency localisation, 
+                        \begin{equation}
+                                \supp \widehat{\psi^\lambda (t)}
+                                        \subseteq \{ \xi \in \R^n : |\xi| \sim \lambda \},
+                        \end{equation}
+                \item initial data matching,    
+                        \begin{equation}
+                                \psi^\lambda [-2] = \sfP_\lambda \phi[0],
+                        \end{equation}
+                \item small error, 
+                        \begin{equation}
+                                \| \Box_{\bfg_{< \lambda}} \psi^\lambda \|_{L^1_t L^2_x} 
+                                        \lesssim \epsilon_0 \|\phi[0]\|_{H^1_x \times L^2_x},
+                        \end{equation}
+                \item Strichartz-type estimates for $\sigma > \frac{n - 1}{2}$, 
+                 \begin{equation}\label{eq:parametrixstrichartz}
+                \| \psi^\lambda \|_{L^2_t L^\infty_x} 
+                        \lesssim \epsilon_0^{-\frac12} \lambda^{\sigma - 1}\| \phi[0]\|_{H^1_x \times L^2_x},
         \end{equation}
+        \end{enumerate}
 \end{proposition}
+
+With the approximate solution at hand, we can analytically set-up the iteration scheme for solving \eqref{linearwave} as follows, 
+        \begin{itemize}
+                \item approximate solution to the homogeneous problem \eqref{paralinear}, 
+                        \[
+                                \mathcal S^{\mathrm{appr}}(t) \phi[0]
+                                        := \sum_\lambda \psi^{\lambda}
+                        \]
+                \item approximate solution to the inhomogeneous problem with zero initial data, 
+                        \[
+                                \big(\Box_{\bfg}^{-1}\big)^{\mathrm{appr}} F
+                                        :=  \int_{0}^t \mathcal S^{\mathrm{appr}}(t) \begin{pmatrix} 0 \\ F(s) \end{pmatrix} \, ds,
+                        \]
+        \end{itemize}
+It is a standard argument to replace the $L^1_t L^2_x$-error bound to an $L^2_{t, x}$-error bound. This will be convenient for estimating terms $\partial \bfg \partial \psi$ in $L^1_t L^2_x$, placing the metric in Strichartz and the solution in energy norm. Then the parametrix error bounds implies that the linear map
+        \begin{equation}
+        \begin{split}
+                L^2_{t, x} ([0, 1] \times \R^n)
+                    &\longrightarrow L^2_{t, x} ([0, 1] \times \R^n), \\
+                F 
+                        &\longmapsto\left( \Box_{\bfg} \,\big(\Box_{\bfg}^{-1}\big)^{\mathrm{appr}} - \mathrm{Id}\right) F
+        \end{split}
+        \end{equation}
+is a contraction. In particular, each time we feed in an approximate solution to \eqref{linearwave}, and solve away the error on the right, we gain. Thus, we can write the exact solution to \eqref{linearwave} as 
+        \begin{equation}
+                \phi 
+                        = \cS^{\mathrm{appr}}(t) \phi[0] + \big(\Box_{\bfg}^{-1}\big)^{\mathrm{appr}} F,
+        \end{equation}
+where $F$ is some power series expansion which kills the error completely, and can easily be checked to satisfy
+        \[
+                \| F\|_{L^2_{t, x}} 
+                        \lesssim \epsilon_0 \| \phi[0] \|_{H^1_x \times L^2_x}.
+        \]
+In this form, it is easy to pass the Strichartz bounds on the parametrix to the exact solution, with energy norm on the right-hand side. After suitable commutations, one can do the same for higher regularity norms.

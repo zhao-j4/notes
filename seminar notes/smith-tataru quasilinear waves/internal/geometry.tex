@@ -30,21 +30,48 @@ We denote the level sets $u_\theta = r$, which are null hypersurfaces with respe
 
 \subsection{Regularity of null hypersurfaces}
 
+It is convenient to define the Sobolev-type norms on the null hypersurfaces $\Sigma_{\theta, r}$ by
+    \[
+        \| f \|_{\mathcal H^s_{t, x'_\theta} (\Sigma_{\theta, r})}
+            :=
+                \sup_{\theta, r} \big\| f \big\|_{L^2_t H^s_{x'_\theta} (\Sigma_{\theta, r})} + \big\| \partial_t f \big\|_{L^2_t H^{s - 1}_{x'_\theta} (\Sigma_{\theta, r})}. 
+    \]
+
 \begin{proposition}[Characteristic energy estimates]
     
         \begin{equation}
-            \|\bfg - \bfm \|_{(\Sigma_{\theta, r})}  + \| \partial \bfg_{< \lambda} \|_{(\Sigma_{\theta, r})} + \lambda^{-1} \| \partial_x \partial \bfg_{< \lambda} \|_{(\Sigma_{\theta, r})}
+            \|\bfg - \bfm \|_{\cH^s (\Sigma_{\theta, r})}  + \| \partial \bfg_{< \lambda} \|_{(\Sigma_{\theta, r})} + \lambda^{-1} \| \partial_x \partial \bfg_{< \lambda} \|_{\cH^s (\Sigma_{\theta, r})}
                 \lesssim \epsilon_2. 
         \end{equation}
 \end{proposition}
 
-\begin{proposition}[]
-    
-        \begin{equation}
+\begin{proposition}[Regularity of null hypersurfaces]
+
+        \begin{equation}\label{eq:nullregularity}
             \| d \tau_{\theta, r} (t) - dt \|_{C^{1, 0+}_{x'_\theta}(\R^{n - 1})}
                 \lesssim \epsilon_2 + \| \partial \bfg (t) \|_{C^{0, 0+}_x(\R^n)}.
         \end{equation}
 \end{proposition}
+
+It will be convenient to introduce some notation on $\Sigma$. Let $\bfV$ be the vector field obtained by raising the indices of $du$, 
+    \[
+        \bfV^\alpha := \bfg^{\alpha \beta} \partial_\beta u.
+    \]
+Set 
+    \[
+        \sigma := \langle dt, \bfV \rangle = \bfV^0,
+    \]
+and 
+    \[
+        \bfL := \sigma^{-1} \bfV.
+    \]
+Thus $\bfL$ is the $\bfg$-normal field to $\Sigma$ normalised so that $\bfL^0 = 1$. Set 
+    \[
+        \underline{\bfL}^\alpha
+            := \bfL^\alpha + 2 \bfg^{\alpha 0} \partial_0.
+    \]
+Then $\{ \bfL, \underline \bfL\}$ form a null frame. 
+
 
 \subsection{Geometry of light cones}
 

@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex main"] 1763490496.53318 "main.aux" "main.bbl" "main" 1763490770.40193 0
+["bibtex main"] 1763588109.30597 "main.aux" "main.bbl" "main" 1763588252.20508 0
   "./external/biblio.bib" 1762589119 9929 96dffd37268d1be07f219c4f76867c89 ""
   "C:/Users/reave/AppData/Local/Programs/MiKTeX/bibtex/bst/bibtex/alpha.bst" 1291864736 23907 a5f93555796fb564b924339521f10a7c ""
-  "main.aux" 1763490769 13995 7748009c5dc06d29e22251be55a4ef3b "pdflatex"
+  "main.aux" 1763588251 15402 10a7194bb9b37d06e8a328a8e414da34 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1763490768.61309 "c:/Users/reave/Documents/GitHub/notes/seminar notes/smith-tataru quasilinear waves/main.tex" "main.pdf" "main" 1763490770.40253 0
+["pdflatex"] 1763588250.24156 "c:/Users/reave/Documents/GitHub/notes/seminar notes/smith-tataru quasilinear waves/main.tex" "main.pdf" "main" 1763588252.20575 0
   "C:/Users/reave/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1762586130 82507 a9eef8696c92627b87e9975edea03b2a ""
   "C:/Users/reave/AppData/Local/MiKTeX/fonts/tfm/public/mathabx/mathx10.tfm" 1754790001 1520 88530e4e46ef1e4a7103f014512c50d2 ""
   "C:/Users/reave/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1754789923 24225045 9e31ca60e7deec8be21c2b371e4faf02 ""
@@ -62,6 +62,7 @@
   "C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/latxfont/lasy10.pfb" 1247596653 10304 e98704f815e417bc375e9a880a38e542 ""
   "C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/latxfont/lasy8.pfb" 1247596653 5395 efce7cfbda626936a1e0db002beaf3dc ""
   "C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb" 1247596673 31764 459c573c03a4949a528c2cc7f557e217 ""
+  "C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb" 1247596673 34694 870c211f62cb72718a00e353f14f254d ""
   "C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/fpl/fplrc8a.pfb" 1544554454 62231 526da4dbddad40f1a015252940f23e5c ""
   "C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/mathpazo/fplmbb.pfb" 1136882148 12410 7504dd653d0e7cf266cb973aeafd597c ""
   "C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/mathpazo/fplmr.pfb" 1136882148 9356 3e1f7eacbb57d05d0b682da8d83eb600 ""
@@ -155,17 +156,17 @@
   "graphics/WPtzero.jpg" 1763441036 49044 1f1651dc66ba3849b1c267564c8fe6f9 ""
   "graphics/fourier.jpg" 1762906469 71729 99147e34146c6dcaa1d6360363b5c392 ""
   "graphics/superWP.jpg" 1762906353 164337 e97006437c90b105d4c40efda574aa4a ""
-  "internal/geometry.tex" 1763490425 3338 aebc7bb40dbee401a2c595771e6427a0 ""
+  "internal/geometry.tex" 1763583582 4388 d61e86b5887c128a945d28e5a6344386 ""
   "internal/intro.tex" 1763446297 13489 3055d076d6f58439298609f45522ca43 ""
-  "internal/paradifferential.tex" 1763446753 1821 42a751b4e01f7fb30e7c4ea5f7867be2 ""
-  "internal/parametrix.tex" 1763488583 32381 53a1b6ee0854e1533087e7b8fde4a5eb ""
-  "internal/setup.tex" 1763446441 4054 05792db90e13b01997a7740142014228 ""
-  "internal/strichartz.tex" 1763490767 20606 e400171e0477bf57f092c925d066430d ""
-  "main.aux" 1763490769 13995 7748009c5dc06d29e22251be55a4ef3b "pdflatex"
-  "main.bbl" 1763490496 3153 9cca2a0ae2ee0725ded493be0b74cf36 "bibtex main"
-  "main.out" 1763490769 1249 e6420beef3285f4c4f27c0ee2eced9a3 "pdflatex"
+  "internal/paradifferential.tex" 1763582937 5676 77b9cf397b669312e8104696d634b166 ""
+  "internal/parametrix.tex" 1763584697 37795 762f9be1880b4391d3c1a95aca539d90 ""
+  "internal/setup.tex" 1763580197 4471 e0a31e72abe2a092d6dfb5bd6eb44497 ""
+  "internal/strichartz.tex" 1763588249 23155 7381496492ed857819612cf3746ba65c ""
+  "main.aux" 1763588251 15402 10a7194bb9b37d06e8a328a8e414da34 "pdflatex"
+  "main.bbl" 1763588109 3153 9cca2a0ae2ee0725ded493be0b74cf36 "bibtex main"
+  "main.out" 1763588251 1249 e6420beef3285f4c4f27c0ee2eced9a3 "pdflatex"
   "main.tex" 1763446027 1897 936a70c4594004f852d73048fe6f49db ""
-  "main.toc" 1763490769 2661 06916470e7832e837e37bcaf7e67ff9f "pdflatex"
+  "main.toc" 1763588251 2661 f262e35529cb58400f673c9eafba3772 "pdflatex"
   (generated)
   "main.aux"
   "main.log"

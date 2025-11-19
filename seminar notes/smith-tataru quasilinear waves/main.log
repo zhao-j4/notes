@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.8.9)  18 NOV 2025 10:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.8.9)  19 NOV 2025 13:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -452,8 +452,18 @@ pdfTeX warning (ext4): destination with the same identifier (name{equation.1.2})
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.4 L
-     et $s > \tfrac{n}{2} + \tfrac12$, then by standard scaling and finite s...] [4]) (internal/geometry.tex) (internal/paradifferential.tex [5]) (internal/parametrix.tex
-<graphics/WP.jpg, id=207, 1128.215pt x 967.615pt>
+     et $s > \tfrac{n}{2} + \tfrac12$, then by standard scaling and finite s...] [4]) (internal/geometry.tex [5]) (internal/paradifferential.tex [6
+pdfTeX warning (ext4): destination with the same identifier (name{equation.4.2}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.72                         \]
+                               
+pdfTeX warning (ext4): destination with the same identifier (name{equation.4.2}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.72                         \]
+                               ]) (internal/parametrix.tex
+<graphics/WP.jpg, id=227, 1128.215pt x 967.615pt>
 File: graphics/WP.jpg Graphic file (type jpg)
 <use graphics/WP.jpg>
 Package pdftex.def Info: graphics/WP.jpg  used on input line 22.
@@ -462,18 +472,8 @@ Package pdftex.def Info: graphics/WP.jpg  used on input line 22.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[6
-pdfTeX warning (ext4): destination with the same identifier (name{equation.4.2}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.36     \end{align*}
-                     
-pdfTeX warning (ext4): destination with the same identifier (name{equation.4.2}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.36     \end{align*}
-                     ]
-<graphics/superWP.jpg, id=221, 1279.78125pt x 1253.68375pt>
+[7]
+<graphics/superWP.jpg, id=239, 1279.78125pt x 1253.68375pt>
 File: graphics/superWP.jpg Graphic file (type jpg)
 <use graphics/superWP.jpg>
 Package pdftex.def Info: graphics/superWP.jpg  used on input line 45.
@@ -482,7 +482,7 @@ Package pdftex.def Info: graphics/superWP.jpg  used on input line 45.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<graphics/fourier.jpg, id=222, 1295.84125pt x 700.6175pt>
+<graphics/fourier.jpg, id=240, 1295.84125pt x 700.6175pt>
 File: graphics/fourier.jpg Graphic file (type jpg)
 <use graphics/fourier.jpg>
 Package pdftex.def Info: graphics/fourier.jpg  used on input line 52.
@@ -490,8 +490,8 @@ Package pdftex.def Info: graphics/fourier.jpg  used on input line 52.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[7 <./graphics/WP.jpg>] [8 <./graphics/superWP.jpg> <./graphics/fourier.jpg>] [9] [10]
-<graphics/WPbad.jpg, id=295, 1674.255pt x 1349.04pt>
+[8 <./graphics/WP.jpg>] [9 <./graphics/superWP.jpg> <./graphics/fourier.jpg>] [10] [11]
+<graphics/WPbad.jpg, id=312, 1674.255pt x 1349.04pt>
 File: graphics/WPbad.jpg Graphic file (type jpg)
 <use graphics/WPbad.jpg>
 Package pdftex.def Info: graphics/WPbad.jpg  used on input line 291.
@@ -500,40 +500,38 @@ Package pdftex.def Info: graphics/WPbad.jpg  used on input line 291.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[11] [12 <./graphics/WPbad.jpg>] [13]) (internal/strichartz.tex
-<graphics/WPtzero.jpg, id=335, 1058.95625pt x 764.8575pt>
+[12] [13 <./graphics/WPbad.jpg>] [14] [15]) (internal/strichartz.tex [16]
+<graphics/WPtzero.jpg, id=372, 1058.95625pt x 764.8575pt>
 File: graphics/WPtzero.jpg Graphic file (type jpg)
 <use graphics/WPtzero.jpg>
-Package pdftex.def Info: graphics/WPtzero.jpg  used on input line 52.
+Package pdftex.def Info: graphics/WPtzero.jpg  used on input line 56.
 (pdftex.def)             Requested size: 211.78749pt x 152.96878pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[14] [15 <./graphics/WPtzero.jpg>]
-<graphics/WPtsmall.jpg, id=367, 855.195pt x 815.045pt>
+ [17 <./graphics/WPtzero.jpg>]
+<graphics/WPtsmall.jpg, id=393, 855.195pt x 815.045pt>
 File: graphics/WPtsmall.jpg Graphic file (type jpg)
 <use graphics/WPtsmall.jpg>
-Package pdftex.def Info: graphics/WPtsmall.jpg  used on input line 116.
+Package pdftex.def Info: graphics/WPtsmall.jpg  used on input line 120.
 (pdftex.def)             Requested size: 171.03596pt x 163.0061pt.
-<graphics/WPcone.jpg, id=370, 1057.9525pt x 1049.9225pt>
+<graphics/WPcone.jpg, id=396, 1057.9525pt x 1049.9225pt>
 File: graphics/WPcone.jpg Graphic file (type jpg)
 <use graphics/WPcone.jpg>
-Package pdftex.def Info: graphics/WPcone.jpg  used on input line 139.
+Package pdftex.def Info: graphics/WPcone.jpg  used on input line 143.
 (pdftex.def)             Requested size: 211.58675pt x 209.98077pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<graphics/WPinterest.jpg, id=372, 1674.255pt x 1389.19pt>
+[18 <./graphics/WPtsmall.jpg>]
+<graphics/WPinterest.jpg, id=407, 1674.255pt x 1389.19pt>
 File: graphics/WPinterest.jpg Graphic file (type jpg)
 <use graphics/WPinterest.jpg>
-Package pdftex.def Info: graphics/WPinterest.jpg  used on input line 155.
+Package pdftex.def Info: graphics/WPinterest.jpg  used on input line 178.
 (pdftex.def)             Requested size: 334.84506pt x 277.83308pt.
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[16 <./graphics/WPtsmall.jpg>] [17 <./graphics/WPcone.jpg> <./graphics/WPinterest.jpg>] [18] [19]) (main.bbl) [20] (main.aux)
+[19 <./graphics/WPcone.jpg>] [20 <./graphics/WPinterest.jpg>] [21] [22]) (main.bbl) [23] (main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
@@ -547,17 +545,17 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: E6420BEEF3285F4C4F27C0EE2ECED9A3;1249.
  ) 
 Here is how much of TeX's memory you used:
- 11999 strings out of 474486
- 183692 string characters out of 5743756
+ 12018 strings out of 474486
+ 183947 string characters out of 5743756
  1951542 words of memory out of 5000000
- 33717 multiletter control sequences out of 15000+600000
+ 33724 multiletter control sequences out of 15000+600000
  608718 words of font info for 181 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
  90i,21n,93p,970b,734s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt8.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/euler/eufm10.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/mathpazo/fplmbb.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/mathpazo/fplmr.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/mathpazo/fplmri.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/fpl/fplrc8a.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/latxfont/lasy10.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/latxfont/lasy8.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplb8a.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplr8a.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (20 pages, 1210559 bytes).
+<C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt8.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/euler/eufm10.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/mathpazo/fplmbb.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/mathpazo/fplmr.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/mathpazo/fplmri.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/fpl/fplrc8a.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/latxfont/lasy10.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/latxfont/lasy8.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplb8a.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplr8a.pfb><C:/Users/reave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplri8a.pfb>
+Output written on main.pdf (23 pages, 1234148 bytes).
 PDF statistics:
- 539 PDF objects out of 1000 (max. 8388607)
- 158 named destinations out of 1000 (max. 500000)
+ 577 PDF objects out of 1000 (max. 8388607)
+ 170 named destinations out of 1000 (max. 500000)
  97 words of extra memory for PDF output out of 10000 (max. 10000000)
 
